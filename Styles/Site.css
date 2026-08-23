@@ -1,0 +1,607 @@
+/* ===== Stylio Salon Booking - Site Stylesheet ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #F3E9DC;
+    color: #2B1B12;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- Header ---------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background-color: #F3E9DC;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    border-radius: 50%;
+    margin-left: 378px;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: bold;
+    color: #3B2415;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    font-size: 18px;
+}
+
+.nav-link {
+    color: #3B2415;
+    padding-bottom: 4px;
+}
+
+.nav-link-active {
+    color: #C9A063;
+    border-bottom: 2px solid #C9A063;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid #3B2415;
+}
+
+.user-name {
+    font-size: 17px;
+    color: #3B2415;
+}
+
+/* ---------- Hero ---------- */
+.hero-wrapper {
+    position: relative;
+}
+
+.hero-section {
+    display: flex;
+    align-items: stretch;
+    background-color: #E7D6BE;
+    min-height: 460px;
+}
+
+.hero-text-col {
+    width: 32%;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 44px;
+    font-weight: bold;
+    line-height: 1.15;
+    color: #241608;
+    margin-bottom: 18px;
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: #4a3624;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 24px;
+}
+
+.btn-book {
+    background-color: #C9A063;
+    color: #2B1B12;
+    border: none;
+    padding: 14px 26px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-start;
+    font-family: inherit;
+}
+
+.hero-image {
+    object-fit: cover;
+    }
+
+/* ---------- Search Card ---------- */
+.search-card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -55px;
+    position: relative;
+    z-index: 5;
+}
+
+.search-card {
+    background-color: #FBF7F1;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 26px 34px;
+    width: 82%;
+    max-width: 1180px;
+}
+
+.search-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    display: block;
+    color: #241608;
+}
+
+.search-fields {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.field-label {
+    font-size: 13px;
+    color: #6b5847;
+    margin-bottom: 6px;
+}
+
+.field-dropdown {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d9cbb8;
+    background-color: #FCF9F5;
+    font-size: 14px;
+    color: #241608;
+    font-family: inherit;
+}
+
+.btn-search {
+    background-color: #C9A063;
+    color: #2B1B12;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    height: 42px;
+}
+
+/* ---------- Section Titles ---------- */
+.section-wrapper {
+    padding: 40px 60px 10px 60px;
+}
+
+.section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #241608;
+}
+
+.view-all-link {
+    color: #C9A063;
+    font-size: 16px;
+}
+
+/* ---------- Popular Salons ---------- */
+.salon-grid {
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.salon-card {
+    background-color: #FDFBF8;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 31%;
+    min-width: 300px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+.salon-card-img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.salon-card-body {
+    padding: 16px 18px 20px 18px;
+}
+
+.salon-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #241608;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.salon-rating {
+    color: #241608;
+    font-size: 14px;
+}
+
+.salon-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.salon-location {
+    font-size: 13px;
+    color: #6b5847;
+}
+
+.btn-view-details {
+    border: 1px solid #C9A063;
+    color: #C9A063;
+    background: transparent;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ---------- Services ---------- */
+.service-grid {
+    display: flex;
+    gap: 26px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #FDFBF8;
+    border-radius: 10px;
+    width: 150px;
+    padding: 22px 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.service-icon-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: #FBF3E7;
+    display: block;
+    margin: 0 auto 12px auto;
+    object-fit: cover;
+}
+
+.service-name {
+    font-size: 16px;
+    color: #241608;
+}
+
+/* ---------- Reviews ---------- */
+.review-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.review-arrow-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #241608;
+    cursor: pointer;
+}
+
+.review-grid {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background-color: #FDFBF8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    flex: 1;
+    min-width: 280px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-name {
+    font-weight: bold;
+    color: #241608;
+    display: block;
+}
+
+.review-stars {
+    color: #E3A72A;
+    font-size: 14px;
+}
+
+.review-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #4a3624;
+    line-height: 1.4;
+    display: block;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background-color: #241407;
+    color: #E9DCC9;
+    margin-top: 50px;
+    padding: 50px 60px 0 60px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-brand-col {
+    max-width: 300px;
+}
+
+.footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.footer-logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #E08A3E;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    color: #cbb99f;
+    line-height: 1.5;
+}
+
+.footer-col-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: #F3E9DC;
+}
+
+.footer-link {
+    display: block;
+    font-size: 15px;
+    color: #cbb99f;
+    margin-bottom: 10px;
+}
+
+.footer-social-row {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #4a2f18;
+    color: #E9DCC9;
+    text-align: center;
+    line-height: 36px;
+    font-size: 15px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #4a2f18;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 14px;
+    color: #cbb99f;
+}
+
+/* ===== Shared simple header (auth pages) ===== */
+.header-simple {
+    border-bottom: 1px solid #e3d5c2;
+}
+
+.nav-links-wide {
+    display: flex;
+    gap: 34px;
+    font-size: 17px;
+}
+
+/* ===== Auth pages (Login / Register / Forgot Password) ===== */
+.auth-page-body {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px 80px 20px;
+}
+
+.auth-card {
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 600px;
+    padding: 46px 56px 50px 56px;
+}
+
+.auth-title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #241608;
+    text-align: center;
+    display: block;
+    margin-bottom: 34px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #241608;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #d9cbb8;
+    font-size: 16px;
+    color: #3a2a1a;
+    font-family: inherit;
+    background-color: #FFFFFF;
+}
+
+    .form-input::placeholder {
+        color: #9a8a76;
+    }
+
+.field-error {
+    color: #B3261E;
+    font-size: 13px;
+    display: block;
+    margin-top: 6px;
+}
+
+.forgot-password-row {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.link-accent {
+    color: #C9A063;
+    font-size: 15px;
+}
+
+.btn-primary-wide {
+    background-color: #C9A063;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 0;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+}
+
+.auth-footer-row {
+    text-align: center;
+    margin-top: 26px;
+    font-size: 16px;
+    color: #6b5847;
+}
+
+    .auth-footer-row .link-accent {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+.summary-error {
+    color: #B3261E;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* ===== Guest header (Login / Register buttons) ===== */
+.guest-user-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.btn-nav-login {
+    background-color: transparent;
+    color: #241608;
+    border: 1px solid #241608;
+    padding: 10px 26px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-nav-register {
+    background-color: #C9A063;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ===== Guest hero (single full-bleed brand image) ===== */
+.hero-full-image {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    display: block;
+}
