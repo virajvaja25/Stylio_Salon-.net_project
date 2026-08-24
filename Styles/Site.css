@@ -32,8 +32,11 @@ a {
 }
 
 .logo-img {
-    border-radius: 50%;
-    margin-left: 378px;
+    height: 44px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    border-radius: 0;
 }
 
 .logo-text {
@@ -126,8 +129,10 @@ a {
 }
 
 .hero-image {
+    width: 68%;
     object-fit: cover;
-    }
+    height: 460px;
+}
 
 /* ---------- Search Card ---------- */
 .search-card-wrapper {
@@ -604,4 +609,217 @@ a {
     height: 620px;
     object-fit: cover;
     display: block;
+}
+
+/* ===== Salons Listing Page ===== */
+.salons-page-header {
+    padding: 40px 60px 0 60px;
+}
+
+.salons-page-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #241608;
+}
+
+.salons-body-wrapper {
+    display: flex;
+    gap: 28px;
+    padding: 28px 60px 60px 60px;
+    align-items: flex-start;
+}
+
+/* ---- Filter sidebar ---- */
+.filter-sidebar {
+    background-color: #FDFBF8;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 26px 24px;
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.btn-filter-header {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #241608;
+    color: #241608;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: 22px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #241608;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.filter-dropdown {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d9cbb8;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    color: #241608;
+    font-family: inherit;
+}
+
+.filter-actions-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-filter-reset {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #C9A063;
+    color: #C9A063;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 1px;
+}
+
+.btn-filter-apply {
+    flex: 1;
+    background-color: #C9A063;
+    border: none;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 1px;
+}
+
+/* ---- Salon list content ---- */
+.salons-list-content {
+    flex: 1;
+}
+
+.salon-search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #e3d5c2;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 22px;
+}
+
+.salon-search-icon {
+    font-size: 18px;
+    color: #6b5847;
+}
+
+.salon-search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    color: #241608;
+    flex: 1;
+    background: transparent;
+}
+
+    .salon-search-input::placeholder {
+        color: #9a8a76;
+    }
+
+.salon-list-card {
+    display: flex;
+    gap: 22px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px;
+    margin-bottom: 22px;
+}
+
+.salon-list-img {
+    width: 220px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.salon-list-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.salon-list-header-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.salon-list-name {
+    font-size: 26px;
+    font-weight: bold;
+    color: #241608;
+}
+
+.salon-list-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+    color: #241608;
+}
+
+    .salon-list-rating .star {
+        color: #E3A72A;
+    }
+
+.salon-list-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #3a2a1a;
+}
+
+.salon-list-services-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 16px;
+    color: #3a2a1a;
+}
+
+.btn-view-details-lg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #C9A063;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
 }

@@ -15,8 +15,8 @@
             <asp:Panel ID="pnlHeader" runat="server" CssClass="header">
 
                 <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
-                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/guestscreen/Stylio_logo.png"
-                         CssClass="logo-img" Height="81px" Width="150px" />
+                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/logo.png"
+                        AlternateText="Stylio Logo" CssClass="logo-img" />
                     <asp:Label ID="lblBrandName" runat="server" Text="Stylio" CssClass="logo-text" />
                 </asp:Panel>
 
@@ -45,7 +45,7 @@
             <!-- ===================== HERO (full-bleed brand image) ===================== -->
             <asp:Panel ID="pnlHeroWrapper" runat="server" CssClass="hero-wrapper">
 
-                <asp:Image ID="imgHero" runat="server" ImageUrl="~/Images/guestscreen/Rectangle 7.png"
+                <asp:Image ID="imgHero" runat="server" ImageUrl="~/Images/hero-guest-brand.jpg"
                     AlternateText="Stylio - Find. Compare. Book." CssClass="hero-full-image" />
 
                 <!-- ===================== SEARCH CARD ===================== -->
@@ -117,10 +117,10 @@
                                     <asp:Label ID="lblSalonName" runat="server" CssClass="salon-name"
                                         Text='<%# Eval("Name") %>' />
                                     <asp:Label ID="lblSalonRating" runat="server" CssClass="salon-rating"
-                                        Text='<%# Eval("RatingDisplay") %>' />
+                                        Text='<%# "&#9733; " + Eval("Rating") %>' />
                                     <asp:Panel ID="pnlSalonMetaRow" runat="server" CssClass="salon-meta-row">
                                         <asp:Label ID="lblSalonLocation" runat="server" CssClass="salon-location"
-                                            Text='<%# Eval("LocationDisplay") %>' />
+                                            Text='<%# "&#128205; " + Eval("Location") %>' />
                                         <asp:LinkButton ID="lnkViewDetails" runat="server" Text="View Details"
                                             CssClass="btn-view-details" CommandName="ViewDetails"
                                             CommandArgument='<%# Eval("Id") %>' />

@@ -13,7 +13,8 @@
         <asp:Panel ID="pnlHeader" runat="server" CssClass="header">
 
             <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
-                <asp:Image ID="imgLogo0" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png" Width="250px" Height="75px" />
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                    AlternateText="Stylio Logo" CssClass="logo-img" />
             </asp:Panel>
 
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links">
@@ -123,10 +124,10 @@
                                 <asp:Label ID="lblSalonName" runat="server" CssClass="salon-name"
                                     Text='<%# Eval("Name") %>' />
                                 <asp:Label ID="lblSalonRating" runat="server" CssClass="salon-rating"
-                                    Text='<%# Eval("RatingDisplay") %>' />
+                                    Text='<%# "★ " + Eval("Rating") %>' />
                                 <asp:Panel ID="pnlSalonMetaRow" runat="server" CssClass="salon-meta-row">
                                     <asp:Label ID="lblSalonLocation" runat="server" CssClass="salon-location"
-                                        Text='<%# Eval("LocationDisplay") %>' />
+                                        Text='<%# "📍 " + Eval("Location") %>' />
                                     <asp:LinkButton ID="lnkViewDetails" runat="server" Text="View Details"
                                         CssClass="btn-view-details" CommandName="ViewDetails"
                                         CommandArgument='<%# Eval("Id") %>' />
@@ -216,7 +217,8 @@
 
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" AlternateText="Stylio"  Height="183px" ImageUrl="~/Images/DefaultScreen/footer.png" Width="420px" />
+                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                            AlternateText="Stylio" CssClass="logo-img" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
                         Text="Your Beauty is Our Passion. Book Appointments with Top Salon &amp; Professional." />
@@ -224,7 +226,6 @@
 
                 <asp:Panel ID="pnlFooterQuickLinks" runat="server">
                     <asp:Label ID="lblQuickLinksTitle" runat="server" CssClass="footer-col-title" Text="Quick Links" />
-                    <br />
                     <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" />
@@ -233,7 +234,6 @@
 
                 <asp:Panel ID="pnlFooterCustomer" runat="server">
                     <asp:Label ID="lblCustomerTitle" runat="server" CssClass="footer-col-title" Text="Customer" />
-                    <br />
                     <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" />
@@ -241,7 +241,6 @@
 
                 <asp:Panel ID="pnlFooterSupport" runat="server">
                     <asp:Label ID="lblSupportTitle" runat="server" CssClass="footer-col-title" Text="Support" />
-                    <br />
                     <asp:LinkButton ID="lnkFooterHelpCenter" runat="server" Text="Help center" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterTerms" runat="server" Text="Terms &amp; Condition" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterPrivacy" runat="server" Text="Privacy Policy" CssClass="footer-link" />
@@ -250,7 +249,6 @@
 
                 <asp:Panel ID="pnlFooterSocial" runat="server">
                     <asp:Label ID="lblFollowUsTitle" runat="server" CssClass="footer-col-title" Text="Follow Us" />
-                    <br />
                     <asp:Panel ID="pnlSocialRow" runat="server" CssClass="footer-social-row">
                         <asp:HyperLink ID="hlFacebook" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="f" />
                         <asp:HyperLink ID="hlInstagram" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="ig" />

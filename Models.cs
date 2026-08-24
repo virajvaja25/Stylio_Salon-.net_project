@@ -12,20 +12,6 @@
         public string Rating { get; set; }
         public string Location { get; set; }
         public string ImageUrl { get; set; }
-
-        // Pre-formatted display strings (kept out of the .aspx markup so the
-        // inline <%# %> databinding expressions stay simple - concatenating
-        // HTML entities + string literals directly inside a single-quoted
-        // attribute is what was breaking the ASPX page compiler).
-        public string RatingDisplay
-        {
-            get { return "\u2605 " + Rating; }
-        }
-
-        public string LocationDisplay
-        {
-            get { return "\U0001F4CD " + Location; }
-        }
     }
 
     public class Service
@@ -39,5 +25,16 @@
         public string Name { get; set; }
         public string Comment { get; set; }
         public string AvatarUrl { get; set; }
+    }
+
+    public class SalonListItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Rating { get; set; }
+        public string ReviewCountDisplay { get; set; }
+        public string Location { get; set; }
+        public string ServicesText { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

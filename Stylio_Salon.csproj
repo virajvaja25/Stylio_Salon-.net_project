@@ -97,6 +97,7 @@
     <Content Include="Images\guestscreen\Stylio_logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Salon.aspx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salon.aspx.cs">
+      <DependentUpon>Salon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salon.aspx.designer.cs">
+      <DependentUpon>Salon.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteHeader.ascx.cs">
       <DependentUpon>SiteHeader.ascx</DependentUpon>

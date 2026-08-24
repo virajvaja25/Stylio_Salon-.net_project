@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Stylio - Register</title>    
+    <title>Stylio - Register</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 </head>
 <body>

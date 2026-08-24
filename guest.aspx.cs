@@ -25,7 +25,7 @@ namespace Stylio_Salon
                     Name = "The Hair Studio",
                     Rating = "4.9",
                     Location = "BhaktiNagar, Rajkot",
-                    ImageUrl = "~/Images/guestscreen/salon1.png"
+                    ImageUrl = "~/Images/salon1.jpg"
                 },
                 new Salon
                 {
@@ -33,7 +33,7 @@ namespace Stylio_Salon
                     Name = "Stylio Men's Salon",
                     Rating = "4.9",
                     Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/guestscreen/salon2.png"
+                    ImageUrl = "~/Images/salon2.jpg"
                 },
                 new Salon
                 {
@@ -41,7 +41,7 @@ namespace Stylio_Salon
                     Name = "The Men Salon",
                     Rating = "4.9",
                     Location = "Gondal Chowkdi, Rajkot",
-                    ImageUrl = "~/Images/guestscreen/salon3.png"
+                    ImageUrl = "~/Images/salon3.jpg"
                 }
             };
 
@@ -53,10 +53,10 @@ namespace Stylio_Salon
         {
             var services = new List<Service>
             {
-                new Service { Name = "Hair Cut", IconUrl = "~/Images/guestscreen/icon-haircut.png" },
-                new Service { Name = "Beard", IconUrl = "~/Images/guestscreen/icon-beard.png" },
-                new Service { Name = "Hair Color", IconUrl = "~/Images/guestscreen/icon-haircolor.png" },
-                new Service { Name = "Facial", IconUrl = "~/Images/guestscreen/icon-facial.png" }
+                new Service { Name = "Hair Cut", IconUrl = "~/Images/icon-haircut.png" },
+                new Service { Name = "Beard", IconUrl = "~/Images/icon-beard.png" },
+                new Service { Name = "Hair Color", IconUrl = "~/Images/icon-haircolor.png" },
+                new Service { Name = "Facial", IconUrl = "~/Images/icon-facial.png" }
             };
 
             rptServices.DataSource = services;
@@ -71,19 +71,19 @@ namespace Stylio_Salon
                 {
                     Name = "Khush Patel",
                     Comment = "Great Experience! Very Professional Staff and Clean Environment.",
-                    AvatarUrl = "~/Images/guestscreen/reviewer1.png"
+                    AvatarUrl = "~/Images/reviewer1.png"
                 },
                 new Review
                 {
                     Name = "Viraj Vaja",
                     Comment = "Loved The Haircut and Service, Highly Recommended!",
-                    AvatarUrl = "~/Images/guestscreen/reviewer1.png"
+                    AvatarUrl = "~/Images/reviewer2.png"
                 },
                 new Review
                 {
                     Name = "Meet Patel",
                     Comment = "Best Salon in Town! Will visit Again.",
-                    AvatarUrl = "~/Images/guestscreen/reviewer1.png"
+                    AvatarUrl = "~/Images/reviewer3.png"
                 }
             };
 
