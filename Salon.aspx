@@ -1,8 +1,9 @@
-﻿<%@ Page Title="Stylio | Salons" Language="C#" AutoEventWireup="true" CodeBehind="Salons.aspx.cs" Inherits="Stylio_Salon.Salons" %>
+<%@ Page Title="Stylio | Salons" Language="C#" AutoEventWireup="true" CodeBehind="Salon.aspx.cs" Inherits="Stylio_Salon.Salons" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Salons</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 </head>
@@ -13,15 +14,13 @@
         <asp:Panel ID="pnlHeader" runat="server" CssClass="header header-simple">
 
             <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
-                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/SalonScreen/logo.png"
                     AlternateText="Stylio Logo" CssClass="logo-img" />
             </asp:Panel>
 
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links-wide">
                 <asp:LinkButton ID="lnkHome" runat="server" Text="Home" CssClass="nav-link"
                     OnClick="lnkHome_Click" />
-                <asp:LinkButton ID="lnkServices" runat="server" Text="Services" CssClass="nav-link"
-                    OnClick="lnkServices_Click" />
                 <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link nav-link-active"
                     OnClick="lnkSalon_Click" />
                 <asp:LinkButton ID="lnkReviews" runat="server" Text="Reviews" CssClass="nav-link"
@@ -122,7 +121,7 @@
                                     <asp:Panel ID="pnlSalonListRating" runat="server" CssClass="salon-list-rating">
                                         <asp:Label ID="lblStarIcon" runat="server" CssClass="star" Text="&#9733;" />
                                         <asp:Label ID="lblSalonListRating" runat="server"
-                                            Text='<%# Eval("Rating") + " " + Eval("ReviewCountDisplay") %>' />
+                                            Text='<%# Eval("Rating") %>' />
                                     </asp:Panel>
                                 </asp:Panel>
 
@@ -159,7 +158,7 @@
 
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/SalonScreen/footer.png"
                             AlternateText="Stylio" CssClass="logo-img" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"

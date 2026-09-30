@@ -11,7 +11,7 @@ namespace Stylio_Salon
 {
 
 
-    public partial class Default
+    public partial class SalonDetails
     {
 
         /// <summary>
@@ -69,6 +69,15 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkHome;
 
         /// <summary>
+        /// lnkServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkServices;
+
+        /// <summary>
         /// lnkSalon control.
         /// </summary>
         /// <remarks>
@@ -96,51 +105,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkAboutUs;
 
         /// <summary>
-        /// pnlUserArea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUserArea;
-
-        /// <summary>
-        /// imgUserAvatar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgUserAvatar;
-
-        /// <summary>
-        /// lblUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserName;
-
-        /// <summary>
-        /// lnkUserMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkUserMenu;
-
-        /// <summary>
-        /// lnkLogout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkLogout;
-
-        /// <summary>
         /// pnlHeroWrapper control.
         /// </summary>
         /// <remarks>
@@ -150,40 +114,175 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlHeroWrapper;
 
         /// <summary>
-        /// pnlHero control.
+        /// imgSalonHero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlHero;
+        protected global::System.Web.UI.WebControls.Image imgSalonHero;
 
         /// <summary>
-        /// pnlHeroText control.
+        /// pnlSalonInfoBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlHeroText;
+        protected global::System.Web.UI.WebControls.Panel pnlSalonInfoBar;
 
         /// <summary>
-        /// lblHeroTitle control.
+        /// pnlSalonInfoLeft control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeroTitle;
+        protected global::System.Web.UI.WebControls.Panel pnlSalonInfoLeft;
 
         /// <summary>
-        /// lblHeroSubtitle control.
+        /// pnlSalonNameRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeroSubtitle;
+        protected global::System.Web.UI.WebControls.Panel pnlSalonNameRow;
+
+        /// <summary>
+        /// lblSalonName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSalonName;
+
+        /// <summary>
+        /// pnlSalonRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSalonRating;
+
+        /// <summary>
+        /// lblRatingStar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRatingStar;
+
+        /// <summary>
+        /// lblSalonRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSalonRating;
+
+        /// <summary>
+        /// pnlSalonLocationRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSalonLocationRow;
+
+        /// <summary>
+        /// lblLocationPin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLocationPin;
+
+        /// <summary>
+        /// lblSalonLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSalonLocation;
+
+        /// <summary>
+        /// pnlSalonHoursRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSalonHoursRow;
+
+        /// <summary>
+        /// lblHoursPin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHoursPin;
+
+        /// <summary>
+        /// lblOpenStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOpenStatus;
+
+        /// <summary>
+        /// lblOpenTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOpenTime;
+
+        /// <summary>
+        /// lblHoursSeparator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHoursSeparator;
+
+        /// <summary>
+        /// lblCloseLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCloseLabel;
+
+        /// <summary>
+        /// lblCloseTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCloseTime;
+
+        /// <summary>
+        /// pnlSalonInfoRight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSalonInfoRight;
 
         /// <summary>
         /// btnBookAppointment control.
@@ -195,319 +294,166 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Button btnBookAppointment;
 
         /// <summary>
-        /// imgHero control.
+        /// pnlTabsSection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgHero;
+        protected global::System.Web.UI.WebControls.Panel pnlTabsSection;
 
         /// <summary>
-        /// pnlSearchCardWrapper control.
+        /// pnlTabsRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSearchCardWrapper;
+        protected global::System.Web.UI.WebControls.Panel pnlTabsRow;
 
         /// <summary>
-        /// pnlSearchCard control.
+        /// lnkTabAbout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSearchCard;
+        protected global::System.Web.UI.WebControls.LinkButton lnkTabAbout;
 
         /// <summary>
-        /// lblSearchTitle control.
+        /// lnkTabServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchTitle;
+        protected global::System.Web.UI.WebControls.LinkButton lnkTabServices;
 
         /// <summary>
-        /// pnlSearchFields control.
+        /// lnkTabReviews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSearchFields;
+        protected global::System.Web.UI.WebControls.LinkButton lnkTabReviews;
 
         /// <summary>
-        /// pnlLocationField control.
+        /// pnlAboutTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlLocationField;
+        protected global::System.Web.UI.WebControls.Panel pnlAboutTab;
 
         /// <summary>
-        /// lblLocation control.
+        /// lblSalonDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lblSalonDescription;
 
         /// <summary>
-        /// ddlLocation control.
+        /// lblOpeningHoursTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::System.Web.UI.WebControls.Label lblOpeningHoursTitle;
 
         /// <summary>
-        /// pnlServiceField control.
+        /// pnlWeekdayHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlServiceField;
+        protected global::System.Web.UI.WebControls.Panel pnlWeekdayHours;
 
         /// <summary>
-        /// lblServiceField control.
+        /// lblWeekdayHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblServiceField;
+        protected global::System.Web.UI.WebControls.Label lblWeekdayHours;
 
         /// <summary>
-        /// ddlService control.
+        /// pnlWeekendHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlService;
+        protected global::System.Web.UI.WebControls.Panel pnlWeekendHours;
 
         /// <summary>
-        /// pnlDateField control.
+        /// lblWeekendHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDateField;
+        protected global::System.Web.UI.WebControls.Label lblWeekendHours;
 
         /// <summary>
-        /// lblDateField control.
+        /// lblPopularServicesTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateField;
+        protected global::System.Web.UI.WebControls.Label lblPopularServicesTitle;
 
         /// <summary>
-        /// ddlDate control.
+        /// lblPopularServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDate;
+        protected global::System.Web.UI.WebControls.Label lblPopularServices;
 
         /// <summary>
-        /// btnSearch control.
+        /// pnlServicesTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Panel pnlServicesTab;
 
         /// <summary>
-        /// pnlSalonsSection control.
+        /// rptSalonServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSalonsSection;
+        protected global::System.Web.UI.WebControls.Repeater rptSalonServices;
 
         /// <summary>
-        /// pnlSalonsHeaderRow control.
+        /// pnlReviewsTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSalonsHeaderRow;
+        protected global::System.Web.UI.WebControls.Panel pnlReviewsTab;
 
         /// <summary>
-        /// lblSalonsTitle control.
+        /// rptSalonReviews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSalonsTitle;
-
-        /// <summary>
-        /// pnlSalonGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSalonGrid;
-
-        /// <summary>
-        /// rptSalons control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSalons;
-
-        /// <summary>
-        /// pnlServicesSection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlServicesSection;
-
-        /// <summary>
-        /// pnlServicesHeaderRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlServicesHeaderRow;
-
-        /// <summary>
-        /// lblServicesTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblServicesTitle;
-
-        /// <summary>
-        /// lnkServicesViewAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkServicesViewAll;
-
-        /// <summary>
-        /// pnlServiceGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlServiceGrid;
-
-        /// <summary>
-        /// rptServices control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptServices;
-
-        /// <summary>
-        /// pnlReviewsSection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlReviewsSection;
-
-        /// <summary>
-        /// pnlReviewsHeaderRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlReviewsHeaderRow;
-
-        /// <summary>
-        /// lblReviewsTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReviewsTitle;
-
-        /// <summary>
-        /// lnkReviewsViewAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkReviewsViewAll;
-
-        /// <summary>
-        /// pnlReviewRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlReviewRow;
-
-        /// <summary>
-        /// lnkReviewPrev control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkReviewPrev;
-
-        /// <summary>
-        /// pnlReviewGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlReviewGrid;
-
-        /// <summary>
-        /// rptReviews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptReviews;
-
-        /// <summary>
-        /// lnkReviewNext control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkReviewNext;
+        protected global::System.Web.UI.WebControls.Repeater rptSalonReviews;
 
         /// <summary>
         /// pnlFooter control.
@@ -553,6 +499,15 @@ namespace Stylio_Salon
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgFooterLogo;
+
+        /// <summary>
+        /// lblFooterBrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFooterBrand;
 
         /// <summary>
         /// lblFooterTagline control.

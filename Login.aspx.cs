@@ -23,6 +23,10 @@ namespace Stylio_Salon
 
             if (isValidUser)
             {
+                // Mark the session as logged in so Default.aspx / guest.aspx know which mode to show.
+                Session["IsLoggedIn"] = true;
+                Session["UserName"] = email;
+
                 Response.Redirect("Default.aspx");
             }
             else

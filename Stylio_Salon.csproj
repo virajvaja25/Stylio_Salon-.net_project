@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -67,9 +67,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="guest.aspx" />
+    <Content Include="Reviews.aspx" />
+    <Content Include="SearchResults.aspx" />
+    <Content Include="Services.aspx" />
     <Content Include="Images\DefaultScreen\logo.png" />
     <Content Include="Images\DefaultScreen\Group 1.png" />
     <Content Include="Images\DefaultScreen\Group.png" />
@@ -85,20 +90,17 @@
     <Content Include="Images\DefaultScreen\salon3.png" />
     <Content Include="Images\DefaultScreen\footer.png" />
     <Content Include="Images\DefaultScreen\Stylio_Logo_Left_Same_Size.png" />
-    <Content Include="Images\guestscreen\icon-beard.png" />
-    <Content Include="Images\guestscreen\icon-facial.png" />
-    <Content Include="Images\guestscreen\icon-haircolor.png" />
-    <Content Include="Images\guestscreen\icon-haircut.png" />
-    <Content Include="Images\guestscreen\reviewer1.png" />
-    <Content Include="Images\guestscreen\salon3.png" />
-    <Content Include="Images\guestscreen\salon1.png" />
-    <Content Include="Images\guestscreen\salon2.png" />
-    <Content Include="Images\guestscreen\Rectangle 7.png" />
-    <Content Include="Images\guestscreen\Stylio_logo.png" />
+    <Content Include="Images\SalonScreen\salon2.png" />
+    <Content Include="Images\SalonScreen\salon3.png" />
+    <Content Include="Images\SalonScreen\salon1.png" />
+    <Content Include="Images\SalonScreen\footer.png" />
+    <Content Include="Images\SalonScreen\logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Salon.aspx" />
+    <Content Include="SalonDetails.aspx" />
     <Content Include="SiteHeader.ascx" />
+    <Content Include="Styles\SalonDetails.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -147,12 +149,54 @@
     <Compile Include="Salon.aspx.designer.cs">
       <DependentUpon>Salon.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalonDetails.aspx.cs">
+      <DependentUpon>SalonDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalonDetails.aspx.designer.cs">
+      <DependentUpon>SalonDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteHeader.ascx.cs">
       <DependentUpon>SiteHeader.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SiteHeader.ascx.designer.cs">
       <DependentUpon>SiteHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookAppointment.aspx.cs">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookAppointment.aspx.designer.cs">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reviews.aspx.cs">
+      <DependentUpon>Reviews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reviews.aspx.designer.cs">
+      <DependentUpon>Reviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResults.aspx.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResults.aspx.designer.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

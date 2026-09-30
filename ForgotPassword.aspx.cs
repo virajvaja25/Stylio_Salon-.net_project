@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Stylio_Salon
 {
@@ -8,7 +8,7 @@ namespace Stylio_Salon
         {
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void btnResetPassword_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid)
             {
@@ -16,7 +16,7 @@ namespace Stylio_Salon
             }
 
             string email = txtEmail.Text.Trim();
-            string newPassword = txtPassword.Text;
+            string newPassword = txtNewPassword.Text;
 
             // TODO: replace with real password-reset logic (EF / database / API call)
             bool reset = ResetPassword(email, newPassword);
@@ -29,6 +29,11 @@ namespace Stylio_Salon
             {
                 valSummary.Visible = true;
             }
+        }
+
+        protected void lnkBackToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
         }
 
         private bool ResetPassword(string email, string newPassword)

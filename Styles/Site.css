@@ -823,3 +823,75 @@ a {
     cursor: pointer;
     font-family: inherit;
 }
+
+/* ===================================================================
+   Responsive Breakpoints
+   =================================================================== */
+@media (max-width: 900px) {
+    .header {
+        padding: 14px 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .nav-links, .nav-links-wide {
+        gap: 20px;
+        font-size: 16px;
+    }
+    .hero-section {
+        flex-direction: column;
+    }
+    .hero-text-col {
+        width: 100%;
+        padding: 40px 24px;
+    }
+    .hero-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+    .salons-body-wrapper {
+        flex-direction: column;
+        padding: 20px 24px 60px;
+    }
+    .filter-sidebar {
+        width: 100%;
+    }
+    .salons-page-header {
+        padding: 24px 24px 0;
+    }
+    .footer {
+        padding: 40px 24px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .nav-links, .nav-links-wide {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+    .search-card-wrapper {
+        padding: 0 16px;
+    }
+    .search-fields {
+        flex-direction: column;
+    }
+    .salon-list-card {
+        flex-direction: column;
+    }
+    .salon-list-img {
+        width: 100%;
+        height: 200px;
+    }
+    .btn-view-details-lg {
+        position: static;
+        margin-top: 16px;
+        width: 100%;
+        text-align: center;
+    }
+}

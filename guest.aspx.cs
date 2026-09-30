@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Stylio_Salon
@@ -7,6 +7,13 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Already logged in? Send them to the logged-in home instead of guest mode.
+            if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+            {
+                Response.Redirect("Default.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 BindPopularSalons();
@@ -19,29 +26,30 @@ namespace Stylio_Salon
         {
             var salons = new List<Salon>
             {
+               
                 new Salon
                 {
                     Id = 1,
-                    Name = "The Hair Studio",
+                    Name = "Stylio Men's Salon",
                     Rating = "4.9",
-                    Location = "BhaktiNagar, Rajkot",
-                    ImageUrl = "~/Images/salon1.jpg"
+                    Location = "Trikon Bag, Rajkot",
+                    ImageUrl = "~/Images/SalonScreen/salon1.png"
                 },
                 new Salon
                 {
                     Id = 2,
-                    Name = "Stylio Men's Salon",
-                    Rating = "4.9",
-                    Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/salon2.jpg"
-                },
-                new Salon
-                {
-                    Id = 3,
                     Name = "The Men Salon",
                     Rating = "4.9",
                     Location = "Gondal Chowkdi, Rajkot",
-                    ImageUrl = "~/Images/salon3.jpg"
+                    ImageUrl = "~/Images/SalonScreen/salon2.png"
+                },
+                 new Salon
+                {
+                    Id = 3,
+                    Name = "The Hair Studio",
+                    Rating = "4.9",
+                    Location = "BhaktiNagar, Rajkot",
+                    ImageUrl = "~/Images/SalonScreen/salon3.png"
                 }
             };
 
@@ -53,10 +61,10 @@ namespace Stylio_Salon
         {
             var services = new List<Service>
             {
-                new Service { Name = "Hair Cut", IconUrl = "~/Images/icon-haircut.png" },
-                new Service { Name = "Beard", IconUrl = "~/Images/icon-beard.png" },
-                new Service { Name = "Hair Color", IconUrl = "~/Images/icon-haircolor.png" },
-                new Service { Name = "Facial", IconUrl = "~/Images/icon-facial.png" }
+                new Service { Name = "Hair Cut", IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
+                new Service { Name = "Beard", IconUrl = "~/Images/DefaultScreen/icon-beard.png" },
+                new Service { Name = "Hair Color", IconUrl = "~/Images/DefaultScreen/icon-haircolor.png" },
+                new Service { Name = "Facial", IconUrl = "~/Images/DefaultScreen/icon-facial.png" }
             };
 
             rptServices.DataSource = services;
@@ -71,19 +79,19 @@ namespace Stylio_Salon
                 {
                     Name = "Khush Patel",
                     Comment = "Great Experience! Very Professional Staff and Clean Environment.",
-                    AvatarUrl = "~/Images/reviewer1.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 },
                 new Review
                 {
                     Name = "Viraj Vaja",
                     Comment = "Loved The Haircut and Service, Highly Recommended!",
-                    AvatarUrl = "~/Images/reviewer2.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 },
                 new Review
                 {
                     Name = "Meet Patel",
                     Comment = "Best Salon in Town! Will visit Again.",
-                    AvatarUrl = "~/Images/reviewer3.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 }
             };
 
@@ -99,22 +107,22 @@ namespace Stylio_Salon
 
         protected void lnkServices_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Services.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkSalon_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Salon.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkReviews_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Reviews.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AboutUs.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         // ---------------- Login / Register Handlers ----------------
@@ -131,46 +139,34 @@ namespace Stylio_Salon
         // ---------------- Search Handler ----------------
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string location = ddlLocation.SelectedValue;
-            string service = ddlService.SelectedValue;
-            string date = ddlDate.SelectedValue;
-
-            Response.Redirect(string.Format(
-                "SearchResults.aspx?location={0}&service={1}&date={2}",
-                Server.UrlEncode(location),
-                Server.UrlEncode(service),
-                Server.UrlEncode(date)));
+            Response.Redirect("Login.aspx");
         }
 
         // ---------------- Salon Card Handler ----------------
         protected void rptSalons_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
         {
-            if (e.CommandName == "ViewDetails")
-            {
-                string salonId = e.CommandArgument.ToString();
-                Response.Redirect("SalonDetails.aspx?id=" + Server.UrlEncode(salonId));
-            }
+            Response.Redirect("Login.aspx");
         }
 
         // ---------------- Services / Reviews "View All" ----------------
         protected void lnkServicesViewAll_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Services.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkReviewsViewAll_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Reviews.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkReviewPrev_Click(object sender, EventArgs e)
         {
-            // TODO: shift review carousel backward
+            Response.Redirect("Login.aspx");
         }
 
         protected void lnkReviewNext_Click(object sender, EventArgs e)
         {
-            // TODO: shift review carousel forward
+            Response.Redirect("Login.aspx");
         }
     }
 }

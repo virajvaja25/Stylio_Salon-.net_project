@@ -1,8 +1,9 @@
-﻿<%@ Page Title="Stylio | Home" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Stylio_Salon.Default" %>
+<%@ Page Title="Stylio | Home" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Stylio_Salon.Default" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Experience Luxury &amp; Style</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 </head>
@@ -14,16 +15,18 @@
 
             <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
                 <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
-                    AlternateText="Stylio Logo" CssClass="logo-img" />
+                    AlternateText="Stylio Logo" CssClass="logo-img" />  
             </asp:Panel>
 
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links">
                 <asp:LinkButton ID="lnkHome" runat="server" Text="Home" CssClass="nav-link nav-link-active"
                     OnClick="lnkHome_Click" />
-                <asp:LinkButton ID="lnkServices" runat="server" Text="Services" CssClass="nav-link"
-                    OnClick="lnkServices_Click" />
                 <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link"
                     OnClick="lnkSalon_Click" />
+                <asp:LinkButton ID="lnkReviews" runat="server" Text="Reviews" CssClass="nav-link" 
+                    OnClick="lnkReviews_Click" />
+                <asp:LinkButton ID="lnkAboutUs" runat="server" Text="About Us" CssClass="nav-link" 
+                    OnClick="lnkAboutUs_Click" />
             </asp:Panel>
 
             <asp:Panel ID="pnlUserArea" runat="server" CssClass="user-area">
@@ -32,6 +35,8 @@
                 <asp:Label ID="lblUserName" runat="server" Text="Khush Dobariya" CssClass="user-name" />
                 <asp:LinkButton ID="lnkUserMenu" runat="server" Text="&#9662;" CssClass="nav-link"
                     OnClick="lnkUserMenu_Click" />
+                <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" CssClass="nav-link"
+                    OnClick="lnkLogout_Click" />
             </asp:Panel>
 
         </asp:Panel>
@@ -116,18 +121,21 @@
                 <asp:Repeater ID="rptSalons" runat="server" OnItemCommand="rptSalons_ItemCommand">
                     <ItemTemplate>
                         <asp:Panel ID="pnlSalonCard" runat="server" CssClass="salon-card">
-                            <asp:Image ID="imgSalon" runat="server"
-                                ImageUrl='<%# Eval("ImageUrl") %>'
-                                AlternateText='<%# Eval("Name") %>'
-                                CssClass="salon-card-img" />
+                            <asp:LinkButton ID="lnkSalonImg" runat="server" CommandName="ViewDetails"
+                                CommandArgument='<%# Eval("Id") %>' ToolTip="View Salon Details">
+                                <asp:Image ID="imgSalon" runat="server"
+                                    ImageUrl='<%# Eval("ImageUrl") %>'
+                                    AlternateText='<%# Eval("Name") %>'
+                                    CssClass="salon-card-img" />
+                            </asp:LinkButton>
                             <asp:Panel ID="pnlSalonCardBody" runat="server" CssClass="salon-card-body">
                                 <asp:Label ID="lblSalonName" runat="server" CssClass="salon-name"
                                     Text='<%# Eval("Name") %>' />
                                 <asp:Label ID="lblSalonRating" runat="server" CssClass="salon-rating"
-                                    Text='<%# "★ " + Eval("Rating") %>' />
+                                    Text='<%# Eval("RatingDisplay") %>' />
                                 <asp:Panel ID="pnlSalonMetaRow" runat="server" CssClass="salon-meta-row">
                                     <asp:Label ID="lblSalonLocation" runat="server" CssClass="salon-location"
-                                        Text='<%# "📍 " + Eval("Location") %>' />
+                                        Text='<%# Eval("LocationDisplay") %>' />
                                     <asp:LinkButton ID="lnkViewDetails" runat="server" Text="View Details"
                                         CssClass="btn-view-details" CommandName="ViewDetails"
                                         CommandArgument='<%# Eval("Id") %>' />
@@ -217,7 +225,7 @@
 
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/footer.png"
                             AlternateText="Stylio" CssClass="logo-img" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
@@ -226,17 +234,17 @@
 
                 <asp:Panel ID="pnlFooterQuickLinks" runat="server">
                     <asp:Label ID="lblQuickLinksTitle" runat="server" CssClass="footer-col-title" Text="Quick Links" />
-                    <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" OnClick="lnkHome_Click" />
+                    <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" OnClick="lnkServices_Click" />
+                    <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" OnClick="lnkSalon_Click" />
+                    <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlFooterCustomer" runat="server">
                     <asp:Label ID="lblCustomerTitle" runat="server" CssClass="footer-col-title" Text="Customer" />
-                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" OnClick="btnBookAppointment_Click" />
+                    <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" OnClick="lnkReviews_Click" />
+                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlFooterSupport" runat="server">

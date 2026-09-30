@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Stylio_Salon
@@ -7,12 +7,29 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Not logged in? Guests can only view guest.aspx, so redirect to Login.aspx
+            if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
+                lblUserName.Text = Session["UserName"] as string ?? "Welcome";
+
                 BindPopularSalons();
                 BindServices();
                 BindReviews();
             }
+        }
+
+        // ---------------- Logout Handler ----------------
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("guest.aspx");
         }
 
         private void BindPopularSalons()
@@ -22,26 +39,26 @@ namespace Stylio_Salon
                 new Salon
                 {
                     Id = 1,
-                    Name = "The Hair Studio",
+                    Name = "Stylio Men's Salon",
                     Rating = "4.9",
-                    Location = "BhaktiNagar, Rajkot",
-                    ImageUrl = "~/Images/salon1.jpg"
+                    Location = "Trikon Bag, Rajkot",
+                    ImageUrl = "~/Images/DefaultScreen/salon1.png"
                 },
                 new Salon
                 {
                     Id = 2,
-                    Name = "Stylio Men's Salon",
-                    Rating = "4.9",
-                    Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/salon2.jpg"
+                    Name = "The Mae Mane Salon",
+                    Rating = "4.8",
+                    Location = "Bhaktinagar Circle, Rajkot",
+                    ImageUrl = "~/Images/DefaultScreen/salon2.png"
                 },
                 new Salon
                 {
                     Id = 3,
-                    Name = "The Mae Men Salon",
-                    Rating = "4.9 (1.2K)",
-                    Location = "Gondal Chowkdi, Rajkot",
-                    ImageUrl = "~/Images/salon3.jpg"
+                    Name = "The Hair Studio",
+                    Rating = "4.7",
+                    Location = "Surat, Gujrat",
+                    ImageUrl = "~/Images/DefaultScreen/salon3.png"
                 }
             };
 
@@ -53,10 +70,10 @@ namespace Stylio_Salon
         {
             var services = new List<Service>
             {
-                new Service { Name = "Hair Cut", IconUrl = "~/Images/icon-haircut.png" },
-                new Service { Name = "Beard", IconUrl = "~/Images/icon-beard.png" },
-                new Service { Name = "Hair Color", IconUrl = "~/Images/icon-haircolor.png" },
-                new Service { Name = "Facial", IconUrl = "~/Images/icon-facial.png" }
+                new Service { Name = "Hair Cut", IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
+                new Service { Name = "Beard", IconUrl = "~/Images/DefaultScreen/icon-beard.png" },
+                new Service { Name = "Hair Color", IconUrl = "~/Images/DefaultScreen/icon-haircolor.png" },
+                new Service { Name = "Facial", IconUrl = "~/Images/DefaultScreen/icon-facial.png" }
             };
 
             rptServices.DataSource = services;
@@ -71,19 +88,19 @@ namespace Stylio_Salon
                 {
                     Name = "Khush Patel",
                     Comment = "Great Experience! Very Professional Staff and Clean Environment.",
-                    AvatarUrl = "~/Images/reviewer1.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 },
                 new Review
                 {
                     Name = "Viraj Vaja",
                     Comment = "Loved The Haircut and Service, Highly Recommended!",
-                    AvatarUrl = "~/Images/reviewer2.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 },
                 new Review
                 {
                     Name = "Meet Patel",
                     Comment = "Best Salon in Town! Will visit Again.",
-                    AvatarUrl = "~/Images/reviewer3.png"
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
                 }
             };
 
@@ -160,6 +177,16 @@ namespace Stylio_Salon
         protected void lnkReviewNext_Click(object sender, EventArgs e)
         {
             // TODO: shift review carousel forward
+        }
+
+        protected void lnkReviews_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Reviews.aspx");
+        }
+
+        protected void lnkAboutUs_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AboutUs.aspx");
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿<%@ Page Title="Stylio | Register" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Stylio_Salon.Register" %>
+<%@ Page Title="Stylio | Register" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Stylio_Salon.Register" %>
 
 <%@ Register TagPrefix="uc" TagName="Header" Src="~/SiteHeader.ascx" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Register</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 </head>
@@ -19,7 +20,7 @@
                 <asp:Label ID="lblTitle" runat="server" CssClass="auth-title" Text="Register" />
 
                 <asp:ValidationSummary ID="valSummary" runat="server" CssClass="summary-error"
-                    DisplayMode="BulletList" HeaderText="" />
+                    DisplayMode="BulletList" HeaderText="" EnableClientScript="false" />
 
                 <asp:Panel ID="pnlFullNameGroup" runat="server" CssClass="form-group">
                     <asp:Label ID="lblFullName" runat="server" AssociatedControlID="txtFullName"
@@ -28,7 +29,7 @@
                         placeholder="Enter Your Full Name" />
                     <asp:RequiredFieldValidator ID="rfvFullName" runat="server"
                         ControlToValidate="txtFullName" CssClass="field-error"
-                        ErrorMessage="Full name is required." Display="Dynamic" />
+                        ErrorMessage="Full name is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="form-group">
@@ -38,10 +39,10 @@
                         TextMode="Email" placeholder="Enter Your Email" />
                     <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
                         ControlToValidate="txtEmail" CssClass="field-error"
-                        ErrorMessage="Email is required." Display="Dynamic" />
+                        ErrorMessage="Email is required." Display="Dynamic" EnableClientScript="false" />
                     <asp:RegularExpressionValidator ID="revEmail" runat="server"
                         ControlToValidate="txtEmail" CssClass="field-error"
-                        ErrorMessage="Enter a valid email address." Display="Dynamic"
+                        ErrorMessage="Enter a valid email address." Display="Dynamic" EnableClientScript="false"
                         ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" />
                 </asp:Panel>
 
@@ -52,7 +53,7 @@
                         TextMode="Phone" placeholder="Enter Your Number" />
                     <asp:RequiredFieldValidator ID="rfvMobile" runat="server"
                         ControlToValidate="txtMobile" CssClass="field-error"
-                        ErrorMessage="Mobile number is required." Display="Dynamic" />
+                        ErrorMessage="Mobile number is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="form-group">
@@ -62,7 +63,7 @@
                         TextMode="Password" placeholder="Enter Your Password" />
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
                         ControlToValidate="txtPassword" CssClass="field-error"
-                        ErrorMessage="Password is required." Display="Dynamic" />
+                        ErrorMessage="Password is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlConfirmPasswordGroup" runat="server" CssClass="form-group">
@@ -72,11 +73,11 @@
                         TextMode="Password" placeholder="Confirm Your Password" />
                     <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
                         ControlToValidate="txtConfirmPassword" CssClass="field-error"
-                        ErrorMessage="Please confirm your password." Display="Dynamic" />
+                        ErrorMessage="Please confirm your password." Display="Dynamic" EnableClientScript="false" />
                     <asp:CompareValidator ID="cvConfirmPassword" runat="server"
                         ControlToValidate="txtConfirmPassword" ControlToCompare="txtPassword"
                         CssClass="field-error" ErrorMessage="Passwords do not match."
-                        Display="Dynamic" />
+                        Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn-primary-wide"

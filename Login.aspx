@@ -1,10 +1,11 @@
-﻿<%@ Page Title="Stylio | Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Stylio_Salon.Login" %>
+<%@ Page Title="Stylio | Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Stylio_Salon.Login" %>
 
 <%@ Register TagPrefix="uc" TagName="Header" Src="~/SiteHeader.ascx" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Login</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 </head>
@@ -19,7 +20,7 @@
                 <asp:Label ID="lblTitle" runat="server" CssClass="auth-title" Text="Login" />
 
                 <asp:ValidationSummary ID="valSummary" runat="server" CssClass="summary-error"
-                    DisplayMode="BulletList" HeaderText="" />
+                    DisplayMode="BulletList" HeaderText="" EnableClientScript="false" />
 
                 <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="form-group">
                     <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail"
@@ -28,7 +29,7 @@
                         TextMode="Email" placeholder="Enter Your Email" />
                     <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
                         ControlToValidate="txtEmail" CssClass="field-error"
-                        ErrorMessage="Email is required." Display="Dynamic" />
+                        ErrorMessage="Email is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="form-group">
@@ -38,7 +39,7 @@
                         TextMode="Password" placeholder="Enter Your password" />
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
                         ControlToValidate="txtPassword" CssClass="field-error"
-                        ErrorMessage="Password is required." Display="Dynamic" />
+                        ErrorMessage="Password is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlForgotRow" runat="server" CssClass="forgot-password-row">
