@@ -13,54 +13,71 @@
         <!-- ===================== HEADER ===================== -->
         <asp:Panel ID="pnlHeader" runat="server" CssClass="header">
 
+            <!-- Logo -->
             <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
-                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
-                    AlternateText="Stylio Logo" CssClass="logo-img" />  
+                <asp:Image ID="imgLogo" runat="server"
+                    ImageUrl="~/Images/DefaultScreen/logo.png"
+                    AlternateText="Stylio Logo" CssClass="logo-img" />
             </asp:Panel>
 
+            <!-- Navigation Links -->
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links">
-                <asp:LinkButton ID="lnkHome" runat="server" Text="Home" CssClass="nav-link nav-link-active"
-                    OnClick="lnkHome_Click" />
-                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link"
-                    OnClick="lnkSalon_Click" />
-                <asp:LinkButton ID="lnkReviews" runat="server" Text="Reviews" CssClass="nav-link" 
-                    OnClick="lnkReviews_Click" />
-                <asp:LinkButton ID="lnkAboutUs" runat="server" Text="About Us" CssClass="nav-link" 
-                    OnClick="lnkAboutUs_Click" />
+                <asp:LinkButton ID="lnkHome" runat="server" Text="Home"
+                    CssClass="nav-link nav-link-active" OnClick="lnkHome_Click" />
+                <asp:LinkButton ID="lnkServices" runat="server" Text="Services"
+                    CssClass="nav-link" OnClick="lnkServices_Click" />
+                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon"
+                    CssClass="nav-link" OnClick="lnkSalon_Click" />
             </asp:Panel>
 
-            <asp:Panel ID="pnlUserArea" runat="server" CssClass="user-area">
-                <asp:Image ID="imgUserAvatar" runat="server" ImageUrl="~/Images/DefaultScreen/Group.png"
+            <!-- User Area with Dropdown -->
+            <asp:Panel ID="pnlUserArea" runat="server" CssClass="user-area" Style="position:relative;">
+                <asp:Image ID="imgUserAvatar" runat="server"
+                    ImageUrl="~/Images/DefaultScreen/Group.png"
                     AlternateText="User" CssClass="user-avatar" />
-                <asp:Label ID="lblUserName" runat="server" Text="Khush Dobariya" CssClass="user-name" />
-                <asp:LinkButton ID="lnkUserMenu" runat="server" Text="&#9662;" CssClass="nav-link"
-                    OnClick="lnkUserMenu_Click" />
-                <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" CssClass="nav-link"
-                    OnClick="lnkLogout_Click" />
+                <asp:LinkButton ID="lnkUserToggle" runat="server" CssClass="user-name"
+                    OnClick="lnkUserToggle_Click">
+                    <asp:Label ID="lblUserName" runat="server" Text="Khush Dobariya" />
+                </asp:LinkButton>
+
+                <!-- Dropdown Menu Panel -->
+                <asp:Panel ID="pnlUserDropdown" runat="server" CssClass="user-dropdown" Visible="false">
+                    <asp:LinkButton ID="lnkMenuReviews" runat="server" Text="Reviews"
+                        CssClass="dropdown-item" OnClick="lnkReviews_Click" />
+                    <asp:LinkButton ID="lnkMenuAboutUs" runat="server" Text="About Us"
+                        CssClass="dropdown-item" OnClick="lnkAboutUs_Click" />
+                    <asp:LinkButton ID="lnkMenuMyProfile" runat="server" Text="My Profile"
+                        CssClass="dropdown-item" OnClick="lnkMyProfile_Click" />
+                    <asp:LinkButton ID="lnkMenuSetting" runat="server" Text="Setting"
+                        CssClass="dropdown-item" OnClick="lnkSetting_Click" />
+                </asp:Panel>
             </asp:Panel>
 
         </asp:Panel>
 
-        <!-- ===================== HERO ===================== -->
+        <!-- ===================== HERO (Full Background Image) ===================== -->
         <asp:Panel ID="pnlHeroWrapper" runat="server" CssClass="hero-wrapper">
 
             <asp:Panel ID="pnlHero" runat="server" CssClass="hero-section">
+                <asp:Image ID="imgHeroBg" runat="server"
+                    ImageUrl="~/Images/DefaultScreen/hero-salon.png"
+                    AlternateText="Salon Interior" CssClass="hero-bg-image" />
 
-                <asp:Panel ID="pnlHeroText" runat="server" CssClass="hero-text-col">
-                    <asp:Label ID="lblHeroTitle" runat="server" CssClass="hero-title"
-                        Text="Experience Luxury &amp; Style" />
-                    <asp:Label ID="lblHeroSubtitle" runat="server" CssClass="hero-subtitle"
-                        Text="Book your appointment with top salons &amp; professionals near you." />
-                    <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment"
-                        CssClass="btn-book" OnClick="btnBookAppointment_Click" />
+                <asp:Panel ID="pnlHeroOverlay" runat="server" CssClass="hero-overlay">
+                    <asp:Panel ID="pnlHeroText" runat="server" CssClass="hero-text-col">
+                        <asp:Label ID="lblHeroTitle" runat="server" CssClass="hero-title"
+                            Text="Experience&lt;br/&gt;Luxury &amp; Style" />
+                        <asp:Label ID="lblHeroTagline" runat="server" CssClass="hero-tagline"
+                            Text="Find. Compare. Book." />
+                        <asp:Label ID="lblHeroSubtitle" runat="server" CssClass="hero-subtitle"
+                            Text="Book your appointment with top salons &amp; professionals near you." />
+                        <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment"
+                            CssClass="btn-book" OnClick="btnBookAppointment_Click" />
+                    </asp:Panel>
                 </asp:Panel>
-
-                <asp:Image ID="imgHero" runat="server" ImageUrl="~/Images/DefaultScreen/hero-salon.png"
-                    AlternateText="Salon Interior" CssClass="hero-image" />
-
             </asp:Panel>
 
-            <!-- ===================== SEARCH CARD ===================== -->
+            <!-- ===================== SEARCH CARD (Floating) ===================== -->
             <asp:Panel ID="pnlSearchCardWrapper" runat="server" CssClass="search-card-wrapper">
                 <asp:Panel ID="pnlSearchCard" runat="server" CssClass="search-card">
 
@@ -70,7 +87,8 @@
                     <asp:Panel ID="pnlSearchFields" runat="server" CssClass="search-fields">
 
                         <asp:Panel ID="pnlLocationField" runat="server" CssClass="field-group">
-                            <asp:Label ID="lblLocation" runat="server" CssClass="field-label" Text="Location" />
+                            <asp:Label ID="lblLocation" runat="server" CssClass="field-label"
+                                AssociatedControlID="ddlLocation" Text="Location" />
                             <asp:DropDownList ID="ddlLocation" runat="server" CssClass="field-dropdown">
                                 <asp:ListItem Text="Select Location" Value="" />
                                 <asp:ListItem Text="BhaktiNagar, Rajkot" Value="bhaktinagar" />
@@ -80,7 +98,8 @@
                         </asp:Panel>
 
                         <asp:Panel ID="pnlServiceField" runat="server" CssClass="field-group">
-                            <asp:Label ID="lblServiceField" runat="server" CssClass="field-label" Text="Service" />
+                            <asp:Label ID="lblServiceField" runat="server" CssClass="field-label"
+                                AssociatedControlID="ddlService" Text="Service" />
                             <asp:DropDownList ID="ddlService" runat="server" CssClass="field-dropdown">
                                 <asp:ListItem Text="Select Service" Value="" />
                                 <asp:ListItem Text="Hair Cut" Value="haircut" />
@@ -91,7 +110,8 @@
                         </asp:Panel>
 
                         <asp:Panel ID="pnlDateField" runat="server" CssClass="field-group">
-                            <asp:Label ID="lblDateField" runat="server" CssClass="field-label" Text="Date" />
+                            <asp:Label ID="lblDateField" runat="server" CssClass="field-label"
+                                AssociatedControlID="ddlDate" Text="Date" />
                             <asp:DropDownList ID="ddlDate" runat="server" CssClass="field-dropdown">
                                 <asp:ListItem Text="Select Date" Value="" />
                                 <asp:ListItem Text="Today" Value="today" />
@@ -100,8 +120,8 @@
                             </asp:DropDownList>
                         </asp:Panel>
 
-                        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn-search"
-                            OnClick="btnSearch_Click" />
+                        <asp:Button ID="btnSearch" runat="server" Text="Search"
+                            CssClass="btn-search" OnClick="btnSearch_Click" />
 
                     </asp:Panel>
 
@@ -114,7 +134,8 @@
         <asp:Panel ID="pnlSalonsSection" runat="server" CssClass="section-wrapper">
 
             <asp:Panel ID="pnlSalonsHeaderRow" runat="server" CssClass="section-header-row">
-                <asp:Label ID="lblSalonsTitle" runat="server" CssClass="section-title" Text="Popular Salons" />
+                <asp:Label ID="lblSalonsTitle" runat="server" CssClass="section-title"
+                    Text="Popular Salons" />
             </asp:Panel>
 
             <asp:Panel ID="pnlSalonGrid" runat="server" CssClass="salon-grid">
@@ -152,7 +173,8 @@
         <asp:Panel ID="pnlServicesSection" runat="server" CssClass="section-wrapper">
 
             <asp:Panel ID="pnlServicesHeaderRow" runat="server" CssClass="section-header-row">
-                <asp:Label ID="lblServicesTitle" runat="server" CssClass="section-title" Text="Our Services" />
+                <asp:Label ID="lblServicesTitle" runat="server" CssClass="section-title"
+                    Text="Our Services" />
                 <asp:LinkButton ID="lnkServicesViewAll" runat="server" Text="View All"
                     CssClass="view-all-link" OnClick="lnkServicesViewAll_Click" />
             </asp:Panel>
@@ -178,13 +200,13 @@
         <asp:Panel ID="pnlReviewsSection" runat="server" CssClass="section-wrapper">
 
             <asp:Panel ID="pnlReviewsHeaderRow" runat="server" CssClass="section-header-row">
-                <asp:Label ID="lblReviewsTitle" runat="server" CssClass="section-title" Text="Customer Reviews" />
+                <asp:Label ID="lblReviewsTitle" runat="server" CssClass="section-title"
+                    Text="Customer Reviews" />
                 <asp:LinkButton ID="lnkReviewsViewAll" runat="server" Text="View All"
                     CssClass="view-all-link" OnClick="lnkReviewsViewAll_Click" />
             </asp:Panel>
 
             <asp:Panel ID="pnlReviewRow" runat="server" CssClass="review-row">
-
                 <asp:LinkButton ID="lnkReviewPrev" runat="server" Text="&#10094;"
                     CssClass="review-arrow-btn" OnClick="lnkReviewPrev_Click" />
 
@@ -213,7 +235,6 @@
 
                 <asp:LinkButton ID="lnkReviewNext" runat="server" Text="&#10095;"
                     CssClass="review-arrow-btn" OnClick="lnkReviewNext_Click" />
-
             </asp:Panel>
 
         </asp:Panel>
@@ -225,7 +246,8 @@
 
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/footer.png"
+                        <asp:Image ID="imgFooterLogo" runat="server"
+                            ImageUrl="~/Images/DefaultScreen/footer.png"
                             AlternateText="Stylio" CssClass="logo-img" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
@@ -234,17 +256,24 @@
 
                 <asp:Panel ID="pnlFooterQuickLinks" runat="server">
                     <asp:Label ID="lblQuickLinksTitle" runat="server" CssClass="footer-col-title" Text="Quick Links" />
-                    <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" OnClick="lnkHome_Click" />
-                    <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" OnClick="lnkServices_Click" />
-                    <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" OnClick="lnkSalon_Click" />
-                    <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
+                    <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home"
+                        CssClass="footer-link" OnClick="lnkHome_Click" />
+                    <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services"
+                        CssClass="footer-link" OnClick="lnkServices_Click" />
+                    <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons"
+                        CssClass="footer-link" OnClick="lnkSalon_Click" />
+                    <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us"
+                        CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlFooterCustomer" runat="server">
                     <asp:Label ID="lblCustomerTitle" runat="server" CssClass="footer-col-title" Text="Customer" />
-                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" OnClick="btnBookAppointment_Click" />
-                    <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" OnClick="lnkReviews_Click" />
-                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
+                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking"
+                        CssClass="footer-link" OnClick="btnBookAppointment_Click" />
+                    <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews"
+                        CssClass="footer-link" OnClick="lnkReviews_Click" />
+                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact"
+                        CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlFooterSupport" runat="server">
@@ -258,16 +287,20 @@
                 <asp:Panel ID="pnlFooterSocial" runat="server">
                     <asp:Label ID="lblFollowUsTitle" runat="server" CssClass="footer-col-title" Text="Follow Us" />
                     <asp:Panel ID="pnlSocialRow" runat="server" CssClass="footer-social-row">
-                        <asp:HyperLink ID="hlFacebook" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="f" />
-                        <asp:HyperLink ID="hlInstagram" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="ig" />
-                        <asp:HyperLink ID="hlTwitter" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="x" />
+                        <asp:HyperLink ID="hlFacebook" runat="server" NavigateUrl="#"
+                            CssClass="footer-social-icon" Text="f" />
+                        <asp:HyperLink ID="hlInstagram" runat="server" NavigateUrl="#"
+                            CssClass="footer-social-icon" Text="ig" />
+                        <asp:HyperLink ID="hlTwitter" runat="server" NavigateUrl="#"
+                            CssClass="footer-social-icon" Text="x" />
                     </asp:Panel>
                 </asp:Panel>
 
             </asp:Panel>
 
             <asp:Panel ID="pnlFooterBottom" runat="server" CssClass="footer-bottom">
-                <asp:Label ID="lblCopyright" runat="server" Text="&#169; 2026 Stylio Salon. All Right Reserved." />
+                <asp:Label ID="lblCopyright" runat="server"
+                    Text="&#169; 2026 Stylio Salon. All Right Reserved." />
             </asp:Panel>
 
         </asp:Panel>

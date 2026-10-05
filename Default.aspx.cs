@@ -7,7 +7,7 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Not logged in? Guests can only view guest.aspx, so redirect to Login.aspx
+            // Not logged in? Redirect to Login
             if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
             {
                 Response.Redirect("Login.aspx");
@@ -24,88 +24,21 @@ namespace Stylio_Salon
             }
         }
 
-        // ---------------- Logout Handler ----------------
-        protected void lnkLogout_Click(object sender, EventArgs e)
+        // ---------------- User Dropdown Toggle ----------------
+        protected void lnkUserToggle_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Session.Abandon();
-            Response.Redirect("guest.aspx");
+            pnlUserDropdown.Visible = !pnlUserDropdown.Visible;
         }
 
-        private void BindPopularSalons()
+        // ---------------- Dropdown Menu Handlers ----------------
+        protected void lnkMyProfile_Click(object sender, EventArgs e)
         {
-            var salons = new List<Salon>
-            {
-                new Salon
-                {
-                    Id = 1,
-                    Name = "Stylio Men's Salon",
-                    Rating = "4.9",
-                    Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/DefaultScreen/salon1.png"
-                },
-                new Salon
-                {
-                    Id = 2,
-                    Name = "The Mae Mane Salon",
-                    Rating = "4.8",
-                    Location = "Bhaktinagar Circle, Rajkot",
-                    ImageUrl = "~/Images/DefaultScreen/salon2.png"
-                },
-                new Salon
-                {
-                    Id = 3,
-                    Name = "The Hair Studio",
-                    Rating = "4.7",
-                    Location = "Surat, Gujrat",
-                    ImageUrl = "~/Images/DefaultScreen/salon3.png"
-                }
-            };
-
-            rptSalons.DataSource = salons;
-            rptSalons.DataBind();
+            Response.Redirect("MyProfile.aspx");
         }
 
-        private void BindServices()
+        protected void lnkSetting_Click(object sender, EventArgs e)
         {
-            var services = new List<Service>
-            {
-                new Service { Name = "Hair Cut", IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
-                new Service { Name = "Beard", IconUrl = "~/Images/DefaultScreen/icon-beard.png" },
-                new Service { Name = "Hair Color", IconUrl = "~/Images/DefaultScreen/icon-haircolor.png" },
-                new Service { Name = "Facial", IconUrl = "~/Images/DefaultScreen/icon-facial.png" }
-            };
-
-            rptServices.DataSource = services;
-            rptServices.DataBind();
-        }
-
-        private void BindReviews()
-        {
-            var reviews = new List<Review>
-            {
-                new Review
-                {
-                    Name = "Khush Patel",
-                    Comment = "Great Experience! Very Professional Staff and Clean Environment.",
-                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
-                },
-                new Review
-                {
-                    Name = "Viraj Vaja",
-                    Comment = "Loved The Haircut and Service, Highly Recommended!",
-                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
-                },
-                new Review
-                {
-                    Name = "Meet Patel",
-                    Comment = "Best Salon in Town! Will visit Again.",
-                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
-                }
-            };
-
-            rptReviews.DataSource = reviews;
-            rptReviews.DataBind();
+            Response.Redirect("Settings.aspx");
         }
 
         // ---------------- Navigation Handlers ----------------
@@ -124,9 +57,14 @@ namespace Stylio_Salon
             Response.Redirect("Salon.aspx");
         }
 
-        protected void lnkUserMenu_Click(object sender, EventArgs e)
+        protected void lnkReviews_Click(object sender, EventArgs e)
         {
-            // TODO: toggle a user dropdown panel
+            Response.Redirect("Reviews.aspx");
+        }
+
+        protected void lnkAboutUs_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AboutUs.aspx");
         }
 
         // ---------------- Hero / Search Handlers ----------------
@@ -138,8 +76,8 @@ namespace Stylio_Salon
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string location = ddlLocation.SelectedValue;
-            string service = ddlService.SelectedValue;
-            string date = ddlDate.SelectedValue;
+            string service  = ddlService.SelectedValue;
+            string date     = ddlDate.SelectedValue;
 
             Response.Redirect(string.Format(
                 "SearchResults.aspx?location={0}&service={1}&date={2}",
@@ -179,14 +117,81 @@ namespace Stylio_Salon
             // TODO: shift review carousel forward
         }
 
-        protected void lnkReviews_Click(object sender, EventArgs e)
+        // ---------------- Data Binding ----------------
+        private void BindPopularSalons()
         {
-            Response.Redirect("Reviews.aspx");
+            var salons = new List<Salon>
+            {
+                new Salon
+                {
+                    Id       = 1,
+                    Name     = "Stylio Men's Salon",
+                    Rating   = "4.9",
+                    Location = "Trikon Bag, Rajkot",
+                    ImageUrl = "~/Images/DefaultScreen/salon1.png"
+                },
+                new Salon
+                {
+                    Id       = 2,
+                    Name     = "The Mae Mane Salon",
+                    Rating   = "4.8",
+                    Location = "Bhaktinagar Circle, Rajkot",
+                    ImageUrl = "~/Images/DefaultScreen/salon2.png"
+                },
+                new Salon
+                {
+                    Id       = 3,
+                    Name     = "The Hair Studio",
+                    Rating   = "4.7",
+                    Location = "Surat, Gujrat",
+                    ImageUrl = "~/Images/DefaultScreen/salon3.png"
+                }
+            };
+
+            rptSalons.DataSource = salons;
+            rptSalons.DataBind();
         }
 
-        protected void lnkAboutUs_Click(object sender, EventArgs e)
+        private void BindServices()
         {
-            Response.Redirect("AboutUs.aspx");
+            var services = new List<Service>
+            {
+                new Service { Name = "Hair Cut",   IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
+                new Service { Name = "Beard",      IconUrl = "~/Images/DefaultScreen/icon-beard.png" },
+                new Service { Name = "Hair Color", IconUrl = "~/Images/DefaultScreen/icon-haircolor.png" },
+                new Service { Name = "Facial",     IconUrl = "~/Images/DefaultScreen/icon-facial.png" }
+            };
+
+            rptServices.DataSource = services;
+            rptServices.DataBind();
+        }
+
+        private void BindReviews()
+        {
+            var reviews = new List<Review>
+            {
+                new Review
+                {
+                    Name      = "Khush Patel",
+                    Comment   = "Great Experience! Very Professional Staff and Clean Environment.",
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
+                },
+                new Review
+                {
+                    Name      = "Viraj Vaja",
+                    Comment   = "Loved The Haircut and Service, Highly Recommended!",
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
+                },
+                new Review
+                {
+                    Name      = "Meet Patel",
+                    Comment   = "Best Salon in Town! Will visit Again.",
+                    AvatarUrl = "~/Images/DefaultScreen/reviewer1.png"
+                }
+            };
+
+            rptReviews.DataSource = reviews;
+            rptReviews.DataBind();
         }
     }
 }

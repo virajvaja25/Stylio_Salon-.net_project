@@ -79,41 +79,67 @@ a {
     color: #3B2415;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (Full Background Image with Overlay) ---------- */
 .hero-wrapper {
     position: relative;
 }
 
 .hero-section {
-    display: flex;
-    align-items: stretch;
-    background-color: #E7D6BE;
+    position: relative;
     min-height: 460px;
+    overflow: hidden;
+}
+
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, rgba(243,233,220,0.82) 38%, rgba(243,233,220,0.10) 100%);
 }
 
 .hero-text-col {
-    width: 32%;
-    padding: 60px 40px;
+    padding: 60px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 460px;
 }
 
 .hero-title {
-    font-size: 44px;
+    font-size: 46px;
     font-weight: bold;
     line-height: 1.15;
-    color: #241608;
-    margin-bottom: 18px;
+    color: #1a0f07;
+    margin-bottom: 8px;
     display: block;
 }
 
-.hero-subtitle {
-    font-size: 16px;
-    color: #4a3624;
-    line-height: 1.5;
+.hero-tagline {
+    font-size: 15px;
+    color: #5a4232;
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    color: #3a2618;
+    line-height: 1.55;
+    display: block;
+    margin-bottom: 28px;
 }
 
 .btn-book {
@@ -128,11 +154,37 @@ a {
     font-family: inherit;
 }
 
-.hero-image {
-    width: 68%;
-    object-fit: cover;
-    height: 460px;
+/* ---------- User Dropdown ---------- */
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    min-width: 160px;
+    z-index: 100;
+    padding: 8px 0;
 }
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 11px 22px;
+    font-size: 16px;
+    color: #241608;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+    .dropdown-item:hover {
+        background-color: #F3E9DC;
+        color: #C9A063;
+    }
 
 /* ---------- Search Card ---------- */
 .search-card-wrapper {
