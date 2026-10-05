@@ -103,6 +103,7 @@
     <Content Include="Settings.aspx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="Styles\AboutUs.css" />
+    <Content Include="Styles\BookAppointment.css" />
     <Content Include="Styles\SalonDetails.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
