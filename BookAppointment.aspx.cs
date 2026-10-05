@@ -162,11 +162,7 @@ namespace Stylio_Salon
             Session["BookingTime"] = selectedTime;
             Session["BookingTotal"] = total;
 
-            pnlBookingFeedback.Visible = true;
-            lblFeedbackMessage.ForeColor = System.Drawing.Color.FromArgb(46, 125, 50);
-            lblFeedbackMessage.Text = string.Format(
-                "Appointment booked for {0} at {1}. Services: {2} (Total: ₹{3}). Moving to Payment...",
-                selectedDate, selectedTime, string.Join(", ", selectedServices), total);
+            Response.Redirect("Payment.aspx");
         }
 
         // ---------------- Navigation ----------------

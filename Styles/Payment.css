@@ -1,0 +1,275 @@
+/* ===== Payment.css — Stylio Payment Page Styles ===== */
+
+.payment-page-container {
+    background-color: #F7EFE5;
+    padding: 30px 60px 70px 60px;
+    min-height: calc(100vh - 80px);
+}
+
+.payment-main-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    display: block;
+}
+
+.payment-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    max-width: 1050px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* ---------- Left Column: Booking Summary Card ---------- */
+.booking-summary-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    padding: 32px 30px;
+    width: 380px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a0f07;
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.summary-card-divider {
+    height: 1px;
+    background-color: #EDE4D8;
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+.summary-salon-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a0f07;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.summary-datetime-row {
+    font-size: 14px;
+    color: #554433;
+    display: block;
+    margin-bottom: 26px;
+}
+
+.summary-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.summary-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-item-label {
+    font-size: 15px;
+    color: #2B1B12;
+}
+
+.summary-item-price {
+    font-size: 15px;
+    color: #2B1B12;
+    font-weight: 500;
+}
+
+.summary-total-divider {
+    height: 1px;
+    background-color: #EDE4D8;
+    margin: 20px 0 16px 0;
+    width: 100%;
+}
+
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-total-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a0f07;
+}
+
+.summary-total-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a0f07;
+}
+
+/* ---------- Right Column: Select Payment Method ---------- */
+.payment-method-col {
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a0f07;
+    margin-bottom: 16px;
+    display: block;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.payment-method-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    padding: 24px 22px;
+    box-sizing: border-box;
+}
+
+.payment-option-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #D9CDC0;
+    border-radius: 10px;
+    padding: 16px 18px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.payment-option-box:hover {
+    border-color: #A9834F;
+}
+
+.payment-option-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.payment-option-icon {
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.payment-option-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-option-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a0f07;
+    margin-bottom: 3px;
+    display: block;
+}
+
+.payment-option-desc {
+    font-size: 11px;
+    color: #8A7E72;
+    display: block;
+}
+
+.payment-radio-wrapper input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #A9834F;
+    cursor: pointer;
+}
+
+/* ---------- Bottom Action Area ---------- */
+.payment-action-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.btn-pay-now {
+    background: linear-gradient(135deg, #B58D59, #9C7745);
+    color: #FFFFFF;
+    border: none;
+    padding: 13px 44px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(169, 131, 79, 0.35);
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.btn-pay-now:hover {
+    opacity: 0.92;
+}
+
+.secure-payment-notice {
+    font-size: 12px;
+    color: #8A7E72;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+/* ---------- Success Confirmation Box ---------- */
+.payment-success-box {
+    background-color: #EBF7EE;
+    border: 1px solid #3FA34D;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+}
+
+.payment-success-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #267A32;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.payment-success-text {
+    font-size: 14px;
+    color: #2E5C35;
+    line-height: 1.5;
+    display: block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .payment-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .booking-summary-card,
+    .payment-method-col {
+        width: 100%;
+        max-width: 440px;
+    }
+    .payment-main-title {
+        margin-left: 0;
+        text-align: center;
+    }
+}
