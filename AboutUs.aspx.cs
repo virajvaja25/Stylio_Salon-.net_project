@@ -14,42 +14,27 @@ namespace Stylio_Salon
 
             if (!IsPostBack)
             {
-                CheckAuth();
+                // Hide login/register buttons for logged-in users
+                btnLogin.Visible    = false;
+                btnRegister.Visible = false;
             }
         }
 
-        private void CheckAuth()
-        {
-            bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
-            if (isLoggedIn)
-            {
-                btnLogin.Visible = false;
-                btnRegister.Text = "Logout (" + (Session["UserName"] as string ?? "User") + ")";
-                btnRegister.CssClass = "btn-nav-login";
-                btnRegister.Click -= btnRegister_Click;
-                btnRegister.Click += (s, ev) =>
-                {
-                    Session.Clear();
-                    Session.Abandon();
-                    Response.Redirect("guest.aspx");
-                };
-            }
-        }
-
+        // ---------------- Navigation ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {
             bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
             Response.Redirect(isLoggedIn ? "Default.aspx" : "guest.aspx");
         }
 
-        protected void lnkSalon_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Salon.aspx");
-        }
-
         protected void lnkServices_Click(object sender, EventArgs e)
         {
             Response.Redirect("Services.aspx");
+        }
+
+        protected void lnkSalon_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Salon.aspx");
         }
 
         protected void lnkReviews_Click(object sender, EventArgs e)
@@ -62,6 +47,7 @@ namespace Stylio_Salon
             Response.Redirect("AboutUs.aspx");
         }
 
+        // ---------------- Guest Buttons ----------------
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
@@ -72,6 +58,7 @@ namespace Stylio_Salon
             Response.Redirect("Register.aspx");
         }
 
+        // ---------------- Partner CTA ----------------
         protected void btnPartnerCTA_Click(object sender, EventArgs e)
         {
             Response.Redirect("Salon.aspx");
