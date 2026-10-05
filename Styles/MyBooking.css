@@ -1,0 +1,178 @@
+/* ===== MyBooking.css — Stylio My Booking Page ===== */
+
+.booking-page-container {
+    background-color: #F7EFE5;
+    padding: 30px 40px 70px 40px;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.booking-main-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    text-align: center;
+    display: block;
+}
+
+/* ---------- Tabs Bar ---------- */
+.booking-tabs-bar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 660px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid #D6CBC0;
+}
+
+.booking-tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 24px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #1a0f07;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.booking-tab-active {
+    color: #B58D59 !important;
+    border-bottom: 3px solid #B58D59 !important;
+    font-weight: 700;
+}
+
+.booking-tab-inactive {
+    color: #1a0f07;
+}
+
+.booking-tab-inactive:hover {
+    color: #8C6A3D;
+}
+
+/* ---------- Bookings List ---------- */
+.bookings-list-container {
+    width: 100%;
+    max-width: 660px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---------- Individual Booking Card ---------- */
+.mybooking-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    padding: 18px 22px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.mybooking-card-img {
+    width: 155px;
+    height: 125px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.mybooking-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mybooking-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.mybooking-service-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Badges */
+.badge-upcoming {
+    background-color: #FFF2D1;
+    color: #D49B28;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.badge-completed {
+    background-color: #D6F8D8;
+    color: #2E7D32;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Details */
+.mybooking-detail-line {
+    font-size: 14px;
+    color: #2B1B12;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.mybooking-datetime-line {
+    font-size: 14px;
+    color: #2B1B12;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Cancel Button */
+.mybooking-action-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-cancel-booking {
+    border: 1px solid #D9534F;
+    color: #D9534F;
+    background-color: transparent;
+    padding: 5px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel-booking:hover {
+    background-color: #FDF2F2;
+}
+
+/* Empty State */
+.empty-bookings-box {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 36px;
+    text-align: center;
+    color: #8A7E72;
+    font-size: 16px;
+}

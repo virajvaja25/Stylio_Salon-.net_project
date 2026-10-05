@@ -96,6 +96,7 @@
     <Content Include="Images\SalonScreen\footer.png" />
     <Content Include="Images\SalonScreen\logo.png" />
     <Content Include="Login.aspx" />
+    <Content Include="MyBooking.aspx" />
     <Content Include="MyProfile.aspx" />
     <Content Include="Payment.aspx" />
     <Content Include="Register.aspx" />
@@ -105,7 +106,9 @@
     <Content Include="SiteHeader.ascx" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\BookAppointment.css" />
+    <Content Include="Styles\MyBooking.css" />
     <Content Include="Styles\Payment.css" />
+    <Content Include="Styles\Reviews.css" />
     <Content Include="Styles\SalonDetails.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
@@ -224,6 +227,13 @@
     </Compile>
     <Compile Include="Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyBooking.aspx.cs">
+      <DependentUpon>MyBooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyBooking.aspx.designer.cs">
+      <DependentUpon>MyBooking.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

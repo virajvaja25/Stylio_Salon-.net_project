@@ -1,0 +1,201 @@
+/* ===== Reviews.css — Stylio Write a Review Page Styles ===== */
+
+.review-page-container {
+    background-color: #F7EFE5;
+    padding: 30px 40px 70px 40px;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-main-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    display: block;
+}
+
+/* ---------- Main Review Card ---------- */
+.review-card-container {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    padding: 32px 36px 36px 36px;
+    width: 100%;
+    max-width: 740px;
+    box-sizing: border-box;
+}
+
+/* ---------- Salon Info Row ---------- */
+.salon-info-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.salon-thumb-img {
+    width: 145px;
+    height: 95px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.salon-info-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.salon-info-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a0f07;
+    margin-bottom: 4px;
+    display: block;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.salon-meta-item {
+    font-size: 13px;
+    color: #6B5B4D;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.review-card-divider {
+    height: 1px;
+    background-color: #EDE4D8;
+    margin-bottom: 26px;
+    width: 100%;
+}
+
+/* ---------- Rating Section ---------- */
+.rating-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a0f07;
+    margin-bottom: 16px;
+    display: block;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.stars-rating-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+}
+
+.star-rating-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.star-btn {
+    font-size: 32px;
+    line-height: 1;
+    color: #E3A72A;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.15s ease;
+}
+
+.star-btn:hover {
+    transform: scale(1.18);
+}
+
+.star-btn-empty {
+    color: #D6CBC0;
+}
+
+.star-label {
+    font-size: 11px;
+    color: #7A6B5D;
+    text-align: center;
+    white-space: nowrap;
+    display: block;
+}
+
+/* ---------- Text Review Section ---------- */
+.review-text-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a0f07;
+    margin-bottom: 14px;
+    display: block;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.review-textarea {
+    width: 100%;
+    border: 1px solid #D6CBC0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2B1B12;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 120px;
+    outline: none;
+}
+
+.review-textarea:focus {
+    border-color: #A9834F;
+}
+
+.review-textarea::placeholder {
+    color: #A69788;
+}
+
+/* ---------- Action Row ---------- */
+.review-action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.btn-submit-review {
+    background: linear-gradient(135deg, #B58D59, #9C7745);
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 34px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(169, 131, 79, 0.35);
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.btn-submit-review:hover {
+    opacity: 0.92;
+}
+
+/* ---------- Success Notification ---------- */
+.review-success-panel {
+    background-color: #EBF7EE;
+    border: 1px solid #3FA34D;
+    color: #267A32;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 18px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+}

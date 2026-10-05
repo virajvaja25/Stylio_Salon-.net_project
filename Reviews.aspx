@@ -1,246 +1,200 @@
-<%@ Page Title="Stylio | Customer Reviews" Language="C#" AutoEventWireup="true" CodeBehind="Reviews.aspx.cs" Inherits="Stylio_Salon.ReviewsPage" %>
+<%@ Page Title="Stylio | Write a Review" Language="C#" AutoEventWireup="true" CodeBehind="Reviews.aspx.cs" Inherits="Stylio_Salon.ReviewsPage" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stylio - Customer Reviews</title>
+    <title>Stylio - Write a Review</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
-    <style>
-        .reviews-banner {
-            background-color: #E7D6BE;
-            padding: 48px 60px;
-            text-align: center;
-        }
-        .reviews-page-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 40px 80px;
-            display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 40px;
-            align-items: flex-start;
-        }
-        .reviews-feed-title {
-            font-size: 26px;
-            font-weight: bold;
-            color: #241608;
-            margin-bottom: 24px;
-        }
-        .write-review-card {
-            background-color: #FFFFFF;
-            border-radius: 14px;
-            padding: 28px 24px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-        }
-        .write-review-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #241608;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .write-review-sub {
-            font-size: 14px;
-            color: #6b5847;
-            margin-bottom: 20px;
-            display: block;
-        }
-        .review-card-full {
-            background-color: #FFFFFF;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-        }
-        .review-card-top {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 12px;
-        }
-        .review-avatar-lg {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .review-author {
-            font-size: 17px;
-            font-weight: bold;
-            color: #241608;
-        }
-        .review-stars-gold {
-            color: #E3A72A;
-            font-size: 16px;
-        }
-        .review-comment-full {
-            font-size: 15px;
-            color: #4a3a2a;
-            line-height: 1.6;
-        }
-        .review-success-msg {
-            background-color: #EBF7EE;
-            border: 1px solid #3FA34D;
-            color: #267A32;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-size: 14px;
-            text-align: center;
-        }
-        @media (max-width: 860px) {
-            .reviews-page-wrapper {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="Styles/Reviews.css" />
 </head>
 <body>
     <form id="frmReviews" runat="server">
 
         <!-- ===================== HEADER ===================== -->
         <asp:Panel ID="pnlHeader" runat="server" CssClass="header">
+
             <asp:Panel ID="pnlLogoArea" runat="server" CssClass="logo-area">
-                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
-                    AlternateText="Stylio" CssClass="logo-img" />
-                <asp:Label ID="lblBrandName" runat="server" CssClass="logo-text" />
+                <asp:Image ID="imgLogo" runat="server"
+                    ImageUrl="~/Images/DefaultScreen/logo.png"
+                    AlternateText="Stylio Logo" CssClass="logo-img" />
             </asp:Panel>
 
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links">
                 <asp:LinkButton ID="lnkHome" runat="server" Text="Home" CssClass="nav-link" OnClick="lnkHome_Click" />
-                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link" OnClick="lnkSalon_Click" />
                 <asp:LinkButton ID="lnkServices" runat="server" Text="Services" CssClass="nav-link" OnClick="lnkServices_Click" />
+                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link" OnClick="lnkSalon_Click" />
                 <asp:LinkButton ID="lnkReviews" runat="server" Text="Reviews" CssClass="nav-link nav-link-active" OnClick="lnkReviews_Click" />
                 <asp:LinkButton ID="lnkAboutUs" runat="server" Text="About Us" CssClass="nav-link" OnClick="lnkAboutUs_Click" />
             </asp:Panel>
 
-            <asp:Panel ID="pnlUserArea" runat="server" CssClass="guest-user-area">
-                <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-nav-login" OnClick="btnLogin_Click" />
-                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn-nav-register" OnClick="btnRegister_Click" />
-            </asp:Panel>
         </asp:Panel>
 
-        <!-- ===================== BANNER ===================== -->
-        <asp:Panel ID="pnlBanner" runat="server" CssClass="reviews-banner">
-            <asp:Label ID="lblReviewTitle" runat="server" CssClass="salons-page-title" Text="Customer Reviews" />
-            <br />
-            <asp:Label ID="lblReviewSub" runat="server" CssClass="services-subtitle"
-                Text="Read trusted feedback from people who booked through Stylio, or leave your own review below." />
-        </asp:Panel>
+        <!-- ===================== MAIN CONTAINER ===================== -->
+        <asp:Panel ID="pnlReviewPage" runat="server" CssClass="review-page-container">
 
-        <!-- ===================== CONTENT ===================== -->
-        <div class="reviews-page-wrapper">
+            <!-- Title -->
+            <asp:Label ID="lblPageTitle" runat="server" CssClass="review-main-title" Text="Write a Review" />
 
-            <!-- Feed Column -->
-            <div>
-                <div class="reviews-feed-title">Latest Customer Experiences</div>
-                <asp:Repeater ID="rptReviewsList" runat="server">
-                    <ItemTemplate>
-                        <div class="review-card-full">
-                            <div class="review-card-top">
-                                <asp:Image ID="imgAvatar" runat="server" ImageUrl='<%# Eval("AvatarUrl") %>'
-                                    AlternateText='<%# Eval("Name") %>' CssClass="review-avatar-lg" />
-                                <div>
-                                    <div class="review-author"><%# Eval("Name") %></div>
-                                    <div class="review-stars-gold">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                                </div>
-                            </div>
-                            <div class="review-comment-full"><%# Eval("Comment") %></div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>
+            <!-- White Card -->
+            <asp:Panel ID="pnlReviewCard" runat="server" CssClass="review-card-container">
 
-            <!-- Write Review Sidebar -->
-            <div class="write-review-card">
-                <span class="write-review-title">Leave a Review</span>
-                <span class="write-review-sub">Share your feedback to help others find the best salon experience.</span>
+                <!-- Salon Information Header -->
+                <asp:Panel ID="pnlSalonInfoRow" runat="server" CssClass="salon-info-row">
+                    <asp:Image ID="imgSalonThumb" runat="server"
+                        ImageUrl="~/Images/SalonScreen/salon1.png"
+                        AlternateText="Stylio Men's Salon"
+                        CssClass="salon-thumb-img" />
 
-                <asp:Panel ID="pnlReviewSuccess" runat="server" CssClass="review-success-msg" Visible="false">
-                    &#10004; Thank you! Your review has been added.
+                    <asp:Panel ID="pnlSalonInfoTexts" runat="server" CssClass="salon-info-texts">
+                        <asp:Label ID="lblSalonName" runat="server" CssClass="salon-info-name" Text="Stylio Men&#39;s Salon" />
+
+                        <asp:Panel ID="pnlLocationRow" runat="server" CssClass="salon-meta-item">
+                            <asp:Label ID="lblLocationIcon" runat="server" Text="&#128205;" />
+                            <asp:Label ID="lblSalonLocation" runat="server" Text="BhaktiNagar, Rajkot" />
+                        </asp:Panel>
+
+                        <asp:Panel ID="pnlHoursRow" runat="server" CssClass="salon-meta-item">
+                            <asp:Label ID="lblHoursIcon" runat="server" Text="&#128339;" />
+                            <asp:Label ID="lblSalonHours" runat="server" Text="Open Today: 08:00 AM - 09:00 PM" />
+                        </asp:Panel>
+                    </asp:Panel>
                 </asp:Panel>
 
-                <div class="form-group">
-                    <asp:Label ID="lblReviewSalon" runat="server" AssociatedControlID="ddlReviewSalon"
-                        CssClass="form-label" Text="Salon Visited" />
-                    <asp:DropDownList ID="ddlReviewSalon" runat="server" CssClass="form-input">
-                        <asp:ListItem Text="Stylio Men's Salon - Trikon Bag" Value="1" />
-                        <asp:ListItem Text="The Mae Mane Salon - Bhaktinagar" Value="2" />
-                        <asp:ListItem Text="The Hair Studio - Surat" Value="3" />
-                    </asp:DropDownList>
-                </div>
+                <!-- Divider -->
+                <asp:Panel ID="pnlDivider" runat="server" CssClass="review-card-divider" />
 
-                <div class="form-group">
-                    <asp:Label ID="lblReviewerName" runat="server" AssociatedControlID="txtReviewerName"
-                        CssClass="form-label" Text="Your Name" />
-                    <asp:TextBox ID="txtReviewerName" runat="server" CssClass="form-input" placeholder="Your name" />
-                    <asp:RequiredFieldValidator ID="rfvReviewerName" runat="server" ControlToValidate="txtReviewerName"
-                        CssClass="field-error" ErrorMessage="Name is required." Display="Dynamic" EnableClientScript="false" />
-                </div>
+                <!-- Your Rating Section -->
+                <asp:Label ID="lblRatingTitle" runat="server" CssClass="rating-section-title" Text="Your Rating" />
 
-                <div class="form-group">
-                    <asp:Label ID="lblReviewRating" runat="server" AssociatedControlID="ddlReviewRating"
-                        CssClass="form-label" Text="Rating" />
-                    <asp:DropDownList ID="ddlReviewRating" runat="server" CssClass="form-input">
-                        <asp:ListItem Text="&#9733;&#9733;&#9733;&#9733;&#9733; - Excellent (5/5)" Value="5" />
-                        <asp:ListItem Text="&#9733;&#9733;&#9733;&#9733;&#9734; - Very Good (4/5)" Value="4" />
-                        <asp:ListItem Text="&#9733;&#9733;&#9733;&#9734;&#9734; - Average (3/5)" Value="3" />
-                    </asp:DropDownList>
-                </div>
+                <asp:Panel ID="pnlStarsRow" runat="server" CssClass="stars-rating-row">
 
-                <div class="form-group">
-                    <asp:Label ID="lblReviewComment" runat="server" AssociatedControlID="txtReviewComment"
-                        CssClass="form-label" Text="Your Review" />
-                    <asp:TextBox ID="txtReviewComment" runat="server" CssClass="form-input" TextMode="MultiLine"
-                        Rows="4" placeholder="How was the styling, staff, and hygiene?" />
-                    <asp:RequiredFieldValidator ID="rfvReviewComment" runat="server" ControlToValidate="txtReviewComment"
-                        CssClass="field-error" ErrorMessage="Review comment is required." Display="Dynamic" EnableClientScript="false" />
-                </div>
+                    <!-- Star 1 -->
+                    <asp:Panel ID="pnlStar1" runat="server" CssClass="star-rating-item">
+                        <asp:LinkButton ID="btnStar1" runat="server" Text="&#9733;" CssClass="star-btn"
+                            OnClick="Star_Click" CommandArgument="1" />
+                        <asp:Label ID="lblStar1" runat="server" CssClass="star-label" Text="Very Bad" />
+                    </asp:Panel>
 
-                <asp:Button ID="btnSubmitReview" runat="server" Text="Post Review" CssClass="btn-primary-wide"
-                    OnClick="btnSubmitReview_Click" />
-            </div>
+                    <!-- Star 2 -->
+                    <asp:Panel ID="pnlStar2" runat="server" CssClass="star-rating-item">
+                        <asp:LinkButton ID="btnStar2" runat="server" Text="&#9733;" CssClass="star-btn"
+                            OnClick="Star_Click" CommandArgument="2" />
+                        <asp:Label ID="lblStar2" runat="server" CssClass="star-label" Text="Bad" />
+                    </asp:Panel>
 
-        </div>
+                    <!-- Star 3 -->
+                    <asp:Panel ID="pnlStar3" runat="server" CssClass="star-rating-item">
+                        <asp:LinkButton ID="btnStar3" runat="server" Text="&#9733;" CssClass="star-btn"
+                            OnClick="Star_Click" CommandArgument="3" />
+                        <asp:Label ID="lblStar3" runat="server" CssClass="star-label" Text="Good" />
+                    </asp:Panel>
+
+                    <!-- Star 4 -->
+                    <asp:Panel ID="pnlStar4" runat="server" CssClass="star-rating-item">
+                        <asp:LinkButton ID="btnStar4" runat="server" Text="&#9733;" CssClass="star-btn"
+                            OnClick="Star_Click" CommandArgument="4" />
+                        <asp:Label ID="lblStar4" runat="server" CssClass="star-label" Text="Very Good" />
+                    </asp:Panel>
+
+                    <!-- Star 5 -->
+                    <asp:Panel ID="pnlStar5" runat="server" CssClass="star-rating-item">
+                        <asp:LinkButton ID="btnStar5" runat="server" Text="&#9733;" CssClass="star-btn"
+                            OnClick="Star_Click" CommandArgument="5" />
+                        <asp:Label ID="lblStar5" runat="server" CssClass="star-label" Text="Excellent" />
+                    </asp:Panel>
+
+                </asp:Panel>
+
+                <!-- Hidden field / label to store rating -->
+                <asp:Label ID="lblSelectedRating" runat="server" Text="5" Visible="false" />
+
+                <!-- Your Review Section -->
+                <asp:Label ID="lblReviewTextTitle" runat="server" CssClass="review-text-section-title" Text="Your Review" />
+
+                <asp:TextBox ID="txtReviewComment" runat="server" TextMode="MultiLine" Rows="5"
+                    CssClass="review-textarea" placeholder="Write your review here...." />
+
+                <!-- Action Button -->
+                <asp:Panel ID="pnlActionRow" runat="server" CssClass="review-action-row">
+                    <asp:Button ID="btnSubmitReview" runat="server" Text="Submit Review"
+                        CssClass="btn-submit-review" OnClick="btnSubmitReview_Click" />
+                </asp:Panel>
+
+                <!-- Success Confirmation Message -->
+                <asp:Panel ID="pnlReviewSuccess" runat="server" CssClass="review-success-panel" Visible="false">
+                    <asp:Label ID="lblSuccessMessage" runat="server" Text="Thank you! Your review has been submitted successfully." />
+                </asp:Panel>
+
+            </asp:Panel>
+
+        </asp:Panel>
 
         <!-- ===================== FOOTER ===================== -->
         <asp:Panel ID="pnlFooter" runat="server" CssClass="footer">
+
             <asp:Panel ID="pnlFooterColumns" runat="server" CssClass="footer-columns">
+
+                <!-- Brand -->
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                        <asp:Image ID="imgFooterLogo" runat="server"
+                            ImageUrl="~/Images/DefaultScreen/footer.png"
                             AlternateText="Stylio" CssClass="logo-img" />
-                        <asp:Label ID="lblFooterBrand" runat="server" CssClass="footer-logo-text" Text="Stylio" />
+                        <asp:Label ID="lblFooterBrand" runat="server"
+                            CssClass="footer-logo-text" Text="Stylio" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
-                        Text="Your Beauty is Our Passion. Book Appointments with Top Salon &amp; Professional." />
+                        Text="Your Beauty is Our Passion Book Appointments with Top Salon &amp; Professional." />
                 </asp:Panel>
 
+                <!-- Quick Links -->
                 <asp:Panel ID="pnlFooterQuickLinks" runat="server">
-                    <asp:Label ID="lblQuickLinksTitle" runat="server" CssClass="footer-col-title" Text="Quick Links" />
+                    <asp:Label ID="lblQuickLinksTitle" runat="server"
+                        CssClass="footer-col-title" Text="Quick Links" />
                     <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" OnClick="lnkHome_Click" />
                     <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" OnClick="lnkServices_Click" />
                     <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" OnClick="lnkSalon_Click" />
                     <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
+                <!-- Customer -->
                 <asp:Panel ID="pnlFooterCustomer" runat="server">
-                    <asp:Label ID="lblCustomerTitle" runat="server" CssClass="footer-col-title" Text="Customer" />
-                    <asp:LinkButton ID="lnkFooterLogin" runat="server" Text="Login" CssClass="footer-link" OnClick="btnLogin_Click" />
-                    <asp:LinkButton ID="lnkFooterRegister" runat="server" Text="Register" CssClass="footer-link" OnClick="btnRegister_Click" />
+                    <asp:Label ID="lblCustomerTitle" runat="server"
+                        CssClass="footer-col-title" Text="Customer" />
+                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" OnClick="lnkFooterMyBooking_Click" />
                     <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" OnClick="lnkReviews_Click" />
+                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
+                <!-- Support -->
                 <asp:Panel ID="pnlFooterSupport" runat="server">
-                    <asp:Label ID="lblSupportTitle" runat="server" CssClass="footer-col-title" Text="Support" />
-                    <asp:Label runat="server" CssClass="footer-tagline" Text="Contact: support@styliosalon.com" />
+                    <asp:Label ID="lblSupportTitle" runat="server"
+                        CssClass="footer-col-title" Text="Support" />
+                    <asp:LinkButton ID="lnkFooterHelp" runat="server" Text="Help center" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterTerms" runat="server" Text="Terms &amp; Condition" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterPrivacy" runat="server" Text="Privacy Policy" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterCancellation" runat="server" Text="Cancellation Policy" CssClass="footer-link" />
                 </asp:Panel>
+
+                <!-- Follow Us -->
+                <asp:Panel ID="pnlFooterSocial" runat="server">
+                    <asp:Label ID="lblFollowUsTitle" runat="server"
+                        CssClass="footer-col-title" Text="Follow Us" />
+                    <asp:Panel ID="pnlSocialRow" runat="server" CssClass="footer-social-row">
+                        <asp:HyperLink ID="hlFacebook" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="f" />
+                        <asp:HyperLink ID="hlInstagram" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="ig" />
+                        <asp:HyperLink ID="hlTwitter" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="x" />
+                    </asp:Panel>
+                </asp:Panel>
+
             </asp:Panel>
 
             <asp:Panel ID="pnlFooterBottom" runat="server" CssClass="footer-bottom">
-                <asp:Label ID="lblCopyright" runat="server" Text="&#169; 2026 Stylio Salon. All Right Reserved." />
+                <asp:Label ID="lblCopyright" runat="server"
+                    Text="&#169; 2026 Stylio Salon. All Right Reserved." />
             </asp:Panel>
+
         </asp:Panel>
 
     </form>
