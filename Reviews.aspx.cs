@@ -6,7 +6,7 @@ namespace Stylio_Salon
 {
     public partial class ReviewsPage : System.Web.UI.Page
     {
-        private static readonly List<Review> SubmittedReviews = new List<Review>();
+        public static readonly List<Review> SubmittedReviews = new List<Review>();
 
         protected void Page_Load(object sender, EventArgs e)
         {

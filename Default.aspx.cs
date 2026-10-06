@@ -190,6 +190,11 @@ namespace Stylio_Salon
                 }
             };
 
+            if (ReviewsPage.SubmittedReviews.Count > 0)
+            {
+                reviews.InsertRange(0, ReviewsPage.SubmittedReviews);
+            }
+
             rptReviews.DataSource = reviews;
             rptReviews.DataBind();
         }
