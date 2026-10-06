@@ -33,7 +33,7 @@ namespace Stylio_Salon
                     Name = "Stylio Men's Salon",
                     Rating = "4.9",
                     Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/guestscreen/salon2.png"
+                    ImageUrl = "~/Images/salon_stylio.png"
                 },
                 new Salon
                 {
@@ -41,7 +41,7 @@ namespace Stylio_Salon
                     Name = "The Mae Mane Salon",
                     Rating = "4.8",
                     Location = "Bhaktinagar Circle, Rajkot",
-                    ImageUrl = "~/Images/guestscreen/salon3.png"
+                    ImageUrl = "~/Images/salon_maemane.png"
                 },
                 new Salon
                 {
@@ -49,7 +49,7 @@ namespace Stylio_Salon
                     Name = "The Hair Studio",
                     Rating = "4.7",
                     Location = "Surat, Gujrat",
-                    ImageUrl = "~/Images/guestscreen/salon1.png"
+                    ImageUrl = "~/Images/salon_hairstudio.png"
                 }
             };
 

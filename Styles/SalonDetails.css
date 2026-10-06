@@ -14,8 +14,10 @@
 
 .salon-details-hero-image {
     width: 100%;
-    height: 560px;
+    height: 420px;
+    max-height: 450px;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
