@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Settings</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/Account.css" />
 </head>
 <body>
     <form id="frmSettings" runat="server">
@@ -20,112 +21,184 @@
             </asp:Panel>
 
             <asp:Panel ID="pnlNav" runat="server" CssClass="nav-links">
-                <asp:LinkButton ID="lnkHome" runat="server" Text="Home"
-                    CssClass="nav-link" OnClick="lnkHome_Click" />
-                <asp:LinkButton ID="lnkServices" runat="server" Text="Services"
-                    CssClass="nav-link" OnClick="lnkServices_Click" />
-                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon"
-                    CssClass="nav-link" OnClick="lnkSalon_Click" />
-            </asp:Panel>
-
-            <asp:Panel ID="pnlUserArea" runat="server" CssClass="user-area" Style="position:relative;">
-                <asp:Image ID="imgUserAvatar" runat="server"
-                    ImageUrl="~/Images/DefaultScreen/Group.png"
-                    AlternateText="User" CssClass="user-avatar" />
-                <asp:LinkButton ID="lnkUserToggle" runat="server" CssClass="user-name"
-                    OnClick="lnkUserToggle_Click">
-                    <asp:Label ID="lblUserName" runat="server" Text="Khush Dobariya" />
-                </asp:LinkButton>
-
-                <asp:Panel ID="pnlUserDropdown" runat="server" CssClass="user-dropdown" Visible="false">
-                    <asp:LinkButton ID="lnkMenuReviews" runat="server" Text="Reviews"
-                        CssClass="dropdown-item" OnClick="lnkReviews_Click" />
-                    <asp:LinkButton ID="lnkMenuAboutUs" runat="server" Text="About Us"
-                        CssClass="dropdown-item" OnClick="lnkAboutUs_Click" />
-                    <asp:LinkButton ID="lnkMenuMyProfile" runat="server" Text="My Profile"
-                        CssClass="dropdown-item" OnClick="lnkMyProfile_Click" />
-                    <asp:LinkButton ID="lnkMenuSetting" runat="server" Text="Setting"
-                        CssClass="dropdown-item nav-link-active" OnClick="lnkSetting_Click" />
-                </asp:Panel>
+                <asp:LinkButton ID="lnkHome" runat="server" Text="Home" CssClass="nav-link" OnClick="lnkHome_Click" />
+                <asp:LinkButton ID="lnkServices" runat="server" Text="Services" CssClass="nav-link" OnClick="lnkServices_Click" />
+                <asp:LinkButton ID="lnkSalon" runat="server" Text="Salon" CssClass="nav-link" OnClick="lnkSalon_Click" />
             </asp:Panel>
 
         </asp:Panel>
 
-        <!-- ===================== PAGE BODY ===================== -->
-        <asp:Panel ID="pnlPageBody" runat="server" CssClass="auth-page-body">
-            <asp:Panel ID="pnlSettingsCard" runat="server" CssClass="auth-card">
+        <!-- ===================== PAGE CONTAINER ===================== -->
+        <asp:Panel ID="pnlAccountPage" runat="server" CssClass="account-page-container">
 
-                <asp:Label ID="lblPageTitle" runat="server" CssClass="auth-title" Text="Settings" />
+            <!-- Title -->
+            <asp:Label ID="lblPageTitle" runat="server" CssClass="account-main-title" Text="Settings" />
 
-                <!-- Success Message -->
-                <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
-                    <asp:Label ID="lblSuccess" runat="server" CssClass="summary-error"
-                        Style="color:#2e7d32;"
-                        Text="Settings saved successfully!" />
+            <asp:Panel ID="pnlContentWrapper" runat="server" CssClass="account-content-wrapper">
+
+                <!-- ========== LEFT: SIDEBAR MENU CARD ========== -->
+                <asp:Panel ID="pnlSidebar" runat="server" CssClass="account-sidebar-card">
+
+                    <!-- My Profile -->
+                    <asp:LinkButton ID="lnkSideProfile" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideProfile_Click">
+                        <asp:Label ID="lblIconProfile" runat="server" CssClass="sidebar-item-icon" Text="&#128100;" />
+                        <asp:Label ID="lblTextProfile" runat="server" CssClass="sidebar-item-text" Text="My Profile" />
+                    </asp:LinkButton>
+
+                    <!-- My Booking -->
+                    <asp:LinkButton ID="lnkSideBooking" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideBooking_Click">
+                        <asp:Label ID="lblIconBooking" runat="server" CssClass="sidebar-item-icon" Text="&#128197;" />
+                        <asp:Label ID="lblTextBooking" runat="server" CssClass="sidebar-item-text" Text="My Booking" />
+                    </asp:LinkButton>
+
+                    <!-- Settings (Active) -->
+                    <asp:LinkButton ID="lnkSideSettings" runat="server" CssClass="sidebar-nav-item sidebar-nav-active" OnClick="lnkSideSettings_Click">
+                        <asp:Label ID="lblIconSettings" runat="server" CssClass="sidebar-item-icon" Text="&#9881;" />
+                        <asp:Label ID="lblTextSettings" runat="server" CssClass="sidebar-item-text" Text="Settings" />
+                    </asp:LinkButton>
+
+                    <!-- Payment History -->
+                    <asp:LinkButton ID="lnkSidePayment" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSidePayment_Click">
+                        <asp:Label ID="lblIconPayment" runat="server" CssClass="sidebar-item-icon" Text="&#128179;" />
+                        <asp:Label ID="lblTextPayment" runat="server" CssClass="sidebar-item-text" Text="Payment History" />
+                    </asp:LinkButton>
+
+                    <!-- Logout -->
+                    <asp:LinkButton ID="lnkSideLogout" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideLogout_Click">
+                        <asp:Label ID="lblIconLogout" runat="server" CssClass="sidebar-item-icon" Text="&#10148;" />
+                        <asp:Label ID="lblTextLogout" runat="server" CssClass="sidebar-item-text" Text="Logout" />
+                    </asp:LinkButton>
+
                 </asp:Panel>
 
-                <!-- Change Password -->
-                <asp:Panel ID="pnlCurrentPassword" runat="server" CssClass="form-group">
-                    <asp:Label ID="lblCurrentPassword" runat="server" CssClass="form-label"
-                        AssociatedControlID="txtCurrentPassword" Text="Current Password" />
-                    <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="form-input"
-                        TextMode="Password" placeholder="Enter current password" />
-                </asp:Panel>
+                <!-- ========== RIGHT: MAIN SETTINGS CARD ========== -->
+                <asp:Panel ID="pnlSettingsCard" runat="server" CssClass="settings-main-card">
 
-                <asp:Panel ID="pnlNewPassword" runat="server" CssClass="form-group">
-                    <asp:Label ID="lblNewPassword" runat="server" CssClass="form-label"
-                        AssociatedControlID="txtNewPassword" Text="New Password" />
-                    <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-input"
-                        TextMode="Password" placeholder="Enter new password" />
-                    <asp:RegularExpressionValidator ID="revNewPassword" runat="server"
-                        ControlToValidate="txtNewPassword"
-                        ValidationExpression=".{6,}"
-                        ErrorMessage="Password must be at least 6 characters."
-                        CssClass="field-error" Display="Dynamic" />
-                </asp:Panel>
+                    <asp:Label ID="lblSettingsCardTitle" runat="server" CssClass="settings-card-title" Text="Settings" />
 
-                <asp:Panel ID="pnlConfirmPassword" runat="server" CssClass="form-group">
-                    <asp:Label ID="lblConfirmPassword" runat="server" CssClass="form-label"
-                        AssociatedControlID="txtConfirmPassword" Text="Confirm New Password" />
-                    <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-input"
-                        TextMode="Password" placeholder="Re-enter new password" />
-                    <asp:CompareValidator ID="cvConfirmPassword" runat="server"
-                        ControlToValidate="txtConfirmPassword"
-                        ControlToCompare="txtNewPassword"
-                        ErrorMessage="Passwords do not match."
-                        CssClass="field-error" Display="Dynamic" />
-                </asp:Panel>
+                    <asp:Panel ID="pnlOptionsList" runat="server" CssClass="settings-options-list">
 
-                <!-- Notification Preference -->
-                <asp:Panel ID="pnlNotifications" runat="server" CssClass="form-group">
-                    <asp:Label ID="lblNotifications" runat="server" CssClass="form-label"
-                        Text="Email Notifications" />
-                    <asp:CheckBox ID="chkEmailNotifications" runat="server"
-                        Text="  Receive booking confirmations &amp; reminders by email"
-                        Checked="true" />
-                </asp:Panel>
+                        <!-- Change Password Option -->
+                        <asp:LinkButton ID="lnkOptionChangePassword" runat="server" CssClass="settings-option-item" OnClick="lnkOptionChangePassword_Click">
+                            <asp:Panel ID="pnlPwdLeft" runat="server" CssClass="settings-option-left">
+                                <asp:Label ID="lblLockIcon" runat="server" CssClass="settings-option-icon" Text="&#128274;" />
+                                <asp:Label ID="lblChangePasswordText" runat="server" CssClass="settings-option-name" Text="Change Password" />
+                            </asp:Panel>
+                            <asp:Label ID="lblChevron1" runat="server" CssClass="settings-option-chevron" Text="&rsaquo;" />
+                        </asp:LinkButton>
 
-                <!-- Save Button -->
-                <asp:Button ID="btnSaveSettings" runat="server" Text="Save Settings"
-                    CssClass="btn-primary-wide" OnClick="btnSaveSettings_Click" />
+                        <asp:Panel ID="pnlDivider1" runat="server" CssClass="settings-option-divider" />
 
-                <!-- Logout -->
-                <asp:Panel ID="pnlLogoutRow" runat="server" CssClass="auth-footer-row"
-                    Style="margin-top:20px;">
-                    <asp:LinkButton ID="lnkLogout" runat="server"
-                        Text="Logout" CssClass="link-accent"
-                        OnClick="lnkLogout_Click" />
+                        <!-- Term & Conditions Option -->
+                        <asp:LinkButton ID="lnkOptionTerms" runat="server" CssClass="settings-option-item" OnClick="lnkOptionTerms_Click">
+                            <asp:Panel ID="pnlTermsLeft" runat="server" CssClass="settings-option-left">
+                                <asp:Label ID="lblDocIcon" runat="server" CssClass="settings-option-icon" Text="&#128196;" />
+                                <asp:Label ID="lblTermsText" runat="server" CssClass="settings-option-name" Text="Term &amp; Conditions" />
+                            </asp:Panel>
+                            <asp:Label ID="lblChevron2" runat="server" CssClass="settings-option-chevron" Text="&rsaquo;" />
+                        </asp:LinkButton>
+
+                        <asp:Panel ID="pnlDivider2" runat="server" CssClass="settings-option-divider" />
+
+                    </asp:Panel>
+
+                    <!-- Inline Change Password Form Panel (Toggles on clicking Change Password) -->
+                    <asp:Panel ID="pnlChangePasswordSub" runat="server" CssClass="settings-subpanel" Visible="false">
+                        <asp:Label ID="lblSubTitle" runat="server" Style="font-size:16px; font-weight:700; color:#1a0f07; margin-bottom:12px; display:block;" Text="Update Your Password" />
+
+                        <asp:Panel ID="pnlCurrentPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblCurrentPwd" runat="server" CssClass="settings-form-label" Text="Current Password" />
+                            <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter current password" />
+                        </asp:Panel>
+
+                        <asp:Panel ID="pnlNewPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblNewPwd" runat="server" CssClass="settings-form-label" Text="New Password" />
+                            <asp:TextBox ID="txtNewPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter new password (min. 6 chars)" />
+                        </asp:Panel>
+
+                        <asp:Panel ID="pnlConfirmPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblConfirmPwd" runat="server" CssClass="settings-form-label" Text="Confirm New Password" />
+                            <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Confirm new password" />
+                        </asp:Panel>
+
+                        <asp:Button ID="btnSavePassword" runat="server" Text="Save Password" CssClass="btn-settings-save" OnClick="btnSavePassword_Click" />
+
+                        <asp:Panel ID="pnlStatusMsg" runat="server" Visible="false" Style="margin-top:10px;">
+                            <asp:Label ID="lblStatusMessage" runat="server" />
+                        </asp:Panel>
+                    </asp:Panel>
+
                 </asp:Panel>
 
             </asp:Panel>
+
         </asp:Panel>
 
         <!-- ===================== FOOTER ===================== -->
         <asp:Panel ID="pnlFooter" runat="server" CssClass="footer">
+
+            <asp:Panel ID="pnlFooterColumns" runat="server" CssClass="footer-columns">
+
+                <!-- Brand -->
+                <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
+                    <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
+                        <asp:Image ID="imgFooterLogo" runat="server"
+                            ImageUrl="~/Images/DefaultScreen/footer.png"
+                            AlternateText="Stylio" CssClass="logo-img" />
+                        <asp:Label ID="lblFooterBrand" runat="server"
+                            CssClass="footer-logo-text" Text="Stylio" />
+                    </asp:Panel>
+                    <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
+                        Text="Your Beauty is Our Passion Book Appointments with Top Salon &amp; Professional." />
+                </asp:Panel>
+
+                <!-- Quick Links -->
+                <asp:Panel ID="pnlFooterQuickLinks" runat="server">
+                    <asp:Label ID="lblQuickLinksTitle" runat="server"
+                        CssClass="footer-col-title" Text="Quick Links" />
+                    <asp:LinkButton ID="lnkFooterHome" runat="server" Text="Home" CssClass="footer-link" OnClick="lnkHome_Click" />
+                    <asp:LinkButton ID="lnkFooterServices" runat="server" Text="Services" CssClass="footer-link" OnClick="lnkServices_Click" />
+                    <asp:LinkButton ID="lnkFooterSalons" runat="server" Text="Salons" CssClass="footer-link" OnClick="lnkSalon_Click" />
+                    <asp:LinkButton ID="lnkFooterAboutUs" runat="server" Text="About us" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
+                </asp:Panel>
+
+                <!-- Customer -->
+                <asp:Panel ID="pnlFooterCustomer" runat="server">
+                    <asp:Label ID="lblCustomerTitle" runat="server"
+                        CssClass="footer-col-title" Text="Customer" />
+                    <asp:LinkButton ID="lnkFooterMyBooking" runat="server" Text="My Booking" CssClass="footer-link" OnClick="lnkSideBooking_Click" />
+                    <asp:LinkButton ID="lnkFooterReviews" runat="server" Text="Reviews" CssClass="footer-link" OnClick="lnkReviews_Click" />
+                    <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
+                </asp:Panel>
+
+                <!-- Support -->
+                <asp:Panel ID="pnlFooterSupport" runat="server">
+                    <asp:Label ID="lblSupportTitle" runat="server"
+                        CssClass="footer-col-title" Text="Support" />
+                    <asp:LinkButton ID="lnkFooterHelp" runat="server" Text="Help center" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterTerms" runat="server" Text="Terms &amp; Condition" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterPrivacy" runat="server" Text="Privacy Policy" CssClass="footer-link" />
+                    <asp:LinkButton ID="lnkFooterCancellation" runat="server" Text="Cancellation Policy" CssClass="footer-link" />
+                </asp:Panel>
+
+                <!-- Follow Us -->
+                <asp:Panel ID="pnlFooterSocial" runat="server">
+                    <asp:Label ID="lblFollowUsTitle" runat="server"
+                        CssClass="footer-col-title" Text="Follow Us" />
+                    <asp:Panel ID="pnlSocialRow" runat="server" CssClass="footer-social-row">
+                        <asp:HyperLink ID="hlFacebook" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="f" />
+                        <asp:HyperLink ID="hlInstagram" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="ig" />
+                        <asp:HyperLink ID="hlTwitter" runat="server" NavigateUrl="#" CssClass="footer-social-icon" Text="x" />
+                    </asp:Panel>
+                </asp:Panel>
+
+            </asp:Panel>
+
             <asp:Panel ID="pnlFooterBottom" runat="server" CssClass="footer-bottom">
                 <asp:Label ID="lblCopyright" runat="server"
                     Text="&#169; 2026 Stylio Salon. All Right Reserved." />
             </asp:Panel>
+
         </asp:Panel>
 
     </form>

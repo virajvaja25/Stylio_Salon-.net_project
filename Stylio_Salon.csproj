@@ -104,6 +104,7 @@
     <Content Include="SalonDetails.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="SiteHeader.ascx" />
+    <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\BookAppointment.css" />
     <Content Include="Styles\MyBooking.css" />
@@ -235,6 +236,7 @@
     <Compile Include="MyBooking.aspx.designer.cs">
       <DependentUpon>MyBooking.aspx</DependentUpon>
     </Compile>
+    <Compile Include="System\Web\UI\Label.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\24-white-spikes-on-short-dark-brown-hair.webp" />

@@ -6,85 +6,96 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Redirect to login if not authenticated
             if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
             {
                 Response.Redirect("Login.aspx");
                 return;
             }
-
-            if (!IsPostBack)
-            {
-                lblUserName.Text = Session["UserName"] as string ?? "User";
-
-                // Restore saved notification preference from session if present
-                if (Session["EmailNotifications"] != null)
-                    chkEmailNotifications.Checked = (bool)Session["EmailNotifications"];
-            }
         }
 
-        // ---------------- User Dropdown Toggle ----------------
-        protected void lnkUserToggle_Click(object sender, EventArgs e)
+        // ---------------- Settings Options Handlers ----------------
+        protected void lnkOptionChangePassword_Click(object sender, EventArgs e)
         {
-            pnlUserDropdown.Visible = !pnlUserDropdown.Visible;
+            pnlChangePasswordSub.Visible = !pnlChangePasswordSub.Visible;
+            pnlStatusMsg.Visible = false;
         }
 
-        // ---------------- Save Settings ----------------
-        protected void btnSaveSettings_Click(object sender, EventArgs e)
+        protected void lnkOptionTerms_Click(object sender, EventArgs e)
         {
-            if (!Page.IsValid) return;
+            pnlStatusMsg.Visible = true;
+            lblStatusMessage.Style["color"] = "#2B1B12";
+            lblStatusMessage.Text = "Terms & Conditions: All appointments are subject to stylist availability.";
+        }
 
-            string currentPwd = txtCurrentPassword.Text;
-            string newPwd     = txtNewPassword.Text;
+        protected void btnSavePassword_Click(object sender, EventArgs e)
+        {
+            string currentPwd = txtCurrentPassword.Text.Trim();
+            string newPwd = txtNewPassword.Text.Trim();
+            string confirmPwd = txtConfirmPassword.Text.Trim();
 
-            // Only change password if fields are filled
-            if (!string.IsNullOrEmpty(newPwd))
+            if (string.IsNullOrEmpty(currentPwd))
             {
-                // TODO: validate currentPwd against DB and update new password
-                // Placeholder: accept any non-empty current password
-                if (string.IsNullOrEmpty(currentPwd))
-                {
-                    pnlSuccess.Visible = false;
-                    lblSuccess.Text = "Please enter your current password to change it.";
-                    lblSuccess.Style["color"] = "#B3261E";
-                    pnlSuccess.Visible = true;
-                    return;
-                }
+                pnlStatusMsg.Visible = true;
+                lblStatusMessage.Style["color"] = "#C0392B";
+                lblStatusMessage.Text = "Please enter your current password.";
+                return;
             }
 
-            // Save notification preference
-            Session["EmailNotifications"] = chkEmailNotifications.Checked;
+            if (string.IsNullOrEmpty(newPwd) || newPwd.Length < 6)
+            {
+                pnlStatusMsg.Visible = true;
+                lblStatusMessage.Style["color"] = "#C0392B";
+                lblStatusMessage.Text = "New password must be at least 6 characters.";
+                return;
+            }
 
-            // Clear password fields
+            if (newPwd != confirmPwd)
+            {
+                pnlStatusMsg.Visible = true;
+                lblStatusMessage.Style["color"] = "#C0392B";
+                lblStatusMessage.Text = "New passwords do not match.";
+                return;
+            }
+
+            // Save success
+            pnlStatusMsg.Visible = true;
+            lblStatusMessage.Style["color"] = "#2E7D32";
+            lblStatusMessage.Text = "Password updated successfully!";
+
             txtCurrentPassword.Text = string.Empty;
-            txtNewPassword.Text     = string.Empty;
+            txtNewPassword.Text = string.Empty;
             txtConfirmPassword.Text = string.Empty;
-
-            lblSuccess.Text = "Settings saved successfully!";
-            lblSuccess.Style["color"] = "#2e7d32";
-            pnlSuccess.Visible = true;
         }
 
-        // ---------------- Logout ----------------
-        protected void lnkLogout_Click(object sender, EventArgs e)
+        // ---------------- Sidebar Navigation ----------------
+        protected void lnkSideProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyProfile.aspx");
+        }
+
+        protected void lnkSideBooking_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyBooking.aspx");
+        }
+
+        protected void lnkSideSettings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Settings.aspx");
+        }
+
+        protected void lnkSidePayment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Payment.aspx");
+        }
+
+        protected void lnkSideLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Session.Abandon();
             Response.Redirect("guest.aspx");
         }
 
-        // ---------------- Dropdown Menu Handlers ----------------
-        protected void lnkMyProfile_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MyProfile.aspx");
-        }
-
-        protected void lnkSetting_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Settings.aspx");
-        }
-
-        // ---------------- Navigation Handlers ----------------
+        // ---------------- Header Navigation ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");

@@ -1,0 +1,293 @@
+/* ===== Account.css — Stylio Profile & Settings Styles ===== */
+
+.account-page-container {
+    background-color: #F7EFE5;
+    padding: 30px 60px 80px 60px;
+    min-height: calc(100vh - 80px);
+}
+
+.account-main-title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 30px;
+    margin-left: 70px;
+    display: block;
+}
+
+.account-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* ---------- Sidebar Menu Card ---------- */
+.account-sidebar-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    padding: 20px 14px;
+    width: 230px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #2B1B12;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: all 0.15s ease;
+}
+
+.sidebar-nav-item:hover {
+    background-color: #FDF7EF;
+}
+
+.sidebar-nav-active {
+    background-color: #F3E8DB !important;
+    color: #1a0f07 !important;
+    font-weight: 600;
+}
+
+.sidebar-item-icon {
+    font-size: 19px;
+    width: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2B1B12;
+}
+
+.sidebar-item-text {
+    font-size: 15px;
+    color: inherit;
+    font-weight: inherit;
+}
+
+/* ---------- Profile Main Card ---------- */
+.profile-main-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    padding: 50px 40px 60px 40px;
+    width: 480px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 460px;
+}
+
+.profile-avatar-wrapper {
+    margin-bottom: 20px;
+}
+
+.profile-avatar-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 70px;
+    line-height: 1;
+}
+
+.profile-user-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 22px;
+    display: block;
+    text-align: center;
+}
+
+.profile-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.profile-info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    color: #2B1B12;
+}
+
+.profile-info-icon {
+    font-size: 18px;
+    color: #4A3A2C;
+    width: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-info-text {
+    font-size: 14px;
+    color: #2B1B12;
+    word-break: break-all;
+}
+
+/* ---------- Settings Main Card ---------- */
+.settings-main-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    padding: 34px 34px 44px 34px;
+    width: 480px;
+    box-sizing: border-box;
+    min-height: 460px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-card-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a0f07;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 22px;
+    display: block;
+}
+
+.settings-options-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 4px;
+    text-decoration: none;
+    color: #1a0f07;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.settings-option-item:hover {
+    background-color: #FAF4EB;
+    border-radius: 6px;
+}
+
+.settings-option-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.settings-option-icon {
+    font-size: 20px;
+    color: #3A2A1A;
+    width: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-option-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a0f07;
+}
+
+.settings-option-chevron {
+    font-size: 18px;
+    color: #4A3A2C;
+    font-weight: bold;
+    padding-right: 6px;
+}
+
+.settings-option-divider {
+    height: 1px;
+    background-color: #EDE4D8;
+    width: 100%;
+}
+
+/* Modal / Subpanel for Change Password */
+.settings-subpanel {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FAF6F0;
+    border-radius: 10px;
+    border: 1px solid #E8DDD0;
+}
+
+.settings-form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #241608;
+}
+
+.settings-form-input {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #D6CBC0;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.btn-settings-save {
+    background: linear-gradient(135deg, #B58D59, #9C7745);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+    .account-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .account-sidebar-card,
+    .profile-main-card,
+    .settings-main-card {
+        width: 100%;
+        max-width: 480px;
+    }
+    .account-main-title {
+        margin-left: 0;
+        text-align: center;
+    }
+}

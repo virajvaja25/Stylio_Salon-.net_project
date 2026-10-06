@@ -6,7 +6,6 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Redirect to login if not authenticated
             if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
             {
                 Response.Redirect("Login.aspx");
@@ -15,51 +14,51 @@ namespace Stylio_Salon
 
             if (!IsPostBack)
             {
-                // Pre-fill form from session
-                lblUserName.Text   = Session["UserName"] as string ?? "User";
-                txtFullName.Text   = Session["UserFullName"] as string ?? "";
-                txtEmail.Text      = Session["UserEmail"]    as string
-                                     ?? Session["UserName"]  as string ?? "";
-                txtMobile.Text     = Session["UserMobile"]   as string ?? "";
+                LoadUserProfile();
             }
         }
 
-        // ---------------- User Dropdown Toggle ----------------
-        protected void lnkUserToggle_Click(object sender, EventArgs e)
+        private void LoadUserProfile()
         {
-            pnlUserDropdown.Visible = !pnlUserDropdown.Visible;
+            // Read from Session if available, or default to the values shown in design
+            string fullName = Session["UserFullName"] as string;
+            string email = Session["UserEmail"] as string ?? Session["UserName"] as string;
+            string phone = Session["UserMobile"] as string;
+
+            lblProfileName.Text = !string.IsNullOrEmpty(fullName) ? fullName : "Khush Patel";
+            lblProfileEmail.Text = !string.IsNullOrEmpty(email) ? email : "Khushdobariya2682007@gmail.com";
+            lblProfilePhone.Text = !string.IsNullOrEmpty(phone) ? phone : "+91 8160689908";
         }
 
-        // ---------------- Save Profile ----------------
-        protected void btnSaveProfile_Click(object sender, EventArgs e)
-        {
-            if (!Page.IsValid) return;
-
-            // Persist back to session (replace with DB call in production)
-            Session["UserFullName"] = txtFullName.Text.Trim();
-            Session["UserEmail"]    = txtEmail.Text.Trim();
-            Session["UserMobile"]   = txtMobile.Text.Trim();
-
-            // Update display name if email changed
-            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()))
-                Session["UserName"] = txtEmail.Text.Trim();
-
-            lblUserName.Text = Session["UserName"] as string ?? "User";
-            pnlSuccess.Visible = true;
-        }
-
-        // ---------------- Dropdown Menu Handlers ----------------
-        protected void lnkMyProfile_Click(object sender, EventArgs e)
+        // ---------------- Sidebar Navigation ----------------
+        protected void lnkSideProfile_Click(object sender, EventArgs e)
         {
             Response.Redirect("MyProfile.aspx");
         }
 
-        protected void lnkSetting_Click(object sender, EventArgs e)
+        protected void lnkSideBooking_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyBooking.aspx");
+        }
+
+        protected void lnkSideSettings_Click(object sender, EventArgs e)
         {
             Response.Redirect("Settings.aspx");
         }
 
-        // ---------------- Navigation Handlers ----------------
+        protected void lnkSidePayment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Payment.aspx");
+        }
+
+        protected void lnkSideLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("guest.aspx");
+        }
+
+        // ---------------- Header Navigation ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
