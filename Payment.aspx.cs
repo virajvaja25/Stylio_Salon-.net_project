@@ -45,6 +45,8 @@ namespace Stylio_Salon
                 int tax = (int)Math.Round(subtotal * 0.18);
                 int grandTotal = subtotal + tax;
 
+                string salonName = Session["BookingSalonName"] as string ?? "Stylio Men's Salon";
+                lblSalonName.Text = salonName;
                 lblTaxPrice.Text = "₹" + tax;
                 lblTotalPrice.Text = "₹" + grandTotal;
                 btnPayNow.Text = "Pay Now ₹" + grandTotal;
@@ -60,7 +62,8 @@ namespace Stylio_Salon
                 rptSummaryItems.DataSource = defaultList;
                 rptSummaryItems.DataBind();
 
-                lblSalonName.Text = "Stylio Men's Salon";
+                string salonName = Session["BookingSalonName"] as string ?? "Stylio Men's Salon";
+                lblSalonName.Text = salonName;
                 lblBookingDateTime.Text = "15 May 2025 &bull; 10:00 AM";
                 lblTaxLabel.Text = "Tax (18%)";
                 lblTaxPrice.Text = "₹90";
@@ -83,8 +86,10 @@ namespace Stylio_Salon
             string bDate = Session["BookingDate"] as string ?? "25-May-2026";
             string bTime = Session["BookingTime"] as string ?? "04:30 PM";
             string totalStr = lblTotalPrice.Text;
+            string bSalon = Session["BookingSalonName"] as string ?? "Stylio Men's Salon";
 
             // Store confirmed booking in session to display in MyBooking.aspx
+            Session["ConfirmedBookingSalon"] = bSalon;
             Session["ConfirmedBookingService"] = servicesSummary;
             Session["ConfirmedBookingDate"] = bDate;
             Session["ConfirmedBookingTime"] = bTime;

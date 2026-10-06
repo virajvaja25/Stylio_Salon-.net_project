@@ -27,6 +27,7 @@ namespace Stylio_Salon
                     {
                         pnlConfirmedCard.Visible = true;
                         lblConfirmedTitle.Text = Session["ConfirmedBookingService"].ToString();
+                        lblConfirmedSalon.Text = Session["ConfirmedBookingSalon"] as string ?? "Stylio Men's Salon";
                         string bDate = Session["ConfirmedBookingDate"] as string ?? "25-May-2026";
                         string bTime = Session["ConfirmedBookingTime"] as string ?? "04:30 PM";
                         lblConfirmedDateTime.Text = bDate + " | " + bTime;

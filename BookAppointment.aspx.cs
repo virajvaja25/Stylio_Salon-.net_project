@@ -17,6 +17,19 @@ namespace Stylio_Salon
 
             if (!IsPostBack)
             {
+                string sId = Request.QueryString["salonId"];
+                if (!string.IsNullOrEmpty(sId))
+                {
+                    Session["BookingSalonId"] = sId;
+                    if (sId == "2") Session["BookingSalonName"] = "The Mae Mane Salon";
+                    else if (sId == "3") Session["BookingSalonName"] = "The Hair Studio";
+                    else Session["BookingSalonName"] = "Stylio Men's Salon";
+                }
+                else if (Session["BookingSalonName"] == null)
+                {
+                    Session["BookingSalonName"] = "Stylio Men's Salon";
+                }
+
                 // Initialize calendar to September 2025 (matching design) or current date
                 int initialYear = 2025;
                 int initialMonth = 9;
