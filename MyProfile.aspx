@@ -51,11 +51,6 @@
                         <asp:Label ID="lblTextBooking" runat="server" CssClass="sidebar-item-text" Text="My Booking" />
                     </asp:LinkButton>
 
-                    <!-- Settings -->
-                    <asp:LinkButton ID="lnkSideSettings" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideSettings_Click">
-                        <asp:Label ID="lblIconSettings" runat="server" CssClass="sidebar-item-icon" Text="&#9881;" />
-                        <asp:Label ID="lblTextSettings" runat="server" CssClass="sidebar-item-text" Text="Settings" />
-                    </asp:LinkButton>
 
                     <!-- Payment History -->
                     <asp:LinkButton ID="lnkSidePayment" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSidePayment_Click">
@@ -149,7 +144,6 @@
                     <asp:Label ID="lblSupportTitle" runat="server"
                         CssClass="footer-col-title" Text="Support" />
                     <asp:LinkButton ID="lnkFooterHelp" runat="server" Text="Help center" CssClass="footer-link" />
-                    <asp:LinkButton ID="lnkFooterTerms" runat="server" Text="Terms &amp; Condition" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterPrivacy" runat="server" Text="Privacy Policy" CssClass="footer-link" />
                     <asp:LinkButton ID="lnkFooterCancellation" runat="server" Text="Cancellation Policy" CssClass="footer-link" />
                 </asp:Panel>

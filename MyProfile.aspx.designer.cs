@@ -30,9 +30,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkSideBooking;
         protected global::System.Web.UI.WebControls.Label lblIconBooking;
         protected global::System.Web.UI.WebControls.Label lblTextBooking;
-        protected global::System.Web.UI.WebControls.LinkButton lnkSideSettings;
-        protected global::System.Web.UI.WebControls.Label lblIconSettings;
-        protected global::System.Web.UI.WebControls.Label lblTextSettings;
         protected global::System.Web.UI.WebControls.LinkButton lnkSidePayment;
         protected global::System.Web.UI.WebControls.Label lblIconPayment;
         protected global::System.Web.UI.WebControls.Label lblTextPayment;
@@ -74,7 +71,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlFooterSupport;
         protected global::System.Web.UI.WebControls.Label lblSupportTitle;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterHelp;
-        protected global::System.Web.UI.WebControls.LinkButton lnkFooterTerms;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterPrivacy;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterCancellation;
         protected global::System.Web.UI.WebControls.Panel pnlFooterSocial;

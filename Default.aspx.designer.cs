@@ -26,7 +26,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuReviews;
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuAboutUs;
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuMyProfile;
-        protected global::System.Web.UI.WebControls.LinkButton lnkMenuSetting;
 
         protected global::System.Web.UI.WebControls.Panel pnlHeroWrapper;
         protected global::System.Web.UI.WebControls.Panel pnlHero;
@@ -96,7 +95,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlFooterSupport;
         protected global::System.Web.UI.WebControls.Label lblSupportTitle;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterHelpCenter;
-        protected global::System.Web.UI.WebControls.LinkButton lnkFooterTerms;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterPrivacy;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterCancellation;
         protected global::System.Web.UI.WebControls.Panel pnlFooterSocial;

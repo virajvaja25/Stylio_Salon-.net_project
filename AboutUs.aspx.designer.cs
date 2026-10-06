@@ -73,7 +73,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlFooterSupport;
         protected global::System.Web.UI.WebControls.Label lblSupportTitle;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterHelp;
-        protected global::System.Web.UI.WebControls.LinkButton lnkFooterTerms;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterPrivacy;
         protected global::System.Web.UI.WebControls.LinkButton lnkFooterCancellation;
         protected global::System.Web.UI.WebControls.Panel pnlFooterSocial;
