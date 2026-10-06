@@ -1,15 +1,15 @@
-<%@ Page Title="Stylio | Profile" Language="C#" AutoEventWireup="true" CodeBehind="MyProfile.aspx.cs" Inherits="Stylio_Salon.MyProfile" %>
+<%@ Page Title="Stylio | Settings" Language="C#" AutoEventWireup="true" CodeBehind="Settings.aspx.cs" Inherits="Stylio_Salon.Settings" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stylio - Profile</title>
+    <title>Stylio - Settings</title>
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
     <link rel="stylesheet" type="text/css" href="Styles/Account.css" />
 </head>
 <body>
-    <form id="frmMyProfile" runat="server">
+    <form id="frmSettings" runat="server">
 
         <!-- ===================== HEADER ===================== -->
         <asp:Panel ID="pnlHeader" runat="server" CssClass="header">
@@ -32,15 +32,15 @@
         <asp:Panel ID="pnlAccountPage" runat="server" CssClass="account-page-container">
 
             <!-- Title -->
-            <asp:Label ID="lblPageTitle" runat="server" CssClass="account-main-title" Text="Profile" />
+            <asp:Label ID="lblPageTitle" runat="server" CssClass="account-main-title" Text="Settings" />
 
             <asp:Panel ID="pnlContentWrapper" runat="server" CssClass="account-content-wrapper">
 
                 <!-- ========== LEFT: SIDEBAR MENU CARD ========== -->
                 <asp:Panel ID="pnlSidebar" runat="server" CssClass="account-sidebar-card">
 
-                    <!-- My Profile (Active) -->
-                    <asp:LinkButton ID="lnkSideProfile" runat="server" CssClass="sidebar-nav-item sidebar-nav-active" OnClick="lnkSideProfile_Click">
+                    <!-- My Profile -->
+                    <asp:LinkButton ID="lnkSideProfile" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideProfile_Click">
                         <asp:Label ID="lblIconProfile" runat="server" CssClass="sidebar-item-icon" Text="&#128100;" />
                         <asp:Label ID="lblTextProfile" runat="server" CssClass="sidebar-item-text" Text="My Profile" />
                     </asp:LinkButton>
@@ -51,12 +51,11 @@
                         <asp:Label ID="lblTextBooking" runat="server" CssClass="sidebar-item-text" Text="My Booking" />
                     </asp:LinkButton>
 
-                    <!-- Settings -->
-                    <asp:LinkButton ID="lnkSideSettings" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSideSettings_Click">
+                    <!-- Settings (Active) -->
+                    <asp:LinkButton ID="lnkSideSettings" runat="server" CssClass="sidebar-nav-item sidebar-nav-active" OnClick="lnkSideSettings_Click">
                         <asp:Label ID="lblIconSettings" runat="server" CssClass="sidebar-item-icon" Text="&#9881;" />
                         <asp:Label ID="lblTextSettings" runat="server" CssClass="sidebar-item-text" Text="Settings" />
                     </asp:LinkButton>
-
 
                     <!-- Payment History -->
                     <asp:LinkButton ID="lnkSidePayment" runat="server" CssClass="sidebar-nav-item" OnClick="lnkSidePayment_Click">
@@ -72,33 +71,49 @@
 
                 </asp:Panel>
 
-                <!-- ========== RIGHT: MAIN PROFILE CARD ========== -->
-                <asp:Panel ID="pnlProfileCard" runat="server" CssClass="profile-main-card">
+                <!-- ========== RIGHT: MAIN SETTINGS CARD ========== -->
+                <asp:Panel ID="pnlSettingsCard" runat="server" CssClass="settings-main-card">
 
-                    <!-- Avatar -->
-                    <asp:Panel ID="pnlAvatarWrapper" runat="server" CssClass="profile-avatar-wrapper">
-                        <asp:Panel ID="pnlAvatarCircle" runat="server" CssClass="profile-avatar-circle">
-                            <asp:Label ID="lblAvatarIcon" runat="server" Text="&#128100;" />
-                        </asp:Panel>
+                    <asp:Label ID="lblSettingsCardTitle" runat="server" CssClass="settings-card-title" Text="Settings" />
+
+                    <!-- Status / Feedback Message -->
+                    <asp:Label ID="lblStatusMessage" runat="server" Visible="false" Style="margin-bottom:14px; font-size:14px; font-weight:600;" />
+
+                    <!-- Options List -->
+                    <asp:Panel ID="pnlOptionsList" runat="server" CssClass="settings-options-list">
+
+                        <!-- Change Password Option -->
+                        <asp:LinkButton ID="lnkOptionChangePassword" runat="server" CssClass="settings-option-item" OnClick="lnkOptionChangePassword_Click">
+                            <asp:Panel ID="pnlPwdLeft" runat="server" CssClass="settings-option-left">
+                                <asp:Label ID="lblLockIcon" runat="server" CssClass="settings-option-icon" Text="&#128274;" />
+                                <asp:Label ID="lblChangePasswordText" runat="server" CssClass="settings-option-name" Text="Change Password" />
+                            </asp:Panel>
+                            <asp:Label ID="lblChevron1" runat="server" CssClass="settings-option-chevron" Text="&rsaquo;" />
+                        </asp:LinkButton>
+
+                        <asp:Panel ID="pnlDivider1" runat="server" CssClass="settings-option-divider" />
+
                     </asp:Panel>
 
-                    <!-- User Name -->
-                    <asp:Label ID="lblProfileName" runat="server" CssClass="profile-user-name" Text="Khush Patel" />
+                    <!-- Change Password Sub-panel (hidden by default) -->
+                    <asp:Panel ID="pnlChangePasswordSub" runat="server" CssClass="settings-subpanel" Visible="false">
 
-                    <!-- User Contact Details -->
-                    <asp:Panel ID="pnlProfileInfoGroup" runat="server" CssClass="profile-info-group">
-
-                        <!-- Email -->
-                        <asp:Panel ID="pnlEmailRow" runat="server" CssClass="profile-info-row">
-                            <asp:Label ID="lblEmailIcon" runat="server" CssClass="profile-info-icon" Text="&#9993;" />
-                            <asp:Label ID="lblProfileEmail" runat="server" CssClass="profile-info-text" Text="Khushdobariya2682007@gmail.com" />
+                        <asp:Panel ID="pnlCurrentPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblCurrentPwd" runat="server" CssClass="settings-form-label" Text="Current Password" />
+                            <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter current password" />
                         </asp:Panel>
 
-                        <!-- Phone -->
-                        <asp:Panel ID="pnlPhoneRow" runat="server" CssClass="profile-info-row">
-                            <asp:Label ID="lblPhoneIcon" runat="server" CssClass="profile-info-icon" Text="&#128222;" />
-                            <asp:Label ID="lblProfilePhone" runat="server" CssClass="profile-info-text" Text="+91 8160689908" />
+                        <asp:Panel ID="pnlNewPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblNewPwd" runat="server" CssClass="settings-form-label" Text="New Password" />
+                            <asp:TextBox ID="txtNewPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter new password (min. 6 chars)" />
                         </asp:Panel>
+
+                        <asp:Panel ID="pnlConfirmPwdGroup" runat="server" CssClass="settings-form-group">
+                            <asp:Label ID="lblConfirmPwd" runat="server" CssClass="settings-form-label" Text="Confirm New Password" />
+                            <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Confirm new password" />
+                        </asp:Panel>
+
+                        <asp:Button ID="btnSavePassword" runat="server" Text="Save Password" CssClass="btn-settings-save" OnClick="btnSavePassword_Click" />
 
                     </asp:Panel>
 
@@ -116,14 +131,12 @@
                 <!-- Brand -->
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server"
-                            ImageUrl="~/Images/DefaultScreen/footer.png"
-                            AlternateText="Stylio" CssClass="logo-img" />
-                        <asp:Label ID="lblFooterBrand" runat="server"
-                            CssClass="footer-logo-text" Text="Stylio" />
+                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                            AlternateText="Stylio Logo" CssClass="logo-img" />
+                        <asp:Label ID="lblFooterBrand" runat="server" CssClass="footer-logo-text" Text="Stylio" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
-                        Text="Your Beauty is Our Passion Book Appointments with Top Salon &amp; Professional." />
+                        Text="Your Beauty is Our Passion. Book Appointments with Top Salon &amp; Professional." />
                 </asp:Panel>
 
                 <!-- Quick Links -->
@@ -145,7 +158,7 @@
                     <asp:LinkButton ID="lnkFooterContact" runat="server" Text="Contact" CssClass="footer-link" OnClick="lnkAboutUs_Click" />
                 </asp:Panel>
 
-                <!-- Support -->
+                <!-- Support (Terms & Condition removed as requested) -->
                 <asp:Panel ID="pnlFooterSupport" runat="server">
                     <asp:Label ID="lblSupportTitle" runat="server"
                         CssClass="footer-col-title" Text="Support" />
@@ -169,7 +182,7 @@
 
             <asp:Panel ID="pnlFooterBottom" runat="server" CssClass="footer-bottom">
                 <asp:Label ID="lblCopyright" runat="server"
-                    Text="&#169; 2026 Stylio Salon. All Right Reserved." />
+                    Text="&copy; 2026 Stylio. All rights reserved." />
             </asp:Panel>
 
         </asp:Panel>

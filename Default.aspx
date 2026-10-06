@@ -48,6 +48,8 @@
                         CssClass="dropdown-item" OnClick="lnkAboutUs_Click" />
                     <asp:LinkButton ID="lnkMenuMyProfile" runat="server" Text="My Profile"
                         CssClass="dropdown-item" OnClick="lnkMyProfile_Click" />
+                    <asp:LinkButton ID="lnkMenuSetting" runat="server" Text="Setting"
+                        CssClass="dropdown-item" OnClick="lnkSetting_Click" />
                 </asp:Panel>
             </asp:Panel>
 

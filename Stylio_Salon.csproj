@@ -109,6 +109,7 @@
     <Content Include="Register.aspx" />
     <Content Include="Salon.aspx" />
     <Content Include="SalonDetails.aspx" />
+    <Content Include="Settings.aspx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
@@ -220,6 +221,13 @@
     </Compile>
     <Compile Include="MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Payment.aspx.cs">
       <DependentUpon>Payment.aspx</DependentUpon>

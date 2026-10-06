@@ -36,6 +36,11 @@ namespace Stylio_Salon
             Response.Redirect("MyProfile.aspx");
         }
 
+        protected void lnkSetting_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Settings.aspx");
+        }
+
         // ---------------- Navigation Handlers ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {

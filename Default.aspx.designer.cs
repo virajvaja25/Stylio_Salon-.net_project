@@ -26,6 +26,7 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuReviews;
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuAboutUs;
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuMyProfile;
+        protected global::System.Web.UI.WebControls.LinkButton lnkMenuSetting;
 
         protected global::System.Web.UI.WebControls.Panel pnlHeroWrapper;
         protected global::System.Web.UI.WebControls.Panel pnlHero;

@@ -41,6 +41,11 @@ namespace Stylio_Salon
             Response.Redirect("MyBooking.aspx");
         }
 
+        protected void lnkSideSettings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Settings.aspx");
+        }
+
         protected void lnkSidePayment_Click(object sender, EventArgs e)
         {
             Response.Redirect("Payment.aspx");
