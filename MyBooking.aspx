@@ -53,7 +53,7 @@
                 <!-- Newly Confirmed Booking Card (Dynamic from Payment) -->
                 <asp:Panel ID="pnlConfirmedCard" runat="server" CssClass="mybooking-card" Visible="false" Style="border: 2px solid #5B2C6F;">
                     <asp:Image ID="imgConfirmed" runat="server"
-                        ImageUrl="~/Images/24-white-spikes-on-short-dark-brown-hair.webp"
+                        ImageUrl="~/Images/new_booking.jpg"
                         AlternateText="Booked Service" CssClass="mybooking-card-img" />
 
                     <asp:Panel ID="pnlConfirmedBody" runat="server" CssClass="mybooking-card-content">
@@ -77,7 +77,7 @@
                 <!-- Upcoming Card 1 -->
                 <asp:Panel ID="pnlUpCard1" runat="server" CssClass="mybooking-card">
                     <asp:Image ID="imgUp1" runat="server"
-                        ImageUrl="~/Images/24-white-spikes-on-short-dark-brown-hair.webp"
+                        ImageUrl="~/Images/haircut_booking.jpg"
                         AlternateText="Hair Cut" CssClass="mybooking-card-img" />
 
                     <asp:Panel ID="pnlUpBody1" runat="server" CssClass="mybooking-card-content">
@@ -100,7 +100,7 @@
                 <!-- Upcoming Card 2 -->
                 <asp:Panel ID="pnlUpCard2" runat="server" CssClass="mybooking-card">
                     <asp:Image ID="imgUp2" runat="server"
-                        ImageUrl="~/Images/SalonScreen/salon2.png"
+                        ImageUrl="~/Images/beard_booking.jpg"
                         AlternateText="Beard Styling" CssClass="mybooking-card-img" />
 
                     <asp:Panel ID="pnlUpBody2" runat="server" CssClass="mybooking-card-content">
@@ -128,7 +128,7 @@
                 <!-- Past Card 1 -->
                 <asp:Panel ID="pnlPastCard1" runat="server" CssClass="mybooking-card">
                     <asp:Image ID="imgPast1" runat="server"
-                        ImageUrl="~/Images/24-white-spikes-on-short-dark-brown-hair.webp"
+                        ImageUrl="~/Images/haircut_booking.jpg"
                         AlternateText="Hair Cut" CssClass="mybooking-card-img" />
 
                     <asp:Panel ID="pnlPastBody1" runat="server" CssClass="mybooking-card-content">
@@ -146,7 +146,7 @@
                 <!-- Past Card 2 -->
                 <asp:Panel ID="pnlPastCard2" runat="server" CssClass="mybooking-card">
                     <asp:Image ID="imgPast2" runat="server"
-                        ImageUrl="~/Images/SalonScreen/salon2.png"
+                        ImageUrl="~/Images/beard_booking.jpg"
                         AlternateText="Beard Styling" CssClass="mybooking-card-img" />
 
                     <asp:Panel ID="pnlPastBody2" runat="server" CssClass="mybooking-card-content">

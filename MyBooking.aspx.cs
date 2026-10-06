@@ -32,6 +32,7 @@ namespace Stylio_Salon
                         lblConfirmedDateTime.Text = bDate + " | " + bTime;
                         string total = Session["ConfirmedBookingTotal"] as string ?? "₹338";
                         lblConfirmedTotal.Text = "Total Paid: " + total;
+                        imgConfirmed.ImageUrl = "~/Images/new_booking.jpg";
                     }
                 }
             }

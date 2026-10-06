@@ -95,6 +95,9 @@
     <Content Include="Images\SalonScreen\salon1.png" />
     <Content Include="Images\SalonScreen\footer.png" />
     <Content Include="Images\SalonScreen\logo.png" />
+    <Content Include="Images\haircut_booking.jpg" />
+    <Content Include="Images\beard_booking.jpg" />
+    <Content Include="Images\new_booking.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="MyBooking.aspx" />
     <Content Include="MyProfile.aspx" />
