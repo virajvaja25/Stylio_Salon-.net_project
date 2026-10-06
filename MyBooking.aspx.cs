@@ -16,6 +16,24 @@ namespace Stylio_Salon
             if (!IsPostBack)
             {
                 ShowUpcomingTab();
+
+                if (Request.QueryString["booked"] == "1" || Session["ConfirmedBookingService"] != null)
+                {
+                    lblStatusMessage.Visible = true;
+                    lblStatusMessage.Style["color"] = "#27AE60";
+                    lblStatusMessage.Text = "🎉 Payment Successful! Your booking has been confirmed.";
+
+                    if (Session["ConfirmedBookingService"] != null)
+                    {
+                        pnlConfirmedCard.Visible = true;
+                        lblConfirmedTitle.Text = Session["ConfirmedBookingService"].ToString();
+                        string bDate = Session["ConfirmedBookingDate"] as string ?? "25-May-2026";
+                        string bTime = Session["ConfirmedBookingTime"] as string ?? "04:30 PM";
+                        lblConfirmedDateTime.Text = bDate + " | " + bTime;
+                        string total = Session["ConfirmedBookingTotal"] as string ?? "₹338";
+                        lblConfirmedTotal.Text = "Total Paid: " + total;
+                    }
+                }
             }
         }
 
@@ -57,7 +75,12 @@ namespace Stylio_Salon
             if (btn != null)
             {
                 string arg = btn.CommandArgument;
-                if (arg == "1")
+                if (arg == "confirmed")
+                {
+                    pnlConfirmedCard.Visible = false;
+                    Session.Remove("ConfirmedBookingService");
+                }
+                else if (arg == "1")
                 {
                     pnlUpCard1.Visible = false;
                 }
@@ -67,6 +90,7 @@ namespace Stylio_Salon
                 }
 
                 lblStatusMessage.Visible = true;
+                lblStatusMessage.Style["color"] = "#C0392B";
                 lblStatusMessage.Text = "Booking cancelled successfully.";
             }
         }

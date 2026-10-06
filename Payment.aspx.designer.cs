@@ -31,12 +31,7 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Label lblSalonName;
         protected global::System.Web.UI.WebControls.Label lblBookingDateTime;
         protected global::System.Web.UI.WebControls.Panel pnlItemsList;
-        protected global::System.Web.UI.WebControls.Panel pnlItem1;
-        protected global::System.Web.UI.WebControls.Label lblItem1Name;
-        protected global::System.Web.UI.WebControls.Label lblItem1Price;
-        protected global::System.Web.UI.WebControls.Panel pnlItem2;
-        protected global::System.Web.UI.WebControls.Label lblItem2Name;
-        protected global::System.Web.UI.WebControls.Label lblItem2Price;
+        protected global::System.Web.UI.WebControls.Repeater rptSummaryItems;
         protected global::System.Web.UI.WebControls.Panel pnlTaxRow;
         protected global::System.Web.UI.WebControls.Label lblTaxLabel;
         protected global::System.Web.UI.WebControls.Label lblTaxPrice;

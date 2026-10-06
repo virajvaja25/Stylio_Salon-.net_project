@@ -21,7 +21,7 @@ namespace Stylio_Salon
         private void LoadUserProfile()
         {
             // Read from Session if available, or default to the values shown in design
-            string fullName = Session["UserFullName"] as string;
+            string fullName = Session["UserFullName"] as string ?? Session["UserName"] as string;
             string email = Session["UserEmail"] as string ?? Session["UserName"] as string;
             string phone = Session["UserMobile"] as string;
 

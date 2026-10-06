@@ -131,16 +131,16 @@ namespace Stylio_Salon
         // ---------------- Next Button Click ----------------
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            List<string> selectedServices = new List<string>();
-            int total = 0;
+            var selectedItems = new List<BookingServiceItem>();
+            int subtotal = 0;
 
-            if (chkHairCut.Checked)   { selectedServices.Add("Hair Cut (₹149)"); total += 149; }
-            if (chkBeardTrim.Checked) { selectedServices.Add("Beard Trim (₹99)"); total += 99; }
-            if (chkHairColor.Checked) { selectedServices.Add("Hair Color (₹299)"); total += 299; }
-            if (chkFacial.Checked)    { selectedServices.Add("Facial (₹135)"); total += 135; }
-            if (chkHairSpa.Checked)   { selectedServices.Add("Hair Spa (₹399)"); total += 399; }
+            if (chkHairCut.Checked)   { selectedItems.Add(new BookingServiceItem { Name = "Hair Cut", Price = 149 }); subtotal += 149; }
+            if (chkBeardTrim.Checked) { selectedItems.Add(new BookingServiceItem { Name = "Beard Trim", Price = 99 }); subtotal += 99; }
+            if (chkHairColor.Checked) { selectedItems.Add(new BookingServiceItem { Name = "Hair Color", Price = 299 }); subtotal += 299; }
+            if (chkFacial.Checked)    { selectedItems.Add(new BookingServiceItem { Name = "Facial", Price = 135 }); subtotal += 135; }
+            if (chkHairSpa.Checked)   { selectedItems.Add(new BookingServiceItem { Name = "Hair Spa", Price = 399 }); subtotal += 399; }
 
-            if (selectedServices.Count == 0)
+            if (selectedItems.Count == 0)
             {
                 pnlBookingFeedback.Visible = true;
                 lblFeedbackMessage.Text = "Please select at least one service.";
@@ -149,18 +149,22 @@ namespace Stylio_Salon
             }
 
             string selectedDate = string.IsNullOrEmpty(lblSelectedDateDisplay.Text)
-                ? calBooking.SelectedDate.ToString("yyyy-MM-dd")
+                ? (calBooking.SelectedDate != DateTime.MinValue ? calBooking.SelectedDate.ToString("dd MMM yyyy") : "15 May 2026")
                 : lblSelectedDateDisplay.Text;
 
             string selectedTime = string.IsNullOrEmpty(lblSelectedTimeDisplay.Text)
                 ? "10:00 AM"
                 : lblSelectedTimeDisplay.Text;
 
-            // Store in Session for payment / confirmation
-            Session["BookingServices"] = string.Join(", ", selectedServices);
+            int tax = (int)Math.Round(subtotal * 0.18);
+            int grandTotal = subtotal + tax;
+
+            Session["SelectedServicesList"] = selectedItems;
             Session["BookingDate"] = selectedDate;
             Session["BookingTime"] = selectedTime;
-            Session["BookingTotal"] = total;
+            Session["BookingSubtotal"] = subtotal;
+            Session["BookingTax"] = tax;
+            Session["BookingTotal"] = grandTotal;
 
             Response.Redirect("Payment.aspx");
         }

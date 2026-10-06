@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Stylio_Salon
 {
@@ -20,50 +21,77 @@ namespace Stylio_Salon
 
         private void LoadBookingSummary()
         {
-            // If values were passed via Session from BookAppointment.aspx, use them
-            if (Session["BookingDate"] != null && Session["BookingTime"] != null)
+            var selectedItems = Session["SelectedServicesList"] as List<BookingServiceItem>;
+
+            if (selectedItems != null && selectedItems.Count > 0)
             {
-                string bDate = Session["BookingDate"].ToString();
-                string bTime = Session["BookingTime"].ToString();
+                rptSummaryItems.DataSource = selectedItems;
+                rptSummaryItems.DataBind();
+
+                string bDate = Session["BookingDate"] as string ?? "15 May 2026";
+                string bTime = Session["BookingTime"] as string ?? "10:00 AM";
                 lblBookingDateTime.Text = string.Format("{0} &bull; {1}", bDate, bTime);
 
-                if (Session["BookingTotal"] != null && int.TryParse(Session["BookingTotal"].ToString(), out int subtotal))
+                int subtotal = 0;
+                if (Session["BookingSubtotal"] != null && int.TryParse(Session["BookingSubtotal"].ToString(), out int sTotal))
                 {
-                    int tax = (int)Math.Round(subtotal * 0.18);
-                    int grandTotal = subtotal + tax;
-
-                    lblTaxPrice.Text = "&#8377;" + tax;
-                    lblTotalPrice.Text = "&#8377;" + grandTotal;
-                    btnPayNow.Text = "Pay Now &#8377;" + grandTotal;
+                    subtotal = sTotal;
                 }
+                else
+                {
+                    foreach (var item in selectedItems) subtotal += item.Price;
+                }
+
+                int tax = (int)Math.Round(subtotal * 0.18);
+                int grandTotal = subtotal + tax;
+
+                lblTaxPrice.Text = "₹" + tax;
+                lblTotalPrice.Text = "₹" + grandTotal;
+                btnPayNow.Text = "Pay Now ₹" + grandTotal;
             }
             else
             {
-                // Default fallback matching screenshot
+                // Fallback default matching design
+                var defaultList = new List<BookingServiceItem>
+                {
+                    new BookingServiceItem { Name = "Hair Cut", Price = 149 },
+                    new BookingServiceItem { Name = "Beard Trim", Price = 99 }
+                };
+                rptSummaryItems.DataSource = defaultList;
+                rptSummaryItems.DataBind();
+
                 lblSalonName.Text = "Stylio Men's Salon";
                 lblBookingDateTime.Text = "15 May 2025 &bull; 10:00 AM";
-                lblItem1Name.Text = "Hair Cut";
-                lblItem1Price.Text = "&#8377;149";
-                lblItem2Name.Text = "Beard Trim";
-                lblItem2Price.Text = "&#8377;99";
                 lblTaxLabel.Text = "Tax (18%)";
-                lblTaxPrice.Text = "&#8377;90";
-                lblTotalPrice.Text = "&#8377;338";
-                btnPayNow.Text = "Pay Now &#8377;338";
+                lblTaxPrice.Text = "₹90";
+                lblTotalPrice.Text = "₹338";
+                btnPayNow.Text = "Pay Now ₹338";
             }
         }
 
         protected void btnPayNow_Click(object sender, EventArgs e)
         {
-            pnlSuccessBox.Visible = true;
-            lblSuccessTitle.Text = "Appointment Confirmed!";
-            lblSuccessDesc.Text = string.Format(
-                "Your appointment has been successfully booked at {0} with Cash Payment selected. You can pay {1} during your visit.",
-                lblSalonName.Text,
-                lblTotalPrice.Text);
+            var selectedItems = Session["SelectedServicesList"] as List<BookingServiceItem>;
+            string servicesSummary = "Hair Cut";
+            if (selectedItems != null && selectedItems.Count > 0)
+            {
+                var names = new List<string>();
+                foreach (var it in selectedItems) names.Add(it.Name);
+                servicesSummary = string.Join(", ", names);
+            }
 
-            btnPayNow.Enabled = false;
-            btnPayNow.Text = "Payment Reserved";
+            string bDate = Session["BookingDate"] as string ?? "25-May-2026";
+            string bTime = Session["BookingTime"] as string ?? "04:30 PM";
+            string totalStr = lblTotalPrice.Text;
+
+            // Store confirmed booking in session to display in MyBooking.aspx
+            Session["ConfirmedBookingService"] = servicesSummary;
+            Session["ConfirmedBookingDate"] = bDate;
+            Session["ConfirmedBookingTime"] = bTime;
+            Session["ConfirmedBookingTotal"] = totalStr;
+
+            // Redirect to My Booking showing the confirmed booking
+            Response.Redirect("MyBooking.aspx?booked=1");
         }
 
         // ---------------- Navigation ----------------
@@ -94,7 +122,7 @@ namespace Stylio_Salon
 
         protected void lnkFooterMyBooking_Click(object sender, EventArgs e)
         {
-            Response.Redirect("BookAppointment.aspx");
+            Response.Redirect("MyBooking.aspx");
         }
     }
 }

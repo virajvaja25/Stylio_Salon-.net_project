@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Stylio_Salon
 {
@@ -23,9 +23,39 @@ namespace Stylio_Salon
 
             if (isValidUser)
             {
-                // Mark the session as logged in so Default.aspx / guest.aspx know which mode to show.
+                // Synchronize login ID directly to profile name and email
+                string profileName = email;
+                string profileEmail = email;
+
+                if (email.Contains("@"))
+                {
+                    profileEmail = email;
+                    if (Session["RegisteredName"] != null &&
+                        string.Equals(Session["RegisteredEmail"] as string, email, StringComparison.OrdinalIgnoreCase))
+                    {
+                        profileName = Session["RegisteredName"].ToString();
+                    }
+                    else
+                    {
+                        string namePart = email.Substring(0, email.IndexOf('@'));
+                        profileName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+                            namePart.Replace(".", " ").Replace("_", " "));
+                    }
+                }
+                else
+                {
+                    profileName = email;
+                    profileEmail = email + "@gmail.com";
+                }
+
                 Session["IsLoggedIn"] = true;
-                Session["UserName"] = email;
+                Session["UserName"] = profileName;
+                Session["UserFullName"] = profileName;
+                Session["UserEmail"] = profileEmail;
+                if (Session["UserMobile"] == null)
+                {
+                    Session["UserMobile"] = "+91 8160689908";
+                }
 
                 Response.Redirect("Default.aspx");
             }

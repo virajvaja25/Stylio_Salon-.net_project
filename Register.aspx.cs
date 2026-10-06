@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Stylio_Salon
 {
@@ -25,6 +25,14 @@ namespace Stylio_Salon
 
             if (created)
             {
+                Session["RegisteredName"] = fullName;
+                Session["RegisteredEmail"] = email;
+                Session["RegisteredMobile"] = mobile;
+                Session["UserName"] = fullName;
+                Session["UserFullName"] = fullName;
+                Session["UserEmail"] = email;
+                Session["UserMobile"] = mobile;
+
                 Response.Redirect("Login.aspx");
             }
             else

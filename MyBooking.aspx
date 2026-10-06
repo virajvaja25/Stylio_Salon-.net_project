@@ -50,6 +50,30 @@
             <!-- ================= UPCOMING TAB CONTENT ================= -->
             <asp:Panel ID="pnlUpcomingContent" runat="server" CssClass="bookings-list-container">
 
+                <!-- Newly Confirmed Booking Card (Dynamic from Payment) -->
+                <asp:Panel ID="pnlConfirmedCard" runat="server" CssClass="mybooking-card" Visible="false" Style="border: 2px solid #5B2C6F;">
+                    <asp:Image ID="imgConfirmed" runat="server"
+                        ImageUrl="~/Images/24-white-spikes-on-short-dark-brown-hair.webp"
+                        AlternateText="Booked Service" CssClass="mybooking-card-img" />
+
+                    <asp:Panel ID="pnlConfirmedBody" runat="server" CssClass="mybooking-card-content">
+                        <asp:Panel ID="pnlConfirmedHeader" runat="server" CssClass="mybooking-card-header">
+                            <asp:Label ID="lblConfirmedTitle" runat="server" CssClass="mybooking-service-title" Text="Hair Cut" />
+                            <asp:Label ID="lblConfirmedBadge" runat="server" CssClass="badge-upcoming" Text="Confirmed" Style="background-color:#27AE60; color:#fff;" />
+                        </asp:Panel>
+
+                        <asp:Label ID="lblConfirmedStylist" runat="server" CssClass="mybooking-detail-line" Text="Senior Stylist" />
+                        <asp:Label ID="lblConfirmedSalon" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
+                        <asp:Label ID="lblConfirmedDateTime" runat="server" CssClass="mybooking-datetime-line" Text="25-May-2026 | 04:30 PM" />
+                        <asp:Label ID="lblConfirmedTotal" runat="server" CssClass="mybooking-detail-line" Style="color:#5B2C6F; font-weight:700; margin-top:4px;" Text="Total Paid: ₹338" />
+
+                        <asp:Panel ID="pnlConfirmedAction" runat="server" CssClass="mybooking-action-row">
+                            <asp:LinkButton ID="btnCancelConfirmed" runat="server" Text="Cancel Booking"
+                                CssClass="btn-cancel-booking" OnClick="btnCancelBooking_Click" CommandArgument="confirmed" />
+                        </asp:Panel>
+                    </asp:Panel>
+                </asp:Panel>
+
                 <!-- Upcoming Card 1 -->
                 <asp:Panel ID="pnlUpCard1" runat="server" CssClass="mybooking-card">
                     <asp:Image ID="imgUp1" runat="server"

@@ -92,4 +92,14 @@ namespace Stylio_Salon
         public string CustomerEmail { get; set; }
         public string Notes { get; set; }
     }
+
+    public class BookingServiceItem
+    {
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public string PriceDisplay
+        {
+            get { return "₹" + Price; }
+        }
+    }
 }

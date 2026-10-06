@@ -50,19 +50,18 @@
 
                     <asp:Panel ID="pnlItemsList" runat="server" CssClass="summary-items-list">
 
-                        <asp:Panel ID="pnlItem1" runat="server" CssClass="summary-item-row">
-                            <asp:Label ID="lblItem1Name" runat="server" CssClass="summary-item-label" Text="Hair Cut" />
-                            <asp:Label ID="lblItem1Price" runat="server" CssClass="summary-item-price" Text="&#8377;149" />
-                        </asp:Panel>
-
-                        <asp:Panel ID="pnlItem2" runat="server" CssClass="summary-item-row">
-                            <asp:Label ID="lblItem2Name" runat="server" CssClass="summary-item-label" Text="Beard Trim" />
-                            <asp:Label ID="lblItem2Price" runat="server" CssClass="summary-item-price" Text="&#8377;99" />
-                        </asp:Panel>
+                        <asp:Repeater ID="rptSummaryItems" runat="server">
+                            <ItemTemplate>
+                                <asp:Panel ID="pnlItemRow" runat="server" CssClass="summary-item-row">
+                                    <asp:Label ID="lblItemName" runat="server" CssClass="summary-item-label" Text='<%# Eval("Name") %>' />
+                                    <asp:Label ID="lblItemPrice" runat="server" CssClass="summary-item-price" Text='<%# Eval("PriceDisplay") %>' />
+                                </asp:Panel>
+                            </ItemTemplate>
+                        </asp:Repeater>
 
                         <asp:Panel ID="pnlTaxRow" runat="server" CssClass="summary-item-row">
                             <asp:Label ID="lblTaxLabel" runat="server" CssClass="summary-item-label" Text="Tax (18%)" />
-                            <asp:Label ID="lblTaxPrice" runat="server" CssClass="summary-item-price" Text="&#8377;90" />
+                            <asp:Label ID="lblTaxPrice" runat="server" CssClass="summary-item-price" Text="₹90" />
                         </asp:Panel>
 
                     </asp:Panel>
@@ -71,7 +70,7 @@
 
                     <asp:Panel ID="pnlTotalRow" runat="server" CssClass="summary-total-row">
                         <asp:Label ID="lblTotalLabel" runat="server" CssClass="summary-total-label" Text="Total" />
-                        <asp:Label ID="lblTotalPrice" runat="server" CssClass="summary-total-price" Text="&#8377;338" />
+                        <asp:Label ID="lblTotalPrice" runat="server" CssClass="summary-total-price" Text="₹338" />
                     </asp:Panel>
 
                 </asp:Panel>
@@ -107,7 +106,7 @@
 
             <!-- ========== ACTION BUTTON & NOTICE ========== -->
             <asp:Panel ID="pnlActionArea" runat="server" CssClass="payment-action-area">
-                <asp:Button ID="btnPayNow" runat="server" Text="Pay Now &#8377;338" CssClass="btn-pay-now" OnClick="btnPayNow_Click" />
+                <asp:Button ID="btnPayNow" runat="server" Text="Pay Now ₹338" CssClass="btn-pay-now" OnClick="btnPayNow_Click" />
                 <asp:Label ID="lblSecureNotice" runat="server" CssClass="secure-payment-notice" Text="100 % Secure Payment" />
             </asp:Panel>
 

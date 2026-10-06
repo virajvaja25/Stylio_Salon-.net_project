@@ -29,6 +29,18 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Label lblStatusMessage;
 
         protected global::System.Web.UI.WebControls.Panel pnlUpcomingContent;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmedCard;
+        protected global::System.Web.UI.WebControls.Image imgConfirmed;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmedBody;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmedHeader;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedTitle;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedBadge;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedStylist;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedSalon;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedDateTime;
+        protected global::System.Web.UI.WebControls.Label lblConfirmedTotal;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmedAction;
+        protected global::System.Web.UI.WebControls.LinkButton btnCancelConfirmed;
         protected global::System.Web.UI.WebControls.Panel pnlUpCard1;
         protected global::System.Web.UI.WebControls.Image imgUp1;
         protected global::System.Web.UI.WebControls.Panel pnlUpBody1;
