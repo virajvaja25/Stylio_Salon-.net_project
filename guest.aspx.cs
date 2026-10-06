@@ -33,7 +33,7 @@ namespace Stylio_Salon
                     Name = "Stylio Men's Salon",
                     Rating = "4.9",
                     Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/salon_stylio.png"
+                    ImageUrl = "~/Images/salon_stylio_v2.png"
                 },
                 new Salon
                 {
@@ -41,7 +41,7 @@ namespace Stylio_Salon
                     Name = "The Mae Mane Salon",
                     Rating = "4.8",
                     Location = "Bhaktinagar Circle, Rajkot",
-                    ImageUrl = "~/Images/salon_maemane.png"
+                    ImageUrl = "~/Images/salon_maemane_v2.png"
                 },
                 new Salon
                 {
@@ -145,7 +145,11 @@ namespace Stylio_Salon
         // ---------------- Salon Card Handler ----------------
         protected void rptSalons_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            if (e.CommandName == "ViewDetails")
+            {
+                string salonId = e.CommandArgument != null ? e.CommandArgument.ToString() : "1";
+                Response.Redirect("SalonDetails.aspx?id=" + Server.UrlEncode(salonId));
+            }
         }
 
         // ---------------- Services / Reviews "View All" ----------------

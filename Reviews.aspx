@@ -42,7 +42,7 @@
                 <!-- Salon Information Header -->
                 <asp:Panel ID="pnlSalonInfoRow" runat="server" CssClass="salon-info-row">
                     <asp:Image ID="imgSalonThumb" runat="server"
-                        ImageUrl="~/Images/salon_stylio.png"
+                        ImageUrl="~/Images/salon_stylio_v2.png"
                         AlternateText="Stylio Men's Salon"
                         CssClass="salon-thumb-img" />
 

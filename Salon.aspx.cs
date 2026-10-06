@@ -15,7 +15,7 @@ namespace Stylio_Salon
                 Rating = 4.9,
                 Location = "Trikon Bag, Rajkot",
                 ServicesText = "Hair Cut, Beard, Facial",
-                ImageUrl = "~/Images/salon_stylio.png"
+                ImageUrl = "~/Images/salon_stylio_v2.png"
             },
             new SalonListItem
             {
@@ -24,7 +24,7 @@ namespace Stylio_Salon
                 Rating = 4.8,
                 Location = "Bhaktinagar Circle, Rajkot",
                 ServicesText = "Hair Cut, Beard, Hair Color",
-                ImageUrl = "~/Images/salon_maemane.png"
+                ImageUrl = "~/Images/salon_maemane_v2.png"
             },
             new SalonListItem
             {

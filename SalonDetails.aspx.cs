@@ -12,12 +12,6 @@ namespace Stylio_Salon
         private int _salonId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
-            {
-                Response.Redirect("Login.aspx");
-                return;
-            }
-
             _salonId = GetSalonIdFromQueryString();
 
             if (!IsPostBack)
@@ -44,7 +38,7 @@ namespace Stylio_Salon
                     Rating = 4.9,
                     Location = "Trikon Bag, Rajkot",
                     ServicesText = "Beard Trim, Facial, Hair Cut",
-                    ImageUrl = "~/Images/salon_stylio.png"
+                    ImageUrl = "~/Images/salon_stylio_v2.png"
                 },
                 new SalonListItem
                 {
@@ -53,7 +47,7 @@ namespace Stylio_Salon
                     Rating = 4.8,
                     Location = "Bhaktinagar Circle, Rajkot",
                     ServicesText = "Hair Cut, Beard, Hair Color",
-                    ImageUrl = "~/Images/salon_maemane.png"
+                    ImageUrl = "~/Images/salon_maemane_v2.png"
                 },
                 new SalonListItem
                 {
@@ -144,7 +138,8 @@ namespace Stylio_Salon
         // ---------------- Navigation Handlers ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
+            Response.Redirect(isLoggedIn ? "Default.aspx" : "guest.aspx");
         }
 
         protected void lnkServices_Click(object sender, EventArgs e)
@@ -170,6 +165,11 @@ namespace Stylio_Salon
         // ---------------- Book Appointment ----------------
         protected void btnBookAppointment_Click(object sender, EventArgs e)
         {
+            if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
             Response.Redirect("BookAppointment.aspx?salonId=" + Server.UrlEncode(_salonId.ToString()));
         }
     }

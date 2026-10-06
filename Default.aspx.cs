@@ -128,7 +128,7 @@ namespace Stylio_Salon
                     Name     = "Stylio Men's Salon",
                     Rating   = "4.9",
                     Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/salon_stylio.png"
+                    ImageUrl = "~/Images/salon_stylio_v2.png"
                 },
                 new Salon
                 {
@@ -136,7 +136,7 @@ namespace Stylio_Salon
                     Name     = "The Mae Mane Salon",
                     Rating   = "4.8",
                     Location = "Bhaktinagar Circle, Rajkot",
-                    ImageUrl = "~/Images/salon_maemane.png"
+                    ImageUrl = "~/Images/salon_maemane_v2.png"
                 },
                 new Salon
                 {
