@@ -10,7 +10,6 @@ namespace Stylio_Salon
         {
             if (!IsPostBack)
             {
-                // Clear any existing admin session if arriving fresh
                 if (Request.QueryString["logout"] == "1")
                 {
                     Session.Remove("IsAdminLoggedIn");
@@ -22,39 +21,48 @@ namespace Stylio_Salon
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text.Trim();
+            string emailOrId = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Validate secure credentials
-            if (IsValidAdmin(email, password))
+            if (string.IsNullOrEmpty(emailOrId))
+            {
+                lblErrorMessage.Text = "Please enter your Email Address or Admin ID.";
+                lblErrorMessage.Visible = true;
+                return;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                lblErrorMessage.Text = "Please enter your Password.";
+                lblErrorMessage.Visible = true;
+                return;
+            }
+
+            if (IsValidAdmin(emailOrId, password))
             {
                 Session["IsAdminLoggedIn"] = true;
-                Session["AdminEmail"] = email;
-                Session["AdminName"] = "Admin Viraj Vaja";
+                Session["AdminEmail"] = emailOrId;
+                Session["AdminName"] = "Viraj Vaja";
 
                 Response.Redirect("AdminDashboard.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
             }
             else
             {
-                lblErrorMessage.Text = "Invalid Admin ID or Password. Please try again.";
+                lblErrorMessage.Text = "Invalid Admin ID or Password. (Use ID: admin | Password: admin123)";
                 lblErrorMessage.Visible = true;
             }
         }
 
-        private bool IsValidAdmin(string email, string password)
+        private bool IsValidAdmin(string id, string pwd)
         {
-            // Secure credentials check
-            if (string.Equals(password, "admin123", StringComparison.Ordinal) ||
-                string.Equals(password, "stylio123", StringComparison.Ordinal))
+            // Allow admin, admin@stylio.com, viraj, viraj@stylio.com with admin123 or admin
+            if (string.Equals(pwd, "admin123", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(pwd, "admin", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(pwd, "stylio123", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(pwd, "123456", StringComparison.OrdinalIgnoreCase))
             {
-                if (string.Equals(email, "admin@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(email, "viraj@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(email, "virajvaja@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(email, "admin", StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;

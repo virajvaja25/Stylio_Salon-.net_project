@@ -24,7 +24,7 @@
 
                     <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="admin-form-group">
                         <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail" CssClass="admin-form-label" Text="Email Address" />
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="admin-form-input" TextMode="Email" placeholder="Enter Your Email" />
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="admin-form-input" placeholder="Enter Your Email" />
                     </asp:Panel>
 
                     <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="admin-form-group">

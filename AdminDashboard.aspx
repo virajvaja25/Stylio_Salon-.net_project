@@ -21,42 +21,42 @@
                 <asp:Panel ID="pnlSidebarNav" runat="server" CssClass="admin-sidebar-nav">
                     
                     <asp:HyperLink ID="lnkNavDashboard" runat="server" NavigateUrl="~/AdminDashboard.aspx" CssClass="admin-nav-item admin-nav-item-active">
-                        <asp:Label ID="lblIconDashboard" runat="server" CssClass="admin-nav-icon" Text="&#9638;" />
+                        <asp:Label ID="lblIconDashboard" runat="server" CssClass="admin-nav-icon" Text="🏚️" />
                         <asp:Label ID="lblTextDashboard" runat="server" CssClass="admin-nav-text" Text="Dashboard" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconUsers" runat="server" CssClass="admin-nav-icon" Text="&#128100;" />
+                        <asp:Label ID="lblIconUsers" runat="server" CssClass="admin-nav-icon" Text="👥" />
                         <asp:Label ID="lblTextUsers" runat="server" CssClass="admin-nav-text" Text="Users" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconSalons" runat="server" CssClass="admin-nav-icon" Text="&#127970;" />
+                        <asp:Label ID="lblIconSalons" runat="server" CssClass="admin-nav-icon" Text="✂️" />
                         <asp:Label ID="lblTextSalons" runat="server" CssClass="admin-nav-text" Text="Salons" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavBookings" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconBookings" runat="server" CssClass="admin-nav-icon" Text="&#128197;" />
+                        <asp:Label ID="lblIconBookings" runat="server" CssClass="admin-nav-icon" Text="🗓️" />
                         <asp:Label ID="lblTextBookings" runat="server" CssClass="admin-nav-text" Text="Bookings" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconServices" runat="server" CssClass="admin-nav-icon" Text="&#9986;" />
+                        <asp:Label ID="lblIconServices" runat="server" CssClass="admin-nav-icon" Text="💇" />
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavReviews" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconReviews" runat="server" CssClass="admin-nav-icon" Text="&#11088;" />
+                        <asp:Label ID="lblIconReviews" runat="server" CssClass="admin-nav-icon" Text="⭐" />
                         <asp:Label ID="lblTextReviews" runat="server" CssClass="admin-nav-text" Text="Reviews" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavPayments" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconPayments" runat="server" CssClass="admin-nav-icon" Text="&#128179;" />
+                        <asp:Label ID="lblIconPayments" runat="server" CssClass="admin-nav-icon" Text="💳" />
                         <asp:Label ID="lblTextPayments" runat="server" CssClass="admin-nav-text" Text="Payments" />
                     </asp:HyperLink>
 
                     <asp:HyperLink ID="lnkNavSettings" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
-                        <asp:Label ID="lblIconSettings" runat="server" CssClass="admin-nav-icon" Text="&#9881;" />
+                        <asp:Label ID="lblIconSettings" runat="server" CssClass="admin-nav-icon" Text="⚙️" />
                         <asp:Label ID="lblTextSettings" runat="server" CssClass="admin-nav-text" Text="Settings" />
                     </asp:HyperLink>
 
@@ -64,7 +64,7 @@
 
                 <asp:Panel ID="pnlSidebarBottom" runat="server" CssClass="admin-sidebar-bottom">
                     <asp:LinkButton ID="btnNavLogout" runat="server" CssClass="admin-logout-btn" OnClick="btnNavLogout_Click">
-                        <asp:Label ID="lblIconLogout" runat="server" CssClass="admin-nav-icon" Text="&#8594;" />
+                        <asp:Label ID="lblIconLogout" runat="server" CssClass="admin-nav-icon" Text="🌐" />
                         <asp:Label ID="lblTextLogout" runat="server" CssClass="admin-nav-text" Text="Logout" />
                     </asp:LinkButton>
                 </asp:Panel>
@@ -78,13 +78,13 @@
                 <asp:Panel ID="pnlTopbar" runat="server" CssClass="admin-topbar">
                     
                     <asp:Panel ID="pnlSearchWrapper" runat="server" CssClass="admin-search-wrapper">
-                        <asp:Label ID="lblSearchIcon" runat="server" CssClass="admin-search-icon" Text="&#128269;" />
+                        <asp:Label ID="lblSearchIcon" runat="server" CssClass="admin-search-icon" Text="🔍" />
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="admin-search-input" placeholder="Search Here..." />
                     </asp:Panel>
 
                     <asp:Panel ID="pnlProfileWidget" runat="server" CssClass="admin-profile-widget">
                         <asp:Panel ID="pnlAvatarCircle" runat="server" CssClass="admin-avatar-circle">
-                            <asp:Label ID="lblAvatarIcon" runat="server" Text="&#128100;" />
+                            <asp:Label ID="lblAvatarIcon" runat="server" Text="👤" />
                         </asp:Panel>
                         <asp:Panel ID="pnlProfileInfo" runat="server" CssClass="admin-profile-info">
                             <asp:Label ID="lblAdminRole" runat="server" CssClass="admin-profile-role" Text="Admin" />
@@ -159,20 +159,20 @@
                         <%-- Row 1: Viraj Vaja --%>
                         <asp:Panel ID="pnlBookingRow1" runat="server" CssClass="admin-booking-row">
                             <asp:Panel ID="pnlAvatar1" runat="server" CssClass="admin-user-avatar avatar-coral">
-                                <asp:Label ID="lblAvatar1Icon" runat="server" Text="&#128100;" />
+                                <asp:Label ID="lblAvatar1Icon" runat="server" Text="👤" />
                             </asp:Panel>
                             <asp:Label ID="lblBooking1Name" runat="server" CssClass="admin-booking-name" Text="Viraj Vaja" />
                             <asp:Label ID="lblBooking1Salon" runat="server" CssClass="admin-booking-salon" Text="Stylio Men's Salon" />
                             <asp:Label ID="lblBooking1Date" runat="server" CssClass="admin-booking-date" Text="08 Aug-2026" />
                             <asp:Panel ID="pnlStatus1" runat="server">
-                                <asp:Label ID="lblStatus1Badge" runat="server" CssClass="admin-status-badge badge-completed" Text="Completed" />
+                                <asp:Label ID="lblStatus1Badge" runat="server" CssClass="admin-status-badge badge-completed" Text="Completed &#10004;" />
                             </asp:Panel>
                         </asp:Panel>
 
                         <%-- Row 2: Khush Patel --%>
                         <asp:Panel ID="pnlBookingRow2" runat="server" CssClass="admin-booking-row">
                             <asp:Panel ID="pnlAvatar2" runat="server" CssClass="admin-user-avatar avatar-teal">
-                                <asp:Label ID="lblAvatar2Icon" runat="server" Text="&#128100;" />
+                                <asp:Label ID="lblAvatar2Icon" runat="server" Text="👤" />
                             </asp:Panel>
                             <asp:Label ID="lblBooking2Name" runat="server" CssClass="admin-booking-name" Text="Khush Patel" />
                             <asp:Label ID="lblBooking2Salon" runat="server" CssClass="admin-booking-salon" Text="The Hair Studio" />
@@ -185,13 +185,13 @@
                         <%-- Row 3: Meet Patel --%>
                         <asp:Panel ID="pnlBookingRow3" runat="server" CssClass="admin-booking-row">
                             <asp:Panel ID="pnlAvatar3" runat="server" CssClass="admin-user-avatar avatar-coral">
-                                <asp:Label ID="lblAvatar3Icon" runat="server" Text="&#128100;" />
+                                <asp:Label ID="lblAvatar3Icon" runat="server" Text="👤" />
                             </asp:Panel>
                             <asp:Label ID="lblBooking3Name" runat="server" CssClass="admin-booking-name" Text="Meet Patel" />
                             <asp:Label ID="lblBooking3Salon" runat="server" CssClass="admin-booking-salon" Text="The Mea Men Salon" />
                             <asp:Label ID="lblBooking3Date" runat="server" CssClass="admin-booking-date" Text="06 Aug-2026" />
                             <asp:Panel ID="pnlStatus3" runat="server">
-                                <asp:Label ID="lblStatus3Badge" runat="server" CssClass="admin-status-badge badge-completed" Text="Completed" />
+                                <asp:Label ID="lblStatus3Badge" runat="server" CssClass="admin-status-badge badge-completed" Text="Completed &#10004;" />
                             </asp:Panel>
                         </asp:Panel>
 
