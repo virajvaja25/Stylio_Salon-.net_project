@@ -44,19 +44,18 @@ namespace Stylio_Salon
                 Session["AdminEmail"] = emailOrId;
                 Session["AdminName"] = "Viraj Vaja";
 
-                Response.Redirect("AdminDashboard.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                Response.Redirect("AdminDashboard.aspx");
             }
             else
             {
-                lblErrorMessage.Text = "Invalid Admin ID or Password. (Use ID: admin | Password: admin123)";
+                lblErrorMessage.Text = "Invalid Admin ID or Password. (Email: admin@stylio.com | Password: admin123)";
                 lblErrorMessage.Visible = true;
             }
         }
 
         private bool IsValidAdmin(string id, string pwd)
         {
-            // Allow admin, admin@stylio.com, viraj, viraj@stylio.com with admin123 or admin
+            // Case-insensitive password check: admin123, admin, stylio123, 123456
             if (string.Equals(pwd, "admin123", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(pwd, "admin", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(pwd, "stylio123", StringComparison.OrdinalIgnoreCase) ||

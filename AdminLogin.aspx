@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="Styles/Admin.css" />
 </head>
 <body>
-    <form id="frmAdminLogin" runat="server">
+    <form id="frmAdminLogin" runat="server" defaultbutton="btnLogin">
         <asp:Panel ID="pnlAdminLoginPage" runat="server" CssClass="admin-login-page">
             
             <asp:Panel ID="pnlTopBar" runat="server" CssClass="admin-login-topbar">
@@ -18,7 +18,7 @@
             </asp:Panel>
 
             <asp:Panel ID="pnlCenterArea" runat="server" CssClass="admin-login-center-area">
-                <asp:Panel ID="pnlLoginCard" runat="server" CssClass="admin-login-card">
+                <asp:Panel ID="pnlLoginCard" runat="server" CssClass="admin-login-card" DefaultButton="btnLogin">
                     
                     <asp:Label ID="lblLoginHeading" runat="server" CssClass="admin-login-title" Text="Login" />
 
