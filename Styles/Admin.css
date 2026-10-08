@@ -1,0 +1,505 @@
+/* ===================================================================
+   Admin.css - Dedicated Styles for Stylio Admin Panel
+   =================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #F6EFEB;
+    color: #1A1A1A;
+    min-height: 100vh;
+}
+
+/* ===================================================================
+   ADMIN LOGIN PAGE
+   =================================================================== */
+.admin-login-page {
+    min-height: 100vh;
+    background-color: #F6EFEB;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-login-topbar {
+    padding: 0;
+    width: 100%;
+}
+
+.admin-login-logo-box {
+    width: 206px;
+    height: 86px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.admin-login-center-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px 60px 20px;
+}
+
+.admin-login-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5DACB;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    width: 420px;
+    max-width: 100%;
+    padding: 44px 38px 48px 38px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-login-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    text-align: center;
+    margin-bottom: 28px;
+    display: block;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.admin-form-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.admin-form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #222;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.admin-form-input:focus {
+    border-color: #AC8752;
+}
+
+.admin-forgot-pwd-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -6px;
+    margin-bottom: 22px;
+}
+
+.admin-forgot-pwd-link {
+    font-size: 14px;
+    color: #B28854;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.admin-forgot-pwd-link:hover {
+    text-decoration: underline;
+}
+
+.btn-admin-login {
+    background-color: #A9834F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+    transition: background-color 0.2s;
+    text-align: center;
+    display: block;
+}
+
+.btn-admin-login:hover {
+    background-color: #96723E;
+}
+
+.admin-login-error {
+    color: #C0392B;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 14px;
+    text-align: center;
+    display: block;
+}
+
+/* ===================================================================
+   ADMIN DASHBOARD LAYOUT
+   ================================================================== */
+.admin-dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F6EFEB;
+}
+
+/* ---------- Left Sidebar ---------- */
+.admin-sidebar {
+    width: 220px;
+    min-width: 220px;
+    background-color: #31251B;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-sidebar-logo-box {
+    width: 100%;
+    height: 86px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.admin-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    gap: 4px;
+    flex: 1;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 22px;
+    text-decoration: none;
+    color: #D9D0C7;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.admin-nav-item:hover {
+    background-color: #3D2F23;
+    color: #FFFFFF;
+}
+
+.admin-nav-item-active {
+    background-color: #3D2F23;
+    color: #D8AE64;
+    font-weight: 600;
+    border-left-color: #D8AE64;
+}
+
+.admin-nav-icon {
+    font-size: 18px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-nav-text {
+    font-size: 16px;
+}
+
+.admin-sidebar-bottom {
+    border-top: 1px solid #4D3C2F;
+    padding: 14px 0 20px 0;
+}
+
+.admin-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 22px;
+    text-decoration: none;
+    color: #D9D0C7;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.admin-logout-btn:hover {
+    background-color: #3D2F23;
+    color: #E74C3C;
+}
+
+/* ---------- Main Dashboard Area ---------- */
+.admin-main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* ---------- Topbar ---------- */
+.admin-topbar {
+    height: 86px;
+    background-color: #F6EFEB;
+    border-bottom: 1px solid #E2D7C8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.admin-search-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 8px 16px;
+    gap: 10px;
+    width: 320px;
+    max-width: 100%;
+}
+
+.admin-search-icon {
+    font-size: 15px;
+    color: #888888;
+}
+
+.admin-search-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    color: #1A1A1A;
+    font-family: inherit;
+}
+
+.admin-profile-widget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-avatar-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #FFB3B3;
+    border: 2px solid #2B1B12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.admin-profile-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.admin-profile-role {
+    font-size: 13px;
+    color: #4A3B2E;
+    font-weight: 500;
+}
+
+.admin-profile-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+/* ---------- Dashboard Content Area ---------- */
+.admin-content-area {
+    padding: 32px 40px 60px 40px;
+    flex: 1;
+}
+
+.admin-page-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 24px;
+    display: block;
+}
+
+/* ---------- Stat Cards Grid ---------- */
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 34px;
+}
+
+.admin-stat-card {
+    background-color: #FFFFFF;
+    border: 1px solid #EFE6DC;
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-stat-label {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.admin-stat-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.admin-stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    color: #27AE60;
+    display: block;
+}
+
+/* Second row for 5th and 6th stat cards */
+.admin-stats-secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 36px;
+}
+
+/* ---------- Recent Bookings Section ---------- */
+.admin-section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.admin-bookings-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid #EFE6DC;
+    padding: 10px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-booking-row {
+    display: grid;
+    grid-template-columns: 46px 200px 1fr 180px 120px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #F1ECE6;
+}
+
+.admin-booking-row:last-child {
+    border-bottom: none;
+}
+
+.admin-user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.avatar-coral {
+    background-color: #E74C3C;
+}
+
+.avatar-teal {
+    background-color: #16A085;
+}
+
+.admin-booking-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.admin-booking-salon {
+    font-size: 15px;
+    color: #2C2C2C;
+}
+
+.admin-booking-date {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+.admin-status-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+}
+
+.badge-completed {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.badge-pending {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+    .admin-stats-grid,
+    .admin-stats-secondary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .admin-booking-row {
+        grid-template-columns: 40px 160px 1fr 140px 100px;
+    }
+}

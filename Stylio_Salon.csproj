@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminDashboard.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -113,8 +115,10 @@
     <Content Include="SalonDetails.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="SiteHeader.ascx" />
+    <Content Include="Images\admin_logo.png" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
+    <Content Include="Styles\Admin.css" />
     <Content Include="Styles\BookAppointment.css" />
     <Content Include="Styles\MyBooking.css" />
     <Content Include="Styles\Payment.css" />
@@ -124,6 +128,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
