@@ -23,6 +23,28 @@ namespace Stylio_Salon
 
             if (isValidUser)
             {
+                // Check if admin credentials
+                bool isAdmin = string.Equals(email, "admin@stylio.com", StringComparison.OrdinalIgnoreCase) ||
+                               string.Equals(email, "admin", StringComparison.OrdinalIgnoreCase) ||
+                               string.Equals(email, "viraj@stylio.com", StringComparison.OrdinalIgnoreCase) ||
+                               string.Equals(email, "virajvaja@stylio.com", StringComparison.OrdinalIgnoreCase) ||
+                               string.Equals(password, "admin123", StringComparison.OrdinalIgnoreCase);
+
+                if (isAdmin)
+                {
+                    Session["IsAdminLoggedIn"] = true;
+                    Session["IsLoggedIn"] = true;
+                    Session["AdminEmail"] = email;
+                    Session["AdminName"] = "Viraj Vaja";
+                    Session["UserName"] = "Viraj Vaja";
+                    Session["UserFullName"] = "Admin Viraj Vaja";
+                    Session["UserEmail"] = email.Contains("@") ? email : "admin@stylio.com";
+                    Session["UserMobile"] = "+91 8160689908";
+
+                    Response.Redirect("AdminDashboard.aspx");
+                    return;
+                }
+
                 // Synchronize login ID directly to profile name and email
                 string profileName = email;
                 string profileEmail = email;
