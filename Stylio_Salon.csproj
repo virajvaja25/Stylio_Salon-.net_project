@@ -73,6 +73,9 @@
     <Content Include="Admin\AdminAddUser.aspx" />
     <Content Include="Admin\AdminAddService.aspx" />
     <Content Include="Admin\AdminAddSalon.aspx" />
+    <Content Include="Admin\AdminReviews.aspx" />
+    <Content Include="Admin\AdminPayments.aspx" />
+    <Content Include="Admin\AdminSalons.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -134,6 +137,16 @@
     <Content Include="Images\admin_icons\avatar_teal.svg" />
     <Content Include="Images\admin_icons\check.svg" />
     <Content Include="Images\admin_icons\upload.svg" />
+    <Content Include="Images\admin_icons\star.svg" />
+    <Content Include="Images\admin_icons\star_half.svg" />
+    <Content Include="Images\admin_icons\pin.svg" />
+    <Content Include="Images\admin_icons\hair_service.svg" />
+    <Content Include="Images\admin_icons\more_dots.svg" />
+    <Content Include="Images\admin_icons\more_vert.svg" />
+    <Content Include="Images\admin_icons\wallet_card.svg" />
+    <Content Include="Images\admin_icons\money_bag.svg" />
+    <Content Include="Images\admin_icons\user_stat.svg" />
+    <Content Include="Images\admin_icons\upi.svg" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\Admin.css" />
@@ -180,6 +193,27 @@
     </Compile>
     <Compile Include="Admin\AdminAddSalon.aspx.designer.cs">
       <DependentUpon>AdminAddSalon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminReviews.aspx.cs">
+      <DependentUpon>AdminReviews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminReviews.aspx.designer.cs">
+      <DependentUpon>AdminReviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminPayments.aspx.cs">
+      <DependentUpon>AdminPayments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminPayments.aspx.designer.cs">
+      <DependentUpon>AdminPayments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminSalons.aspx.cs">
+      <DependentUpon>AdminSalons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminSalons.aspx.designer.cs">
+      <DependentUpon>AdminSalons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

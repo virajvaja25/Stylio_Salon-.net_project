@@ -31,7 +31,7 @@
                         <asp:Label ID="lblTextUsers" runat="server" CssClass="admin-nav-text" Text="Users" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/Admin/AdminAddSalon.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/Admin/AdminSalons.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavSalons" runat="server" ImageUrl="~/Images/admin_icons/salons.svg" CssClass="admin-nav-svg-icon" AlternateText="Salons" />
                         <asp:Label ID="lblTextSalons" runat="server" CssClass="admin-nav-text" Text="Salons" />
                     </asp:HyperLink>
@@ -46,12 +46,12 @@
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavReviews" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavReviews" runat="server" NavigateUrl="~/Admin/AdminReviews.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavReviews" runat="server" ImageUrl="~/Images/admin_icons/reviews.svg" CssClass="admin-nav-svg-icon" AlternateText="Reviews" />
                         <asp:Label ID="lblTextReviews" runat="server" CssClass="admin-nav-text" Text="Reviews" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavPayments" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavPayments" runat="server" NavigateUrl="~/Admin/AdminPayments.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavPayments" runat="server" ImageUrl="~/Images/admin_icons/payments.svg" CssClass="admin-nav-svg-icon" AlternateText="Payments" />
                         <asp:Label ID="lblTextPayments" runat="server" CssClass="admin-nav-text" Text="Payments" />
                     </asp:HyperLink>
