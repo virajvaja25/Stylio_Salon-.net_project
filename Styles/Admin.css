@@ -1242,6 +1242,184 @@ body {
     color: #1A1A1A;
 }
 
+/* More Options Dropdown Menu */
+.admin-more-menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-more-dots-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.admin-more-dots-btn:hover {
+    background-color: #F0ECE6;
+}
+
+.admin-salon-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5DED5;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    min-width: 150px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0;
+}
+
+.admin-dropdown-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #241913;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+    font-family: inherit;
+}
+
+.admin-dropdown-action:hover {
+    background-color: #F8F4EE;
+    color: #A9824D;
+}
+
+.admin-dropdown-action.admin-action-remove {
+    color: #D32F2F;
+}
+
+.admin-dropdown-action.admin-action-remove:hover {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+/* Modal styles for Details */
+.admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.admin-modal-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.admin-modal-header {
+    background-color: #F8F4EE;
+    border-bottom: 1px solid #E8E0D5;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-modal-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #241913;
+}
+
+.admin-modal-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-modal-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #E0D9D0;
+    margin-bottom: 6px;
+}
+
+.admin-detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #F0ECE6;
+}
+
+.admin-detail-key {
+    font-weight: 600;
+    color: #555555;
+}
+
+.admin-detail-val {
+    color: #1A1A1A;
+    font-weight: 500;
+    text-align: right;
+}
+
+.admin-modal-footer {
+    padding: 14px 22px;
+    border-top: 1px solid #E8E0D5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #FAF7F2;
+}
+
+.admin-banner-alert {
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-banner-alert-success {
+    background-color: #E2F8E7;
+    color: #1B5E20;
+    border: 1px solid #C8E6C9;
+}
+
 @media (max-width: 900px) {
     .admin-payments-stats-grid {
         grid-template-columns: 1fr;
