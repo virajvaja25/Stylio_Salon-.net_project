@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="Styles/Admin.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/Admin.css" />
 </head>
 <body>
     <form id="frmAdminDashboard" runat="server">
@@ -21,17 +21,17 @@
 
                 <asp:Panel ID="pnlSidebarNav" runat="server" CssClass="admin-sidebar-nav">
                     
-                    <asp:HyperLink ID="lnkNavDashboard" runat="server" NavigateUrl="~/AdminDashboard.aspx" CssClass="admin-nav-item admin-nav-item-active">
+                    <asp:HyperLink ID="lnkNavDashboard" runat="server" NavigateUrl="~/Admin/AdminDashboard.aspx" CssClass="admin-nav-item admin-nav-item-active">
                         <asp:Image ID="imgNavDashboard" runat="server" ImageUrl="~/Images/admin_icons/dashboard.svg" CssClass="admin-nav-svg-icon" AlternateText="Dashboard" />
                         <asp:Label ID="lblTextDashboard" runat="server" CssClass="admin-nav-text" Text="Dashboard" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="~/AdminAddUser.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="~/Admin/AdminAddUser.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavUsers" runat="server" ImageUrl="~/Images/admin_icons/users.svg" CssClass="admin-nav-svg-icon" AlternateText="Users" />
                         <asp:Label ID="lblTextUsers" runat="server" CssClass="admin-nav-text" Text="Users" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/AdminAddSalon.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/Admin/AdminAddSalon.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavSalons" runat="server" ImageUrl="~/Images/admin_icons/salons.svg" CssClass="admin-nav-svg-icon" AlternateText="Salons" />
                         <asp:Label ID="lblTextSalons" runat="server" CssClass="admin-nav-text" Text="Salons" />
                     </asp:HyperLink>
@@ -41,7 +41,7 @@
                         <asp:Label ID="lblTextBookings" runat="server" CssClass="admin-nav-text" Text="Bookings" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/AdminAddService.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/Admin/AdminAddService.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavServices" runat="server" ImageUrl="~/Images/admin_icons/services.svg" CssClass="admin-nav-svg-icon" AlternateText="Services" />
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>

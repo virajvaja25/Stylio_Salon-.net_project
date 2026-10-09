@@ -68,11 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
-    <Content Include="AdminLogin.aspx" />
-    <Content Include="AdminDashboard.aspx" />
-    <Content Include="AdminAddUser.aspx" />
-    <Content Include="AdminAddService.aspx" />
-    <Content Include="AdminAddSalon.aspx" />
+    <Content Include="Admin\AdminLogin.aspx" />
+    <Content Include="Admin\AdminDashboard.aspx" />
+    <Content Include="Admin\AdminAddUser.aspx" />
+    <Content Include="Admin\AdminAddService.aspx" />
+    <Content Include="Admin\AdminAddSalon.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -146,39 +146,39 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminLogin.aspx.cs">
+    <Compile Include="Admin\AdminLogin.aspx.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminLogin.aspx.designer.cs">
+    <Compile Include="Admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashboard.aspx.cs">
+    <Compile Include="Admin\AdminDashboard.aspx.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminDashboard.aspx.designer.cs">
+    <Compile Include="Admin\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminAddUser.aspx.cs">
+    <Compile Include="Admin\AdminAddUser.aspx.cs">
       <DependentUpon>AdminAddUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminAddUser.aspx.designer.cs">
+    <Compile Include="Admin\AdminAddUser.aspx.designer.cs">
       <DependentUpon>AdminAddUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminAddService.aspx.cs">
+    <Compile Include="Admin\AdminAddService.aspx.cs">
       <DependentUpon>AdminAddService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminAddService.aspx.designer.cs">
+    <Compile Include="Admin\AdminAddService.aspx.designer.cs">
       <DependentUpon>AdminAddService.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminAddSalon.aspx.cs">
+    <Compile Include="Admin\AdminAddSalon.aspx.cs">
       <DependentUpon>AdminAddSalon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminAddSalon.aspx.designer.cs">
+    <Compile Include="Admin\AdminAddSalon.aspx.designer.cs">
       <DependentUpon>AdminAddSalon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

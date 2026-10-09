@@ -1,15 +1,15 @@
-<%@ Page Title="Stylio | Add User" Language="C#" AutoEventWireup="true" CodeBehind="AdminAddUser.aspx.cs" Inherits="Stylio_Salon.AdminAddUser" %>
+<%@ Page Title="Stylio | Add Service" Language="C#" AutoEventWireup="true" CodeBehind="AdminAddService.aspx.cs" Inherits="Stylio_Salon.AdminAddService" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stylio - Add User</title>
-    <link rel="stylesheet" type="text/css" href="Styles/Admin.css" />
+    <title>Stylio - Add Service</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/Admin.css" />
 </head>
 <body>
-    <form id="frmAdminAddUser" runat="server">
+    <form id="frmAdminAddService" runat="server">
         <asp:Panel ID="pnlDashboardWrapper" runat="server" CssClass="admin-dashboard-container">
             
             <%-- Left Sidebar --%>
@@ -21,17 +21,17 @@
 
                 <asp:Panel ID="pnlSidebarNav" runat="server" CssClass="admin-sidebar-nav">
                     
-                    <asp:HyperLink ID="lnkNavDashboard" runat="server" NavigateUrl="~/AdminDashboard.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavDashboard" runat="server" NavigateUrl="~/Admin/AdminDashboard.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavDashboard" runat="server" ImageUrl="~/Images/admin_icons/dashboard.svg" CssClass="admin-nav-svg-icon" AlternateText="Dashboard" />
                         <asp:Label ID="lblTextDashboard" runat="server" CssClass="admin-nav-text" Text="Dashboard" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="~/AdminAddUser.aspx" CssClass="admin-nav-item admin-nav-item-active">
+                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="~/Admin/AdminAddUser.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavUsers" runat="server" ImageUrl="~/Images/admin_icons/users.svg" CssClass="admin-nav-svg-icon" AlternateText="Users" />
                         <asp:Label ID="lblTextUsers" runat="server" CssClass="admin-nav-text" Text="Users" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/AdminAddSalon.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/Admin/AdminAddSalon.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavSalons" runat="server" ImageUrl="~/Images/admin_icons/salons.svg" CssClass="admin-nav-svg-icon" AlternateText="Salons" />
                         <asp:Label ID="lblTextSalons" runat="server" CssClass="admin-nav-text" Text="Salons" />
                     </asp:HyperLink>
@@ -41,7 +41,7 @@
                         <asp:Label ID="lblTextBookings" runat="server" CssClass="admin-nav-text" Text="Bookings" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/AdminAddService.aspx" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/Admin/AdminAddService.aspx" CssClass="admin-nav-item admin-nav-item-active">
                         <asp:Image ID="imgNavServices" runat="server" ImageUrl="~/Images/admin_icons/services.svg" CssClass="admin-nav-svg-icon" AlternateText="Services" />
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>
@@ -101,8 +101,8 @@
                 <asp:Panel ID="pnlContentArea" runat="server" CssClass="admin-content-area">
                     
                     <asp:Panel ID="pnlTitleRow" runat="server" CssClass="admin-title-row">
-                        <asp:HyperLink ID="lnkBack" runat="server" NavigateUrl="~/AdminDashboard.aspx" CssClass="admin-back-link" Text="&#8592;" ToolTip="Back to Dashboard" />
-                        <asp:Label ID="lblPageTitle" runat="server" CssClass="admin-page-title" Text="Add User" />
+                        <asp:HyperLink ID="lnkBack" runat="server" NavigateUrl="~/Admin/AdminDashboard.aspx" CssClass="admin-back-link" Text="&#8592;" ToolTip="Back to Dashboard" />
+                        <asp:Label ID="lblPageTitle" runat="server" CssClass="admin-page-title" Text="Add Service" />
                     </asp:Panel>
 
                     <asp:Panel ID="pnlFormContainer" runat="server" CssClass="admin-form-container">
@@ -110,19 +110,31 @@
                         <%-- Left Card --%>
                         <asp:Panel ID="pnlLeftCard" runat="server" CssClass="admin-form-card">
                             
-                            <asp:Panel ID="pnlFullNameGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblFullName" runat="server" AssociatedControlID="txtFullName" CssClass="admin-field-label" Text="Full Name" />
-                                <asp:TextBox ID="txtFullName" runat="server" CssClass="admin-input" placeholder="Enter Full Name" />
+                            <asp:Panel ID="pnlServiceNameGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblServiceName" runat="server" AssociatedControlID="txtServiceName" CssClass="admin-field-label" Text="Service Name" />
+                                <asp:TextBox ID="txtServiceName" runat="server" CssClass="admin-input" placeholder="Enter Service Name" />
                             </asp:Panel>
 
-                            <asp:Panel ID="pnlPhoneGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblPhoneNumber" runat="server" AssociatedControlID="txtPhoneNumber" CssClass="admin-field-label" Text="Phone Number" />
-                                <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="admin-input" placeholder="Enter Phone Number" />
+                            <asp:Panel ID="pnlServiceDescGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblServiceDescription" runat="server" AssociatedControlID="txtServiceDescription" CssClass="admin-field-label" Text="Service Description" />
+                                <asp:TextBox ID="txtServiceDescription" runat="server" CssClass="admin-input" placeholder="Enter Service Description" />
                             </asp:Panel>
 
-                            <asp:Panel ID="pnlConfirmPwdGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblConfirmPassword" runat="server" AssociatedControlID="txtConfirmPassword" CssClass="admin-field-label" Text="Confirm password" />
-                                <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="admin-input" TextMode="Password" placeholder="Confirm Password" />
+                            <asp:Panel ID="pnlCategoryGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblCategory" runat="server" AssociatedControlID="ddlCategory" CssClass="admin-field-label" Text="Category" />
+                                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="admin-select">
+                                    <asp:ListItem Value="" Text="Select Category" Selected="True" />
+                                    <asp:ListItem Value="Haircut" Text="Haircut" />
+                                    <asp:ListItem Value="Beard Trim" Text="Beard Trim" />
+                                    <asp:ListItem Value="Facial & Skincare" Text="Facial & Skincare" />
+                                    <asp:ListItem Value="Hair Color" Text="Hair Color" />
+                                    <asp:ListItem Value="Massage & Spa" Text="Massage & Spa" />
+                                </asp:DropDownList>
+                            </asp:Panel>
+
+                            <asp:Panel ID="pnlServicePriceGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblServicePrice" runat="server" AssociatedControlID="txtServicePrice" CssClass="admin-field-label" Text="Service Price" />
+                                <asp:TextBox ID="txtServicePrice" runat="server" CssClass="admin-input" placeholder="&#8377; Enter Price" />
                             </asp:Panel>
 
                         </asp:Panel>
@@ -130,23 +142,26 @@
                         <%-- Right Card --%>
                         <asp:Panel ID="pnlRightCard" runat="server" CssClass="admin-form-card">
                             
-                            <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblEmailAddress" runat="server" AssociatedControlID="txtEmailAddress" CssClass="admin-field-label" Text="Email Address" />
-                                <asp:TextBox ID="txtEmailAddress" runat="server" CssClass="admin-input" placeholder="Enter Email Address" />
-                            </asp:Panel>
-
-                            <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblPassword" runat="server" AssociatedControlID="txtPassword" CssClass="admin-field-label" Text="Password" />
-                                <asp:TextBox ID="txtPassword" runat="server" CssClass="admin-input" TextMode="Password" placeholder="Enter Password" />
-                            </asp:Panel>
-
-                            <asp:Panel ID="pnlProfileImageGroup" runat="server" CssClass="admin-field-group">
-                                <asp:Label ID="lblProfileImage" runat="server" CssClass="admin-field-label" Text="Profile Image" />
+                            <asp:Panel ID="pnlServiceImageGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblServiceImage" runat="server" CssClass="admin-field-label" Text="Service Image" />
                                 <asp:Panel ID="pnlUploadBox" runat="server" CssClass="admin-upload-container">
                                     <asp:Image ID="imgUploadIcon" runat="server" ImageUrl="~/Images/admin_icons/upload.svg" CssClass="admin-upload-icon" AlternateText="Upload Icon" />
                                     <asp:Label ID="lblUploadText" runat="server" CssClass="admin-upload-text" Text="Click To Upload" />
-                                    <asp:FileUpload ID="fuProfileImage" runat="server" CssClass="admin-file-input" onchange="document.getElementById('<%= lblUploadText.ClientID %>').innerText = this.files[0] ? this.files[0].name : 'Click To Upload';" />
+                                    <asp:FileUpload ID="fuServiceImage" runat="server" CssClass="admin-file-input" onchange="document.getElementById('<%= lblUploadText.ClientID %>').innerText = this.files[0] ? this.files[0].name : 'Click To Upload';" />
                                 </asp:Panel>
+                            </asp:Panel>
+
+                            <asp:Panel ID="pnlDurationGroup" runat="server" CssClass="admin-field-group">
+                                <asp:Label ID="lblDuration" runat="server" AssociatedControlID="ddlDuration" CssClass="admin-field-label" Text="Duration" />
+                                <asp:DropDownList ID="ddlDuration" runat="server" CssClass="admin-select">
+                                    <asp:ListItem Value="" Text="Select Duration" Selected="True" />
+                                    <asp:ListItem Value="15 Minutes" Text="15 Minutes" />
+                                    <asp:ListItem Value="30 Minutes" Text="30 Minutes" />
+                                    <asp:ListItem Value="45 Minutes" Text="45 Minutes" />
+                                    <asp:ListItem Value="1 Hour" Text="1 Hour" />
+                                    <asp:ListItem Value="1.5 Hours" Text="1.5 Hours" />
+                                    <asp:ListItem Value="2 Hours" Text="2 Hours" />
+                                </asp:DropDownList>
                             </asp:Panel>
 
                             <asp:Panel ID="pnlStatusGroup" runat="server" CssClass="admin-field-group">
@@ -160,7 +175,7 @@
 
                             <asp:Panel ID="pnlActions" runat="server" CssClass="admin-form-actions">
                                 <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
-                                <asp:Button ID="btnAddUser" runat="server" CssClass="btn-admin-submit" Text="Add User" OnClick="btnAddUser_Click" />
+                                <asp:Button ID="btnAddService" runat="server" CssClass="btn-admin-submit" Text="Add Service" OnClick="btnAddService_Click" />
                             </asp:Panel>
 
                             <asp:Label ID="lblMessage" runat="server" Visible="false" />

@@ -41,7 +41,7 @@ namespace Stylio_Salon
                     Session["UserEmail"] = email.Contains("@") ? email : "admin@stylio.com";
                     Session["UserMobile"] = "+91 8160689908";
 
-                    Response.Redirect("AdminDashboard.aspx");
+                    Response.Redirect("~/Admin/AdminDashboard.aspx");
                     return;
                 }
 
