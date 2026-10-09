@@ -10,7 +10,7 @@ namespace Stylio_Salon
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["logout"] == "1")
+                if (Request.QueryString["logout"] == "1")   
                 {
                     Session.Remove("IsAdminLoggedIn");
                     Session.Remove("AdminName");
@@ -38,7 +38,7 @@ namespace Stylio_Salon
                 return;
             }
 
-            if (IsValidAdmin(emailOrId, password))
+            if (IsValidAdmin(emailOrId, password))  
             {
                 Session["IsAdminLoggedIn"] = true;
                 Session["AdminEmail"] = emailOrId;
