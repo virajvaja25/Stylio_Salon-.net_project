@@ -162,8 +162,8 @@
                             <asp:Label ID="lblAmount1" runat="server" CssClass="admin-payment-amount" Text="&#8377;500" />
                             <asp:Label ID="lblService1" runat="server" CssClass="admin-payment-service" Text="Hair Cut" />
                             <asp:Panel ID="pnlMethod1" runat="server" CssClass="admin-payment-method-box">
-                                <asp:Image ID="imgMethod1" runat="server" ImageUrl="~/Images/admin_icons/upi.svg" CssClass="admin-payment-method-icon" AlternateText="UPI" />
-                                <asp:Label ID="lblMethod1" runat="server" CssClass="admin-payment-method-text" Text="UPI" />
+                                <asp:Image ID="imgMethod1" runat="server" ImageUrl="~/Images/admin_icons/wallet_card.svg" CssClass="admin-payment-method-icon" AlternateText="Cash" />
+                                <asp:Label ID="lblMethod1" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate1" runat="server" CssClass="admin-payment-date" Text="8 Aug, 2026" />
                             <asp:Panel ID="pnlAction1" runat="server" CssClass="admin-action-dots-btn">
@@ -198,8 +198,8 @@
                             <asp:Label ID="lblAmount3" runat="server" CssClass="admin-payment-amount" Text="&#8377;800" />
                             <asp:Label ID="lblService3" runat="server" CssClass="admin-payment-service" Text="Hair Color" />
                             <asp:Panel ID="pnlMethod3" runat="server" CssClass="admin-payment-method-box">
-                                <asp:Image ID="imgMethod3" runat="server" ImageUrl="~/Images/admin_icons/upi.svg" CssClass="admin-payment-method-icon" AlternateText="UPI" />
-                                <asp:Label ID="lblMethod3" runat="server" CssClass="admin-payment-method-text" Text="UPI" />
+                                <asp:Image ID="imgMethod3" runat="server" ImageUrl="~/Images/admin_icons/wallet_card.svg" CssClass="admin-payment-method-icon" AlternateText="Cash" />
+                                <asp:Label ID="lblMethod3" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate3" runat="server" CssClass="admin-payment-date" Text="9 Aug, 2026" />
                             <asp:Panel ID="pnlAction3" runat="server" CssClass="admin-action-dots-btn">
@@ -234,8 +234,8 @@
                             <asp:Label ID="lblAmount5" runat="server" CssClass="admin-payment-amount" Text="&#8377;1000" />
                             <asp:Label ID="lblService5" runat="server" CssClass="admin-payment-service" Text="Hair Spa" />
                             <asp:Panel ID="pnlMethod5" runat="server" CssClass="admin-payment-method-box">
-                                <asp:Image ID="imgMethod5" runat="server" ImageUrl="~/Images/admin_icons/upi.svg" CssClass="admin-payment-method-icon" AlternateText="UPI" />
-                                <asp:Label ID="lblMethod5" runat="server" CssClass="admin-payment-method-text" Text="UPI" />
+                                <asp:Image ID="imgMethod5" runat="server" ImageUrl="~/Images/admin_icons/wallet_card.svg" CssClass="admin-payment-method-icon" AlternateText="Cash" />
+                                <asp:Label ID="lblMethod5" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate5" runat="server" CssClass="admin-payment-date" Text="12 Aug, 2026" />
                             <asp:Panel ID="pnlAction5" runat="server" CssClass="admin-action-dots-btn">
