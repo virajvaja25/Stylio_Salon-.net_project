@@ -68,6 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="AdminAddUser.aspx" />
+    <Content Include="AdminAddService.aspx" />
+    <Content Include="AdminAddSalon.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -128,6 +133,7 @@
     <Content Include="Images\admin_icons\avatar_coral.svg" />
     <Content Include="Images\admin_icons\avatar_teal.svg" />
     <Content Include="Images\admin_icons\check.svg" />
+    <Content Include="Images\admin_icons\upload.svg" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\Admin.css" />
@@ -153,6 +159,27 @@
     </Compile>
     <Compile Include="AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddUser.aspx.cs">
+      <DependentUpon>AdminAddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAddUser.aspx.designer.cs">
+      <DependentUpon>AdminAddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddService.aspx.cs">
+      <DependentUpon>AdminAddService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAddService.aspx.designer.cs">
+      <DependentUpon>AdminAddService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddSalon.aspx.cs">
+      <DependentUpon>AdminAddSalon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAddSalon.aspx.designer.cs">
+      <DependentUpon>AdminAddSalon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

@@ -549,3 +549,235 @@ body {
         grid-template-columns: 38px 150px 1fr 150px 90px;
     }
 }
+
+/* ===================================================================
+   3. ADMIN FORM PAGES (Add User, Add Service, Add Salon)
+   =================================================================== */
+.admin-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.admin-back-link {
+    font-size: 26px;
+    color: #1A1A1A;
+    text-decoration: none;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.admin-back-link:hover {
+    color: #A9824D;
+}
+
+.admin-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 900px;
+    align-items: stretch;
+}
+
+.admin-form-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E6DCD0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    padding: 28px 24px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-field-label {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-input:focus {
+    border-color: #A9824D;
+    box-shadow: 0 0 0 2px rgba(169, 130, 77, 0.15);
+}
+
+.admin-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    outline: none;
+    resize: none;
+    min-height: 120px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-textarea:focus {
+    border-color: #A9824D;
+    box-shadow: 0 0 0 2px rgba(169, 130, 77, 0.15);
+}
+
+.admin-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16'%3e%3cpath fill='%23555555' d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    transition: border-color 0.2s;
+}
+
+.admin-select:focus {
+    border-color: #A9824D;
+}
+
+.admin-upload-container {
+    border: 1px solid #F0D9B0;
+    border-radius: 8px;
+    padding: 24px 16px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    min-height: 105px;
+}
+
+.admin-upload-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+}
+
+.admin-upload-text {
+    font-size: 15px;
+    color: #D8AE64;
+    font-weight: 500;
+}
+
+.admin-file-input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.admin-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.btn-admin-cancel {
+    background-color: transparent;
+    border: 1px solid #D8AE64;
+    color: #C39F68;
+    border-radius: 6px;
+    padding: 8px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-admin-cancel:hover {
+    background-color: rgba(216, 174, 100, 0.1);
+}
+
+.btn-admin-submit {
+    background-color: #A9824D;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 6px;
+    padding: 8px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-admin-submit:hover {
+    background-color: #97723D;
+}
+
+.admin-msg-success {
+    color: #27AE60;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 8px;
+    display: block;
+}
+
+.admin-msg-error {
+    color: #C0392B;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 8px;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .admin-form-container {
+        grid-template-columns: 1fr;
+    }
+}

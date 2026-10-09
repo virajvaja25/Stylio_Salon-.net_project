@@ -26,12 +26,12 @@
                         <asp:Label ID="lblTextDashboard" runat="server" CssClass="admin-nav-text" Text="Dashboard" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavUsers" runat="server" NavigateUrl="~/AdminAddUser.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavUsers" runat="server" ImageUrl="~/Images/admin_icons/users.svg" CssClass="admin-nav-svg-icon" AlternateText="Users" />
                         <asp:Label ID="lblTextUsers" runat="server" CssClass="admin-nav-text" Text="Users" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavSalons" runat="server" NavigateUrl="~/AdminAddSalon.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavSalons" runat="server" ImageUrl="~/Images/admin_icons/salons.svg" CssClass="admin-nav-svg-icon" AlternateText="Salons" />
                         <asp:Label ID="lblTextSalons" runat="server" CssClass="admin-nav-text" Text="Salons" />
                     </asp:HyperLink>
@@ -41,7 +41,7 @@
                         <asp:Label ID="lblTextBookings" runat="server" CssClass="admin-nav-text" Text="Bookings" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/AdminAddService.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavServices" runat="server" ImageUrl="~/Images/admin_icons/services.svg" CssClass="admin-nav-svg-icon" AlternateText="Services" />
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>
