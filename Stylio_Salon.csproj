@@ -76,6 +76,7 @@
     <Content Include="Admin\AdminReviews.aspx" />
     <Content Include="Admin\AdminPayments.aspx" />
     <Content Include="Admin\AdminSalons.aspx" />
+    <Content Include="Admin\AdminBookings.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="Admin\AdminSalons.aspx.designer.cs">
       <DependentUpon>AdminSalons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminBookings.aspx.cs">
+      <DependentUpon>AdminBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminBookings.aspx.designer.cs">
+      <DependentUpon>AdminBookings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
