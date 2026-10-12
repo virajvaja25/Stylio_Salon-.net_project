@@ -80,10 +80,6 @@
     <Content Include="Admin\AdminBookings.aspx" />
     <Content Include="Admin\AdminServices.aspx" />
     <Content Include="Admin\AdminSettings.aspx" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -384,6 +380,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
