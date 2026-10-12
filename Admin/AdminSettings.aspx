@@ -162,27 +162,55 @@
                         </asp:Panel>
                     </asp:Panel>
 
-                    <%-- Change Password View Card --%>
+                    <%-- Change Password View Card (media_1791813080555_e349f3a6.png) --%>
                     <asp:Panel ID="pnlPasswordView" runat="server" CssClass="admin-settings-card" Visible="false">
-                        <asp:Panel ID="pnlPasswordForm" runat="server" CssClass="admin-settings-form-fields" style="max-width: 440px;">
+                        <asp:Panel ID="pnlPasswordInner" runat="server" CssClass="admin-password-card-inner">
                             
-                            <asp:Panel ID="pnlGroupOldPass" runat="server" CssClass="admin-settings-form-group">
-                                <asp:Label ID="lblOldPassword" runat="server" CssClass="admin-settings-field-label" Text="Current Password" />
-                                <asp:TextBox ID="txtOldPassword" runat="server" CssClass="admin-settings-input" TextMode="Password" placeholder="Enter current password" />
+                            <%-- Header Icon & Title --%>
+                            <asp:Panel ID="pnlPasswordHeaderIconBox" runat="server" CssClass="admin-password-header-icon-box">
+                                <asp:Image ID="imgPasswordHeaderIcon" runat="server" ImageUrl="~/Images/admin_icons/lock.svg" CssClass="admin-password-header-icon" AlternateText="Lock" />
                             </asp:Panel>
+                            <asp:Label ID="lblPasswordTitle" runat="server" CssClass="admin-password-card-title" Text="Change Password" />
+                            <asp:Label ID="lblPasswordSubtitle" runat="server" CssClass="admin-password-card-subtitle" Text="Update Your Password To Keep Your Account Secure." />
 
-                            <asp:Panel ID="pnlGroupNewPass" runat="server" CssClass="admin-settings-form-group">
-                                <asp:Label ID="lblNewPassword" runat="server" CssClass="admin-settings-field-label" Text="New Password" />
-                                <asp:TextBox ID="txtNewPassword" runat="server" CssClass="admin-settings-input" TextMode="Password" placeholder="Enter new password" />
-                            </asp:Panel>
+                            <%-- Password Form --%>
+                            <asp:Panel ID="pnlPasswordForm" runat="server" CssClass="admin-password-form-wrapper">
+                                
+                                <%-- Current Password --%>
+                                <asp:Panel ID="pnlGroupCurrentPass" runat="server" CssClass="admin-settings-form-group">
+                                    <asp:Label ID="lblCurrentPassword" runat="server" CssClass="admin-settings-field-label" Text="Current Password" />
+                                    <asp:Panel ID="pnlCurrentPassBox" runat="server" CssClass="admin-password-input-wrapper">
+                                        <asp:Image ID="imgLockCurrent" runat="server" ImageUrl="~/Images/admin_icons/lock.svg" CssClass="admin-password-lock-icon" AlternateText="Lock" />
+                                        <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter Current Password" />
+                                        <asp:Image ID="imgEyeCurrent" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
+                                    </asp:Panel>
+                                </asp:Panel>
 
-                            <asp:Panel ID="pnlGroupConfirmPass" runat="server" CssClass="admin-settings-form-group">
-                                <asp:Label ID="lblConfirmPassword" runat="server" CssClass="admin-settings-field-label" Text="Confirm New Password" />
-                                <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="admin-settings-input" TextMode="Password" placeholder="Re-enter new password" />
-                            </asp:Panel>
+                                <%-- New Password --%>
+                                <asp:Panel ID="pnlGroupNewPass" runat="server" CssClass="admin-settings-form-group">
+                                    <asp:Label ID="lblNewPassword" runat="server" CssClass="admin-settings-field-label" Text="New Password" />
+                                    <asp:Panel ID="pnlNewPassBox" runat="server" CssClass="admin-password-input-wrapper">
+                                        <asp:Image ID="imgLockNew" runat="server" ImageUrl="~/Images/admin_icons/lock.svg" CssClass="admin-password-lock-icon" AlternateText="Lock" />
+                                        <asp:TextBox ID="txtNewPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter New Password" />
+                                        <asp:Image ID="imgEyeNew" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
+                                    </asp:Panel>
+                                </asp:Panel>
 
-                            <asp:Panel ID="pnlPassActions" runat="server" CssClass="admin-settings-actions" style="margin-top: 10px;">
-                                <asp:Button ID="btnSavePassword" runat="server" CssClass="btn-admin-save-settings" Text="Update Password" OnClick="btnSavePassword_Click" />
+                                <%-- Confirm Password --%>
+                                <asp:Panel ID="pnlGroupConfirmPass" runat="server" CssClass="admin-settings-form-group">
+                                    <asp:Label ID="lblConfirmPassword" runat="server" CssClass="admin-settings-field-label" Text="Confirm password" />
+                                    <asp:Panel ID="pnlConfirmPassBox" runat="server" CssClass="admin-password-input-wrapper">
+                                        <asp:Image ID="imgLockConfirm" runat="server" ImageUrl="~/Images/admin_icons/lock.svg" CssClass="admin-password-lock-icon" AlternateText="Lock" />
+                                        <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter Confirm Password" />
+                                        <asp:Image ID="imgEyeConfirm" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
+                                    </asp:Panel>
+                                </asp:Panel>
+
+                                <%-- Action Button --%>
+                                <asp:Panel ID="pnlPasswordActionRow" runat="server" CssClass="admin-password-btn-row">
+                                    <asp:Button ID="btnSavePassword" runat="server" CssClass="btn-admin-save-password" Text="Save Changes" OnClick="btnSavePassword_Click" />
+                                </asp:Panel>
+
                             </asp:Panel>
 
                         </asp:Panel>

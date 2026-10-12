@@ -151,6 +151,8 @@
     <Content Include="Images\admin_icons\money_bag.svg" />
     <Content Include="Images\admin_icons\user_stat.svg" />
     <Content Include="Images\admin_icons\upi.svg" />
+    <Content Include="Images\admin_icons\lock.svg" />
+    <Content Include="Images\admin_icons\eye_off.svg" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\Admin.css" />

@@ -35,6 +35,13 @@ namespace Stylio_Salon
                         txtEmailAddress.Text = email;
                     }
                 }
+                if (Request.QueryString["tab"] == "password")
+                {
+                    btnTabProfile.CssClass = "admin-settings-tab";
+                    btnTabChangePassword.CssClass = "admin-settings-tab admin-settings-tab-active";
+                    pnlProfileView.Visible = false;
+                    pnlPasswordView.Visible = true;
+                }
             }
         }
 
@@ -73,12 +80,13 @@ namespace Stylio_Salon
             }
 
             lblAlertMessage.Text = "Profile settings saved successfully!";
+            pnlAlertBanner.CssClass = "admin-banner-alert admin-banner-alert-success";
             pnlAlertBanner.Visible = true;
         }
 
         protected void btnSavePassword_Click(object sender, EventArgs e)
         {
-            string oldPass = txtOldPassword.Text.Trim();
+            string oldPass = txtCurrentPassword.Text.Trim();
             string newPass = txtNewPassword.Text.Trim();
             string confirmPass = txtConfirmPassword.Text.Trim();
 
@@ -98,7 +106,7 @@ namespace Stylio_Salon
                 return;
             }
 
-            txtOldPassword.Text = "";
+            txtCurrentPassword.Text = "";
             txtNewPassword.Text = "";
             txtConfirmPassword.Text = "";
 

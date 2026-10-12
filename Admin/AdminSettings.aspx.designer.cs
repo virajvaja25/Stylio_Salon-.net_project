@@ -95,17 +95,31 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Button btnSaveProfile;
 
         protected global::System.Web.UI.WebControls.Panel pnlPasswordView;
+        protected global::System.Web.UI.WebControls.Panel pnlPasswordInner;
+        protected global::System.Web.UI.WebControls.Panel pnlPasswordHeaderIconBox;
+        protected global::System.Web.UI.WebControls.Image imgPasswordHeaderIcon;
+        protected global::System.Web.UI.WebControls.Label lblPasswordTitle;
+        protected global::System.Web.UI.WebControls.Label lblPasswordSubtitle;
         protected global::System.Web.UI.WebControls.Panel pnlPasswordForm;
-        protected global::System.Web.UI.WebControls.Panel pnlGroupOldPass;
-        protected global::System.Web.UI.WebControls.Label lblOldPassword;
-        protected global::System.Web.UI.WebControls.TextBox txtOldPassword;
+        protected global::System.Web.UI.WebControls.Panel pnlGroupCurrentPass;
+        protected global::System.Web.UI.WebControls.Label lblCurrentPassword;
+        protected global::System.Web.UI.WebControls.Panel pnlCurrentPassBox;
+        protected global::System.Web.UI.WebControls.Image imgLockCurrent;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
+        protected global::System.Web.UI.WebControls.Image imgEyeCurrent;
         protected global::System.Web.UI.WebControls.Panel pnlGroupNewPass;
         protected global::System.Web.UI.WebControls.Label lblNewPassword;
+        protected global::System.Web.UI.WebControls.Panel pnlNewPassBox;
+        protected global::System.Web.UI.WebControls.Image imgLockNew;
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
+        protected global::System.Web.UI.WebControls.Image imgEyeNew;
         protected global::System.Web.UI.WebControls.Panel pnlGroupConfirmPass;
         protected global::System.Web.UI.WebControls.Label lblConfirmPassword;
+        protected global::System.Web.UI.WebControls.Panel pnlConfirmPassBox;
+        protected global::System.Web.UI.WebControls.Image imgLockConfirm;
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-        protected global::System.Web.UI.WebControls.Panel pnlPassActions;
+        protected global::System.Web.UI.WebControls.Image imgEyeConfirm;
+        protected global::System.Web.UI.WebControls.Panel pnlPasswordActionRow;
         protected global::System.Web.UI.WebControls.Button btnSavePassword;
     }
 }
