@@ -71,12 +71,17 @@
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminAddUser.aspx" />
+    <Content Include="Admin\AdminUsers.aspx" />
     <Content Include="Admin\AdminAddService.aspx" />
     <Content Include="Admin\AdminAddSalon.aspx" />
     <Content Include="Admin\AdminReviews.aspx" />
     <Content Include="Admin\AdminPayments.aspx" />
     <Content Include="Admin\AdminSalons.aspx" />
     <Content Include="Admin\AdminBookings.aspx" />
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -180,6 +185,13 @@
     </Compile>
     <Compile Include="Admin\AdminAddUser.aspx.designer.cs">
       <DependentUpon>AdminAddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUsers.aspx.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUsers.aspx.designer.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AdminAddService.aspx.cs">
       <DependentUpon>AdminAddService.aspx</DependentUpon>
