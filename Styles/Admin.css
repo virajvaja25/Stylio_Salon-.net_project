@@ -1420,6 +1420,435 @@ body {
     border: 1px solid #C8E6C9;
 }
 
+/* ===================================================================
+   6. ADMIN MANAGE BOOKINGS PAGE (media_1791808074451 etc.)
+   =================================================================== */
+.admin-booking-tabs-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    margin-bottom: 24px;
+}
+
+.admin-booking-tab {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #E5DFD5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.admin-booking-tab:hover {
+    background-color: #F8F3EC;
+    color: #241913;
+}
+
+.admin-booking-tab-active {
+    background-color: #A07946 !important;
+    color: #FFFFFF !important;
+    border-color: #A07946 !important;
+    box-shadow: 0 2px 8px rgba(160, 121, 70, 0.3) !important;
+}
+
+.admin-booking-search-wrapper {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #D8CFC4;
+    border-radius: 30px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    margin-bottom: 26px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.admin-booking-search-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.65;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.admin-booking-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    font-family: inherit;
+    color: #241913;
+    width: 100%;
+}
+
+.admin-booking-search-input::placeholder {
+    color: #888888;
+}
+
+.admin-manage-bookings-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2D9CD;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.admin-manage-booking-row {
+    display: grid;
+    grid-template-columns: 2.2fr 1.2fr 1.1fr 0.8fr;
+    align-items: center;
+    padding: 18px 28px;
+    border-bottom: 1px solid #EFEAE3;
+    transition: background-color 0.15s ease;
+}
+
+.admin-manage-booking-row:hover {
+    background-color: #FAF7F2;
+}
+
+.admin-manage-booking-customer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-manage-booking-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.admin-manage-booking-customer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-manage-booking-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.2px;
+}
+
+.admin-manage-booking-email {
+    font-size: 13px;
+    color: #666666;
+    margin-top: 2px;
+}
+
+.admin-manage-booking-service {
+    font-size: 12px;
+    color: #888888;
+    margin-top: 2px;
+}
+
+.admin-manage-booking-datetime {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-manage-booking-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.admin-manage-booking-time {
+    font-size: 13px;
+    color: #666666;
+    margin-top: 3px;
+}
+
+.admin-manage-booking-status-box {
+    display: flex;
+    align-items: center;
+}
+
+/* Status Badges */
+.admin-badge-upcoming {
+    display: inline-block;
+    padding: 6px 18px;
+    background-color: #F5A623;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.admin-badge-completed {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: #D1F4D9;
+    color: #15803D;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.admin-badge-cancelled {
+    display: inline-block;
+    padding: 6px 18px;
+    background-color: #FFD6D6;
+    color: #E53935;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.admin-manage-booking-action {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-btn-booking-view {
+    display: inline-block;
+    padding: 8px 30px;
+    background-color: #FFFFFF;
+    color: #96713E;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid #E8DFD5;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.admin-btn-booking-view:hover {
+    background-color: #A07946;
+    color: #FFFFFF;
+    border-color: #A07946;
+}
+
+.admin-manage-booking-pagination {
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-top: 1px solid #EFEAE3;
+}
+
+.admin-manage-booking-page-info {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.admin-modal-close-x {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555555;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-modal-close-x:hover {
+    color: #A07946;
+}
+
+/* ===================================================================
+   7. ADMIN USERS LIST PAGE (media_1791809910447_da836561.png)
+   =================================================================== */
+.admin-users-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.btn-admin-add-user {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    background-color: #B38E5A;
+    color: #FFFFFF;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(179, 142, 90, 0.25);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-admin-add-user:hover {
+    background-color: #A07946;
+    color: #FFFFFF;
+}
+
+.admin-users-search-wrapper {
+    width: 320px;
+    max-width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #D8CFC4;
+    border-radius: 8px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.admin-users-search-icon {
+    width: 17px;
+    height: 17px;
+    opacity: 0.65;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.admin-users-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14.5px;
+    font-family: inherit;
+    color: #241913;
+    width: 100%;
+}
+
+.admin-users-search-input::placeholder {
+    color: #888888;
+}
+
+.admin-users-table-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2D9CD;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.admin-users-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr 1.4fr 1fr 1.2fr;
+    align-items: center;
+    padding: 16px 28px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #ECE5DB;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.admin-users-row {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr 1.4fr 1fr 1.2fr;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid #EFEAE3;
+    transition: background-color 0.15s ease;
+}
+
+.admin-users-row:hover {
+    background-color: #FAF7F2;
+}
+
+.admin-user-cell-customer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.admin-user-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.2px;
+}
+
+.admin-user-cell-email {
+    font-size: 13.5px;
+    color: #444444;
+}
+
+.admin-user-cell-phone {
+    font-size: 13.5px;
+    color: #444444;
+}
+
+.admin-user-badge-active {
+    display: inline-block;
+    padding: 5px 18px;
+    background-color: #D4EDDA;
+    color: #155724;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+}
+
+.admin-user-badge-inactive {
+    display: inline-block;
+    padding: 5px 18px;
+    background-color: #F8D7DA;
+    color: #721C24;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+}
+
+.admin-user-cell-date {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.admin-users-pagination {
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-top: 1px solid #EFEAE3;
+}
+
+.admin-users-pagination-info {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
 @media (max-width: 900px) {
     .admin-payments-stats-grid {
         grid-template-columns: 1fr;
@@ -1433,5 +1862,17 @@ body {
     .admin-salon-card-item {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .admin-manage-booking-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .admin-manage-booking-action {
+        justify-content: flex-start;
+    }
+    .admin-users-table-header,
+    .admin-users-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 }
