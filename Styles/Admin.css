@@ -1669,6 +1669,186 @@ body {
     color: #A07946;
 }
 
+/* ===================================================================
+   7. ADMIN USERS LIST PAGE (media_1791809910447_da836561.png)
+   =================================================================== */
+.admin-users-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.btn-admin-add-user {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    background-color: #B38E5A;
+    color: #FFFFFF;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(179, 142, 90, 0.25);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-admin-add-user:hover {
+    background-color: #A07946;
+    color: #FFFFFF;
+}
+
+.admin-users-search-wrapper {
+    width: 320px;
+    max-width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #D8CFC4;
+    border-radius: 8px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.admin-users-search-icon {
+    width: 17px;
+    height: 17px;
+    opacity: 0.65;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.admin-users-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14.5px;
+    font-family: inherit;
+    color: #241913;
+    width: 100%;
+}
+
+.admin-users-search-input::placeholder {
+    color: #888888;
+}
+
+.admin-users-table-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2D9CD;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.admin-users-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr 1.4fr 1fr 1.2fr;
+    align-items: center;
+    padding: 16px 28px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #ECE5DB;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.admin-users-row {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr 1.4fr 1fr 1.2fr;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid #EFEAE3;
+    transition: background-color 0.15s ease;
+}
+
+.admin-users-row:hover {
+    background-color: #FAF7F2;
+}
+
+.admin-user-cell-customer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.admin-user-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.2px;
+}
+
+.admin-user-cell-email {
+    font-size: 13.5px;
+    color: #444444;
+}
+
+.admin-user-cell-phone {
+    font-size: 13.5px;
+    color: #444444;
+}
+
+.admin-user-badge-active {
+    display: inline-block;
+    padding: 5px 18px;
+    background-color: #D4EDDA;
+    color: #155724;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+}
+
+.admin-user-badge-inactive {
+    display: inline-block;
+    padding: 5px 18px;
+    background-color: #F8D7DA;
+    color: #721C24;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+}
+
+.admin-user-cell-date {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.admin-users-pagination {
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-top: 1px solid #EFEAE3;
+}
+
+.admin-users-pagination-info {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
 @media (max-width: 900px) {
     .admin-payments-stats-grid {
         grid-template-columns: 1fr;
@@ -1689,5 +1869,10 @@ body {
     }
     .admin-manage-booking-action {
         justify-content: flex-start;
+    }
+    .admin-users-table-header,
+    .admin-users-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 }
