@@ -78,6 +78,8 @@
     <Content Include="Admin\AdminPayments.aspx" />
     <Content Include="Admin\AdminSalons.aspx" />
     <Content Include="Admin\AdminBookings.aspx" />
+    <Content Include="Admin\AdminServices.aspx" />
+    <Content Include="Admin\AdminSettings.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -234,6 +236,20 @@
     </Compile>
     <Compile Include="Admin\AdminBookings.aspx.designer.cs">
       <DependentUpon>AdminBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminServices.aspx.cs">
+      <DependentUpon>AdminServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminServices.aspx.designer.cs">
+      <DependentUpon>AdminServices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminSettings.aspx.cs">
+      <DependentUpon>AdminSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminSettings.aspx.designer.cs">
+      <DependentUpon>AdminSettings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

@@ -41,7 +41,7 @@
                         <asp:Label ID="lblTextBookings" runat="server" CssClass="admin-nav-text" Text="Bookings" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/Admin/AdminAddService.aspx" CssClass="admin-nav-item admin-nav-item-active">
+                    <asp:HyperLink ID="lnkNavServices" runat="server" NavigateUrl="~/Admin/AdminServices.aspx" CssClass="admin-nav-item admin-nav-item-active">
                         <asp:Image ID="imgNavServices" runat="server" ImageUrl="~/Images/admin_icons/services.svg" CssClass="admin-nav-svg-icon" AlternateText="Services" />
                         <asp:Label ID="lblTextServices" runat="server" CssClass="admin-nav-text" Text="Services" />
                     </asp:HyperLink>
@@ -56,7 +56,7 @@
                         <asp:Label ID="lblTextPayments" runat="server" CssClass="admin-nav-text" Text="Payments" />
                     </asp:HyperLink>
 
-                    <asp:HyperLink ID="lnkNavSettings" runat="server" NavigateUrl="#" CssClass="admin-nav-item">
+                    <asp:HyperLink ID="lnkNavSettings" runat="server" NavigateUrl="~/Admin/AdminSettings.aspx" CssClass="admin-nav-item">
                         <asp:Image ID="imgNavSettings" runat="server" ImageUrl="~/Images/admin_icons/settings.svg" CssClass="admin-nav-svg-icon" AlternateText="Settings" />
                         <asp:Label ID="lblTextSettings" runat="server" CssClass="admin-nav-text" Text="Settings" />
                     </asp:HyperLink>
