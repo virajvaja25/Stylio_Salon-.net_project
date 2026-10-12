@@ -231,6 +231,7 @@
     <Compile Include="Admin\AdminBookings.aspx.designer.cs">
       <DependentUpon>AdminBookings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Db.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 
 namespace Stylio_Salon
 {
@@ -20,7 +21,6 @@ namespace Stylio_Salon
             string mobile = txtMobile.Text.Trim();
             string password = txtPassword.Text;
 
-            // TODO: replace with real user-creation logic (EF / database / API call)
             bool created = CreateUser(fullName, email, mobile, password);
 
             if (created)
@@ -33,6 +33,7 @@ namespace Stylio_Salon
                 Session["UserEmail"] = email;
                 Session["UserMobile"] = mobile;
 
+                Response.Write("<script>alert('Registered')</script>");
                 Response.Redirect("Login.aspx");
             }
             else
@@ -43,8 +44,28 @@ namespace Stylio_Salon
 
         private bool CreateUser(string fullName, string email, string mobile, string password)
         {
-            // Placeholder for actual account-creation logic.
-            return true;
+            try
+            {
+                return Db.RegisterUser(fullName, email, mobile, password);
+            }
+            catch (SqlException ex)
+            {
+           
+                if (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    Response.Write("<script>alert('This email is already registered')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Error: " + ex.Message.Replace("'", "") + "')</script>");
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Error: " + ex.Message.Replace("'", "") + "')</script>");
+                return false;
+            }
         }
 
         protected void lnkLogin_Click(object sender, EventArgs e)
