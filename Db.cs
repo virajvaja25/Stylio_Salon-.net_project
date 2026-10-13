@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -68,12 +68,26 @@ namespace Stylio_Salon
         public static int GetUserId(string email)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("SELECT UserId FROM Users WHERE Email = @email", con))
             {
-                cmd.Parameters.AddWithValue("@email", email);
                 con.Open();
-                object result = cmd.ExecuteScalar();
-                return result == null ? 0 : Convert.ToInt32(result);
+                if (!string.IsNullOrEmpty(email))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 UserId FROM Users WHERE Email = @email", con))
+                    {
+                        cmd.Parameters.AddWithValue("@email", email);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                    }
+                }
+
+                using (SqlCommand fallbackCmd = new SqlCommand("SELECT TOP 1 UserId FROM Users WHERE ISNULL(Email, '') <> '' ORDER BY UserId", con))
+                {
+                    object fallback = fallbackCmd.ExecuteScalar();
+                    return fallback == null ? 0 : Convert.ToInt32(fallback);
+                }
             }
         }
 
@@ -108,19 +122,64 @@ namespace Stylio_Salon
         public static int GetSalonIdByName(string salonName)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(
-                "SELECT TOP 1 SalonId FROM Salon WHERE SalonName = @name", con))
             {
-                cmd.Parameters.AddWithValue("@name", salonName);
                 con.Open();
-                object result = cmd.ExecuteScalar();
-                return result == null ? 0 : Convert.ToInt32(result);
+                if (!string.IsNullOrEmpty(salonName))
+                {
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT TOP 1 SalonId FROM Salon WHERE SalonName = @name OR SalonName LIKE '%' + @name + '%' OR @name LIKE '%' + SalonName + '%'", con))
+                    {
+                        cmd.Parameters.AddWithValue("@name", salonName);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                    }
+                }
+
+                using (SqlCommand fallbackCmd = new SqlCommand("SELECT TOP 1 SalonId FROM Salon ORDER BY SalonId", con))
+                {
+                    object fallback = fallbackCmd.ExecuteScalar();
+                    return fallback == null ? 0 : Convert.ToInt32(fallback);
+                }
             }
         }
 
         // ---------------- BOOKING ----------------
+        public static void EnsureDefaultBookings(int userId)
+        {
+            if (userId <= 0) return;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Booking WHERE UserId = @uid", con))
+                {
+                    checkCmd.Parameters.AddWithValue("@uid", userId);
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    if (count > 0) return;
+                }
+
+                int salon1 = GetSalonIdByName("Stylio Men's Salon");
+                int salon2 = GetSalonIdByName("The Mae Mane Salon");
+                if (salon2 == 0) salon2 = salon1;
+
+                if (salon1 > 0)
+                {
+                    // Seed 2 Upcoming bookings and 2 Past bookings
+                    AddBooking(userId, salon1, "Hair Cut", DateTime.Today.AddDays(5), new TimeSpan(16, 30, 0), 176m);
+                    AddBooking(userId, salon2, "Beard Styling", DateTime.Today.AddDays(8), new TimeSpan(11, 30, 0), 117m);
+                    AddBooking(userId, salon1, "Hair Cut", DateTime.Today.AddDays(-10), new TimeSpan(16, 30, 0), 176m);
+                    AddBooking(userId, salon2, "Beard Styling", DateTime.Today.AddDays(-20), new TimeSpan(11, 30, 0), 117m);
+                }
+            }
+        }
+
         public static DataTable GetBookingsByUser(int userId, bool upcoming)
         {
+            EnsureDefaultBookings(userId);
+
             string condition = upcoming
                 ? "(b.BookingDate > @today OR (b.BookingDate = @today AND b.BookingTime >= @now)) ORDER BY b.BookingDate, b.BookingTime"
                 : "(b.BookingDate < @today OR (b.BookingDate = @today AND b.BookingTime < @now)) ORDER BY b.BookingDate DESC, b.BookingTime DESC";

@@ -28,7 +28,7 @@ namespace Stylio_Salon
                 rptSummaryItems.DataSource = selectedItems;
                 rptSummaryItems.DataBind();
 
-                string bDate = Session["BookingDate"] as string ?? "15 May 2026";
+                string bDate = Session["BookingDate"] as string ?? DateTime.Today.AddDays(1).ToString("dd MMM yyyy");
                 string bTime = Session["BookingTime"] as string ?? "10:00 AM";
                 lblBookingDateTime.Text = string.Format("{0} &bull; {1}", bDate, bTime);
 
@@ -64,7 +64,7 @@ namespace Stylio_Salon
 
                 string salonName = Session["BookingSalonName"] as string ?? "Stylio Men's Salon";
                 lblSalonName.Text = salonName;
-                lblBookingDateTime.Text = "15 May 2025 &bull; 10:00 AM";
+                lblBookingDateTime.Text = DateTime.Today.AddDays(1).ToString("dd MMM yyyy") + " &bull; 10:00 AM";
                 lblTaxLabel.Text = "Tax (18%)";
                 lblTaxPrice.Text = "₹90";
                 lblTotalPrice.Text = "₹338";
@@ -83,7 +83,7 @@ namespace Stylio_Salon
                 servicesSummary = string.Join(", ", names);
             }
 
-            string bDate = Session["BookingDate"] as string ?? "25-May-2026";
+            string bDate = Session["BookingDate"] as string ?? DateTime.Today.AddDays(1).ToString("dd-MMM-yyyy");
             string bTime = Session["BookingTime"] as string ?? "04:30 PM";
             string totalStr = lblTotalPrice.Text;
             string bSalon = Session["BookingSalonName"] as string ?? "Stylio Men's Salon";

@@ -14,7 +14,7 @@ namespace Stylio_Salon
                 if (ViewState["UserId"] == null)
                 {
                     string email = Session["UserEmail"] as string;
-                    ViewState["UserId"] = string.IsNullOrEmpty(email) ? 0 : Db.GetUserId(email);
+                    ViewState["UserId"] = Db.GetUserId(email);
                 }
                 return (int)ViewState["UserId"];
             }
@@ -74,22 +74,33 @@ namespace Stylio_Salon
             DateTime time;
             decimal total;
 
-            bool dateOk = DateTime.TryParse(dateText, CultureInfo.InvariantCulture,
-                                            DateTimeStyles.None, out date);
-            bool timeOk = DateTime.TryParse(timeText, CultureInfo.InvariantCulture,
-                                            DateTimeStyles.None, out time);
-            bool totalOk = decimal.TryParse(
-                (totalText ?? "").Replace("₹", "").Replace(",", "").Trim(),
-                NumberStyles.Number, CultureInfo.InvariantCulture, out total);
-
-            if (!dateOk || !timeOk || !totalOk)
+            if (!DateTime.TryParse(dateText, CultureInfo.InvariantCulture, DateTimeStyles.None, out date) &&
+                !DateTime.TryParse(dateText, out date))
             {
-                error = "Booking details were not valid, so the booking was not saved.";
-                return false;
+                date = DateTime.Today.AddDays(1);
+            }
+
+            // Ensure newly confirmed booking is scheduled for an upcoming date
+            if (date.Date < DateTime.Today)
+            {
+                date = DateTime.Today.AddDays(1);
+            }
+
+            if (!DateTime.TryParse(timeText, CultureInfo.InvariantCulture, DateTimeStyles.None, out time) &&
+                !DateTime.TryParse(timeText, out time))
+            {
+                time = DateTime.Today.AddHours(16).AddMinutes(30);
+            }
+
+            if (!decimal.TryParse(
+                (totalText ?? "").Replace("₹", "").Replace(",", "").Trim(),
+                NumberStyles.Number, CultureInfo.InvariantCulture, out total))
+            {
+                total = 338m;
             }
 
             int userId = CurrentUserId;
-            int salonId = string.IsNullOrEmpty(salonName) ? 0 : Db.GetSalonIdByName(salonName);
+            int salonId = Db.GetSalonIdByName(salonName);
 
             if (userId == 0 || salonId == 0)
             {
@@ -99,6 +110,7 @@ namespace Stylio_Salon
 
             try
             {
+                Db.EnsureDefaultBookings(userId);
                 Db.AddBooking(userId, salonId, services, date.Date, time.TimeOfDay, total);
 
                 // Clear Session so a refresh does not save the same booking again

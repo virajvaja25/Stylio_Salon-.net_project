@@ -30,14 +30,14 @@ namespace Stylio_Salon
                     Session["BookingSalonName"] = "Stylio Men's Salon";
                 }
 
-                // Initialize calendar to September 2025 (matching design) or current date
-                int initialYear = 2025;
-                int initialMonth = 9;
-                calBooking.VisibleDate = new DateTime(initialYear, initialMonth, 1);
-                calBooking.SelectedDate = new DateTime(initialYear, initialMonth, 9); // Day 9 selected as in screenshot
+                DateTime defaultDate = DateTime.Today.AddDays(1);
+                calBooking.VisibleDate = new DateTime(defaultDate.Year, defaultDate.Month, 1);
+                calBooking.SelectedDate = defaultDate;
 
-                ddlCalYear.SelectedValue = initialYear.ToString();
-                ddlCalMonth.SelectedValue = initialMonth.ToString();
+                if (ddlCalYear.Items.FindByValue(defaultDate.Year.ToString()) != null)
+                    ddlCalYear.SelectedValue = defaultDate.Year.ToString();
+                if (ddlCalMonth.Items.FindByValue(defaultDate.Month.ToString()) != null)
+                    ddlCalMonth.SelectedValue = defaultDate.Month.ToString();
                 lblSelectedDateDisplay.Text = calBooking.SelectedDate.ToString("yyyy-MM-dd");
 
                 // Default time slot selection
