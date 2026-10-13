@@ -176,9 +176,8 @@
             <asp:Panel ID="pnlFooterColumns" runat="server" CssClass="footer-columns">
                 <asp:Panel ID="pnlFooterBrandCol" runat="server" CssClass="footer-brand-col">
                     <asp:Panel ID="pnlFooterLogoRow" runat="server" CssClass="footer-logo-row">
-                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/logo.png"
+                        <asp:Image ID="imgFooterLogo" runat="server" ImageUrl="~/Images/DefaultScreen/footer.png"
                             AlternateText="Stylio" CssClass="logo-img" />
-                        <asp:Label ID="lblFooterBrand" runat="server" CssClass="footer-logo-text" Text="Stylio" />
                     </asp:Panel>
                     <asp:Label ID="lblFooterTagline" runat="server" CssClass="footer-tagline"
                         Text="Your Beauty is Our Passion. Book Appointments with Top Salon &amp; Professional." />

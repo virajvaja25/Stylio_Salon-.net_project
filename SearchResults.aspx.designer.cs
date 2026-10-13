@@ -30,7 +30,6 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlFooterBrandCol;
         protected global::System.Web.UI.WebControls.Panel pnlFooterLogoRow;
         protected global::System.Web.UI.WebControls.Image imgFooterLogo;
-        protected global::System.Web.UI.WebControls.Label lblFooterBrand;
         protected global::System.Web.UI.WebControls.Label lblFooterTagline;
         protected global::System.Web.UI.WebControls.Panel pnlFooterQuickLinks;
         protected global::System.Web.UI.WebControls.Label lblQuickLinksTitle;

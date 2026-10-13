@@ -1,4 +1,4 @@
-<%@ Page Title="Stylio | Salons" Language="C#" AutoEventWireup="true" CodeBehind="Salon.aspx.cs" Inherits="Stylio_Salon.Salons" %>
++<%@ Page Title="Stylio | Salons" Language="C#" AutoEventWireup="true" CodeBehind="Salon.aspx.cs" Inherits="Stylio_Salon.Salons" %>
 
 <!DOCTYPE html>
 <html>
