@@ -2,16 +2,16 @@
 
 # User login Table
 
-# CREATE TABLE [dbo].[Users] (
-#    [UserId]       INT            IDENTITY (1, 1) NOT NULL,
-#   [Name]         NVARCHAR (100) NOT NULL,
-#    [Email]        NVARCHAR (150) NOT NULL,
-#    [MobileNumber] NVARCHAR (15)  NOT NULL,
-#    [Password]     NVARCHAR (255) NOT NULL,
-#    [ProfileImg]   NVARCHAR (255) NULL,
-#    PRIMARY KEY CLUSTERED ([UserId] ASC),
-#    UNIQUE NONCLUSTERED ([Email] ASC)
-# );
+ CREATE TABLE [dbo].[Users] (
+  [UserId]       INT            IDENTITY (1, 1) NOT NULL,
+  [Name]         NVARCHAR (100) NOT NULL,
+  [Email]        NVARCHAR (150) NOT NULL,
+  [MobileNumber] NVARCHAR (15)  NOT NULL,
+  [Password]     NVARCHAR (255) NOT NULL,
+  [ProfileImg]   NVARCHAR (255) NULL,
+  PRIMARY KEY CLUSTERED ([UserId] ASC),
+  UNIQUE NONCLUSTERED ([Email] ASC)
+ );
 
 # Add Salon Table
 
