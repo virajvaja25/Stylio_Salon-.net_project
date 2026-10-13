@@ -9,96 +9,144 @@
 
 namespace Stylio_Salon
 {
+
+
     public partial class AdminLogin
     {
+
         /// <summary>
         /// frmAdminLogin control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm frmAdminLogin;
 
         /// <summary>
-        /// pnlAdminLoginPage control.
+        /// ctrlHeader control.
         /// </summary>
-        protected global::System.Web.UI.WebControls.Panel pnlAdminLoginPage;
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Stylio_Salon.SiteHeader ctrlHeader;
 
         /// <summary>
-        /// pnlTopBar control.
+        /// pnlAuthBody control.
         /// </summary>
-        protected global::System.Web.UI.WebControls.Panel pnlTopBar;
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAuthBody;
 
         /// <summary>
-        /// pnlLogoBox control.
+        /// pnlAuthCard control.
         /// </summary>
-        protected global::System.Web.UI.WebControls.Panel pnlLogoBox;
-
-        /// <summary>
-        /// imgAdminLogo control.
-        /// </summary>
-        protected global::System.Web.UI.WebControls.Image imgAdminLogo;
-
-        /// <summary>
-        /// pnlCenterArea control.
-        /// </summary>
-        protected global::System.Web.UI.WebControls.Panel pnlCenterArea;
-
-        /// <summary>
-        /// pnlLoginCard control.
-        /// </summary>
-        protected global::System.Web.UI.WebControls.Panel pnlLoginCard;
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAuthCard;
 
         /// <summary>
         /// lblLoginHeading control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLoginHeading;
+
+        /// <summary>
+        /// lblErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
 
         /// <summary>
         /// pnlEmailGroup control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlEmailGroup;
 
         /// <summary>
         /// lblEmail control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// txtEmail control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
         /// pnlPasswordGroup control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPasswordGroup;
 
         /// <summary>
         /// lblPassword control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPassword;
 
         /// <summary>
         /// txtPassword control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
         /// pnlForgotRow control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlForgotRow;
 
         /// <summary>
         /// lnkForgotPassword control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink lnkForgotPassword;
 
         /// <summary>
         /// btnLogin control.
         /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-
-        /// <summary>
-        /// lblErrorMessage control.
-        /// </summary>
-        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
     }
 }
