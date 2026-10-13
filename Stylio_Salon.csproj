@@ -78,6 +78,8 @@
     <Content Include="Admin\AdminPayments.aspx" />
     <Content Include="Admin\AdminSalons.aspx" />
     <Content Include="Admin\AdminBookings.aspx" />
+    <Content Include="Admin\AdminServices.aspx" />
+    <Content Include="Admin\AdminSettings.aspx" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -149,6 +151,8 @@
     <Content Include="Images\admin_icons\money_bag.svg" />
     <Content Include="Images\admin_icons\user_stat.svg" />
     <Content Include="Images\admin_icons\upi.svg" />
+    <Content Include="Images\admin_icons\lock.svg" />
+    <Content Include="Images\admin_icons\eye_off.svg" />
     <Content Include="Styles\Account.css" />
     <Content Include="Styles\AboutUs.css" />
     <Content Include="Styles\Admin.css" />
@@ -231,6 +235,24 @@
     <Compile Include="Admin\AdminBookings.aspx.designer.cs">
       <DependentUpon>AdminBookings.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Db.cs" />
+=======
+    <Compile Include="Admin\AdminServices.aspx.cs">
+      <DependentUpon>AdminServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminServices.aspx.designer.cs">
+      <DependentUpon>AdminServices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminSettings.aspx.cs">
+      <DependentUpon>AdminSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminSettings.aspx.designer.cs">
+      <DependentUpon>AdminSettings.aspx</DependentUpon>
+    </Compile>
+>>>>>>> 1888d74d0659e87b347b1f755b02ceb4853d8fe5
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -364,6 +386,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

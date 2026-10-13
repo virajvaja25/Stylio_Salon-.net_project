@@ -18,80 +18,47 @@ namespace Stylio_Salon
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
-            // TODO: replace with real authentication (membership provider / EF / API call)
-            bool isValidUser = AuthenticateUser(email, password);
+            string name, mobile;
+            bool isValidUser = false;
 
-            if (isValidUser)
+            try
             {
-                // Check if admin credentials
-                bool isAdmin = string.Equals(email, "admin@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                               string.Equals(email, "admin", StringComparison.OrdinalIgnoreCase) ||
-                               string.Equals(email, "viraj@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                               string.Equals(email, "virajvaja@stylio.com", StringComparison.OrdinalIgnoreCase) ||
-                               string.Equals(password, "admin123", StringComparison.OrdinalIgnoreCase);
-
-                if (isAdmin)
-                {
-                    Session["IsAdminLoggedIn"] = true;
-                    Session["IsLoggedIn"] = true;
-                    Session["AdminEmail"] = email;
-                    Session["AdminName"] = "Viraj Vaja";
-                    Session["UserName"] = "Viraj Vaja";
-                    Session["UserFullName"] = "Admin Viraj Vaja";
-                    Session["UserEmail"] = email.Contains("@") ? email : "admin@stylio.com";
-                    Session["UserMobile"] = "+91 8160689908";
-
-                    Response.Redirect("~/Admin/AdminDashboard.aspx");
-                    return;
-                }
-
-                // Synchronize login ID directly to profile name and email
-                string profileName = email;
-                string profileEmail = email;
-
-                if (email.Contains("@"))
-                {
-                    profileEmail = email;
-                    if (Session["RegisteredName"] != null &&
-                        string.Equals(Session["RegisteredEmail"] as string, email, StringComparison.OrdinalIgnoreCase))
-                    {
-                        profileName = Session["RegisteredName"].ToString();
-                    }
-                    else
-                    {
-                        string namePart = email.Substring(0, email.IndexOf('@'));
-                        profileName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
-                            namePart.Replace(".", " ").Replace("_", " "));
-                    }
-                }
-                else
-                {
-                    profileName = email;
-                    profileEmail = email + "@gmail.com";
-                }
-
-                Session["IsLoggedIn"] = true;
-                Session["UserName"] = profileName;
-                Session["UserFullName"] = profileName;
-                Session["UserEmail"] = profileEmail;
-                if (Session["UserMobile"] == null)
-                {
-                    Session["UserMobile"] = "+91 8160689908";
-                }
-
-                Response.Redirect("Default.aspx");
+                isValidUser = Db.ValidateUser(email, password, out name, out mobile);
             }
-            else
+            catch (Exception ex)
             {
+                Response.Write("<script>alert('Error: " + ex.Message.Replace("'", "") + "')</script>");
+                return;
+            }
+
+            if (!isValidUser)
+            {
+                // Not registered, or wrong email/password
                 valSummary.Visible = true;
-                // A generic invalid-credentials message can be shown via a Label if desired.
+                return;
             }
-        }
 
-        private bool AuthenticateUser(string email, string password)
-        {
-            // Placeholder for actual authentication logic.
-            return !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password);
+            // Admin check (email only, the user must also exist in the Users table)
+            bool isAdmin = string.Equals(email, "admin@stylio.com", StringComparison.OrdinalIgnoreCase) ||
+                           string.Equals(email, "viraj@stylio.com", StringComparison.OrdinalIgnoreCase) ||
+                           string.Equals(email, "virajvaja@stylio.com", StringComparison.OrdinalIgnoreCase);
+
+            Session["IsLoggedIn"] = true;
+            Session["UserName"] = name;
+            Session["UserFullName"] = name;
+            Session["UserEmail"] = email;
+            Session["UserMobile"] = mobile;
+
+            if (isAdmin)
+            {
+                Session["IsAdminLoggedIn"] = true;
+                Session["AdminEmail"] = email;
+                Session["AdminName"] = name;
+                Response.Redirect("~/Admin/AdminDashboard.aspx");
+                return;
+            }
+
+            Response.Redirect("Default.aspx");
         }
 
         protected void lnkForgotPassword_Click(object sender, EventArgs e)
