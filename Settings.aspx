@@ -101,19 +101,32 @@
                         <asp:Panel ID="pnlCurrentPwdGroup" runat="server" CssClass="settings-form-group">
                             <asp:Label ID="lblCurrentPwd" runat="server" CssClass="settings-form-label" Text="Current Password" />
                             <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter current password" />
+                            <asp:RequiredFieldValidator ID="rfvCurrentPassword" runat="server"
+                                ControlToValidate="txtCurrentPassword" CssClass="field-error"
+                                ErrorMessage="Current password is required." Display="Dynamic" ValidationGroup="ChangePwd" />
                         </asp:Panel>
 
                         <asp:Panel ID="pnlNewPwdGroup" runat="server" CssClass="settings-form-group">
                             <asp:Label ID="lblNewPwd" runat="server" CssClass="settings-form-label" Text="New Password" />
                             <asp:TextBox ID="txtNewPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Enter new password (min. 6 chars)" />
+                            <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server"
+                                ControlToValidate="txtNewPassword" CssClass="field-error"
+                                ErrorMessage="New password is required." Display="Dynamic" ValidationGroup="ChangePwd" />
                         </asp:Panel>
 
                         <asp:Panel ID="pnlConfirmPwdGroup" runat="server" CssClass="settings-form-group">
                             <asp:Label ID="lblConfirmPwd" runat="server" CssClass="settings-form-label" Text="Confirm New Password" />
                             <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="settings-form-input" TextMode="Password" placeholder="Confirm new password" />
+                            <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
+                                ControlToValidate="txtConfirmPassword" CssClass="field-error"
+                                ErrorMessage="Please confirm your password." Display="Dynamic" ValidationGroup="ChangePwd" />
+                            <asp:CompareValidator ID="cvConfirmPassword" runat="server"
+                                ControlToValidate="txtConfirmPassword" ControlToCompare="txtNewPassword"
+                                CssClass="field-error" ErrorMessage="Passwords do not match."
+                                Display="Dynamic" ValidationGroup="ChangePwd" />
                         </asp:Panel>
 
-                        <asp:Button ID="btnSavePassword" runat="server" Text="Save Password" CssClass="btn-settings-save" OnClick="btnSavePassword_Click" />
+                        <asp:Button ID="btnSavePassword" runat="server" Text="Save Password" CssClass="btn-settings-save" OnClick="btnSavePassword_Click" ValidationGroup="ChangePwd" />
 
                     </asp:Panel>
 

@@ -2320,3 +2320,10 @@ body {
         padding: 24px;
     }
 }
+
+.field-error {
+    color: #B3261E;
+    font-size: 13px;
+    display: block;
+    margin-top: 6px;
+}

@@ -22,6 +22,11 @@ namespace Stylio_Salon
 
         protected void btnSavePassword_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string currentPwd = txtCurrentPassword.Text.Trim();
             string newPwd = txtNewPassword.Text.Trim();
             string confirmPwd = txtConfirmPassword.Text.Trim();

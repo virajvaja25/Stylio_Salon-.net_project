@@ -113,16 +113,29 @@
                             <asp:Panel ID="pnlFullNameGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblFullName" runat="server" AssociatedControlID="txtFullName" CssClass="admin-field-label" Text="Full Name" />
                                 <asp:TextBox ID="txtFullName" runat="server" CssClass="admin-input" placeholder="Enter Full Name" />
+                                <asp:RequiredFieldValidator ID="rfvFullName" runat="server"
+                                    ControlToValidate="txtFullName" CssClass="field-error"
+                                    ErrorMessage="Full name is required." Display="Dynamic" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlPhoneGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblPhoneNumber" runat="server" AssociatedControlID="txtPhoneNumber" CssClass="admin-field-label" Text="Phone Number" />
                                 <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="admin-input" placeholder="Enter Phone Number" />
+                                <asp:RequiredFieldValidator ID="rfvPhoneNumber" runat="server"
+                                    ControlToValidate="txtPhoneNumber" CssClass="field-error"
+                                    ErrorMessage="Phone number is required." Display="Dynamic" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlConfirmPwdGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblConfirmPassword" runat="server" AssociatedControlID="txtConfirmPassword" CssClass="admin-field-label" Text="Confirm password" />
                                 <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="admin-input" TextMode="Password" placeholder="Confirm Password" />
+                                <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
+                                    ControlToValidate="txtConfirmPassword" CssClass="field-error"
+                                    ErrorMessage="Please confirm password." Display="Dynamic" ValidationGroup="AddUser" />
+                                <asp:CompareValidator ID="cvConfirmPassword" runat="server"
+                                    ControlToValidate="txtConfirmPassword" ControlToCompare="txtPassword"
+                                    CssClass="field-error" ErrorMessage="Passwords do not match."
+                                    Display="Dynamic" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                         </asp:Panel>
@@ -133,11 +146,21 @@
                             <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblEmailAddress" runat="server" AssociatedControlID="txtEmailAddress" CssClass="admin-field-label" Text="Email Address" />
                                 <asp:TextBox ID="txtEmailAddress" runat="server" CssClass="admin-input" placeholder="Enter Email Address" />
+                                <asp:RequiredFieldValidator ID="rfvEmailAddress" runat="server"
+                                    ControlToValidate="txtEmailAddress" CssClass="field-error"
+                                    ErrorMessage="Email address is required." Display="Dynamic" ValidationGroup="AddUser" />
+                                <asp:RegularExpressionValidator ID="revEmailAddress" runat="server"
+                                    ControlToValidate="txtEmailAddress" CssClass="field-error"
+                                    ErrorMessage="Enter a valid email address." Display="Dynamic"
+                                    ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblPassword" runat="server" AssociatedControlID="txtPassword" CssClass="admin-field-label" Text="Password" />
                                 <asp:TextBox ID="txtPassword" runat="server" CssClass="admin-input" TextMode="Password" placeholder="Enter Password" />
+                                <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+                                    ControlToValidate="txtPassword" CssClass="field-error"
+                                    ErrorMessage="Password is required." Display="Dynamic" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlProfileImageGroup" runat="server" CssClass="admin-field-group">
@@ -156,11 +179,14 @@
                                     <asp:ListItem Value="Active" Text="Active" />
                                     <asp:ListItem Value="Inactive" Text="Inactive" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server"
+                                    ControlToValidate="ddlStatus" InitialValue="" CssClass="field-error"
+                                    ErrorMessage="Please select a status." Display="Dynamic" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlActions" runat="server" CssClass="admin-form-actions">
-                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" />
-                                <asp:Button ID="btnAddUser" runat="server" CssClass="btn-admin-submit" Text="Add User" OnClick="btnAddUser_Click" />
+                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
+                                <asp:Button ID="btnAddUser" runat="server" CssClass="btn-admin-submit" Text="Add User" OnClick="btnAddUser_Click" ValidationGroup="AddUser" />
                             </asp:Panel>
 
                             <asp:Label ID="lblMessage" runat="server" Visible="false" />

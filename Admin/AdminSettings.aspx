@@ -109,13 +109,13 @@
                     <%-- Alert Banner --%>
                     <asp:Panel ID="pnlAlertBanner" runat="server" CssClass="admin-banner-alert admin-banner-alert-success" Visible="false">
                         <asp:Label ID="lblAlertMessage" runat="server" Text="Settings updated successfully!" />
-                        <asp:LinkButton ID="btnCloseAlert" runat="server" Text="✕" OnClick="btnCloseAlert_Click" style="color: inherit; text-decoration: none; font-weight: bold; cursor: pointer;" />
+                        <asp:LinkButton ID="btnCloseAlert" runat="server" Text="✕" OnClick="btnCloseAlert_Click" CausesValidation="false" style="color: inherit; text-decoration: none; font-weight: bold; cursor: pointer;" />
                     </asp:Panel>
 
                     <%-- Tabs: Profile & Change password --%>
                     <asp:Panel ID="pnlSettingsTabsRow" runat="server" CssClass="admin-settings-tabs-row">
-                        <asp:LinkButton ID="btnTabProfile" runat="server" CssClass="admin-settings-tab admin-settings-tab-active" Text="Profile" OnClick="btnTabProfile_Click" />
-                        <asp:LinkButton ID="btnTabChangePassword" runat="server" CssClass="admin-settings-tab" Text="Change password" OnClick="btnTabChangePassword_Click" />
+                        <asp:LinkButton ID="btnTabProfile" runat="server" CssClass="admin-settings-tab admin-settings-tab-active" Text="Profile" OnClick="btnTabProfile_Click" CausesValidation="false" />
+                        <asp:LinkButton ID="btnTabChangePassword" runat="server" CssClass="admin-settings-tab" Text="Change password" OnClick="btnTabChangePassword_Click" CausesValidation="false" />
                     </asp:Panel>
 
                     <%-- Profile View Card --%>
@@ -136,16 +136,20 @@
                                 <asp:Panel ID="pnlGroupFullName" runat="server" CssClass="admin-settings-form-group">
                                     <asp:Label ID="lblFullName" runat="server" CssClass="admin-settings-field-label" Text="Full Name" />
                                     <asp:TextBox ID="txtFullName" runat="server" CssClass="admin-settings-input" Text="Viraj Vaja" />
+                                    <asp:RequiredFieldValidator ID="rfvFullName" runat="server" ControlToValidate="txtFullName" ErrorMessage="Full name is required." CssClass="field-error" Display="Dynamic" ValidationGroup="ProfileSettings" />
                                 </asp:Panel>
 
                                 <asp:Panel ID="pnlGroupEmail" runat="server" CssClass="admin-settings-form-group">
                                     <asp:Label ID="lblEmailAddress" runat="server" CssClass="admin-settings-field-label" Text="Email Address" />
                                     <asp:TextBox ID="txtEmailAddress" runat="server" CssClass="admin-settings-input" Text="Admin@gmail.com" />
+                                    <asp:RequiredFieldValidator ID="rfvEmailAddress" runat="server" ControlToValidate="txtEmailAddress" ErrorMessage="Email address is required." CssClass="field-error" Display="Dynamic" ValidationGroup="ProfileSettings" />
+                                    <asp:RegularExpressionValidator ID="revEmailAddress" runat="server" ControlToValidate="txtEmailAddress" ErrorMessage="Enter a valid email address." ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" CssClass="field-error" Display="Dynamic" ValidationGroup="ProfileSettings" />
                                 </asp:Panel>
 
                                 <asp:Panel ID="pnlGroupMobile" runat="server" CssClass="admin-settings-form-group">
                                     <asp:Label ID="lblMobileNumber" runat="server" CssClass="admin-settings-field-label" Text="Mobile Number" />
                                     <asp:TextBox ID="txtMobileNumber" runat="server" CssClass="admin-settings-input" Text="+91 12345 67890" />
+                                    <asp:RequiredFieldValidator ID="rfvMobileNumber" runat="server" ControlToValidate="txtMobileNumber" ErrorMessage="Mobile number is required." CssClass="field-error" Display="Dynamic" ValidationGroup="ProfileSettings" />
                                 </asp:Panel>
 
                                 <asp:Panel ID="pnlGroupRole" runat="server" CssClass="admin-settings-form-group">
@@ -154,7 +158,7 @@
                                 </asp:Panel>
 
                                 <asp:Panel ID="pnlActions" runat="server" CssClass="admin-settings-actions">
-                                    <asp:Button ID="btnSaveProfile" runat="server" CssClass="btn-admin-save-settings" Text="Save" OnClick="btnSaveProfile_Click" />
+                                    <asp:Button ID="btnSaveProfile" runat="server" CssClass="btn-admin-save-settings" Text="Save" OnClick="btnSaveProfile_Click" ValidationGroup="ProfileSettings" />
                                 </asp:Panel>
 
                             </asp:Panel>
@@ -184,6 +188,7 @@
                                         <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter Current Password" />
                                         <asp:Image ID="imgEyeCurrent" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
                                     </asp:Panel>
+                                    <asp:RequiredFieldValidator ID="rfvCurrentPassword" runat="server" ControlToValidate="txtCurrentPassword" ErrorMessage="Current password is required." CssClass="field-error" Display="Dynamic" ValidationGroup="PasswordSettings" />
                                 </asp:Panel>
 
                                 <%-- New Password --%>
@@ -194,6 +199,7 @@
                                         <asp:TextBox ID="txtNewPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter New Password" />
                                         <asp:Image ID="imgEyeNew" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
                                     </asp:Panel>
+                                    <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="New password is required." CssClass="field-error" Display="Dynamic" ValidationGroup="PasswordSettings" />
                                 </asp:Panel>
 
                                 <%-- Confirm Password --%>
@@ -204,11 +210,13 @@
                                         <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="admin-password-text-field" TextMode="Password" placeholder="Enter Confirm Password" />
                                         <asp:Image ID="imgEyeConfirm" runat="server" ImageUrl="~/Images/admin_icons/eye_off.svg" CssClass="admin-password-eye-icon" AlternateText="Toggle" />
                                     </asp:Panel>
+                                    <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="Confirm password is required." CssClass="field-error" Display="Dynamic" ValidationGroup="PasswordSettings" />
+                                    <asp:CompareValidator ID="cvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ControlToCompare="txtNewPassword" ErrorMessage="Passwords do not match." CssClass="field-error" Display="Dynamic" ValidationGroup="PasswordSettings" />
                                 </asp:Panel>
 
                                 <%-- Action Button --%>
                                 <asp:Panel ID="pnlPasswordActionRow" runat="server" CssClass="admin-password-btn-row">
-                                    <asp:Button ID="btnSavePassword" runat="server" CssClass="btn-admin-save-password" Text="Save Changes" OnClick="btnSavePassword_Click" />
+                                    <asp:Button ID="btnSavePassword" runat="server" CssClass="btn-admin-save-password" Text="Save Changes" OnClick="btnSavePassword_Click" ValidationGroup="PasswordSettings" />
                                 </asp:Panel>
 
                             </asp:Panel>

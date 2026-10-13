@@ -53,12 +53,16 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlCurrentPwdGroup;
         protected global::System.Web.UI.WebControls.Label lblCurrentPwd;
         protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurrentPassword;
         protected global::System.Web.UI.WebControls.Panel pnlNewPwdGroup;
         protected global::System.Web.UI.WebControls.Label lblNewPwd;
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNewPassword;
         protected global::System.Web.UI.WebControls.Panel pnlConfirmPwdGroup;
         protected global::System.Web.UI.WebControls.Label lblConfirmPwd;
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfirmPassword;
+        protected global::System.Web.UI.WebControls.CompareValidator cvConfirmPassword;
         protected global::System.Web.UI.WebControls.Button btnSavePassword;
 
         protected global::System.Web.UI.WebControls.Panel pnlFooter;

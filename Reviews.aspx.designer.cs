@@ -59,6 +59,7 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Label lblSelectedRating;
         protected global::System.Web.UI.WebControls.Label lblReviewTextTitle;
         protected global::System.Web.UI.WebControls.TextBox txtReviewComment;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReviewComment;
 
         protected global::System.Web.UI.WebControls.Panel pnlActionRow;
         protected global::System.Web.UI.WebControls.Button btnSubmitReview;

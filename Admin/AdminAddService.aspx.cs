@@ -26,6 +26,9 @@ namespace Stylio_Salon
 
         protected void btnAddService_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string serviceName = txtServiceName.Text.Trim();
             string desc = txtServiceDescription.Text.Trim();
             string category = ddlCategory.SelectedValue;

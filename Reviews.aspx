@@ -114,11 +114,14 @@
 
                 <asp:TextBox ID="txtReviewComment" runat="server" TextMode="MultiLine" Rows="5"
                     CssClass="review-textarea" placeholder="Write your review here...." />
+                <asp:RequiredFieldValidator ID="rfvReviewComment" runat="server"
+                    ControlToValidate="txtReviewComment" CssClass="field-error"
+                    ErrorMessage="Please write your review." Display="Dynamic" ValidationGroup="SubmitReview" />
 
                 <!-- Action Button -->
                 <asp:Panel ID="pnlActionRow" runat="server" CssClass="review-action-row">
                     <asp:Button ID="btnSubmitReview" runat="server" Text="Submit Review"
-                        CssClass="btn-submit-review" OnClick="btnSubmitReview_Click" />
+                        CssClass="btn-submit-review" OnClick="btnSubmitReview_Click" ValidationGroup="SubmitReview" />
                 </asp:Panel>
 
                 <!-- Success Confirmation Message -->

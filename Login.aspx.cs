@@ -10,6 +10,11 @@ namespace Stylio_Salon
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
@@ -28,6 +33,7 @@ namespace Stylio_Salon
 
             if (!isValidUser)
             {
+                Response.Write("<script>alert('Invalid email or password')</script>");
                 return;
             }
 

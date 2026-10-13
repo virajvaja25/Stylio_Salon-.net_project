@@ -47,6 +47,11 @@ namespace Stylio_Salon
         // ---------------- Submit Review Handler ----------------
         protected void btnSubmitReview_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string reviewText = txtReviewComment.Text.Trim();
             if (string.IsNullOrEmpty(reviewText))
             {

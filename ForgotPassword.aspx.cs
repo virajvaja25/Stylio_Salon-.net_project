@@ -10,6 +10,11 @@ namespace Stylio_Salon
 
         protected void btnResetPassword_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string email = txtEmail.Text.Trim();
             string newPassword = txtNewPassword.Text;
 

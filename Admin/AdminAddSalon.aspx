@@ -113,21 +113,26 @@
                             <asp:Panel ID="pnlOwnerNameGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblOwnerName" runat="server" AssociatedControlID="txtOwnerName" CssClass="admin-field-label" Text="Owner Name" />
                                 <asp:TextBox ID="txtOwnerName" runat="server" CssClass="admin-input" placeholder="Enter Owner Name" />
+                                <asp:RequiredFieldValidator ID="rfvOwnerName" runat="server" ControlToValidate="txtOwnerName" ErrorMessage="Owner name is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlPhoneGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblPhoneNumber" runat="server" AssociatedControlID="txtPhoneNumber" CssClass="admin-field-label" Text="Phone Number" />
                                 <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="admin-input" placeholder="Enter Phone Number" />
+                                <asp:RequiredFieldValidator ID="rfvPhoneNumber" runat="server" ControlToValidate="txtPhoneNumber" ErrorMessage="Phone number is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblEmailAddress" runat="server" AssociatedControlID="txtEmailAddress" CssClass="admin-field-label" Text="Email Address" />
                                 <asp:TextBox ID="txtEmailAddress" runat="server" CssClass="admin-input" placeholder="Enter Email Address" />
+                                <asp:RequiredFieldValidator ID="rfvEmailAddress" runat="server" ControlToValidate="txtEmailAddress" ErrorMessage="Email address is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
+                                <asp:RegularExpressionValidator ID="revEmailAddress" runat="server" ControlToValidate="txtEmailAddress" ErrorMessage="Enter a valid email address." ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlSalonDetailsGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblSalonDetails" runat="server" AssociatedControlID="txtSalonDetails" CssClass="admin-field-label" Text="Salon Details" />
                                 <asp:TextBox ID="txtSalonDetails" runat="server" CssClass="admin-textarea" TextMode="MultiLine" Rows="4" placeholder="Salon Description" />
+                                <asp:RequiredFieldValidator ID="rfvSalonDetails" runat="server" ControlToValidate="txtSalonDetails" ErrorMessage="Salon details are required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                         </asp:Panel>
@@ -138,6 +143,7 @@
                             <asp:Panel ID="pnlSalonLocationGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblSalonLocation" runat="server" AssociatedControlID="txtSalonLocation" CssClass="admin-field-label" Text="Salon Location" />
                                 <asp:TextBox ID="txtSalonLocation" runat="server" CssClass="admin-input" placeholder="Enter Salon Location" />
+                                <asp:RequiredFieldValidator ID="rfvSalonLocation" runat="server" ControlToValidate="txtSalonLocation" ErrorMessage="Salon location is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlOpeningHoursGroup" runat="server" CssClass="admin-field-group">
@@ -148,6 +154,7 @@
                                     <asp:ListItem Value="10:00 AM - 09:00 PM" Text="10:00 AM - 09:00 PM" />
                                     <asp:ListItem Value="08:00 AM - 10:00 PM" Text="08:00 AM - 10:00 PM" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvOpeningHours" runat="server" ControlToValidate="ddlOpeningHours" InitialValue="" ErrorMessage="Please select opening hours." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlSalonImageGroup" runat="server" CssClass="admin-field-group">
@@ -166,11 +173,12 @@
                                     <asp:ListItem Value="Active" Text="Active" />
                                     <asp:ListItem Value="Inactive" Text="Inactive" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus" InitialValue="" ErrorMessage="Please select a status." CssClass="field-error" Display="Dynamic" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlActions" runat="server" CssClass="admin-form-actions">
-                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" />
-                                <asp:Button ID="btnAddSalon" runat="server" CssClass="btn-admin-submit" Text="Add Salon" OnClick="btnAddSalon_Click" />
+                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
+                                <asp:Button ID="btnAddSalon" runat="server" CssClass="btn-admin-submit" Text="Add Salon" OnClick="btnAddSalon_Click" ValidationGroup="AddSalon" />
                             </asp:Panel>
 
                             <asp:Label ID="lblMessage" runat="server" Visible="false" />

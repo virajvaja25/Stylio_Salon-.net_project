@@ -24,6 +24,13 @@
                         CssClass="form-label" Text="Email Address" />
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-input"
                         TextMode="Email" placeholder="Enter Your Registered Email" />
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Email is required." Display="Dynamic" ValidationGroup="ForgotPasswordGroup" />
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Enter a valid email address." Display="Dynamic"
+                        ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ValidationGroup="ForgotPasswordGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlNewPasswordGroup" runat="server" CssClass="form-group">
@@ -31,6 +38,9 @@
                         CssClass="form-label" Text="New Password" />
                     <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Enter New Password" />
+                    <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server"
+                        ControlToValidate="txtNewPassword" CssClass="field-error"
+                        ErrorMessage="New password is required." Display="Dynamic" ValidationGroup="ForgotPasswordGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlConfirmPasswordGroup" runat="server" CssClass="form-group">
@@ -38,15 +48,22 @@
                         CssClass="form-label" Text="Confirm Password" />
                     <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Confirm New Password" />
+                    <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
+                        ControlToValidate="txtConfirmPassword" CssClass="field-error"
+                        ErrorMessage="Please confirm your password." Display="Dynamic" ValidationGroup="ForgotPasswordGroup" />
+                    <asp:CompareValidator ID="cvConfirmPassword" runat="server"
+                        ControlToValidate="txtConfirmPassword" ControlToCompare="txtNewPassword"
+                        CssClass="field-error" ErrorMessage="Passwords do not match."
+                        Display="Dynamic" ValidationGroup="ForgotPasswordGroup" />
                 </asp:Panel>
 
                 <asp:Button ID="btnResetPassword" runat="server" Text="Reset Password" CssClass="btn-primary-wide"
-                    OnClick="btnResetPassword_Click" />
+                    OnClick="btnResetPassword_Click" ValidationGroup="ForgotPasswordGroup" />
 
                 <asp:Panel ID="pnlLoginRow" runat="server" CssClass="auth-footer-row">
                     <asp:Label ID="lblRememberPassword" runat="server" Text="Remember your password? " />
                     <asp:LinkButton ID="lnkBackToLogin" runat="server" Text="Login"
-                        CssClass="link-accent" OnClick="lnkBackToLogin_Click" />
+                        CssClass="link-accent" OnClick="lnkBackToLogin_Click" CausesValidation="false" />
                 </asp:Panel>
 
             </asp:Panel>

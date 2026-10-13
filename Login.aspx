@@ -24,6 +24,13 @@
                         CssClass="form-label" Text="Email Address" />
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-input"
                         TextMode="Email" placeholder="Enter Your Email" />
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Email is required." Display="Dynamic" ValidationGroup="LoginGroup" />
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Enter a valid email address." Display="Dynamic"
+                        ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ValidationGroup="LoginGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="form-group">
@@ -31,20 +38,23 @@
                         CssClass="form-label" Text="Password" />
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Enter Your password" />
+                    <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+                        ControlToValidate="txtPassword" CssClass="field-error"
+                        ErrorMessage="Password is required." Display="Dynamic" ValidationGroup="LoginGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlForgotRow" runat="server" CssClass="forgot-password-row">
                     <asp:LinkButton ID="lnkForgotPassword" runat="server" Text="Forget password ?"
-                        CssClass="link-accent" OnClick="lnkForgotPassword_Click" />
+                        CssClass="link-accent" OnClick="lnkForgotPassword_Click" CausesValidation="false" />
                 </asp:Panel>
 
                 <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-primary-wide"
-                    OnClick="btnLogin_Click" />
+                    OnClick="btnLogin_Click" ValidationGroup="LoginGroup" />
 
                 <asp:Panel ID="pnlRegisterRow" runat="server" CssClass="auth-footer-row">
                     <asp:Label ID="lblNoAccount" runat="server" Text="Don't have an account ? " />
                     <asp:LinkButton ID="lnkRegister" runat="server" Text="Register"
-                        CssClass="link-accent" OnClick="lnkRegister_Click" />
+                        CssClass="link-accent" OnClick="lnkRegister_Click" CausesValidation="false" />
                 </asp:Panel>
 
             </asp:Panel>

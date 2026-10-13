@@ -24,6 +24,9 @@
                         CssClass="form-label" Text="Full Name" />
                     <asp:TextBox ID="txtFullName" runat="server" CssClass="form-input"
                         placeholder="Enter Your Full Name" />
+                    <asp:RequiredFieldValidator ID="rfvFullName" runat="server"
+                        ControlToValidate="txtFullName" CssClass="field-error"
+                        ErrorMessage="Full name is required." Display="Dynamic" ValidationGroup="RegisterGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="form-group">
@@ -31,6 +34,13 @@
                         CssClass="form-label" Text="Email Address" />
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-input"
                         TextMode="Email" placeholder="Enter Your Email" />
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Email is required." Display="Dynamic" ValidationGroup="RegisterGroup" />
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                        ControlToValidate="txtEmail" CssClass="field-error"
+                        ErrorMessage="Enter a valid email address." Display="Dynamic"
+                        ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ValidationGroup="RegisterGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlMobileGroup" runat="server" CssClass="form-group">
@@ -38,6 +48,9 @@
                         CssClass="form-label" Text="Mobile Number" />
                     <asp:TextBox ID="txtMobile" runat="server" CssClass="form-input"
                         TextMode="Phone" placeholder="Enter Your Number" />
+                    <asp:RequiredFieldValidator ID="rfvMobile" runat="server"
+                        ControlToValidate="txtMobile" CssClass="field-error"
+                        ErrorMessage="Mobile number is required." Display="Dynamic" ValidationGroup="RegisterGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="form-group">
@@ -45,6 +58,9 @@
                         CssClass="form-label" Text="Password" />
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Enter Your Password" />
+                    <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+                        ControlToValidate="txtPassword" CssClass="field-error"
+                        ErrorMessage="Password is required." Display="Dynamic" ValidationGroup="RegisterGroup" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlConfirmPasswordGroup" runat="server" CssClass="form-group">
@@ -52,15 +68,22 @@
                         CssClass="form-label" Text="Confirm Password" />
                     <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Confirm Your Password" />
+                    <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
+                        ControlToValidate="txtConfirmPassword" CssClass="field-error"
+                        ErrorMessage="Please confirm your password." Display="Dynamic" ValidationGroup="RegisterGroup" />
+                    <asp:CompareValidator ID="cvConfirmPassword" runat="server"
+                        ControlToValidate="txtConfirmPassword" ControlToCompare="txtPassword"
+                        CssClass="field-error" ErrorMessage="Passwords do not match."
+                        Display="Dynamic" ValidationGroup="RegisterGroup" />
                 </asp:Panel>
 
                 <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn-primary-wide"
-                    OnClick="btnRegister_Click" />
+                    OnClick="btnRegister_Click" ValidationGroup="RegisterGroup" />
 
                 <asp:Panel ID="pnlLoginRow" runat="server" CssClass="auth-footer-row">
                     <asp:Label ID="lblHaveAccount" runat="server" Text="Already have an account ? " />
                     <asp:LinkButton ID="lnkLogin" runat="server" Text="Login"
-                        CssClass="link-accent" OnClick="lnkLogin_Click" />
+                        CssClass="link-accent" OnClick="lnkLogin_Click" CausesValidation="false" />
                 </asp:Panel>
 
             </asp:Panel>

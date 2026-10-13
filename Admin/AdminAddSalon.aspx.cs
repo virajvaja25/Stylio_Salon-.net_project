@@ -27,6 +27,9 @@ namespace Stylio_Salon
 
         protected void btnAddSalon_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string owner = txtOwnerName.Text.Trim();
             string phone = txtPhoneNumber.Text.Trim();
             string email = txtEmailAddress.Text.Trim();

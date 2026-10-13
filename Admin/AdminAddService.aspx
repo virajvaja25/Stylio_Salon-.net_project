@@ -113,11 +113,13 @@
                             <asp:Panel ID="pnlServiceNameGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblServiceName" runat="server" AssociatedControlID="txtServiceName" CssClass="admin-field-label" Text="Service Name" />
                                 <asp:TextBox ID="txtServiceName" runat="server" CssClass="admin-input" placeholder="Enter Service Name" />
+                                <asp:RequiredFieldValidator ID="rfvServiceName" runat="server" ControlToValidate="txtServiceName" ErrorMessage="Service name is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlServiceDescGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblServiceDescription" runat="server" AssociatedControlID="txtServiceDescription" CssClass="admin-field-label" Text="Service Description" />
                                 <asp:TextBox ID="txtServiceDescription" runat="server" CssClass="admin-input" placeholder="Enter Service Description" />
+                                <asp:RequiredFieldValidator ID="rfvServiceDescription" runat="server" ControlToValidate="txtServiceDescription" ErrorMessage="Service description is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlCategoryGroup" runat="server" CssClass="admin-field-group">
@@ -130,11 +132,13 @@
                                     <asp:ListItem Value="Hair Color" Text="Hair Color" />
                                     <asp:ListItem Value="Massage & Spa" Text="Massage & Spa" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ControlToValidate="ddlCategory" InitialValue="" ErrorMessage="Please select a category." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlServicePriceGroup" runat="server" CssClass="admin-field-group">
                                 <asp:Label ID="lblServicePrice" runat="server" AssociatedControlID="txtServicePrice" CssClass="admin-field-label" Text="Service Price" />
                                 <asp:TextBox ID="txtServicePrice" runat="server" CssClass="admin-input" placeholder="&#8377; Enter Price" />
+                                <asp:RequiredFieldValidator ID="rfvServicePrice" runat="server" ControlToValidate="txtServicePrice" ErrorMessage="Service price is required." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                         </asp:Panel>
@@ -162,6 +166,7 @@
                                     <asp:ListItem Value="1.5 Hours" Text="1.5 Hours" />
                                     <asp:ListItem Value="2 Hours" Text="2 Hours" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvDuration" runat="server" ControlToValidate="ddlDuration" InitialValue="" ErrorMessage="Please select a duration." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlStatusGroup" runat="server" CssClass="admin-field-group">
@@ -171,11 +176,12 @@
                                     <asp:ListItem Value="Active" Text="Active" />
                                     <asp:ListItem Value="Inactive" Text="Inactive" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus" InitialValue="" ErrorMessage="Please select a status." CssClass="field-error" Display="Dynamic" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Panel ID="pnlActions" runat="server" CssClass="admin-form-actions">
-                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" />
-                                <asp:Button ID="btnAddService" runat="server" CssClass="btn-admin-submit" Text="Add Service" OnClick="btnAddService_Click" />
+                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
+                                <asp:Button ID="btnAddService" runat="server" CssClass="btn-admin-submit" Text="Add Service" OnClick="btnAddService_Click" ValidationGroup="AddService" />
                             </asp:Panel>
 
                             <asp:Label ID="lblMessage" runat="server" Visible="false" />

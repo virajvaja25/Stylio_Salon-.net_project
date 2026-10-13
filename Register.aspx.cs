@@ -11,6 +11,11 @@ namespace Stylio_Salon
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string fullName = txtFullName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string mobile = txtMobile.Text.Trim();

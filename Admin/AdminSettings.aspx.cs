@@ -65,6 +65,9 @@ namespace Stylio_Salon
 
         protected void btnSaveProfile_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string newName = txtFullName.Text.Trim();
             string newEmail = txtEmailAddress.Text.Trim();
 
@@ -86,6 +89,9 @@ namespace Stylio_Salon
 
         protected void btnSavePassword_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string oldPass = txtCurrentPassword.Text.Trim();
             string newPass = txtNewPassword.Text.Trim();
             string confirmPass = txtConfirmPassword.Text.Trim();

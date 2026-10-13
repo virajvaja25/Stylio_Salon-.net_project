@@ -21,6 +21,11 @@ namespace Stylio_Salon
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string emailOrId = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
