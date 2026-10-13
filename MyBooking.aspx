@@ -50,116 +50,63 @@
             <!-- ================= UPCOMING TAB CONTENT ================= -->
             <asp:Panel ID="pnlUpcomingContent" runat="server" CssClass="bookings-list-container">
 
-                <!-- Newly Confirmed Booking Card (Dynamic from Payment) -->
-                <asp:Panel ID="pnlConfirmedCard" runat="server" CssClass="mybooking-card" Visible="false" Style="border: 2px solid #5B2C6F;">
-                    <asp:Image ID="imgConfirmed" runat="server"
-                        ImageUrl="~/Images/new_booking.jpg"
-                        AlternateText="Booked Service" CssClass="mybooking-card-img" />
+                <asp:Label ID="lblNoUpcoming" runat="server" CssClass="mybooking-detail-line"
+                    Text="No upcoming bookings found." Visible="false" />
 
-                    <asp:Panel ID="pnlConfirmedBody" runat="server" CssClass="mybooking-card-content">
-                        <asp:Panel ID="pnlConfirmedHeader" runat="server" CssClass="mybooking-card-header">
-                            <asp:Label ID="lblConfirmedTitle" runat="server" CssClass="mybooking-service-title" Text="Hair Cut" />
-                            <asp:Label ID="lblConfirmedBadge" runat="server" CssClass="badge-upcoming" Text="Confirmed" Style="background-color:#27AE60; color:#fff;" />
+                <asp:Repeater ID="rptUpcoming" runat="server" OnItemCommand="rptUpcoming_ItemCommand">
+                    <ItemTemplate>
+                        <asp:Panel ID="pnlUpCard" runat="server" CssClass="mybooking-card">
+                            <asp:Image ID="imgUp" runat="server"
+                                ImageUrl='<%# GetImage(Eval("SalonImage")) %>'
+                                AlternateText='<%# Eval("Services") %>' CssClass="mybooking-card-img" />
+
+                            <asp:Panel ID="pnlUpBody" runat="server" CssClass="mybooking-card-content">
+                                <asp:Panel ID="pnlUpHeader" runat="server" CssClass="mybooking-card-header">
+                                    <asp:Label ID="lblUpTitle" runat="server" CssClass="mybooking-service-title" Text='<%# Eval("Services") %>' />
+                                    <asp:Label ID="lblUpBadge" runat="server" CssClass="badge-upcoming" Text="Upcoming" />
+                                </asp:Panel>
+
+                                <asp:Label ID="lblUpSalon" runat="server" CssClass="mybooking-detail-line" Text='<%# Eval("SalonName") %>' />
+                                <asp:Label ID="lblUpDateTime" runat="server" CssClass="mybooking-datetime-line" Text='<%# FormatDateTime(Eval("BookingDate"), Eval("BookingTime")) %>' />
+                                <asp:Label ID="lblUpTotal" runat="server" CssClass="mybooking-detail-line" Style="color:#5B2C6F; font-weight:700; margin-top:4px;" Text='<%# "Total Paid: ₹" + Eval("TotalAmount") %>' />
+
+                                <asp:Panel ID="pnlUpAction" runat="server" CssClass="mybooking-action-row">
+                                    <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel Booking"
+                                        CssClass="btn-cancel-booking" CommandName="cancel" CommandArgument='<%# Eval("BookingId") %>' />
+                                </asp:Panel>
+                            </asp:Panel>
                         </asp:Panel>
-
-                        <asp:Label ID="lblConfirmedStylist" runat="server" CssClass="mybooking-detail-line" Text="Senior Stylist" />
-                        <asp:Label ID="lblConfirmedSalon" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
-                        <asp:Label ID="lblConfirmedDateTime" runat="server" CssClass="mybooking-datetime-line" Text="25-May-2026 | 04:30 PM" />
-                        <asp:Label ID="lblConfirmedTotal" runat="server" CssClass="mybooking-detail-line" Style="color:#5B2C6F; font-weight:700; margin-top:4px;" Text="Total Paid: ₹338" />
-
-                        <asp:Panel ID="pnlConfirmedAction" runat="server" CssClass="mybooking-action-row">
-                            <asp:LinkButton ID="btnCancelConfirmed" runat="server" Text="Cancel Booking"
-                                CssClass="btn-cancel-booking" OnClick="btnCancelBooking_Click" CommandArgument="confirmed" />
-                        </asp:Panel>
-                    </asp:Panel>
-                </asp:Panel>
-
-                <!-- Upcoming Card 1 -->
-                <asp:Panel ID="pnlUpCard1" runat="server" CssClass="mybooking-card">
-                    <asp:Image ID="imgUp1" runat="server"
-                        ImageUrl="~/Images/haircut_booking.jpg"
-                        AlternateText="Hair Cut" CssClass="mybooking-card-img" />
-
-                    <asp:Panel ID="pnlUpBody1" runat="server" CssClass="mybooking-card-content">
-                        <asp:Panel ID="pnlUpHeader1" runat="server" CssClass="mybooking-card-header">
-                            <asp:Label ID="lblUpTitle1" runat="server" CssClass="mybooking-service-title" Text="Hair Cut" />
-                            <asp:Label ID="lblUpBadge1" runat="server" CssClass="badge-upcoming" Text="Upcoming" />
-                        </asp:Panel>
-
-                        <asp:Label ID="lblUpStylist1" runat="server" CssClass="mybooking-detail-line" Text="Rohit(Senior Stylist)" />
-                        <asp:Label ID="lblUpSalon1" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
-                        <asp:Label ID="lblUpDateTime1" runat="server" CssClass="mybooking-datetime-line" Text="25-May-2026 | 04:30 PM" />
-
-                        <asp:Panel ID="pnlUpAction1" runat="server" CssClass="mybooking-action-row">
-                            <asp:LinkButton ID="btnCancel1" runat="server" Text="Cancel Booking"
-                                CssClass="btn-cancel-booking" OnClick="btnCancelBooking_Click" CommandArgument="1" />
-                        </asp:Panel>
-                    </asp:Panel>
-                </asp:Panel>
-
-                <!-- Upcoming Card 2 -->
-                <asp:Panel ID="pnlUpCard2" runat="server" CssClass="mybooking-card">
-                    <asp:Image ID="imgUp2" runat="server"
-                        ImageUrl="~/Images/beard_booking.jpg"
-                        AlternateText="Beard Styling" CssClass="mybooking-card-img" />
-
-                    <asp:Panel ID="pnlUpBody2" runat="server" CssClass="mybooking-card-content">
-                        <asp:Panel ID="pnlUpHeader2" runat="server" CssClass="mybooking-card-header">
-                            <asp:Label ID="lblUpTitle2" runat="server" CssClass="mybooking-service-title" Text="Beard Styling" />
-                            <asp:Label ID="lblUpBadge2" runat="server" CssClass="badge-upcoming" Text="Upcoming" />
-                        </asp:Panel>
-
-                        <asp:Label ID="lblUpStylist2" runat="server" CssClass="mybooking-detail-line" Text="Aman(Beard Expert)" />
-                        <asp:Label ID="lblUpSalon2" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
-                        <asp:Label ID="lblUpDateTime2" runat="server" CssClass="mybooking-datetime-line" Text="28-May-2026 | 11:30 PM" />
-
-                        <asp:Panel ID="pnlUpAction2" runat="server" CssClass="mybooking-action-row">
-                            <asp:LinkButton ID="btnCancel2" runat="server" Text="Cancel Booking"
-                                CssClass="btn-cancel-booking" OnClick="btnCancelBooking_Click" CommandArgument="2" />
-                        </asp:Panel>
-                    </asp:Panel>
-                </asp:Panel>
+                    </ItemTemplate>
+                </asp:Repeater>
 
             </asp:Panel>
 
             <!-- ================= PAST TAB CONTENT ================= -->
             <asp:Panel ID="pnlPastContent" runat="server" CssClass="bookings-list-container" Visible="false">
 
-                <!-- Past Card 1 -->
-                <asp:Panel ID="pnlPastCard1" runat="server" CssClass="mybooking-card">
-                    <asp:Image ID="imgPast1" runat="server"
-                        ImageUrl="~/Images/haircut_booking.jpg"
-                        AlternateText="Hair Cut" CssClass="mybooking-card-img" />
+                <asp:Label ID="lblNoPast" runat="server" CssClass="mybooking-detail-line"
+                    Text="No past bookings found." Visible="false" />
 
-                    <asp:Panel ID="pnlPastBody1" runat="server" CssClass="mybooking-card-content">
-                        <asp:Panel ID="pnlPastHeader1" runat="server" CssClass="mybooking-card-header">
-                            <asp:Label ID="lblPastTitle1" runat="server" CssClass="mybooking-service-title" Text="Hair Cut" />
-                            <asp:Label ID="lblPastBadge1" runat="server" CssClass="badge-completed" Text="Completed" />
+                <asp:Repeater ID="rptPast" runat="server">
+                    <ItemTemplate>
+                        <asp:Panel ID="pnlPastCard" runat="server" CssClass="mybooking-card">
+                            <asp:Image ID="imgPast" runat="server"
+                                ImageUrl='<%# GetImage(Eval("SalonImage")) %>'
+                                AlternateText='<%# Eval("Services") %>' CssClass="mybooking-card-img" />
+
+                            <asp:Panel ID="pnlPastBody" runat="server" CssClass="mybooking-card-content">
+                                <asp:Panel ID="pnlPastHeader" runat="server" CssClass="mybooking-card-header">
+                                    <asp:Label ID="lblPastTitle" runat="server" CssClass="mybooking-service-title" Text='<%# Eval("Services") %>' />
+                                    <asp:Label ID="lblPastBadge" runat="server" CssClass="badge-completed" Text="Completed" />
+                                </asp:Panel>
+
+                                <asp:Label ID="lblPastSalon" runat="server" CssClass="mybooking-detail-line" Text='<%# Eval("SalonName") %>' />
+                                <asp:Label ID="lblPastDateTime" runat="server" CssClass="mybooking-datetime-line" Text='<%# FormatDateTime(Eval("BookingDate"), Eval("BookingTime")) %>' />
+                                <asp:Label ID="lblPastTotal" runat="server" CssClass="mybooking-detail-line" Style="color:#5B2C6F; font-weight:700; margin-top:4px;" Text='<%# "Total Paid: ₹" + Eval("TotalAmount") %>' />
+                            </asp:Panel>
                         </asp:Panel>
-
-                        <asp:Label ID="lblPastStylist1" runat="server" CssClass="mybooking-detail-line" Text="Rohit(Senior Stylist)" />
-                        <asp:Label ID="lblPastSalon1" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
-                        <asp:Label ID="lblPastDateTime1" runat="server" CssClass="mybooking-datetime-line" Text="25-May-2026 | 04:30 PM" />
-                    </asp:Panel>
-                </asp:Panel>
-
-                <!-- Past Card 2 -->
-                <asp:Panel ID="pnlPastCard2" runat="server" CssClass="mybooking-card">
-                    <asp:Image ID="imgPast2" runat="server"
-                        ImageUrl="~/Images/beard_booking.jpg"
-                        AlternateText="Beard Styling" CssClass="mybooking-card-img" />
-
-                    <asp:Panel ID="pnlPastBody2" runat="server" CssClass="mybooking-card-content">
-                        <asp:Panel ID="pnlPastHeader2" runat="server" CssClass="mybooking-card-header">
-                            <asp:Label ID="lblPastTitle2" runat="server" CssClass="mybooking-service-title" Text="Beard Styling" />
-                            <asp:Label ID="lblPastBadge2" runat="server" CssClass="badge-completed" Text="Completed" />
-                        </asp:Panel>
-
-                        <asp:Label ID="lblPastStylist2" runat="server" CssClass="mybooking-detail-line" Text="Aman(Beard Expert)" />
-                        <asp:Label ID="lblPastSalon2" runat="server" CssClass="mybooking-detail-line" Text="Stylio Salon" />
-                        <asp:Label ID="lblPastDateTime2" runat="server" CssClass="mybooking-datetime-line" Text="28-May-2026 | 11:30 PM" />
-                    </asp:Panel>
-                </asp:Panel>
+                    </ItemTemplate>
+                </asp:Repeater>
 
             </asp:Panel>
 

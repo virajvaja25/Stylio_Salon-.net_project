@@ -29,62 +29,12 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Label lblStatusMessage;
 
         protected global::System.Web.UI.WebControls.Panel pnlUpcomingContent;
-        protected global::System.Web.UI.WebControls.Panel pnlConfirmedCard;
-        protected global::System.Web.UI.WebControls.Image imgConfirmed;
-        protected global::System.Web.UI.WebControls.Panel pnlConfirmedBody;
-        protected global::System.Web.UI.WebControls.Panel pnlConfirmedHeader;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedTitle;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedBadge;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedStylist;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedSalon;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedDateTime;
-        protected global::System.Web.UI.WebControls.Label lblConfirmedTotal;
-        protected global::System.Web.UI.WebControls.Panel pnlConfirmedAction;
-        protected global::System.Web.UI.WebControls.LinkButton btnCancelConfirmed;
-        protected global::System.Web.UI.WebControls.Panel pnlUpCard1;
-        protected global::System.Web.UI.WebControls.Image imgUp1;
-        protected global::System.Web.UI.WebControls.Panel pnlUpBody1;
-        protected global::System.Web.UI.WebControls.Panel pnlUpHeader1;
-        protected global::System.Web.UI.WebControls.Label lblUpTitle1;
-        protected global::System.Web.UI.WebControls.Label lblUpBadge1;
-        protected global::System.Web.UI.WebControls.Label lblUpStylist1;
-        protected global::System.Web.UI.WebControls.Label lblUpSalon1;
-        protected global::System.Web.UI.WebControls.Label lblUpDateTime1;
-        protected global::System.Web.UI.WebControls.Panel pnlUpAction1;
-        protected global::System.Web.UI.WebControls.LinkButton btnCancel1;
-
-        protected global::System.Web.UI.WebControls.Panel pnlUpCard2;
-        protected global::System.Web.UI.WebControls.Image imgUp2;
-        protected global::System.Web.UI.WebControls.Panel pnlUpBody2;
-        protected global::System.Web.UI.WebControls.Panel pnlUpHeader2;
-        protected global::System.Web.UI.WebControls.Label lblUpTitle2;
-        protected global::System.Web.UI.WebControls.Label lblUpBadge2;
-        protected global::System.Web.UI.WebControls.Label lblUpStylist2;
-        protected global::System.Web.UI.WebControls.Label lblUpSalon2;
-        protected global::System.Web.UI.WebControls.Label lblUpDateTime2;
-        protected global::System.Web.UI.WebControls.Panel pnlUpAction2;
-        protected global::System.Web.UI.WebControls.LinkButton btnCancel2;
+        protected global::System.Web.UI.WebControls.Label lblNoUpcoming;
+        protected global::System.Web.UI.WebControls.Repeater rptUpcoming;
 
         protected global::System.Web.UI.WebControls.Panel pnlPastContent;
-        protected global::System.Web.UI.WebControls.Panel pnlPastCard1;
-        protected global::System.Web.UI.WebControls.Image imgPast1;
-        protected global::System.Web.UI.WebControls.Panel pnlPastBody1;
-        protected global::System.Web.UI.WebControls.Panel pnlPastHeader1;
-        protected global::System.Web.UI.WebControls.Label lblPastTitle1;
-        protected global::System.Web.UI.WebControls.Label lblPastBadge1;
-        protected global::System.Web.UI.WebControls.Label lblPastStylist1;
-        protected global::System.Web.UI.WebControls.Label lblPastSalon1;
-        protected global::System.Web.UI.WebControls.Label lblPastDateTime1;
-
-        protected global::System.Web.UI.WebControls.Panel pnlPastCard2;
-        protected global::System.Web.UI.WebControls.Image imgPast2;
-        protected global::System.Web.UI.WebControls.Panel pnlPastBody2;
-        protected global::System.Web.UI.WebControls.Panel pnlPastHeader2;
-        protected global::System.Web.UI.WebControls.Label lblPastTitle2;
-        protected global::System.Web.UI.WebControls.Label lblPastBadge2;
-        protected global::System.Web.UI.WebControls.Label lblPastStylist2;
-        protected global::System.Web.UI.WebControls.Label lblPastSalon2;
-        protected global::System.Web.UI.WebControls.Label lblPastDateTime2;
+        protected global::System.Web.UI.WebControls.Label lblNoPast;
+        protected global::System.Web.UI.WebControls.Repeater rptPast;
 
         protected global::System.Web.UI.WebControls.Panel pnlFooter;
         protected global::System.Web.UI.WebControls.Panel pnlFooterColumns;
