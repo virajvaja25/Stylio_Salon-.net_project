@@ -17,27 +17,21 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Panel pnlAuthBody;
         protected global::System.Web.UI.WebControls.Panel pnlAuthCard;
         protected global::System.Web.UI.WebControls.Label lblTitle;
-        protected global::System.Web.UI.WebControls.ValidationSummary valSummary;
 
         // Email group
         protected global::System.Web.UI.WebControls.Panel pnlEmailGroup;
         protected global::System.Web.UI.WebControls.Label lblEmail;
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
 
         // New password group
         protected global::System.Web.UI.WebControls.Panel pnlNewPasswordGroup;
         protected global::System.Web.UI.WebControls.Label lblNewPassword;
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNewPassword;
 
         // Confirm password group
         protected global::System.Web.UI.WebControls.Panel pnlConfirmPasswordGroup;
         protected global::System.Web.UI.WebControls.Label lblConfirmPassword;
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfirmPassword;
-        protected global::System.Web.UI.WebControls.CompareValidator cvConfirmPassword;
 
         // Buttons & links
         protected global::System.Web.UI.WebControls.Button btnResetPassword;

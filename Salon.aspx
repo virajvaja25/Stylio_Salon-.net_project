@@ -88,7 +88,7 @@
 
                 <asp:Panel ID="pnlFilterActions" runat="server" CssClass="filter-actions-row">
                     <asp:Button ID="btnFilterReset" runat="server" Text="RESET" CssClass="btn-filter-reset"
-                        OnClick="btnFilterReset_Click" CausesValidation="false" />
+                        OnClick="btnFilterReset_Click" />
                     <asp:Button ID="btnFilterApply" runat="server" Text="APPLY" CssClass="btn-filter-apply"
                         OnClick="btnFilterApply_Click" />
                 </asp:Panel>

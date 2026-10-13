@@ -174,7 +174,7 @@
                             </asp:Panel>
 
                             <asp:Panel ID="pnlActions" runat="server" CssClass="admin-form-actions">
-                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
+                                <asp:Button ID="btnCancel" runat="server" CssClass="btn-admin-cancel" Text="Cancel" OnClick="btnCancel_Click" />
                                 <asp:Button ID="btnAddService" runat="server" CssClass="btn-admin-submit" Text="Add Service" OnClick="btnAddService_Click" />
                             </asp:Panel>
 

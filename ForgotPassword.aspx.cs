@@ -10,24 +10,14 @@ namespace Stylio_Salon
 
         protected void btnResetPassword_Click(object sender, EventArgs e)
         {
-            if (!Page.IsValid)
-            {
-                return;
-            }
-
             string email = txtEmail.Text.Trim();
             string newPassword = txtNewPassword.Text;
 
-            // TODO: replace with real password-reset logic (EF / database / API call)
             bool reset = ResetPassword(email, newPassword);
 
             if (reset)
             {
                 Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                valSummary.Visible = true;
             }
         }
 

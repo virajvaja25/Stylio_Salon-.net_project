@@ -19,17 +19,11 @@
 
                 <asp:Label ID="lblTitle" runat="server" CssClass="auth-title" Text="Login" />
 
-                <asp:ValidationSummary ID="valSummary" runat="server" CssClass="summary-error"
-                    DisplayMode="BulletList" HeaderText="" EnableClientScript="false" />
-
                 <asp:Panel ID="pnlEmailGroup" runat="server" CssClass="form-group">
                     <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail"
                         CssClass="form-label" Text="Email Address" />
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-input"
                         TextMode="Email" placeholder="Enter Your Email" />
-                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
-                        ControlToValidate="txtEmail" CssClass="field-error"
-                        ErrorMessage="Email is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlPasswordGroup" runat="server" CssClass="form-group">
@@ -37,9 +31,6 @@
                         CssClass="form-label" Text="Password" />
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-input"
                         TextMode="Password" placeholder="Enter Your password" />
-                    <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
-                        ControlToValidate="txtPassword" CssClass="field-error"
-                        ErrorMessage="Password is required." Display="Dynamic" EnableClientScript="false" />
                 </asp:Panel>
 
                 <asp:Panel ID="pnlForgotRow" runat="server" CssClass="forgot-password-row">
