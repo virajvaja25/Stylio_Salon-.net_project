@@ -49,7 +49,7 @@ namespace Stylio_Salon
                     Category = "Hair",
                     Description = "Precision cut customized to your face structure, topped off with a refreshing wash and blow-dry style.",
                     Duration = "30-45 mins",
-                    PriceRange = "\u20B9250 - \u20B9500",
+                    PriceRange = "\u20B9149",
                     IconUrl = "~/Images/DefaultScreen/icon-haircut.png"
                 },
                 new ServiceCatalogItem
@@ -58,7 +58,7 @@ namespace Stylio_Salon
                     Category = "Beard",
                     Description = "Expert beard shaping, razor lining, hot towel wrap, and nourishing beard oil finish.",
                     Duration = "20-30 mins",
-                    PriceRange = "\u20B9150 - \u20B9300",
+                    PriceRange = "\u20B999",
                     IconUrl = "~/Images/DefaultScreen/icon-beard.png"
                 },
                 new ServiceCatalogItem
@@ -67,7 +67,7 @@ namespace Stylio_Salon
                     Category = "Color",
                     Description = "Ammonia-free vibrant hair coloring and highlights tailored to your skin tone and preference.",
                     Duration = "60-90 mins",
-                    PriceRange = "\u20B9800 - \u20B92000",
+                    PriceRange = "\u20B9299",
                     IconUrl = "~/Images/DefaultScreen/icon-haircolor.png"
                 },
                 new ServiceCatalogItem
@@ -76,7 +76,7 @@ namespace Stylio_Salon
                     Category = "Skin",
                     Description = "Exfoliating scrub, steam, blackhead removal, skin massage, and rejuvenating herbal face pack.",
                     Duration = "45-60 mins",
-                    PriceRange = "\u20B9500 - \u20B91200",
+                    PriceRange = "\u20B9500",
                     IconUrl = "~/Images/DefaultScreen/icon-facial.png"
                 },
                 new ServiceCatalogItem
@@ -85,7 +85,7 @@ namespace Stylio_Salon
                     Category = "Hair",
                     Description = "Deep conditioning mask, scalp massage, and steam therapy to combat dryness and hair fall.",
                     Duration = "45 mins",
-                    PriceRange = "\u20B9600 - \u20B91500",
+                    PriceRange = "\u20B9399",
                     IconUrl = "~/Images/DefaultScreen/icon-haircut.png"
                 },
                 new ServiceCatalogItem
@@ -94,7 +94,7 @@ namespace Stylio_Salon
                     Category = "Skin",
                     Description = "Instant glow therapy to remove tan caused by UV exposure, revealing hydrated glowing skin.",
                     Duration = "30 mins",
-                    PriceRange = "\u20B9400 - \u20B9900",
+                    PriceRange = "\u20B9300",
                     IconUrl = "~/Images/DefaultScreen/icon-facial.png"
                 }
             };
