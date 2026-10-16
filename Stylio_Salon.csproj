@@ -120,6 +120,20 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Database1.sql" />
+    <Content Include="Images\guestscreen\footer.png" />
+    <Content Include="Images\guestscreen\hero-salon.png" />
+    <Content Include="Images\guestscreen\icon-beard.png" />
+    <Content Include="Images\guestscreen\icon-facial.png" />
+    <Content Include="Images\guestscreen\icon-haircolor.png" />
+    <Content Include="Images\guestscreen\icon-haircut.png" />
+    <Content Include="Images\guestscreen\logo.png" />
+    <Content Include="Images\guestscreen\reviewer1.png" />
+    <Content Include="Images\guestscreen\salon1.png" />
+    <Content Include="Images\guestscreen\salon2.png" />
+    <Content Include="Images\guestscreen\salon3.png" />
+    <Content Include="Images\guestscreen\Stylio_logo.png" />
+    <Content Include="Images\SalonScreen\salon2.png" />
     <Content Include="Login.aspx" />
     <Content Include="MyBooking.aspx" />
     <Content Include="MyProfile.aspx" />
@@ -380,6 +394,8 @@
   <ItemGroup>
     <Content Include="Images\24-white-spikes-on-short-dark-brown-hair.webp" />
     <None Include="packages.config" />
+    <None Include="Stylio_Salon.sln" />
+    <None Include="Stylio_Salon.slnx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -387,7 +403,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
