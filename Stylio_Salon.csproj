@@ -116,6 +116,10 @@
     <Content Include="Images\salon_maemane.jpg" />
     <Content Include="Images\salon_maemane_v2.png" />
     <Content Include="Images\salon_hairstudio.png" />
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Login.aspx" />
     <Content Include="MyBooking.aspx" />
     <Content Include="MyProfile.aspx" />

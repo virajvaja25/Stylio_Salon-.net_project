@@ -10,8 +10,116 @@ namespace Stylio_Salon
 {
     public class Db
     {
-        public static string connectionString =
-            @"Data Source=(localdb)\ProjectModels;Initial Catalog=stylio_salon_user;Integrated Security=True";
+        private static string _connectionString;
+
+        public static string connectionString
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_connectionString))
+                    return _connectionString;
+
+                EnsureDataDirectory();
+
+                // 1. Try connection string from Web.config (App_Data database)
+                if (ConfigurationManager.ConnectionStrings["StylioConnectionString"] != null)
+                {
+                    string webConfigConn = ConfigurationManager.ConnectionStrings["StylioConnectionString"].ConnectionString;
+                    if (!string.IsNullOrEmpty(webConfigConn) && TestConnection(webConfigConn))
+                    {
+                        _connectionString = webConfigConn;
+                        return _connectionString;
+                    }
+                }
+
+                // 2. Direct MSSQLLocalDB with |DataDirectory|\Database1.mdf
+                string appDataConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;Connect Timeout=30";
+                if (TestConnection(appDataConn))
+                {
+                    _connectionString = appDataConn;
+                    return _connectionString;
+                }
+
+                // 3. Fallback to ProjectModels stylio_salon_user
+                string projectModelsConn = @"Data Source=(localdb)\ProjectModels;Initial Catalog=stylio_salon_user;Integrated Security=True";
+                if (TestConnection(projectModelsConn))
+                {
+                    _connectionString = projectModelsConn;
+                    return _connectionString;
+                }
+
+                _connectionString = appDataConn;
+                return _connectionString;
+            }
+            set
+            {
+                _connectionString = value;
+            }
+        }
+
+        private static void EnsureDataDirectory()
+        {
+            if (AppDomain.CurrentDomain.GetData("DataDirectory") == null)
+            {
+                string path = null;
+                try
+                {
+                    path = HttpRuntime.AppDomainAppPath;
+                }
+                catch { }
+
+                if (string.IsNullOrEmpty(path))
+                {
+                    path = AppDomain.CurrentDomain.BaseDirectory;
+                }
+
+                string appData = System.IO.Path.Combine(path, "App_Data");
+                if (!System.IO.Directory.Exists(appData))
+                {
+                    // Try current working directory
+                    string current = Environment.CurrentDirectory;
+                    string candidate = System.IO.Path.Combine(current, "App_Data");
+                    if (System.IO.Directory.Exists(candidate))
+                    {
+                        appData = candidate;
+                    }
+                    else
+                    {
+                        // Try parent of base directory
+                        string parent = System.IO.Path.GetDirectoryName(path.TrimEnd('\\', '/'));
+                        if (!string.IsNullOrEmpty(parent))
+                        {
+                            string parentCandidate = System.IO.Path.Combine(parent, "App_Data");
+                            if (System.IO.Directory.Exists(parentCandidate))
+                            {
+                                appData = parentCandidate;
+                            }
+                        }
+                    }
+                }
+
+                if (System.IO.Directory.Exists(appData))
+                {
+                    AppDomain.CurrentDomain.SetData("DataDirectory", appData);
+                }
+            }
+        }
+
+        private static bool TestConnection(string connStr)
+        {
+            try
+            {
+                using (SqlConnection testCon = new SqlConnection(connStr))
+                {
+                    testCon.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         // ---------------- USERS ----------------
         public static bool RegisterUser(string name, string email, string mobile, string password)
