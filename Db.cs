@@ -21,7 +21,15 @@ namespace Stylio_Salon
 
                 EnsureDataDirectory();
 
-                // 1. Try connection string from Web.config (App_Data database)
+                // 1. Direct MSSQLLocalDB with |DataDirectory|\Database1.mdf (Primary App_Data database)
+                string appDataConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;Connect Timeout=30";
+                if (TestConnection(appDataConn))
+                {
+                    _connectionString = appDataConn;
+                    return _connectionString;
+                }
+
+                // 2. Try connection string from Web.config if present
                 if (ConfigurationManager.ConnectionStrings["StylioConnectionString"] != null)
                 {
                     string webConfigConn = ConfigurationManager.ConnectionStrings["StylioConnectionString"].ConnectionString;
@@ -30,14 +38,6 @@ namespace Stylio_Salon
                         _connectionString = webConfigConn;
                         return _connectionString;
                     }
-                }
-
-                // 2. Direct MSSQLLocalDB with |DataDirectory|\Database1.mdf
-                string appDataConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;Connect Timeout=30";
-                if (TestConnection(appDataConn))
-                {
-                    _connectionString = appDataConn;
-                    return _connectionString;
                 }
 
                 // 3. Fallback to ProjectModels stylio_salon_user
