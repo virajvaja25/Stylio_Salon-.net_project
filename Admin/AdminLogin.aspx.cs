@@ -10,11 +10,17 @@ namespace Stylio_Salon
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["logout"] == "1")   
+                if (Request.QueryString["logout"] == "1")
                 {
                     Session.Remove("IsAdminLoggedIn");
                     Session.Remove("AdminName");
                     Session.Remove("AdminEmail");
+                }
+
+                // If already logged in as admin, skip login page
+                if (Session["IsAdminLoggedIn"] != null && (bool)Session["IsAdminLoggedIn"])
+                {
+                    Response.Redirect("AdminDashboard.aspx");
                 }
             }
         }
@@ -43,33 +49,21 @@ namespace Stylio_Salon
                 return;
             }
 
-            if (IsValidAdmin(emailOrId, password))  
+            // Validate admin credentials from DB
+            if (Db.ValidateAdmin(emailOrId, password))
             {
+                string adminName = Db.GetAdminName(emailOrId);
                 Session["IsAdminLoggedIn"] = true;
                 Session["AdminEmail"] = emailOrId;
-                Session["AdminName"] = "Viraj Vaja";
+                Session["AdminName"] = !string.IsNullOrEmpty(adminName) ? adminName : "Admin";
 
                 Response.Redirect("AdminDashboard.aspx");
             }
             else
             {
-                lblErrorMessage.Text = "Invalid Admin ID or Password. (Email: admin@stylio.com | Password: admin123)";
+                lblErrorMessage.Text = "Invalid Admin ID or Password. Please try again.";
                 lblErrorMessage.Visible = true;
             }
-        }
-
-        private bool IsValidAdmin(string id, string pwd)
-        {
-            // Case-insensitive password check: admin123, admin, stylio123, 123456
-            if (string.Equals(pwd, "admin123", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(pwd, "admin", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(pwd, "stylio123", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(pwd, "123456", StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

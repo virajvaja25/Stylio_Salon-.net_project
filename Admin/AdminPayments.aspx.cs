@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Web;
 using System.Web.UI;
 
@@ -8,11 +9,11 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -25,7 +26,21 @@ namespace Stylio_Salon
                         lblAdminName.Text = name;
                     }
                 }
+
+                LoadPaymentStats();
             }
+        }
+
+        private void LoadPaymentStats()
+        {
+            // Load total revenue from all bookings
+            decimal totalRevenue = Db.GetTotalRevenue();
+            int totalBookings = Db.GetTotalBookings();
+
+            if (lblTotalRevenue != null)
+                lblTotalRevenue.Text = "\u20B9" + totalRevenue.ToString("N0");
+            if (lblTotalTransactions != null)
+                lblTotalTransactions.Text = totalBookings.ToString("N0");
         }
 
         protected void btnNavLogout_Click(object sender, EventArgs e)

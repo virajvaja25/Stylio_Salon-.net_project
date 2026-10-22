@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace Stylio_Salon
 {
@@ -20,14 +21,34 @@ namespace Stylio_Salon
 
         private void LoadUserProfile()
         {
-            // Read from Session if available, or default to the values shown in design
-            string fullName = Session["UserFullName"] as string ?? Session["UserName"] as string;
-            string email = Session["UserEmail"] as string ?? Session["UserName"] as string;
-            string phone = Session["UserMobile"] as string;
+            string email = Session["UserEmail"] as string;
 
-            lblProfileName.Text = !string.IsNullOrEmpty(fullName) ? fullName : "Khush Patel";
-            lblProfileEmail.Text = !string.IsNullOrEmpty(email) ? email : "Khushdobariya2682007@gmail.com";
-            lblProfilePhone.Text = !string.IsNullOrEmpty(phone) ? phone : "+91 8160689908";
+            if (!string.IsNullOrEmpty(email))
+            {
+                // Load from database
+                DataRow user = Db.GetUserByEmail(email);
+                if (user != null)
+                {
+                    string name = user["Name"].ToString();
+                    string mobile = user["MobileNumber"].ToString();
+
+                    lblProfileName.Text = !string.IsNullOrEmpty(name) ? name : email;
+                    lblProfileEmail.Text = email;
+                    lblProfilePhone.Text = !string.IsNullOrEmpty(mobile) ? mobile : "Not provided";
+
+                    // Update session with fresh data
+                    Session["UserFullName"] = name;
+                    Session["UserMobile"] = mobile;
+                    return;
+                }
+            }
+
+            // Fallback to session values
+            string sessionName = Session["UserFullName"] as string ?? Session["UserName"] as string;
+            string sessionPhone = Session["UserMobile"] as string;
+            lblProfileName.Text = !string.IsNullOrEmpty(sessionName) ? sessionName : "User";
+            lblProfileEmail.Text = !string.IsNullOrEmpty(email) ? email : "Not available";
+            lblProfilePhone.Text = !string.IsNullOrEmpty(sessionPhone) ? sessionPhone : "Not provided";
         }
 
         // ---------------- Sidebar Navigation ----------------

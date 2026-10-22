@@ -8,11 +8,11 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -36,7 +36,6 @@ namespace Stylio_Salon
             string email = txtEmailAddress.Text.Trim();
             string password = txtPassword.Text.Trim();
             string confirmPwd = txtConfirmPassword.Text.Trim();
-            string status = ddlStatus.SelectedValue;
 
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email))
             {
@@ -54,22 +53,44 @@ namespace Stylio_Salon
                 return;
             }
 
-            lblMessage.Text = "User '" + Server.HtmlEncode(fullName) + "' added successfully!";
-            lblMessage.CssClass = "admin-msg-success";
-            lblMessage.Visible = true;
+            // Check if email already exists
+            if (Db.EmailExists(email))
+            {
+                lblMessage.Text = "A user with this email address already exists.";
+                lblMessage.CssClass = "admin-msg-error";
+                lblMessage.Visible = true;
+                return;
+            }
 
-            // Clear inputs
-            txtFullName.Text = "";
-            txtPhoneNumber.Text = "";
-            txtEmailAddress.Text = "";
-            txtPassword.Text = "";
-            txtConfirmPassword.Text = "";
-            ddlStatus.SelectedIndex = 0;
+            // Save to database
+            string finalPassword = string.IsNullOrEmpty(password) ? "Stylio@123" : password;
+            bool saved = Db.RegisterUser(fullName, email, phone, finalPassword);
+
+            if (saved)
+            {
+                lblMessage.Text = "User '" + Server.HtmlEncode(fullName) + "' added successfully!";
+                lblMessage.CssClass = "admin-msg-success";
+                lblMessage.Visible = true;
+
+                // Clear inputs
+                txtFullName.Text = "";
+                txtPhoneNumber.Text = "";
+                txtEmailAddress.Text = "";
+                txtPassword.Text = "";
+                txtConfirmPassword.Text = "";
+                ddlStatus.SelectedIndex = 0;
+            }
+            else
+            {
+                lblMessage.Text = "Failed to add user. Please try again.";
+                lblMessage.CssClass = "admin-msg-error";
+                lblMessage.Visible = true;
+            }
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminDashboard.aspx");
+            Response.Redirect("AdminUsers.aspx");
         }
 
         protected void btnNavLogout_Click(object sender, EventArgs e)

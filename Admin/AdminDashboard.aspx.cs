@@ -8,16 +8,16 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Allow default preview session so the page displays immediately
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login — redirect if not authenticated
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
             {
+                // Show admin name in topbar
                 if (Session["AdminName"] != null)
                 {
                     string name = Session["AdminName"].ToString();
@@ -26,7 +26,29 @@ namespace Stylio_Salon
                         lblAdminName.Text = name;
                     }
                 }
+
+                // Load live stats from database
+                LoadDashboardStats();
             }
+        }
+
+        private void LoadDashboardStats()
+        {
+            // Total Users
+            int totalUsers = Db.GetTotalUsers();
+            lblStatUsersValue.Text = totalUsers.ToString("N0");
+
+            // Total Salons
+            int totalSalons = Db.GetTotalSalons();
+            lblStatSalonsValue.Text = totalSalons.ToString("N0");
+
+            // Total Bookings (all-time)
+            int totalBookings = Db.GetTotalBookings();
+            lblStatBookingsValue.Text = totalBookings.ToString("N0");
+
+            // Total Revenue
+            decimal totalRevenue = Db.GetTotalRevenue();
+            lblStatRevenueValue.Text = "&#8377;" + totalRevenue.ToString("N0");
         }
 
         protected void btnNavLogout_Click(object sender, EventArgs e)

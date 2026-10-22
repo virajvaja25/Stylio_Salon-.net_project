@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +11,7 @@ namespace Stylio_Salon
     public partial class SalonDetails : System.Web.UI.Page
     {
         private int _salonId;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _salonId = GetSalonIdFromQueryString();
@@ -20,73 +22,77 @@ namespace Stylio_Salon
                 ShowTab("About");
             }
         }
+
         private int GetSalonIdFromQueryString()
         {
             int id;
             return int.TryParse(Request.QueryString["id"], out id) ? id : 1;
         }
 
-        // TODO: replace with real data lookup (database / EF / API call)
-        private SalonListItem GetSalonById(int id)
-        {
-            var salons = new List<SalonListItem>
-            {
-                new SalonListItem
-                {
-                    Id = 1,
-                    Name = "Stylio Men's Salon",
-                    Rating = 4.9,
-                    Location = "Trikon Bag, Rajkot",
-                    ServicesText = "Beard Trim, Facial, Hair Cut",
-                    ImageUrl = "~/Images/salon_stylio_v2.png"
-                },
-                new SalonListItem
-                {
-                    Id = 2,
-                    Name = "The Mae Mane Salon",
-                    Rating = 4.8,
-                    Location = "Bhaktinagar Circle, Rajkot",
-                    ServicesText = "Hair Cut, Beard, Hair Color",
-                    ImageUrl = "~/Images/salon_maemane_v2.png"
-                },
-                new SalonListItem
-                {
-                    Id = 3,
-                    Name = "The Hair Studio",
-                    Rating = 4.7,
-                    Location = "Surat, Gujrat",
-                    ServicesText = "Hair Cut, Beard, Hair Spa",
-                    ImageUrl = "~/Images/salon_hairstudio.png"
-                }
-            };
-
-            return salons.FirstOrDefault(s => s.Id == id) ?? salons[0];
-        }
-
         private void BindSalonDetails()
         {
-            var salon = GetSalonById(_salonId);
+            // Load from database
+            DataRow salon = Db.GetSalonById(_salonId);
 
-            imgSalonHero.ImageUrl = salon.ImageUrl;
-            lblSalonName.Text = salon.Name;
-            lblSalonRating.Text = salon.Rating.ToString("0.0") + " (1.2K)";
-            lblSalonLocation.Text = salon.Location;
+            if (salon != null)
+            {
+                string salonName = salon["SalonName"].ToString();
+                string address = salon["Address"].ToString();
+                string desc = salon["SalonDescription"].ToString();
+                string imgFile = salon["SalonImage"].ToString();
+                string openingHour = salon["OpeningHour"].ToString();
 
-            lblOpenTime.Text = "8 AM";
-            lblCloseTime.Text = "9 PM";
+                imgSalonHero.ImageUrl = !string.IsNullOrEmpty(imgFile)
+                    ? "~/Images/" + imgFile
+                    : "~/Images/salon_stylio_v2.png";
 
-            lblSalonDescription.Text = salon.Name + " offers professional hair, beard, and grooming services in a premium and relaxing environment.";
-            lblWeekdayHours.Text = "Mon-Fri: 08:00 AM - 09:00 PM";
-            lblWeekendHours.Text = "Sat-Sun: 09:00 AM - 09:00 PM";
-            lblPopularServices.Text = salon.ServicesText;
+                lblSalonName.Text = salonName;
+                lblSalonRating.Text = "4.8 (1.2K)";
+                lblSalonLocation.Text = address;
 
-            BindServicesTab(salon);
+                lblOpenTime.Text = "8 AM";
+                lblCloseTime.Text = "9 PM";
+
+                lblSalonDescription.Text = !string.IsNullOrEmpty(desc)
+                    ? desc
+                    : salonName + " offers professional hair, beard, and grooming services in a premium and relaxing environment.";
+
+                lblWeekdayHours.Text = !string.IsNullOrEmpty(openingHour) ? openingHour : "Mon-Fri: 08:00 AM - 09:00 PM";
+                lblWeekendHours.Text = "Sat-Sun: 09:00 AM - 09:00 PM";
+
+                // Use description as services if no separate services column
+                string services = !string.IsNullOrEmpty(desc) ? desc : "Hair Cut, Beard, Facial";
+                lblPopularServices.Text = services;
+
+                BindServicesTab(services);
+            }
+            else
+            {
+                // Fallback: load first salon
+                DataTable dt = Db.GetAllSalons();
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow r = dt.Rows[0];
+                    lblSalonName.Text = r["SalonName"].ToString();
+                    lblSalonRating.Text = "4.8 (1.2K)";
+                    lblSalonLocation.Text = r["Address"].ToString();
+                    lblOpenTime.Text = "8 AM";
+                    lblCloseTime.Text = "9 PM";
+                    lblSalonDescription.Text = r["SalonDescription"].ToString();
+                    lblWeekdayHours.Text = "Mon-Fri: 08:00 AM - 09:00 PM";
+                    lblWeekendHours.Text = "Sat-Sun: 09:00 AM - 09:00 PM";
+                    string svcs = !string.IsNullOrEmpty(r["SalonDescription"].ToString()) ? r["SalonDescription"].ToString() : "Hair Cut, Beard, Facial";
+                    lblPopularServices.Text = svcs;
+                    BindServicesTab(svcs);
+                }
+            }
+
             BindReviewsTab();
         }
 
-        private void BindServicesTab(SalonListItem salon)
+        private void BindServicesTab(string servicesText)
         {
-            var services = salon.ServicesText
+            var services = servicesText
                 .Split(',')
                 .Select(s => new Service { Name = s.Trim() })
                 .ToList();

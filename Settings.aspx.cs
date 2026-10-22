@@ -55,14 +55,36 @@ namespace Stylio_Salon
                 return;
             }
 
-            // Success simulation
-            lblStatusMessage.Visible = true;
-            lblStatusMessage.Style["color"] = "#27AE60";
-            lblStatusMessage.Text = "Password updated successfully!";
-            pnlChangePasswordSub.Visible = false;
-            txtCurrentPassword.Text = string.Empty;
-            txtNewPassword.Text = string.Empty;
-            txtConfirmPassword.Text = string.Empty;
+            // Change password in database
+            string email = Session["UserEmail"] as string;
+            int userId = Db.GetUserId(email);
+
+            if (userId > 0)
+            {
+                bool changed = Db.ChangePassword(userId, currentPwd, newPwd);
+                if (changed)
+                {
+                    lblStatusMessage.Visible = true;
+                    lblStatusMessage.Style["color"] = "#27AE60";
+                    lblStatusMessage.Text = "Password updated successfully!";
+                    pnlChangePasswordSub.Visible = false;
+                    txtCurrentPassword.Text = string.Empty;
+                    txtNewPassword.Text = string.Empty;
+                    txtConfirmPassword.Text = string.Empty;
+                }
+                else
+                {
+                    lblStatusMessage.Visible = true;
+                    lblStatusMessage.Style["color"] = "#C0392B";
+                    lblStatusMessage.Text = "Current password is incorrect. Please try again.";
+                }
+            }
+            else
+            {
+                lblStatusMessage.Visible = true;
+                lblStatusMessage.Style["color"] = "#C0392B";
+                lblStatusMessage.Text = "Unable to update password. Please log in again.";
+            }
         }
 
         // ---------------- Navigation Handlers ----------------

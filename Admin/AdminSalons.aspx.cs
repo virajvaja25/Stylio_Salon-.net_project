@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Web;
 using System.Web.UI;
 
@@ -8,11 +9,11 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -25,18 +26,89 @@ namespace Stylio_Salon
                         lblAdminName.Text = name;
                     }
                 }
-                UpdatePaginationCount();
+
+                LoadSalonsFromDb();
             }
         }
 
-        private void UpdatePaginationCount()
+        private void LoadSalonsFromDb()
+        {
+            DataTable dt = Db.GetAllSalons();
+
+            // Map DB rows to the 3 static panels (keep markup unchanged)
+            // Panel 1
+            if (dt.Rows.Count > 0)
+            {
+                DataRow r = dt.Rows[0];
+                pnlSalonItem1.Visible = true;
+                lblSalonTitle1.Text = r["SalonName"].ToString();
+                lblSalonAddress1.Text = r["Address"].ToString();
+                lblSalonServices1.Text = !string.IsNullOrEmpty(r["SalonDescription"].ToString())
+                    ? r["SalonDescription"].ToString()
+                    : "Hair Cut, Beard, Facial";
+                // Store SalonId in ViewState for delete
+                ViewState["SalonId1"] = Convert.ToInt32(r["SalonId"]);
+                // Image
+                string img1 = r["SalonImage"].ToString();
+                if (!string.IsNullOrEmpty(img1))
+                    imgSalon1.ImageUrl = "~/Images/" + img1;
+            }
+            else
+            {
+                pnlSalonItem1.Visible = false;
+            }
+
+            // Panel 2
+            if (dt.Rows.Count > 1)
+            {
+                DataRow r = dt.Rows[1];
+                pnlSalonItem2.Visible = true;
+                lblSalonTitle2.Text = r["SalonName"].ToString();
+                lblSalonAddress2.Text = r["Address"].ToString();
+                lblSalonServices2.Text = !string.IsNullOrEmpty(r["SalonDescription"].ToString())
+                    ? r["SalonDescription"].ToString()
+                    : "Hair Cut, Beard, Hair Color";
+                ViewState["SalonId2"] = Convert.ToInt32(r["SalonId"]);
+                string img2 = r["SalonImage"].ToString();
+                if (!string.IsNullOrEmpty(img2))
+                    imgSalon2.ImageUrl = "~/Images/" + img2;
+            }
+            else
+            {
+                pnlSalonItem2.Visible = false;
+            }
+
+            // Panel 3
+            if (dt.Rows.Count > 2)
+            {
+                DataRow r = dt.Rows[2];
+                pnlSalonItem3.Visible = true;
+                lblSalonTitle3.Text = r["SalonName"].ToString();
+                lblSalonAddress3.Text = r["Address"].ToString();
+                lblSalonServices3.Text = !string.IsNullOrEmpty(r["SalonDescription"].ToString())
+                    ? r["SalonDescription"].ToString()
+                    : "Hair Cut, Beard, Hair Spa";
+                ViewState["SalonId3"] = Convert.ToInt32(r["SalonId"]);
+                string img3 = r["SalonImage"].ToString();
+                if (!string.IsNullOrEmpty(img3))
+                    imgSalon3.ImageUrl = "~/Images/" + img3;
+            }
+            else
+            {
+                pnlSalonItem3.Visible = false;
+            }
+
+            UpdatePaginationCount(dt.Rows.Count);
+        }
+
+        private void UpdatePaginationCount(int total)
         {
             int visibleCount = 0;
             if (pnlSalonItem1.Visible) visibleCount++;
             if (pnlSalonItem2.Visible) visibleCount++;
             if (pnlSalonItem3.Visible) visibleCount++;
 
-            lblSalonsPaginationInfo.Text = string.Format("Showing 1 to {0} of Salons", visibleCount);
+            lblSalonsPaginationInfo.Text = string.Format("Showing 1 to {0} of {1} Salons", visibleCount, total);
         }
 
         protected void txtSearchSalons_TextChanged(object sender, EventArgs e)
@@ -44,17 +116,26 @@ namespace Stylio_Salon
             string keyword = txtSearchSalons.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(keyword))
             {
-                pnlSalonItem1.Visible = true;
-                pnlSalonItem2.Visible = true;
-                pnlSalonItem3.Visible = true;
+                LoadSalonsFromDb();
+                return;
             }
-            else
-            {
-                pnlSalonItem1.Visible = lblSalonTitle1.Text.ToLower().Contains(keyword) || lblSalonAddress1.Text.ToLower().Contains(keyword) || lblSalonServices1.Text.ToLower().Contains(keyword);
-                pnlSalonItem2.Visible = lblSalonTitle2.Text.ToLower().Contains(keyword) || lblSalonAddress2.Text.ToLower().Contains(keyword) || lblSalonServices2.Text.ToLower().Contains(keyword);
-                pnlSalonItem3.Visible = lblSalonTitle3.Text.ToLower().Contains(keyword) || lblSalonAddress3.Text.ToLower().Contains(keyword) || lblSalonServices3.Text.ToLower().Contains(keyword);
-            }
-            UpdatePaginationCount();
+
+            // Filter displayed panels by their label text
+            bool v1 = lblSalonTitle1.Text.ToLower().Contains(keyword)
+                   || lblSalonAddress1.Text.ToLower().Contains(keyword)
+                   || lblSalonServices1.Text.ToLower().Contains(keyword);
+            bool v2 = lblSalonTitle2.Text.ToLower().Contains(keyword)
+                   || lblSalonAddress2.Text.ToLower().Contains(keyword)
+                   || lblSalonServices2.Text.ToLower().Contains(keyword);
+            bool v3 = lblSalonTitle3.Text.ToLower().Contains(keyword)
+                   || lblSalonAddress3.Text.ToLower().Contains(keyword)
+                   || lblSalonServices3.Text.ToLower().Contains(keyword);
+
+            if (pnlSalonItem1.Visible) pnlSalonItem1.Visible = v1;
+            if (pnlSalonItem2.Visible) pnlSalonItem2.Visible = v2;
+            if (pnlSalonItem3.Visible) pnlSalonItem3.Visible = v3;
+
+            UpdatePaginationCount(Db.GetTotalSalons());
         }
 
         protected void btnDetails1_Click(object sender, EventArgs e)
@@ -67,7 +148,6 @@ namespace Stylio_Salon
             lblValServices.Text = lblSalonServices1.Text;
             lblValRating.Text = lblRating1.Text + " / 5.0";
             lblValStatus.Text = "Active";
-
             pnlSalonDetailsModal.Visible = true;
         }
 
@@ -81,7 +161,6 @@ namespace Stylio_Salon
             lblValServices.Text = lblSalonServices2.Text;
             lblValRating.Text = lblRating2.Text + " / 5.0";
             lblValStatus.Text = "Active";
-
             pnlSalonDetailsModal.Visible = true;
         }
 
@@ -95,7 +174,6 @@ namespace Stylio_Salon
             lblValServices.Text = lblSalonServices3.Text;
             lblValRating.Text = lblRating3.Text + " / 5.0";
             lblValStatus.Text = "Active";
-
             pnlSalonDetailsModal.Visible = true;
         }
 
@@ -106,23 +184,53 @@ namespace Stylio_Salon
 
         protected void btnRemove1_Click(object sender, EventArgs e)
         {
-            pnlSalonItem1.Visible = false;
-            UpdatePaginationCount();
-            ShowAlert("Salon '" + lblSalonTitle1.Text + "' has been successfully removed.");
+            if (ViewState["SalonId1"] != null)
+            {
+                int salonId = (int)ViewState["SalonId1"];
+                Db.DeleteSalon(salonId);
+                ShowAlert("Salon '" + lblSalonTitle1.Text + "' has been successfully removed.");
+                LoadSalonsFromDb();
+            }
+            else
+            {
+                pnlSalonItem1.Visible = false;
+                UpdatePaginationCount(Db.GetTotalSalons());
+                ShowAlert("Salon removed.");
+            }
         }
 
         protected void btnRemove2_Click(object sender, EventArgs e)
         {
-            pnlSalonItem2.Visible = false;
-            UpdatePaginationCount();
-            ShowAlert("Salon '" + lblSalonTitle2.Text + "' has been successfully removed.");
+            if (ViewState["SalonId2"] != null)
+            {
+                int salonId = (int)ViewState["SalonId2"];
+                Db.DeleteSalon(salonId);
+                ShowAlert("Salon '" + lblSalonTitle2.Text + "' has been successfully removed.");
+                LoadSalonsFromDb();
+            }
+            else
+            {
+                pnlSalonItem2.Visible = false;
+                UpdatePaginationCount(Db.GetTotalSalons());
+                ShowAlert("Salon removed.");
+            }
         }
 
         protected void btnRemove3_Click(object sender, EventArgs e)
         {
-            pnlSalonItem3.Visible = false;
-            UpdatePaginationCount();
-            ShowAlert("Salon '" + lblSalonTitle3.Text + "' has been successfully removed.");
+            if (ViewState["SalonId3"] != null)
+            {
+                int salonId = (int)ViewState["SalonId3"];
+                Db.DeleteSalon(salonId);
+                ShowAlert("Salon '" + lblSalonTitle3.Text + "' has been successfully removed.");
+                LoadSalonsFromDb();
+            }
+            else
+            {
+                pnlSalonItem3.Visible = false;
+                UpdatePaginationCount(Db.GetTotalSalons());
+                ShowAlert("Salon removed.");
+            }
         }
 
         private void ShowAlert(string msg)

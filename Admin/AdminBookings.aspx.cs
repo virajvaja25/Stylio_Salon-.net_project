@@ -1,177 +1,19 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Stylio_Salon
 {
     public partial class AdminBookings : Page
     {
-        [Serializable]
-        public class BookingItem
-        {
-            public int BookingId { get; set; }
-            public string CustomerName { get; set; }
-            public string CustomerEmail { get; set; }
-            public string Service { get; set; }
-            public string BookingDate { get; set; }
-            public string BookingTime { get; set; }
-            public string Status { get; set; } // "Upcoming", "Completed", "Cancelled"
-            public string StatusDisplay { get; set; }
-            public string StatusCssClass { get; set; }
-            public string AvatarUrl { get; set; }
-            public string SalonName { get; set; }
-            public string Amount { get; set; }
-        }
-
-        private static readonly List<BookingItem> AllBookingsMaster = new List<BookingItem>
-        {
-            new BookingItem
-            {
-                BookingId = 1,
-                CustomerName = "Dev Patel",
-                CustomerEmail = "dev@gmail.com",
-                Service = "Hair Cut",
-                BookingDate = "18 Aug, 2026",
-                BookingTime = "02:00 PM",
-                Status = "Upcoming",
-                StatusDisplay = "Upcoming",
-                StatusCssClass = "admin-badge-upcoming",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "Stylio Men's Salon",
-                Amount = "₹500"
-            },
-            new BookingItem
-            {
-                BookingId = 2,
-                CustomerName = "Darshan patel",
-                CustomerEmail = "darshan@gmail.com",
-                Service = "Beard Trim",
-                BookingDate = "9 Aug, 2026",
-                BookingTime = "04:00 PM",
-                Status = "Upcoming",
-                StatusDisplay = "Upcoming",
-                StatusCssClass = "admin-badge-upcoming",
-                AvatarUrl = "~/Images/admin_icons/avatar_teal.svg",
-                SalonName = "The Mae Mane Salon",
-                Amount = "₹200"
-            },
-            new BookingItem
-            {
-                BookingId = 3,
-                CustomerName = "Viraj Vaja",
-                CustomerEmail = "viraj@gmail.com",
-                Service = "Hair Cut",
-                BookingDate = "8 Aug, 2026",
-                BookingTime = "02:00 PM",
-                Status = "Completed",
-                StatusDisplay = "Completed ✔",
-                StatusCssClass = "admin-badge-completed",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "Stylio Men's Salon",
-                Amount = "₹500"
-            },
-            new BookingItem
-            {
-                BookingId = 4,
-                CustomerName = "Meet patel",
-                CustomerEmail = "meet@gmail.com",
-                Service = "Beard Trim",
-                BookingDate = "9 Aug, 2026",
-                BookingTime = "04:00 PM",
-                Status = "Completed",
-                StatusDisplay = "Completed ✔",
-                StatusCssClass = "admin-badge-completed",
-                AvatarUrl = "~/Images/admin_icons/avatar_teal.svg",
-                SalonName = "The Mae Mane Salon",
-                Amount = "₹200"
-            },
-            new BookingItem
-            {
-                BookingId = 5,
-                CustomerName = "Keval patel",
-                CustomerEmail = "keval@gmail.com",
-                Service = "Hair + Beard",
-                BookingDate = "7 Aug, 2026",
-                BookingTime = "03:00 PM",
-                Status = "Completed",
-                StatusDisplay = "Completed ✔",
-                StatusCssClass = "admin-badge-completed",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "The Hair Studio",
-                Amount = "₹700"
-            },
-            new BookingItem
-            {
-                BookingId = 6,
-                CustomerName = "Harsh Patel",
-                CustomerEmail = "harsh@gmail.com",
-                Service = "Hair Cut",
-                BookingDate = "2 Aug, 2026",
-                BookingTime = "02:00 PM",
-                Status = "Cancelled",
-                StatusDisplay = "Cancelled",
-                StatusCssClass = "admin-badge-cancelled",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "Stylio Men's Salon",
-                Amount = "₹500"
-            },
-            new BookingItem
-            {
-                BookingId = 7,
-                CustomerName = "Shubh patel",
-                CustomerEmail = "shubh@gmail.com",
-                Service = "Beard Trim",
-                BookingDate = "4 Aug, 2026",
-                BookingTime = "04:00 PM",
-                Status = "Cancelled",
-                StatusDisplay = "Cancelled",
-                StatusCssClass = "admin-badge-cancelled",
-                AvatarUrl = "~/Images/admin_icons/avatar_teal.svg",
-                SalonName = "The Hair Studio",
-                Amount = "₹200"
-            },
-            new BookingItem
-            {
-                BookingId = 8,
-                CustomerName = "Ramansu patel",
-                CustomerEmail = "ramansu@gmail.com",
-                Service = "Hair + Beard",
-                BookingDate = "9 Aug, 2026",
-                BookingTime = "03:00 PM",
-                Status = "Cancelled",
-                StatusDisplay = "Cancelled",
-                StatusCssClass = "admin-badge-cancelled",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "Stylio Men's Salon",
-                Amount = "₹700"
-            },
-            new BookingItem
-            {
-                BookingId = 9,
-                CustomerName = "Khush patel",
-                CustomerEmail = "khush@gmail.com",
-                Service = "Hair + Beard",
-                BookingDate = "7 Aug, 2026",
-                BookingTime = "03:00 PM",
-                Status = "Cancelled",
-                StatusDisplay = "Cancelled",
-                StatusCssClass = "admin-badge-cancelled",
-                AvatarUrl = "~/Images/admin_icons/avatar_coral.svg",
-                SalonName = "Stylio Men's Salon",
-                Amount = "₹700"
-            }
-        };
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -195,34 +37,86 @@ namespace Stylio_Salon
             string filter = ViewState["CurrentFilter"] as string ?? "All";
             string search = txtSearchBooking.Text.Trim().ToLower();
 
-            // Set Tab active classes
+            // Set Tab active CSS classes
             btnTabAll.CssClass = "admin-booking-tab" + (filter == "All" ? " admin-booking-tab-active" : "");
             btnTabUpcoming.CssClass = "admin-booking-tab" + (filter == "Upcoming" ? " admin-booking-tab-active" : "");
             btnTabCompleted.CssClass = "admin-booking-tab" + (filter == "Completed" ? " admin-booking-tab-active" : "");
             btnTabCancelled.CssClass = "admin-booking-tab" + (filter == "Cancelled" ? " admin-booking-tab-active" : "");
 
-            IEnumerable<BookingItem> query = AllBookingsMaster;
-
-            if (filter == "All")
+            // Load from DB
+            string dbFilter = (filter == "All") ? null : filter;
+            // Cancelled not stored in DB (bookings are deleted on cancel) — treat as empty
+            DataTable dt;
+            if (filter == "Cancelled")
             {
-                // In image 4: shows 3 bookings (Viraj Vaja, Meet patel, Khush patel)
-                query = query.Where(b => b.BookingId == 3 || b.BookingId == 4 || b.BookingId == 9 || b.BookingId == 1 || b.BookingId == 6);
+                dt = new DataTable();
+                dt.Columns.Add("BookingId", typeof(int));
+                dt.Columns.Add("CustomerName", typeof(string));
+                dt.Columns.Add("CustomerEmail", typeof(string));
+                dt.Columns.Add("Services", typeof(string));
+                dt.Columns.Add("BookingDate", typeof(DateTime));
+                dt.Columns.Add("BookingTime", typeof(TimeSpan));
+                dt.Columns.Add("TotalAmount", typeof(decimal));
+                dt.Columns.Add("SalonName", typeof(string));
+                dt.Columns.Add("Status", typeof(string));
             }
             else
             {
-                query = query.Where(b => b.Status.Equals(filter, StringComparison.OrdinalIgnoreCase));
+                dt = Db.GetAllBookingsFiltered(filter == "All" ? null : filter);
             }
 
+            // Add computed display columns
+            dt.Columns.Add("BookingDateStr", typeof(string));
+            dt.Columns.Add("BookingTimeStr", typeof(string));
+            dt.Columns.Add("AmountStr", typeof(string));
+            dt.Columns.Add("StatusCssClass", typeof(string));
+            dt.Columns.Add("StatusDisplay", typeof(string));
+            dt.Columns.Add("AvatarUrl", typeof(string));
+
+            string[] avatars = new[] { "~/Images/admin_icons/avatar_coral.svg", "~/Images/admin_icons/avatar_teal.svg" };
+            int idx = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                // Format date and time
+                if (row["BookingDate"] != DBNull.Value)
+                    row["BookingDateStr"] = Convert.ToDateTime(row["BookingDate"]).ToString("dd MMM, yyyy");
+                else
+                    row["BookingDateStr"] = "-";
+
+                if (row["BookingTime"] != DBNull.Value)
+                {
+                    TimeSpan ts = (TimeSpan)row["BookingTime"];
+                    DateTime dt2 = DateTime.Today.Add(ts);
+                    row["BookingTimeStr"] = dt2.ToString("hh:mm tt");
+                }
+                else
+                    row["BookingTimeStr"] = "-";
+
+                if (row["TotalAmount"] != DBNull.Value)
+                    row["AmountStr"] = "\u20B9" + Convert.ToDecimal(row["TotalAmount"]).ToString("N0");
+                else
+                    row["AmountStr"] = "\u20B9-";
+
+                string status = row["Status"].ToString();
+                row["StatusDisplay"] = status == "Completed" ? "Completed ✔" : status;
+                row["StatusCssClass"] = status == "Upcoming" ? "admin-badge-upcoming" :
+                                        status == "Completed" ? "admin-badge-completed" : "admin-badge-cancelled";
+                row["AvatarUrl"] = avatars[idx % 2];
+                idx++;
+            }
+
+            // Apply search filter
+            DataTable filtered = dt;
             if (!string.IsNullOrEmpty(search))
             {
-                query = query.Where(b => b.CustomerName.ToLower().Contains(search) ||
-                                         b.CustomerEmail.ToLower().Contains(search) ||
-                                         b.Service.ToLower().Contains(search));
+                DataRow[] rows = dt.Select(
+                    string.Format("(CustomerName LIKE '%{0}%' OR CustomerEmail LIKE '%{0}%' OR Services LIKE '%{0}%')", search.Replace("'", "''"))
+                );
+                filtered = dt.Clone();
+                foreach (DataRow r in rows) filtered.ImportRow(r);
             }
 
-            List<BookingItem> filteredList = query.ToList();
-
-            if (filteredList.Count == 0)
+            if (filtered.Rows.Count == 0)
             {
                 rptBookings.Visible = false;
                 pnlNoBookings.Visible = true;
@@ -231,32 +125,13 @@ namespace Stylio_Salon
             {
                 rptBookings.Visible = true;
                 pnlNoBookings.Visible = false;
-                // Limit to 3 items per page matching the screenshots
-                rptBookings.DataSource = filteredList.Take(3).ToList();
+                rptBookings.DataSource = filtered;
                 rptBookings.DataBind();
             }
 
-            // Update Pagination Text matching screenshots
-            if (filter == "All")
-            {
-                lblPaginationInfo.Text = "Showing 1 to " + Math.Min(3, filteredList.Count) + " of 56 bookings";
-                btnPageLast.Text = "20";
-            }
-            else if (filter == "Upcoming")
-            {
-                lblPaginationInfo.Text = "Showing UpComing bookings";
-                btnPageLast.Text = "05";
-            }
-            else if (filter == "Completed")
-            {
-                lblPaginationInfo.Text = "Showing 1 to " + Math.Min(3, filteredList.Count) + " of 10 Completed bookings";
-                btnPageLast.Text = "10";
-            }
-            else if (filter == "Cancelled")
-            {
-                lblPaginationInfo.Text = "Showing 1 to " + Math.Min(3, filteredList.Count) + " of 05 Cancelled bookings";
-                btnPageLast.Text = "05";
-            }
+            lblPaginationInfo.Text = string.Format("Showing 1 to {0} of {1} bookings",
+                filtered.Rows.Count, Db.GetTotalBookings());
+            btnPageLast.Text = Db.GetTotalBookings().ToString();
         }
 
         protected void btnTabAll_Click(object sender, EventArgs e)
@@ -288,24 +163,33 @@ namespace Stylio_Salon
             BindBookings();
         }
 
-        protected void rptBookings_ItemCommand(object source, RepeaterCommandEventArgs e)
+        protected void rptBookings_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "ViewDetails")
             {
                 int bookingId;
                 if (int.TryParse(e.CommandArgument.ToString(), out bookingId))
                 {
-                    BookingItem booking = AllBookingsMaster.FirstOrDefault(b => b.BookingId == bookingId);
-                    if (booking != null)
+                    // Find row in the last-bound DataTable by re-loading
+                    DataTable dt = Db.GetAllBookings();
+                    DataRow[] rows = dt.Select("BookingId = " + bookingId);
+                    if (rows.Length > 0)
                     {
-                        lblModalTitle.Text = "Booking Details - " + booking.CustomerName;
-                        lblValCustName.Text = booking.CustomerName;
-                        lblValCustEmail.Text = booking.CustomerEmail;
-                        lblValService.Text = booking.Service;
-                        lblValDateTime.Text = booking.BookingDate + " at " + booking.BookingTime;
-                        lblValSalon.Text = booking.SalonName;
-                        lblValAmount.Text = booking.Amount;
-                        lblValStatus.Text = booking.Status;
+                        DataRow booking = rows[0];
+                        lblModalTitle.Text = "Booking Details - " + booking["CustomerName"];
+                        lblValCustName.Text = booking["CustomerName"].ToString();
+                        lblValCustEmail.Text = booking["CustomerEmail"].ToString();
+                        lblValService.Text = booking["Services"].ToString();
+
+                        string dateStr = booking["BookingDate"] != DBNull.Value
+                            ? Convert.ToDateTime(booking["BookingDate"]).ToString("dd MMM, yyyy") : "-";
+                        string timeStr = booking["BookingTime"] != DBNull.Value
+                            ? DateTime.Today.Add((TimeSpan)booking["BookingTime"]).ToString("hh:mm tt") : "-";
+                        lblValDateTime.Text = dateStr + " at " + timeStr;
+                        lblValSalon.Text = booking["SalonName"].ToString();
+                        lblValAmount.Text = booking["TotalAmount"] != DBNull.Value
+                            ? "\u20B9" + Convert.ToDecimal(booking["TotalAmount"]).ToString("N0") : "-";
+                        lblValStatus.Text = booking["Status"].ToString();
 
                         pnlBookingDetailsModal.Visible = true;
                     }
