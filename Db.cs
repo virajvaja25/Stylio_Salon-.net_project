@@ -247,6 +247,18 @@ namespace Stylio_Salon
             }
         }
 
+        public static bool ResetPasswordByEmail(string email, string newPassword)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand("UPDATE Users SET Password = @pwd WHERE Email = @email", con))
+            {
+                cmd.Parameters.AddWithValue("@pwd", newPassword);
+                cmd.Parameters.AddWithValue("@email", email);
+                con.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
         // Admin: Get all users
         public static DataTable GetAllUsers()
         {
@@ -478,12 +490,6 @@ namespace Stylio_Salon
 
         public static DataTable GetAllBookingsFiltered(string statusFilter)
         {
-            string statusWhere = "";
-            if (statusFilter == "Upcoming")
-                statusWhere = " HAVING CASE WHEN b.BookingDate > CAST(GETDATE() AS DATE) THEN 'Upcoming' WHEN b.BookingDate < CAST(GETDATE() AS DATE) THEN 'Completed' ELSE CASE WHEN b.BookingTime > CAST(GETDATE() AS TIME) THEN 'Upcoming' ELSE 'Completed' END END = 'Upcoming'";
-            else if (statusFilter == "Completed")
-                statusWhere = " HAVING CASE WHEN b.BookingDate > CAST(GETDATE() AS DATE) THEN 'Upcoming' WHEN b.BookingDate < CAST(GETDATE() AS DATE) THEN 'Completed' ELSE CASE WHEN b.BookingTime > CAST(GETDATE() AS TIME) THEN 'Upcoming' ELSE 'Completed' END END = 'Completed'";
-
             DataTable dt = new DataTable();
             string query = "SELECT b.BookingId, u.Name AS CustomerName, u.Email AS CustomerEmail, " +
                            "b.Services, b.BookingDate, b.BookingTime, b.TotalAmount, s.SalonName, " +

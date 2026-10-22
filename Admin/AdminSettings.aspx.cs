@@ -8,11 +8,11 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -82,6 +82,14 @@ namespace Stylio_Salon
                 Session["AdminEmail"] = newEmail;
             }
 
+            // Also update in DB if admin user exists in Users table
+            string currentEmail = Session["AdminEmail"] as string ?? "admin@stylio.com";
+            int adminId = Db.GetUserId(currentEmail);
+            if (adminId > 0)
+            {
+                Db.UpdateUser(adminId, newName, "+91 98765 43210");
+            }
+
             lblAlertMessage.Text = "Profile settings saved successfully!";
             pnlAlertBanner.CssClass = "admin-banner-alert admin-banner-alert-success";
             pnlAlertBanner.Visible = true;
@@ -110,6 +118,20 @@ namespace Stylio_Salon
                 pnlAlertBanner.CssClass = "admin-banner-alert";
                 pnlAlertBanner.Visible = true;
                 return;
+            }
+
+            string adminEmail = Session["AdminEmail"] as string ?? "admin@stylio.com";
+            int adminId = Db.GetUserId(adminEmail);
+            if (adminId > 0)
+            {
+                bool updated = Db.ChangePassword(adminId, oldPass, newPass);
+                if (!updated)
+                {
+                    lblAlertMessage.Text = "Current password does not match database record.";
+                    pnlAlertBanner.CssClass = "admin-banner-alert";
+                    pnlAlertBanner.Visible = true;
+                    return;
+                }
             }
 
             txtCurrentPassword.Text = "";

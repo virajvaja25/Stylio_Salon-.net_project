@@ -120,33 +120,22 @@ namespace Stylio_Salon
         // ---------------- Data Binding ----------------
         private void BindPopularSalons()
         {
-            var salons = new List<Salon>
+            System.Data.DataTable dt = Db.GetAllSalons();
+            var salons = new List<Salon>();
+            foreach (System.Data.DataRow row in dt.Rows)
             {
-                new Salon
+                string imgFile = row["SalonImage"].ToString();
+                salons.Add(new Salon
                 {
-                    Id       = 1,
-                    Name     = "Stylio Men's Salon",
-                    Rating   = "4.9",
-                    Location = "Trikon Bag, Rajkot",
-                    ImageUrl = "~/Images/salon_stylio_v2.png"
-                },
-                new Salon
-                {
-                    Id       = 2,
-                    Name     = "The Mae Mane Salon",
+                    Id       = Convert.ToInt32(row["SalonId"]),
+                    Name     = row["SalonName"].ToString(),
                     Rating   = "4.8",
-                    Location = "Bhaktinagar Circle, Rajkot",
-                    ImageUrl = "~/Images/salon_maemane_v2.png"
-                },
-                new Salon
-                {
-                    Id       = 3,
-                    Name     = "The Hair Studio",
-                    Rating   = "4.7",
-                    Location = "Surat, Gujrat",
-                    ImageUrl = "~/Images/salon_hairstudio.png"
-                }
-            };
+                    Location = row["Address"].ToString(),
+                    ImageUrl = !string.IsNullOrEmpty(imgFile)
+                        ? "~/Images/" + imgFile
+                        : "~/Images/salon_stylio_v2.png"
+                });
+            }
 
             rptSalons.DataSource = salons;
             rptSalons.DataBind();

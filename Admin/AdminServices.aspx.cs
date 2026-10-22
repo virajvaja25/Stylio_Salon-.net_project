@@ -83,11 +83,11 @@ namespace Stylio_Salon
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IsAdminLoggedIn"] == null)
+            // Enforce admin login
+            if (Session["IsAdminLoggedIn"] == null || !(bool)Session["IsAdminLoggedIn"])
             {
-                Session["IsAdminLoggedIn"] = true;
-                Session["AdminName"] = "Viraj Vaja";
-                Session["AdminEmail"] = "admin@stylio.com";
+                Response.Redirect("AdminLogin.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -134,7 +134,7 @@ namespace Stylio_Salon
                 rptServices.DataBind();
             }
 
-            lblPaginationInfo.Text = string.Format("Showing 1 to {0} of 200 services", list.Count);
+            lblPaginationInfo.Text = string.Format("Showing 1 to {0} of {1} services", list.Count, list.Count);
         }
 
         protected void txtSearchServices_TextChanged(object sender, EventArgs e)

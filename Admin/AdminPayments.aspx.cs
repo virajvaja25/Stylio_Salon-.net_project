@@ -33,14 +33,13 @@ namespace Stylio_Salon
 
         private void LoadPaymentStats()
         {
-            // Load total revenue from all bookings
+            // Load total revenue and users from database
             decimal totalRevenue = Db.GetTotalRevenue();
-            int totalBookings = Db.GetTotalBookings();
+            int totalUsers = Db.GetTotalUsers();
 
-            if (lblTotalRevenue != null)
-                lblTotalRevenue.Text = "\u20B9" + totalRevenue.ToString("N0");
-            if (lblTotalTransactions != null)
-                lblTotalTransactions.Text = totalBookings.ToString("N0");
+            lblTotalValue.Text = "\u20B9" + totalRevenue.ToString("N0");
+            lblTodayValue.Text = "\u20B9" + totalRevenue.ToString("N0");
+            lblNewUsersValue.Text = totalUsers.ToString("N0");
         }
 
         protected void btnNavLogout_Click(object sender, EventArgs e)

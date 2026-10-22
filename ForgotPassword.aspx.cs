@@ -33,8 +33,7 @@ namespace Stylio_Salon
 
         private bool ResetPassword(string email, string newPassword)
         {
-            // Placeholder for actual password-reset logic.
-            return true;
+            return Db.ResetPasswordByEmail(email, newPassword);
         }
     }
 }

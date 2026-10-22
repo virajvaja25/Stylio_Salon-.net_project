@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -7,37 +8,6 @@ namespace Stylio_Salon
 {
     public partial class SearchResults : System.Web.UI.Page
     {
-        private static readonly List<SalonListItem> Salons = new List<SalonListItem>
-        {
-            new SalonListItem
-            {
-                Id = 1,
-                Name = "Stylio Men's Salon",
-                Rating = 4.9,
-                Location = "Trikon Bag, Rajkot",
-                ServicesText = "Hair Cut, Beard, Facial",
-                ImageUrl = "~/Images/salon_stylio_v2.png"
-            },
-            new SalonListItem
-            {
-                Id = 2,
-                Name = "The Mae Mane Salon",
-                Rating = 4.8,
-                Location = "Bhaktinagar Circle, Rajkot",
-                ServicesText = "Hair Cut, Beard, Hair Color",
-                ImageUrl = "~/Images/salon_maemane_v2.png"
-            },
-            new SalonListItem
-            {
-                Id = 3,
-                Name = "The Hair Studio",
-                Rating = 4.7,
-                Location = "Surat, Gujrat",
-                ServicesText = "Hair Cut, Beard, Hair Spa",
-                ImageUrl = "~/Images/salon_hairstudio.png"
-            }
-        };
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
@@ -81,7 +51,28 @@ namespace Stylio_Salon
             lblServiceBadge.Text = string.IsNullOrEmpty(service) ? "Service: All Services" : "Service: " + service;
             lblDateBadge.Text = string.IsNullOrEmpty(date) ? "Date: Flexible" : "Date: " + date;
 
-            IEnumerable<SalonListItem> results = Salons;
+            // Load dynamically from database
+            DataTable dt = Db.GetAllSalons();
+            List<SalonListItem> list = new List<SalonListItem>();
+            foreach (DataRow row in dt.Rows)
+            {
+                string imgFile = row["SalonImage"].ToString();
+                list.Add(new SalonListItem
+                {
+                    Id = Convert.ToInt32(row["SalonId"]),
+                    Name = row["SalonName"].ToString(),
+                    Rating = 4.8,
+                    Location = row["Address"].ToString(),
+                    ServicesText = !string.IsNullOrEmpty(row["SalonDescription"].ToString())
+                        ? row["SalonDescription"].ToString()
+                        : "Hair Cut, Beard, Facial",
+                    ImageUrl = !string.IsNullOrEmpty(imgFile)
+                        ? "~/Images/" + imgFile
+                        : "~/Images/salon_stylio_v2.png"
+                });
+            }
+
+            IEnumerable<SalonListItem> results = list;
 
             if (!string.IsNullOrEmpty(location))
             {
@@ -102,8 +93,8 @@ namespace Stylio_Salon
                     || (service.Equals("haircolor", StringComparison.OrdinalIgnoreCase) && s.ServicesText.IndexOf("Color", StringComparison.OrdinalIgnoreCase) >= 0));
             }
 
-            var list = results.ToList();
-            if (list.Count == 0)
+            var finalResults = results.ToList();
+            if (finalResults.Count == 0)
             {
                 pnlNoResults.Visible = true;
                 rptSearchResults.Visible = false;
@@ -112,7 +103,7 @@ namespace Stylio_Salon
             {
                 pnlNoResults.Visible = false;
                 rptSearchResults.Visible = true;
-                rptSearchResults.DataSource = list;
+                rptSearchResults.DataSource = finalResults;
                 rptSearchResults.DataBind();
             }
         }
