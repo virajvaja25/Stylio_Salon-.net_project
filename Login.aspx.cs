@@ -6,10 +6,19 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // If user is already logged in, redirect to Default.aspx
+                if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            // Server-side ASP.NET validators check
             if (!Page.IsValid)
             {
                 return;
@@ -17,6 +26,19 @@ namespace Stylio_Salon
 
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
+
+            // Pure C# server validation
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                Response.Write("<script>alert('Please enter both Email Address and Password.');</script>");
+                return;
+            }
+
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                Response.Write("<script>alert('Please enter a valid email address.');</script>");
+                return;
+            }
 
             string name, mobile;
             bool isValidUser = false;
@@ -27,17 +49,17 @@ namespace Stylio_Salon
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('Error: " + ex.Message.Replace("'", "") + "')</script>");
+                Response.Write("<script>alert('Database Error: " + ex.Message.Replace("'", "") + "');</script>");
                 return;
             }
 
             if (!isValidUser)
             {
-                Response.Write("<script>alert('Invalid email or password')</script>");
+                Response.Write("<script>alert('Invalid email or password.');</script>");
                 return;
             }
 
-            // Admin check (email only, the user must also exist in the Users table)
+            // Admin check (email check from Users table)
             bool isAdmin = string.Equals(email, "admin@stylio.com", StringComparison.OrdinalIgnoreCase) ||
                            string.Equals(email, "viraj@stylio.com", StringComparison.OrdinalIgnoreCase) ||
                            string.Equals(email, "virajvaja@stylio.com", StringComparison.OrdinalIgnoreCase);

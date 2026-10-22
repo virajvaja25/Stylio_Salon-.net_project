@@ -48,6 +48,12 @@ namespace Stylio_Salon
                 return;
             }
 
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                ShowMessage("Please enter a valid email address.", false);
+                return;
+            }
+
             if (phone.Length > 15)
             {
                 ShowMessage("Phone number is too long (maximum 15 characters).", false);

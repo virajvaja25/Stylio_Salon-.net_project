@@ -44,6 +44,22 @@ namespace Stylio_Salon
                 return;
             }
 
+            if (string.IsNullOrEmpty(category))
+            {
+                lblMessage.Text = "Please select a Category.";
+                lblMessage.CssClass = "admin-msg-error";
+                lblMessage.Visible = true;
+                return;
+            }
+
+            if (string.IsNullOrEmpty(price))
+            {
+                lblMessage.Text = "Please enter Service Price.";
+                lblMessage.CssClass = "admin-msg-error";
+                lblMessage.Visible = true;
+                return;
+            }
+
             lblMessage.Text = "Service '" + Server.HtmlEncode(serviceName) + "' added successfully!";
             lblMessage.CssClass = "admin-msg-success";
             lblMessage.Visible = true;

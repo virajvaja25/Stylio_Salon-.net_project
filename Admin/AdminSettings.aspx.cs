@@ -112,6 +112,14 @@ namespace Stylio_Salon
                 return;
             }
 
+            if (newPass.Length < 6)
+            {
+                lblAlertMessage.Text = "New password must be at least 6 characters long.";
+                pnlAlertBanner.CssClass = "admin-banner-alert";
+                pnlAlertBanner.Visible = true;
+                return;
+            }
+
             if (newPass != confirmPass)
             {
                 lblAlertMessage.Text = "New password and Confirm password do not match.";

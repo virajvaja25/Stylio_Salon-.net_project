@@ -45,6 +45,14 @@ namespace Stylio_Salon
                 return;
             }
 
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                lblMessage.Text = "Please enter a valid email address.";
+                lblMessage.CssClass = "admin-msg-error";
+                lblMessage.Visible = true;
+                return;
+            }
+
             if (!string.IsNullOrEmpty(password) && !string.Equals(password, confirmPwd, StringComparison.Ordinal))
             {
                 lblMessage.Text = "Passwords do not match.";
