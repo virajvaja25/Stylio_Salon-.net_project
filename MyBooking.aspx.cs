@@ -147,12 +147,7 @@ namespace Stylio_Salon
         // ---------------- Helpers used in the .aspx ----------------
         protected string GetImage(object image)
         {
-            string file = image as string;
-            if (string.IsNullOrEmpty(file))
-            {
-                return "~/Images/haircut_booking.jpg";   // default image
-            }
-            return file;
+            return Db.ResolveSalonImage(image);
         }
 
         protected string FormatDateTime(object date, object time)

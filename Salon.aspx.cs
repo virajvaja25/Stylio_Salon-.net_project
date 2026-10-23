@@ -30,7 +30,6 @@ namespace Stylio_Salon
             List<SalonListItem> list = new List<SalonListItem>();
             foreach (DataRow row in dt.Rows)
             {
-                string imgFile = row["SalonImage"].ToString();
                 SalonListItem item = new SalonListItem
                 {
                     Id = Convert.ToInt32(row["SalonId"]),
@@ -40,9 +39,7 @@ namespace Stylio_Salon
                     ServicesText = !string.IsNullOrEmpty(row["SalonDescription"].ToString())
                         ? row["SalonDescription"].ToString()
                         : "Hair Cut, Beard, Facial",
-                    ImageUrl = !string.IsNullOrEmpty(imgFile)
-                        ? "~/Images/" + imgFile
-                        : "~/Images/salon_stylio_v2.png"
+                    ImageUrl = Db.ResolveSalonImage(row["SalonImage"])
                 };
                 list.Add(item);
             }

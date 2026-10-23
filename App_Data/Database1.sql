@@ -67,13 +67,13 @@ GO
 SET IDENTITY_INSERT [dbo].[Salon] ON;
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Salon] WHERE [SalonId] = 1)
     INSERT INTO [dbo].[Salon] ([SalonId], [OwnerName], [PhoneNumber], [Email], [SalonDescription], [Address], [OpeningHour], [SalonImage], [SalonName])
-    VALUES (1, 'Rajesh Sharma', '+91 98765 43210', 'stylio@gmail.com', 'Premium grooming and hair care salon.', 'Rajkot, Gujarat', '09:00 AM - 09:00 PM', '~/Images/haircut_booking.jpg', 'Stylio Men''s Salon');
+    VALUES (1, 'Rajesh Sharma', '+91 98765 43210', 'stylio@gmail.com', 'Premium grooming and hair care salon.', 'Rajkot, Gujarat', '09:00 AM - 09:00 PM', 'salon_stylio.png', 'Stylio Men''s Salon');
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Salon] WHERE [SalonId] = 2)
     INSERT INTO [dbo].[Salon] ([SalonId], [OwnerName], [PhoneNumber], [Email], [SalonDescription], [Address], [OpeningHour], [SalonImage], [SalonName])
-    VALUES (2, 'Priya Patel', '+91 98765 43211', 'maemane@gmail.com', 'Luxury unisex hair and beauty lounge.', 'Ahmedabad, Gujarat', '10:00 AM - 08:00 PM', '~/Images/beard_booking.jpg', 'The Mae Mane Salon');
+    VALUES (2, 'Priya Patel', '+91 98765 43211', 'maemane@gmail.com', 'Luxury unisex hair and beauty lounge.', 'Ahmedabad, Gujarat', '10:00 AM - 08:00 PM', 'salon_maemane.png', 'The Mae Mane Salon');
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Salon] WHERE [SalonId] = 3)
     INSERT INTO [dbo].[Salon] ([SalonId], [OwnerName], [PhoneNumber], [Email], [SalonDescription], [Address], [OpeningHour], [SalonImage], [SalonName])
-    VALUES (3, 'Amit Verma', '+91 98765 43212', 'hairstudio@gmail.com', 'Modern styling and trend haircuts.', 'Surat, Gujarat', '09:30 AM - 09:00 PM', '~/Images/salon_hairstudio.png', 'The Hair Studio');
+    VALUES (3, 'Amit Verma', '+91 98765 43212', 'hairstudio@gmail.com', 'Modern styling and trend haircuts.', 'Surat, Gujarat', '09:30 AM - 09:00 PM', 'salon_hairstudio.png', 'The Hair Studio');
 SET IDENTITY_INSERT [dbo].[Salon] OFF;
 GO
 

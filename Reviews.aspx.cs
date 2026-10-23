@@ -20,6 +20,21 @@ namespace Stylio_Salon
             {
                 // Default 5-star selected
                 SetStarRating(5);
+
+                int sId = 1;
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                    int.TryParse(Request.QueryString["id"], out sId);
+                else if (!string.IsNullOrEmpty(Request.QueryString["salonId"]))
+                    int.TryParse(Request.QueryString["salonId"], out sId);
+
+                var salonRow = Db.GetSalonById(sId);
+                if (salonRow != null)
+                {
+                    lblSalonName.Text = salonRow["SalonName"].ToString();
+                    lblSalonLocation.Text = salonRow["Address"].ToString();
+                    lblSalonHours.Text = !string.IsNullOrEmpty(salonRow["OpeningHour"].ToString()) ? salonRow["OpeningHour"].ToString() : "Open Today: 08:00 AM - 09:00 PM";
+                    imgSalonThumb.ImageUrl = Db.ResolveSalonImage(salonRow["SalonImage"]);
+                }
             }
         }
 

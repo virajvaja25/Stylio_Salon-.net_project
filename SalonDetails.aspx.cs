@@ -39,12 +39,9 @@ namespace Stylio_Salon
                 string salonName = salon["SalonName"].ToString();
                 string address = salon["Address"].ToString();
                 string desc = salon["SalonDescription"].ToString();
-                string imgFile = salon["SalonImage"].ToString();
                 string openingHour = salon["OpeningHour"].ToString();
 
-                imgSalonHero.ImageUrl = !string.IsNullOrEmpty(imgFile)
-                    ? "~/Images/" + imgFile
-                    : "~/Images/salon_stylio_v2.png";
+                imgSalonHero.ImageUrl = Db.ResolveSalonImage(salon["SalonImage"]);
 
                 lblSalonName.Text = salonName;
                 lblSalonRating.Text = "4.8 (1.2K)";
@@ -73,6 +70,7 @@ namespace Stylio_Salon
                 if (dt.Rows.Count > 0)
                 {
                     DataRow r = dt.Rows[0];
+                    imgSalonHero.ImageUrl = Db.ResolveSalonImage(r["SalonImage"]);
                     lblSalonName.Text = r["SalonName"].ToString();
                     lblSalonRating.Text = "4.8 (1.2K)";
                     lblSalonLocation.Text = r["Address"].ToString();

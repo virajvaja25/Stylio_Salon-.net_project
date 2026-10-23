@@ -28,16 +28,13 @@ namespace Stylio_Salon
             var salons = new List<Salon>();
             foreach (System.Data.DataRow row in dt.Rows)
             {
-                string imgFile = row["SalonImage"].ToString();
                 salons.Add(new Salon
                 {
                     Id = Convert.ToInt32(row["SalonId"]),
                     Name = row["SalonName"].ToString(),
                     Rating = "4.8",
                     Location = row["Address"].ToString(),
-                    ImageUrl = !string.IsNullOrEmpty(imgFile)
-                        ? "~/Images/" + imgFile
-                        : "~/Images/salon_stylio_v2.png"
+                    ImageUrl = Db.ResolveSalonImage(row["SalonImage"])
                 });
             }
 

@@ -49,9 +49,7 @@ namespace Stylio_Salon
                 // Store SalonId in ViewState for delete
                 ViewState["SalonId1"] = Convert.ToInt32(r["SalonId"]);
                 // Image
-                string img1 = r["SalonImage"].ToString();
-                if (!string.IsNullOrEmpty(img1))
-                    imgSalon1.ImageUrl = "~/Images/" + img1;
+                imgSalon1.ImageUrl = Db.ResolveSalonImage(r["SalonImage"]);
             }
             else
             {
@@ -69,9 +67,7 @@ namespace Stylio_Salon
                     ? r["SalonDescription"].ToString()
                     : "Hair Cut, Beard, Hair Color";
                 ViewState["SalonId2"] = Convert.ToInt32(r["SalonId"]);
-                string img2 = r["SalonImage"].ToString();
-                if (!string.IsNullOrEmpty(img2))
-                    imgSalon2.ImageUrl = "~/Images/" + img2;
+                imgSalon2.ImageUrl = Db.ResolveSalonImage(r["SalonImage"]);
             }
             else
             {
@@ -89,9 +85,7 @@ namespace Stylio_Salon
                     ? r["SalonDescription"].ToString()
                     : "Hair Cut, Beard, Hair Spa";
                 ViewState["SalonId3"] = Convert.ToInt32(r["SalonId"]);
-                string img3 = r["SalonImage"].ToString();
-                if (!string.IsNullOrEmpty(img3))
-                    imgSalon3.ImageUrl = "~/Images/" + img3;
+                imgSalon3.ImageUrl = Db.ResolveSalonImage(r["SalonImage"]);
             }
             else
             {

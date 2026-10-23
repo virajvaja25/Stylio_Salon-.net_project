@@ -62,7 +62,27 @@ namespace Stylio_Salon
 
             try
             {
-                bool saved = Db.AddSalon(owner, phone, email, details, location, hours, salonName, null);
+                string imageFileName = "salon_stylio.png";
+                if (fuSalonImage.HasFile)
+                {
+                    try
+                    {
+                        string ext = System.IO.Path.GetExtension(fuSalonImage.FileName).ToLower();
+                        if (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".webp")
+                        {
+                            string safeName = "salon_" + Guid.NewGuid().ToString("N").Substring(0, 8) + ext;
+                            string savePath = Server.MapPath("~/Images/" + safeName);
+                            fuSalonImage.SaveAs(savePath);
+                            imageFileName = safeName;
+                        }
+                    }
+                    catch
+                    {
+                        imageFileName = "salon_stylio.png";
+                    }
+                }
+
+                bool saved = Db.AddSalon(owner, phone, email, details, location, hours, salonName, imageFileName);
 
                 if (saved)
                 {

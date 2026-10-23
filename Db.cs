@@ -614,5 +614,44 @@ namespace Stylio_Salon
             }
             return dt;
         }
+
+        // ======================== IMAGE RESOLUTION HELPER ========================
+
+        /// <summary>
+        /// Resolves a database SalonImage string into an application-relative URL (e.g. ~/Images/salon_stylio.png)
+        /// cleanly preventing double-prefixing (~/Images/~/Images/...) and providing a safe, verified fallback.
+        /// </summary>
+        public static string ResolveSalonImage(object dbValue, string fallback = "~/Images/salon_stylio.png")
+        {
+            if (dbValue == null || dbValue == DBNull.Value)
+                return fallback;
+
+            string val = dbValue.ToString().Trim();
+            if (string.IsNullOrEmpty(val))
+                return fallback;
+
+            // Fix any repeated prefixes like ~/Images/~/Images/...
+            while (val.IndexOf("~/Images/~/", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                val = val.Replace("~/Images/~/", "~/");
+            }
+
+            // Remap old service image seed values if used as salon image
+            if (val.IndexOf("haircut_booking.jpg", StringComparison.OrdinalIgnoreCase) >= 0)
+                return "~/Images/salon_stylio.png";
+            if (val.IndexOf("beard_booking.jpg", StringComparison.OrdinalIgnoreCase) >= 0)
+                return "~/Images/salon_maemane.png";
+
+            if (val.StartsWith("~/"))
+                return val;
+
+            if (val.StartsWith("/"))
+                return "~" + val;
+
+            if (val.StartsWith("Images/", StringComparison.OrdinalIgnoreCase))
+                return "~/" + val;
+
+            return "~/Images/" + val;
+        }
     }
 }
