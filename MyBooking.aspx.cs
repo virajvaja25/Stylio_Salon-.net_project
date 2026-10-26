@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Data;
 using System.Globalization;
@@ -133,15 +134,15 @@ namespace Stylio_Salon
         {
             int userId = CurrentUserId;
 
-            DataTable upcoming = Db.GetBookingsByUser(userId, true);
+            List<BookingRecord> upcoming = Db.GetUserBookingsList(userId, true);
             rptUpcoming.DataSource = upcoming;
             rptUpcoming.DataBind();
-            lblNoUpcoming.Visible = upcoming.Rows.Count == 0;
+            lblNoUpcoming.Visible = upcoming.Count == 0;
 
-            DataTable past = Db.GetBookingsByUser(userId, false);
+            List<BookingRecord> past = Db.GetUserBookingsList(userId, false);
             rptPast.DataSource = past;
             rptPast.DataBind();
-            lblNoPast.Visible = past.Rows.Count == 0;
+            lblNoPast.Visible = past.Count == 0;
         }
 
         // ---------------- Helpers used in the .aspx ----------------

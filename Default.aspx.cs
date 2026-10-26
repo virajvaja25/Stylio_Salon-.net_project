@@ -120,20 +120,7 @@ namespace Stylio_Salon
         // ---------------- Data Binding ----------------
         private void BindPopularSalons()
         {
-            System.Data.DataTable dt = Db.GetAllSalons();
-            var salons = new List<Salon>();
-            foreach (System.Data.DataRow row in dt.Rows)
-            {
-                salons.Add(new Salon
-                {
-                    Id       = Convert.ToInt32(row["SalonId"]),
-                    Name     = row["SalonName"].ToString(),
-                    Rating   = "4.8",
-                    Location = row["Address"].ToString(),
-                    ImageUrl = Db.ResolveSalonImage(row["SalonImage"])
-                });
-            }
-
+            List<Salon> salons = Db.GetSalonsList();
             rptSalons.DataSource = salons;
             rptSalons.DataBind();
         }

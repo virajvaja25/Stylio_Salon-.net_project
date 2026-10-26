@@ -653,5 +653,116 @@ namespace Stylio_Salon
 
             return "~/Images/" + val;
         }
+
+        // ======================== GENERIC COLLECTIONS HELPERS ========================
+
+        /// <summary>
+        /// Returns all salons as a strongly-typed generic List<Salon> collection.
+        /// </summary>
+        public static List<Salon> GetSalonsList()
+        {
+            var list = new List<Salon>();
+            DataTable dt = GetAllSalons();
+            foreach (DataRow row in dt.Rows)
+            {
+                list.Add(new Salon
+                {
+                    Id = Convert.ToInt32(row["SalonId"]),
+                    Name = row["SalonName"].ToString(),
+                    Rating = "4.8",
+                    Location = row["Address"].ToString(),
+                    ImageUrl = ResolveSalonImage(row["SalonImage"])
+                });
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Returns all salons mapped into a Dictionary<int, Salon> collection for O(1) instant lookup by SalonId.
+        /// </summary>
+        public static Dictionary<int, Salon> GetSalonsDictionary()
+        {
+            var dict = new Dictionary<int, Salon>();
+            List<Salon> salons = GetSalonsList();
+            foreach (var salon in salons)
+            {
+                if (!dict.ContainsKey(salon.Id))
+                {
+                    dict.Add(salon.Id, salon);
+                }
+            }
+            return dict;
+        }
+
+        /// <summary>
+        /// Returns a user's bookings as a generic List<BookingRecord> collection.
+        /// </summary>
+        public static List<BookingRecord> GetUserBookingsList(int userId, bool upcoming)
+        {
+            var list = new List<BookingRecord>();
+            DataTable dt = GetBookingsByUser(userId, upcoming);
+            foreach (DataRow row in dt.Rows)
+            {
+                TimeSpan tSpan = TimeSpan.Zero;
+                if (row["BookingTime"] is TimeSpan)
+                {
+                    tSpan = (TimeSpan)row["BookingTime"];
+                }
+                else if (row["BookingTime"] != DBNull.Value)
+                {
+                    TimeSpan.TryParse(row["BookingTime"].ToString(), out tSpan);
+                }
+
+                list.Add(new BookingRecord
+                {
+                    BookingId = Convert.ToInt32(row["BookingId"]),
+                    UserId = userId,
+                    SalonName = row["SalonName"].ToString(),
+                    SalonImage = ResolveSalonImage(row["SalonImage"]),
+                    Services = row["Services"].ToString(),
+                    BookingDate = Convert.ToDateTime(row["BookingDate"]),
+                    BookingTime = tSpan,
+                    TotalAmount = Convert.ToDecimal(row["TotalAmount"])
+                });
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Returns all registered users as a generic List<UserRecord> collection.
+        /// </summary>
+        public static List<UserRecord> GetUsersList()
+        {
+            var list = new List<UserRecord>();
+            DataTable dt = GetAllUsers();
+            foreach (DataRow row in dt.Rows)
+            {
+                list.Add(new UserRecord
+                {
+                    UserId = Convert.ToInt32(row["UserId"]),
+                    Name = row["Name"].ToString(),
+                    Email = row["Email"].ToString(),
+                    MobileNumber = row["MobileNumber"] != DBNull.Value ? row["MobileNumber"].ToString() : "",
+                    Role = row["Email"].ToString().Equals("admin@stylio.com", StringComparison.OrdinalIgnoreCase) ? "Admin" : "Customer"
+                });
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Returns default service catalog items as a generic List<ServiceCatalogItem> collection.
+        /// </summary>
+        public static List<ServiceCatalogItem> GetServiceCatalogList()
+        {
+            return new List<ServiceCatalogItem>
+            {
+                new ServiceCatalogItem { Name = "Classic Haircut & Styling", Category = "Hair", Description = "Precision cut customized to your face structure.", Duration = "30-45 mins", PriceRange = "₹149", IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
+                new ServiceCatalogItem { Name = "Beard Trim & Precision Shape", Category = "Beard", Description = "Expert beard shaping, razor lining and beard oil.", Duration = "20-30 mins", PriceRange = "₹99", IconUrl = "~/Images/DefaultScreen/icon-beard.png" },
+                new ServiceCatalogItem { Name = "Global Hair Color & Streaks", Category = "Color", Description = "Ammonia-free vibrant hair coloring.", Duration = "60-90 mins", PriceRange = "₹299", IconUrl = "~/Images/DefaultScreen/icon-haircolor.png" },
+                new ServiceCatalogItem { Name = "Deep Cleansing Facial", Category = "Skin", Description = "Exfoliating scrub, steam, and face pack.", Duration = "45-60 mins", PriceRange = "₹500", IconUrl = "~/Images/DefaultScreen/icon-facial.png" },
+                new ServiceCatalogItem { Name = "Intense Hair Spa & Repair", Category = "Hair", Description = "Deep conditioning mask and scalp massage.", Duration = "45 mins", PriceRange = "₹399", IconUrl = "~/Images/DefaultScreen/icon-haircut.png" },
+                new ServiceCatalogItem { Name = "D-Tan & Skin Brightening", Category = "Skin", Description = "Instant glow therapy to remove UV tan.", Duration = "30 mins", PriceRange = "₹300", IconUrl = "~/Images/DefaultScreen/icon-facial.png" }
+            };
+        }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace Stylio_Salon
 {
     // ---------------- Shared data models ----------------
@@ -13,10 +15,6 @@ namespace Stylio_Salon
         public string Location { get; set; }
         public string ImageUrl { get; set; }
 
-        // Pre-formatted display strings (kept out of the .aspx markup so the
-        // inline <%# %> databinding expressions stay simple - concatenating
-        // HTML entities + string literals directly inside a single-quoted
-        // attribute is what was breaking the ASPX page compiler).
         public string RatingDisplay
         {
             get { return "\u2605 " + Rating; }
@@ -40,6 +38,7 @@ namespace Stylio_Salon
         public string Comment { get; set; }
         public string AvatarUrl { get; set; }
     }
+
     public class SalonServiceItem
     {
         public string Name { get; set; }
@@ -48,8 +47,6 @@ namespace Stylio_Salon
     }
 
     // Used by Salons.aspx.cs (the filterable salon listing page).
-    // Kept separate from Salon (used on Default/guest home) since this page
-    // needs a numeric Rating (for filtering/sorting) plus a services summary.
     public class SalonListItem
     {
         public int Id { get; set; }
@@ -101,5 +98,29 @@ namespace Stylio_Salon
         {
             get { return "₹" + Price; }
         }
+    }
+
+    public class BookingRecord
+    {
+        public int BookingId { get; set; }
+        public int UserId { get; set; }
+        public int SalonId { get; set; }
+        public string SalonName { get; set; }
+        public string SalonImage { get; set; }
+        public string Services { get; set; }
+        public DateTime BookingDate { get; set; }
+        public TimeSpan BookingTime { get; set; }
+        public decimal TotalAmount { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+    }
+
+    public class UserRecord
+    {
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string MobileNumber { get; set; }
+        public string Role { get; set; }
     }
 }
