@@ -36,7 +36,7 @@ namespace Stylio_Salon
                 {
                     Session.Clear();
                     Session.Abandon();
-                    Response.Redirect("guest.aspx");
+                    Response.Redirect("Default.aspx");
                 };
             }
         }
@@ -117,7 +117,7 @@ namespace Stylio_Salon
         protected void lnkHome_Click(object sender, EventArgs e)
         {
             bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
-            Response.Redirect(isLoggedIn ? "Default.aspx" : "guest.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         protected void lnkSalon_Click(object sender, EventArgs e)

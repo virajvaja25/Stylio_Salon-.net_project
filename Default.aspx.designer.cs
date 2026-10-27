@@ -168,6 +168,26 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.LinkButton lnkMenuSetting;
 
         /// <summary>
+        /// lnkMenuLogout control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.LinkButton lnkMenuLogout;
+
+        /// <summary>
+        /// pnlGuestArea control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Panel pnlGuestArea;
+
+        /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
+        /// btnRegister control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Button btnRegister;
+
+        /// <summary>
         /// pnlHeroWrapper control.
         /// </summary>
         /// <remarks>

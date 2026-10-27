@@ -74,7 +74,7 @@ namespace Stylio_Salon
         // ---------------- Navigation Handlers ----------------
         protected void lnkHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("guest.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         protected void lnkServices_Click(object sender, EventArgs e)

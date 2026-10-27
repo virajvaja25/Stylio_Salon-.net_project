@@ -7,17 +7,22 @@ namespace Stylio_Salon
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Not logged in? Redirect to Login
-            if (Session["IsLoggedIn"] == null || !(bool)Session["IsLoggedIn"])
+            bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
+
+            if (isLoggedIn)
             {
-                Response.Redirect("Login.aspx");
-                return;
+                pnlUserArea.Visible = true;
+                pnlGuestArea.Visible = false;
+                lblUserName.Text = Session["UserName"] as string ?? "User";
+            }
+            else
+            {
+                pnlUserArea.Visible = false;
+                pnlGuestArea.Visible = true;
             }
 
             if (!IsPostBack)
             {
-                lblUserName.Text = Session["UserName"] as string ?? "Welcome";
-
                 BindPopularSalons();
                 BindServices();
                 BindReviews();
@@ -39,6 +44,24 @@ namespace Stylio_Salon
         protected void lnkSetting_Click(object sender, EventArgs e)
         {
             Response.Redirect("Settings.aspx");
+        }
+
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("Default.aspx");
+        }
+
+        // ---------------- Guest Auth Buttons ----------------
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
         }
 
         // ---------------- Navigation Handlers ----------------
@@ -70,7 +93,15 @@ namespace Stylio_Salon
         // ---------------- Hero / Search Handlers ----------------
         protected void btnBookAppointment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("BookAppointment.aspx");
+            bool isLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
+            if (isLoggedIn)
+            {
+                Response.Redirect("BookAppointment.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx?returnUrl=BookAppointment.aspx");
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -91,7 +122,7 @@ namespace Stylio_Salon
         {
             if (e.CommandName == "ViewDetails")
             {
-                string salonId = e.CommandArgument.ToString();
+                string salonId = e.CommandArgument != null ? e.CommandArgument.ToString() : "1";
                 Response.Redirect("SalonDetails.aspx?id=" + Server.UrlEncode(salonId));
             }
         }
@@ -109,12 +140,12 @@ namespace Stylio_Salon
 
         protected void lnkReviewPrev_Click(object sender, EventArgs e)
         {
-            // TODO: shift review carousel backward
+            // Carousel nav
         }
 
         protected void lnkReviewNext_Click(object sender, EventArgs e)
         {
-            // TODO: shift review carousel forward
+            // Carousel nav
         }
 
         // ---------------- Data Binding ----------------

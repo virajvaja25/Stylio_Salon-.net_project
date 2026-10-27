@@ -30,14 +30,14 @@
                     CssClass="nav-link" OnClick="lnkSalon_Click" />
             </asp:Panel>
 
-            <!-- User Area with Dropdown -->
+            <!-- User Area with Dropdown (Visible when logged in) -->
             <asp:Panel ID="pnlUserArea" runat="server" CssClass="user-area" Style="position:relative;">
                 <asp:Image ID="imgUserAvatar" runat="server"
                     ImageUrl="~/Images/DefaultScreen/Group.png"
                     AlternateText="User" CssClass="user-avatar" />
                 <asp:LinkButton ID="lnkUserToggle" runat="server" CssClass="user-name"
                     OnClick="lnkUserToggle_Click">
-                    <asp:Label ID="lblUserName" runat="server" Text="Khush Dobariya" />
+                    <asp:Label ID="lblUserName" runat="server" Text="User" />
                 </asp:LinkButton>
 
                 <!-- Dropdown Menu Panel -->
@@ -50,7 +50,17 @@
                         CssClass="dropdown-item" OnClick="lnkMyProfile_Click" />
                     <asp:LinkButton ID="lnkMenuSetting" runat="server" Text="Setting"
                         CssClass="dropdown-item" OnClick="lnkSetting_Click" />
+                    <asp:LinkButton ID="lnkMenuLogout" runat="server" Text="Logout"
+                        CssClass="dropdown-item" OnClick="lnkLogout_Click" />
                 </asp:Panel>
+            </asp:Panel>
+
+            <!-- Guest Area with Login/Register (Visible when not logged in) -->
+            <asp:Panel ID="pnlGuestArea" runat="server" CssClass="guest-user-area" Visible="false">
+                <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-nav-login"
+                    OnClick="btnLogin_Click" CausesValidation="false" />
+                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn-nav-register"
+                    OnClick="btnRegister_Click" CausesValidation="false" />
             </asp:Panel>
 
         </asp:Panel>

@@ -138,7 +138,7 @@ namespace Stylio_Salon
         {
             Session.Clear();
             Session.Abandon();
-            Response.Redirect("guest.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }
