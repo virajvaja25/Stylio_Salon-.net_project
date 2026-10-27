@@ -49,6 +49,9 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Label lblAdminRole;
         protected global::System.Web.UI.WebControls.Label lblAdminName;
         protected global::System.Web.UI.WebControls.Panel pnlContentArea;
+        protected global::System.Web.UI.WebControls.Panel pnlAlertBanner;
+        protected global::System.Web.UI.WebControls.Label lblAlertMessage;
+        protected global::System.Web.UI.WebControls.LinkButton btnCloseAlert;
         protected global::System.Web.UI.WebControls.Label lblPageTitle;
         protected global::System.Web.UI.WebControls.Panel pnlStatsGrid;
         protected global::System.Web.UI.WebControls.Panel pnlStatToday;
@@ -88,8 +91,17 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Image imgMethod1;
         protected global::System.Web.UI.WebControls.Label lblMethod1;
         protected global::System.Web.UI.WebControls.Label lblDate1;
-        protected global::System.Web.UI.WebControls.Panel pnlAction1;
+        protected global::System.Web.UI.WebControls.Panel pnlMoreWrapper1;
+        protected global::System.Web.UI.WebControls.LinkButton btnMore1;
         protected global::System.Web.UI.WebControls.Image imgDots1;
+        protected global::System.Web.UI.WebControls.Panel pnlMenu1;
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails1;
+        protected global::System.Web.UI.WebControls.Label lblDetText1;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrint1;
+        protected global::System.Web.UI.WebControls.Label lblPrintText1;
+        protected global::System.Web.UI.WebControls.LinkButton btnComplete1;
+        protected global::System.Web.UI.WebControls.Label lblCompleteText1;
+
         protected global::System.Web.UI.WebControls.Panel pnlPaymentRow2;
         protected global::System.Web.UI.WebControls.Panel pnlCustomer2;
         protected global::System.Web.UI.WebControls.Image imgCustAvatar2;
@@ -100,8 +112,17 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Image imgMethod2;
         protected global::System.Web.UI.WebControls.Label lblMethod2;
         protected global::System.Web.UI.WebControls.Label lblDate2;
-        protected global::System.Web.UI.WebControls.Panel pnlAction2;
+        protected global::System.Web.UI.WebControls.Panel pnlMoreWrapper2;
+        protected global::System.Web.UI.WebControls.LinkButton btnMore2;
         protected global::System.Web.UI.WebControls.Image imgDots2;
+        protected global::System.Web.UI.WebControls.Panel pnlMenu2;
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails2;
+        protected global::System.Web.UI.WebControls.Label lblDetText2;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrint2;
+        protected global::System.Web.UI.WebControls.Label lblPrintText2;
+        protected global::System.Web.UI.WebControls.LinkButton btnComplete2;
+        protected global::System.Web.UI.WebControls.Label lblCompleteText2;
+
         protected global::System.Web.UI.WebControls.Panel pnlPaymentRow3;
         protected global::System.Web.UI.WebControls.Panel pnlCustomer3;
         protected global::System.Web.UI.WebControls.Image imgCustAvatar3;
@@ -112,8 +133,17 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Image imgMethod3;
         protected global::System.Web.UI.WebControls.Label lblMethod3;
         protected global::System.Web.UI.WebControls.Label lblDate3;
-        protected global::System.Web.UI.WebControls.Panel pnlAction3;
+        protected global::System.Web.UI.WebControls.Panel pnlMoreWrapper3;
+        protected global::System.Web.UI.WebControls.LinkButton btnMore3;
         protected global::System.Web.UI.WebControls.Image imgDots3;
+        protected global::System.Web.UI.WebControls.Panel pnlMenu3;
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails3;
+        protected global::System.Web.UI.WebControls.Label lblDetText3;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrint3;
+        protected global::System.Web.UI.WebControls.Label lblPrintText3;
+        protected global::System.Web.UI.WebControls.LinkButton btnComplete3;
+        protected global::System.Web.UI.WebControls.Label lblCompleteText3;
+
         protected global::System.Web.UI.WebControls.Panel pnlPaymentRow4;
         protected global::System.Web.UI.WebControls.Panel pnlCustomer4;
         protected global::System.Web.UI.WebControls.Image imgCustAvatar4;
@@ -124,8 +154,17 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Image imgMethod4;
         protected global::System.Web.UI.WebControls.Label lblMethod4;
         protected global::System.Web.UI.WebControls.Label lblDate4;
-        protected global::System.Web.UI.WebControls.Panel pnlAction4;
+        protected global::System.Web.UI.WebControls.Panel pnlMoreWrapper4;
+        protected global::System.Web.UI.WebControls.LinkButton btnMore4;
         protected global::System.Web.UI.WebControls.Image imgDots4;
+        protected global::System.Web.UI.WebControls.Panel pnlMenu4;
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails4;
+        protected global::System.Web.UI.WebControls.Label lblDetText4;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrint4;
+        protected global::System.Web.UI.WebControls.Label lblPrintText4;
+        protected global::System.Web.UI.WebControls.LinkButton btnComplete4;
+        protected global::System.Web.UI.WebControls.Label lblCompleteText4;
+
         protected global::System.Web.UI.WebControls.Panel pnlPaymentRow5;
         protected global::System.Web.UI.WebControls.Panel pnlCustomer5;
         protected global::System.Web.UI.WebControls.Image imgCustAvatar5;
@@ -136,7 +175,46 @@ namespace Stylio_Salon
         protected global::System.Web.UI.WebControls.Image imgMethod5;
         protected global::System.Web.UI.WebControls.Label lblMethod5;
         protected global::System.Web.UI.WebControls.Label lblDate5;
-        protected global::System.Web.UI.WebControls.Panel pnlAction5;
+        protected global::System.Web.UI.WebControls.Panel pnlMoreWrapper5;
+        protected global::System.Web.UI.WebControls.LinkButton btnMore5;
         protected global::System.Web.UI.WebControls.Image imgDots5;
+        protected global::System.Web.UI.WebControls.Panel pnlMenu5;
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails5;
+        protected global::System.Web.UI.WebControls.Label lblDetText5;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrint5;
+        protected global::System.Web.UI.WebControls.Label lblPrintText5;
+        protected global::System.Web.UI.WebControls.LinkButton btnComplete5;
+        protected global::System.Web.UI.WebControls.Label lblCompleteText5;
+
+        protected global::System.Web.UI.WebControls.Panel pnlPaymentDetailsModal;
+        protected global::System.Web.UI.WebControls.Panel pnlModalCard;
+        protected global::System.Web.UI.WebControls.Panel pnlModalHeader;
+        protected global::System.Web.UI.WebControls.Label lblModalTitle;
+        protected global::System.Web.UI.WebControls.LinkButton btnCloseX;
+        protected global::System.Web.UI.WebControls.Panel pnlModalBody;
+        protected global::System.Web.UI.WebControls.Panel pnlRowTxnId;
+        protected global::System.Web.UI.WebControls.Label lblKeyTxnId;
+        protected global::System.Web.UI.WebControls.Label lblValTxnId;
+        protected global::System.Web.UI.WebControls.Panel pnlRowCustomer;
+        protected global::System.Web.UI.WebControls.Label lblKeyCustomer;
+        protected global::System.Web.UI.WebControls.Label lblValCustomer;
+        protected global::System.Web.UI.WebControls.Panel pnlRowService;
+        protected global::System.Web.UI.WebControls.Label lblKeyService;
+        protected global::System.Web.UI.WebControls.Label lblValService;
+        protected global::System.Web.UI.WebControls.Panel pnlRowAmount;
+        protected global::System.Web.UI.WebControls.Label lblKeyAmount;
+        protected global::System.Web.UI.WebControls.Label lblValAmount;
+        protected global::System.Web.UI.WebControls.Panel pnlRowMethod;
+        protected global::System.Web.UI.WebControls.Label lblKeyMethod;
+        protected global::System.Web.UI.WebControls.Label lblValMethod;
+        protected global::System.Web.UI.WebControls.Panel pnlRowDate;
+        protected global::System.Web.UI.WebControls.Label lblKeyDate;
+        protected global::System.Web.UI.WebControls.Label lblValDate;
+        protected global::System.Web.UI.WebControls.Panel pnlRowStatus;
+        protected global::System.Web.UI.WebControls.Label lblKeyStatus;
+        protected global::System.Web.UI.WebControls.Label lblValStatus;
+        protected global::System.Web.UI.WebControls.Panel pnlModalFooter;
+        protected global::System.Web.UI.WebControls.Button btnPrintReceipt;
+        protected global::System.Web.UI.WebControls.Button btnCloseModal;
     }
 }

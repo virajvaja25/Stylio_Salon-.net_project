@@ -7,6 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stylio - Payments</title>
     <link rel="stylesheet" type="text/css" href="../Styles/Admin.css" />
+    <script type="text/javascript">
+        function togglePaymentMenu(menuId, event) {
+            if (event) {
+                event.stopPropagation();
+                if (event.preventDefault) event.preventDefault();
+            }
+            var menus = document.querySelectorAll('.admin-salon-dropdown-menu');
+            for (var i = 0; i < menus.length; i++) {
+                if (menus[i].id !== menuId) {
+                    menus[i].style.display = 'none';
+                }
+            }
+            var targetMenu = document.getElementById(menuId);
+            if (targetMenu) {
+                targetMenu.style.display = (targetMenu.style.display === 'block') ? 'none' : 'block';
+            }
+        }
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.admin-more-menu-container')) {
+                var menus = document.querySelectorAll('.admin-salon-dropdown-menu');
+                for (var i = 0; i < menus.length; i++) {
+                    menus[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
 </head>
 <body>
     <form id="frmAdminPayments" runat="server">
@@ -100,6 +126,12 @@
                 <%-- Content Area --%>
                 <asp:Panel ID="pnlContentArea" runat="server" CssClass="admin-content-area">
                     
+                    <%-- Alert Notification Banner --%>
+                    <asp:Panel ID="pnlAlertBanner" runat="server" CssClass="admin-banner-alert admin-banner-alert-success" Visible="false">
+                        <asp:Label ID="lblAlertMessage" runat="server" />
+                        <asp:LinkButton ID="btnCloseAlert" runat="server" Text="✕" OnClick="btnCloseAlert_Click" style="color: inherit; text-decoration: none; font-weight: bold; cursor: pointer;" />
+                    </asp:Panel>
+
                     <asp:Label ID="lblPageTitle" runat="server" CssClass="admin-page-title" Text="Payments" />
 
                     <%-- Top 3 Stat Cards --%>
@@ -166,8 +198,21 @@
                                 <asp:Label ID="lblMethod1" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate1" runat="server" CssClass="admin-payment-date" Text="8 Aug, 2026" />
-                            <asp:Panel ID="pnlAction1" runat="server" CssClass="admin-action-dots-btn">
-                                <asp:Image ID="imgDots1" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                            <asp:Panel ID="pnlMoreWrapper1" runat="server" CssClass="admin-more-menu-container">
+                                <asp:LinkButton ID="btnMore1" runat="server" CssClass="admin-more-dots-btn" OnClientClick="togglePaymentMenu('pnlMenu1', event); return false;" ToolTip="Options">
+                                    <asp:Image ID="imgDots1" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                                </asp:LinkButton>
+                                <asp:Panel ID="pnlMenu1" runat="server" ClientIDMode="Static" CssClass="admin-salon-dropdown-menu" style="display: none; min-width: 160px; right: 0;">
+                                    <asp:LinkButton ID="btnDetails1" runat="server" CssClass="admin-dropdown-action" OnClick="btnDetails1_Click">
+                                        <asp:Label ID="lblDetText1" runat="server" Text="View Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnPrint1" runat="server" CssClass="admin-dropdown-action" OnClick="btnPrint1_Click">
+                                        <asp:Label ID="lblPrintText1" runat="server" Text="Print Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnComplete1" runat="server" CssClass="admin-dropdown-action" OnClick="btnComplete1_Click">
+                                        <asp:Label ID="lblCompleteText1" runat="server" Text="Mark Completed" />
+                                    </asp:LinkButton>
+                                </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>
 
@@ -184,8 +229,21 @@
                                 <asp:Label ID="lblMethod2" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate2" runat="server" CssClass="admin-payment-date" Text="9 Aug, 2026" />
-                            <asp:Panel ID="pnlAction2" runat="server" CssClass="admin-action-dots-btn">
-                                <asp:Image ID="imgDots2" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                            <asp:Panel ID="pnlMoreWrapper2" runat="server" CssClass="admin-more-menu-container">
+                                <asp:LinkButton ID="btnMore2" runat="server" CssClass="admin-more-dots-btn" OnClientClick="togglePaymentMenu('pnlMenu2', event); return false;" ToolTip="Options">
+                                    <asp:Image ID="imgDots2" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                                </asp:LinkButton>
+                                <asp:Panel ID="pnlMenu2" runat="server" ClientIDMode="Static" CssClass="admin-salon-dropdown-menu" style="display: none; min-width: 160px; right: 0;">
+                                    <asp:LinkButton ID="btnDetails2" runat="server" CssClass="admin-dropdown-action" OnClick="btnDetails2_Click">
+                                        <asp:Label ID="lblDetText2" runat="server" Text="View Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnPrint2" runat="server" CssClass="admin-dropdown-action" OnClick="btnPrint2_Click">
+                                        <asp:Label ID="lblPrintText2" runat="server" Text="Print Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnComplete2" runat="server" CssClass="admin-dropdown-action" OnClick="btnComplete2_Click">
+                                        <asp:Label ID="lblCompleteText2" runat="server" Text="Mark Completed" />
+                                    </asp:LinkButton>
+                                </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>
 
@@ -202,8 +260,21 @@
                                 <asp:Label ID="lblMethod3" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate3" runat="server" CssClass="admin-payment-date" Text="9 Aug, 2026" />
-                            <asp:Panel ID="pnlAction3" runat="server" CssClass="admin-action-dots-btn">
-                                <asp:Image ID="imgDots3" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                            <asp:Panel ID="pnlMoreWrapper3" runat="server" CssClass="admin-more-menu-container">
+                                <asp:LinkButton ID="btnMore3" runat="server" CssClass="admin-more-dots-btn" OnClientClick="togglePaymentMenu('pnlMenu3', event); return false;" ToolTip="Options">
+                                    <asp:Image ID="imgDots3" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                                </asp:LinkButton>
+                                <asp:Panel ID="pnlMenu3" runat="server" ClientIDMode="Static" CssClass="admin-salon-dropdown-menu" style="display: none; min-width: 160px; right: 0;">
+                                    <asp:LinkButton ID="btnDetails3" runat="server" CssClass="admin-dropdown-action" OnClick="btnDetails3_Click">
+                                        <asp:Label ID="lblDetText3" runat="server" Text="View Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnPrint3" runat="server" CssClass="admin-dropdown-action" OnClick="btnPrint3_Click">
+                                        <asp:Label ID="lblPrintText3" runat="server" Text="Print Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnComplete3" runat="server" CssClass="admin-dropdown-action" OnClick="btnComplete3_Click">
+                                        <asp:Label ID="lblCompleteText3" runat="server" Text="Mark Completed" />
+                                    </asp:LinkButton>
+                                </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>
 
@@ -220,8 +291,21 @@
                                 <asp:Label ID="lblMethod4" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate4" runat="server" CssClass="admin-payment-date" Text="7 Aug, 2026" />
-                            <asp:Panel ID="pnlAction4" runat="server" CssClass="admin-action-dots-btn">
-                                <asp:Image ID="imgDots4" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                            <asp:Panel ID="pnlMoreWrapper4" runat="server" CssClass="admin-more-menu-container">
+                                <asp:LinkButton ID="btnMore4" runat="server" CssClass="admin-more-dots-btn" OnClientClick="togglePaymentMenu('pnlMenu4', event); return false;" ToolTip="Options">
+                                    <asp:Image ID="imgDots4" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                                </asp:LinkButton>
+                                <asp:Panel ID="pnlMenu4" runat="server" ClientIDMode="Static" CssClass="admin-salon-dropdown-menu" style="display: none; min-width: 160px; right: 0;">
+                                    <asp:LinkButton ID="btnDetails4" runat="server" CssClass="admin-dropdown-action" OnClick="btnDetails4_Click">
+                                        <asp:Label ID="lblDetText4" runat="server" Text="View Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnPrint4" runat="server" CssClass="admin-dropdown-action" OnClick="btnPrint4_Click">
+                                        <asp:Label ID="lblPrintText4" runat="server" Text="Print Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnComplete4" runat="server" CssClass="admin-dropdown-action" OnClick="btnComplete4_Click">
+                                        <asp:Label ID="lblCompleteText4" runat="server" Text="Mark Completed" />
+                                    </asp:LinkButton>
+                                </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>
 
@@ -238,8 +322,21 @@
                                 <asp:Label ID="lblMethod5" runat="server" CssClass="admin-payment-method-text" Text="Cash" />
                             </asp:Panel>
                             <asp:Label ID="lblDate5" runat="server" CssClass="admin-payment-date" Text="12 Aug, 2026" />
-                            <asp:Panel ID="pnlAction5" runat="server" CssClass="admin-action-dots-btn">
-                                <asp:Image ID="imgDots5" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                            <asp:Panel ID="pnlMoreWrapper5" runat="server" CssClass="admin-more-menu-container">
+                                <asp:LinkButton ID="btnMore5" runat="server" CssClass="admin-more-dots-btn" OnClientClick="togglePaymentMenu('pnlMenu5', event); return false;" ToolTip="Options">
+                                    <asp:Image ID="imgDots5" runat="server" ImageUrl="~/Images/admin_icons/more_vert.svg" AlternateText="⋮" />
+                                </asp:LinkButton>
+                                <asp:Panel ID="pnlMenu5" runat="server" ClientIDMode="Static" CssClass="admin-salon-dropdown-menu" style="display: none; min-width: 160px; right: 0;">
+                                    <asp:LinkButton ID="btnDetails5" runat="server" CssClass="admin-dropdown-action" OnClick="btnDetails5_Click">
+                                        <asp:Label ID="lblDetText5" runat="server" Text="View Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnPrint5" runat="server" CssClass="admin-dropdown-action" OnClick="btnPrint5_Click">
+                                        <asp:Label ID="lblPrintText5" runat="server" Text="Print Receipt" />
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnComplete5" runat="server" CssClass="admin-dropdown-action" OnClick="btnComplete5_Click">
+                                        <asp:Label ID="lblCompleteText5" runat="server" Text="Mark Completed" />
+                                    </asp:LinkButton>
+                                </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>
 
@@ -247,6 +344,50 @@
 
                 </asp:Panel>
 
+            </asp:Panel>
+
+            <%-- Payment Details / Receipt Popup Modal --%>
+            <asp:Panel ID="pnlPaymentDetailsModal" runat="server" CssClass="admin-modal-overlay" Visible="false">
+                <asp:Panel ID="pnlModalCard" runat="server" CssClass="admin-modal-card">
+                    <asp:Panel ID="pnlModalHeader" runat="server" CssClass="admin-modal-header">
+                        <asp:Label ID="lblModalTitle" runat="server" CssClass="admin-modal-title" Text="Payment Receipt" />
+                        <asp:LinkButton ID="btnCloseX" runat="server" Text="✕" OnClick="btnCloseDetails_Click" style="font-size: 18px; font-weight: bold; color: #555; text-decoration: none; cursor: pointer;" />
+                    </asp:Panel>
+                    <asp:Panel ID="pnlModalBody" runat="server" CssClass="admin-modal-body">
+                        <asp:Panel ID="pnlRowTxnId" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyTxnId" runat="server" CssClass="admin-detail-key" Text="Transaction ID:" />
+                            <asp:Label ID="lblValTxnId" runat="server" CssClass="admin-detail-val" style="font-weight: 700; color: #5B2C6F;" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowCustomer" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyCustomer" runat="server" CssClass="admin-detail-key" Text="Customer Name:" />
+                            <asp:Label ID="lblValCustomer" runat="server" CssClass="admin-detail-val" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowService" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyService" runat="server" CssClass="admin-detail-key" Text="Service:" />
+                            <asp:Label ID="lblValService" runat="server" CssClass="admin-detail-val" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowAmount" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyAmount" runat="server" CssClass="admin-detail-key" Text="Amount Paid:" />
+                            <asp:Label ID="lblValAmount" runat="server" CssClass="admin-detail-val" style="font-size: 16px; font-weight: 700; color: #2E7D32;" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowMethod" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyMethod" runat="server" CssClass="admin-detail-key" Text="Payment Method:" />
+                            <asp:Label ID="lblValMethod" runat="server" CssClass="admin-detail-val" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowDate" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyDate" runat="server" CssClass="admin-detail-key" Text="Payment Date:" />
+                            <asp:Label ID="lblValDate" runat="server" CssClass="admin-detail-val" />
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRowStatus" runat="server" CssClass="admin-detail-row">
+                            <asp:Label ID="lblKeyStatus" runat="server" CssClass="admin-detail-key" Text="Payment Status:" />
+                            <asp:Label ID="lblValStatus" runat="server" CssClass="admin-detail-val" Text="Completed ✔" style="color: #2E7D32; font-weight: 600;" />
+                        </asp:Panel>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlModalFooter" runat="server" CssClass="admin-modal-footer" style="display: flex; gap: 10px; justify-content: flex-end;">
+                        <asp:Button ID="btnPrintReceipt" runat="server" CssClass="btn-admin-submit" Text="Print Receipt" OnClientClick="window.print(); return false;" style="background: #5B2C6F; color: #fff;" />
+                        <asp:Button ID="btnCloseModal" runat="server" CssClass="btn-admin-submit" Text="Close" OnClick="btnCloseDetails_Click" style="background: #ECE6DF; color: #333;" />
+                    </asp:Panel>
+                </asp:Panel>
             </asp:Panel>
 
         </asp:Panel>
