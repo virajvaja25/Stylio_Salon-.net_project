@@ -100,7 +100,7 @@
                 <%-- Content Area --%>
                 <asp:Panel ID="pnlContentArea" runat="server" CssClass="admin-content-area">
                     
-                    <asp:Label ID="lblPageTitle" runat="server" CssClass="admin-page-title" Text="Reviwes" />
+                    <asp:Label ID="lblPageTitle" runat="server" CssClass="admin-page-title" Text="Reviews" />
 
                     <%-- Search Reviews Box --%>
                     <asp:Panel ID="pnlReviewsSearchBox" runat="server" CssClass="admin-section-search-wrapper">

@@ -48,7 +48,7 @@ namespace Stylio_Salon
 
             // Total Revenue
             decimal totalRevenue = Db.GetTotalRevenue();
-            lblStatRevenueValue.Text = "&#8377;" + totalRevenue.ToString("N0");
+            lblStatRevenueValue.Text = "\u20B9" + totalRevenue.ToString("N0");
         }
 
         protected void btnNavLogout_Click(object sender, EventArgs e)

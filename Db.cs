@@ -570,12 +570,39 @@ namespace Stylio_Salon
 
         // ======================== ADMIN AUTH ========================
 
+        public static void EnsureDefaultAdmin()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Users WHERE LOWER(Email) = 'admin@stylio.com'", con))
+                    {
+                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        if (count == 0)
+                        {
+                            using (SqlCommand insCmd = new SqlCommand(
+                                "INSERT INTO Users (Name, Email, MobileNumber, Password) VALUES ('Stylio Admin', 'admin@stylio.com', '9876543210', 'admin123')", con))
+                            {
+                                insCmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Suppress if already exists
+            }
+        }
+
         public static bool ValidateAdmin(string email, string password)
         {
-            // Check Users table for admin account
+            EnsureDefaultAdmin();
             using (SqlConnection con = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(
-                "SELECT COUNT(*) FROM Users WHERE Email = @email AND Password = @password AND Email = 'admin@stylio.com'", con))
+                "SELECT COUNT(*) FROM Users WHERE LOWER(Email) = LOWER(@email) AND Password = @password AND LOWER(Email) = 'admin@stylio.com'", con))
             {
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@password", password);

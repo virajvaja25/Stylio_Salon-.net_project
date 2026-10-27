@@ -85,6 +85,10 @@ namespace Stylio_Salon
             // Also update in DB if admin user exists in Users table
             string currentEmail = Session["AdminEmail"] as string ?? "admin@stylio.com";
             int adminId = Db.GetUserId(currentEmail);
+            if (adminId == 0)
+            {
+                adminId = Db.GetUserId("admin@stylio.com");
+            }
             if (adminId > 0)
             {
                 Db.UpdateUser(adminId, newName, "+91 98765 43210");
@@ -130,6 +134,10 @@ namespace Stylio_Salon
 
             string adminEmail = Session["AdminEmail"] as string ?? "admin@stylio.com";
             int adminId = Db.GetUserId(adminEmail);
+            if (adminId == 0)
+            {
+                adminId = Db.GetUserId("admin@stylio.com");
+            }
             if (adminId > 0)
             {
                 bool updated = Db.ChangePassword(adminId, oldPass, newPass);
