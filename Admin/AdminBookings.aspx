@@ -137,8 +137,8 @@
 
                                     <%-- Date & Time --%>
                                     <asp:Panel ID="pnlDateTime" runat="server" CssClass="admin-manage-booking-datetime">
-                                        <asp:Label ID="lblDate" runat="server" CssClass="admin-manage-booking-date" Text='<%# Eval("BookingDate") %>' />
-                                        <asp:Label ID="lblTime" runat="server" CssClass="admin-manage-booking-time" Text='<%# Eval("BookingTime") %>' />
+                                        <asp:Label ID="lblDate" runat="server" CssClass="admin-manage-booking-date" Text='<%# Eval("BookingDateStr") %>' />
+                                        <asp:Label ID="lblTime" runat="server" CssClass="admin-manage-booking-time" Text='<%# Eval("BookingTimeStr") %>' />
                                     </asp:Panel>
 
                                     <%-- Status Badge --%>

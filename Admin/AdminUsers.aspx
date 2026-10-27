@@ -125,7 +125,7 @@
                         </asp:Panel>
 
                         <%-- Users List Repeater --%>
-                        <asp:Repeater ID="rptUsers" runat="server">
+                        <asp:Repeater ID="rptUsers" runat="server" OnItemCommand="rptUsers_ItemCommand">
                             <ItemTemplate>
                                 <asp:Panel ID="pnlUserRow" runat="server" CssClass="admin-users-row">
                                     

@@ -72,11 +72,15 @@ namespace Stylio_Salon
             dt.Columns.Add("StatusCssClass", typeof(string));
             dt.Columns.Add("StatusDisplay", typeof(string));
             dt.Columns.Add("AvatarUrl", typeof(string));
+            if (!dt.Columns.Contains("Service"))
+                dt.Columns.Add("Service", typeof(string));
 
             string[] avatars = new[] { "~/Images/admin_icons/avatar_coral.svg", "~/Images/admin_icons/avatar_teal.svg" };
             int idx = 0;
             foreach (DataRow row in dt.Rows)
             {
+                row["Service"] = row["Services"] != DBNull.Value ? row["Services"].ToString() : "";
+
                 // Format date and time
                 if (row["BookingDate"] != DBNull.Value)
                     row["BookingDateStr"] = Convert.ToDateTime(row["BookingDate"]).ToString("dd MMM, yyyy");

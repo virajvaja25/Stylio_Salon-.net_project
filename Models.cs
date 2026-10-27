@@ -108,19 +108,45 @@ namespace Stylio_Salon
         public string SalonName { get; set; }
         public string SalonImage { get; set; }
         public string Services { get; set; }
+        public string Service
+        {
+            get { return Services; }
+            set { Services = value; }
+        }
         public DateTime BookingDate { get; set; }
         public TimeSpan BookingTime { get; set; }
+        public string BookingDateStr { get; set; }
+        public string BookingTimeStr { get; set; }
         public decimal TotalAmount { get; set; }
+        public string AmountStr { get; set; }
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
+        public string Status { get; set; }
+        public string StatusDisplay { get; set; }
+        public string StatusCssClass { get; set; }
+        public string AvatarUrl { get; set; }
     }
 
     public class UserRecord
     {
         public int UserId { get; set; }
         public string Name { get; set; }
+        public string FullName
+        {
+            get { return string.IsNullOrEmpty(Name) ? "User" : Name; }
+            set { Name = value; }
+        }
         public string Email { get; set; }
         public string MobileNumber { get; set; }
+        public string Phone
+        {
+            get { return string.IsNullOrEmpty(MobileNumber) ? "—" : MobileNumber; }
+            set { MobileNumber = value; }
+        }
         public string Role { get; set; }
+        public string AvatarUrl { get; set; }
+        public string Status { get; set; }
+        public string StatusCssClass { get; set; }
+        public string JoinedOn { get; set; }
     }
 }
